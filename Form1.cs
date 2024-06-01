@@ -72,7 +72,32 @@ namespace ReadingApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            UCLogIn uCLogIn = new UCLogIn();
+            uCLogIn.loadUCHome += loadUCHome;
+            uCLogIn.loadUCForgotPassword += loadUCForgotPassword;
+            pnLogIn.Visible = true;
+            pnLogIn.Controls.Clear();
+            pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
+        }
+
+        private void loadUCForgotPassword(object? sender, EventArgs e)
+        {
+            UCForgotPassword uCForgotPassword = new UCForgotPassword();
+            uCForgotPassword.loadUCLogIn += Form1_Load;
+            pnLogIn.Controls.Clear();
+            pnLogIn.Controls.Add(uCForgotPassword);
+        }
+
+        private void loadUCHome(object? sender, EventArgs e)
+        {
+            pnLogIn.Visible = false;
+            pnHomeTab_Click(sender, e);
+        }
+
+        private void pnLogout_Click(object sender, EventArgs e)
+        {
+            Form1_Load(sender, e);
         }
     }
 }

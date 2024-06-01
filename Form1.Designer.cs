@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            panel1 = new Panel();
+            pnMenu = new Panel();
             pnLogout = new Panel();
             panel8 = new Panel();
             label6 = new Label();
@@ -56,7 +56,8 @@
             picHomeTab = new PictureBox();
             pictureBox1 = new PictureBox();
             pnMain = new Panel();
-            panel1.SuspendLayout();
+            pnLogIn = new Panel();
+            pnMenu.SuspendLayout();
             pnLogout.SuspendLayout();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
@@ -76,19 +77,19 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnMenu
             // 
-            panel1.BackColor = Color.FromArgb(226, 239, 226);
-            panel1.Controls.Add(pnLogout);
-            panel1.Controls.Add(pnHistoryTab);
-            panel1.Controls.Add(pnLibraryTab);
-            panel1.Controls.Add(pnAccountTab);
-            panel1.Controls.Add(pnHomeTab);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(370, 1500);
-            panel1.TabIndex = 0;
+            pnMenu.BackColor = Color.FromArgb(226, 239, 226);
+            pnMenu.Controls.Add(pnLogout);
+            pnMenu.Controls.Add(pnHistoryTab);
+            pnMenu.Controls.Add(pnLibraryTab);
+            pnMenu.Controls.Add(pnAccountTab);
+            pnMenu.Controls.Add(pnHomeTab);
+            pnMenu.Controls.Add(pictureBox1);
+            pnMenu.Location = new Point(0, 0);
+            pnMenu.Name = "pnMenu";
+            pnMenu.Size = new Size(370, 1500);
+            pnMenu.TabIndex = 0;
             // 
             // pnLogout
             // 
@@ -100,6 +101,7 @@
             pnLogout.Name = "pnLogout";
             pnLogout.Size = new Size(370, 55);
             pnLogout.TabIndex = 6;
+            pnLogout.Click += pnLogout_Click;
             // 
             // panel8
             // 
@@ -145,6 +147,7 @@
             lbLogout.Size = new Size(143, 38);
             lbLogout.TabIndex = 3;
             lbLogout.Text = "Đăng xuất";
+            lbLogout.Click += pnLogout_Click;
             // 
             // picLogout
             // 
@@ -156,6 +159,7 @@
             picLogout.SizeMode = PictureBoxSizeMode.StretchImage;
             picLogout.TabIndex = 2;
             picLogout.TabStop = false;
+            picLogout.Click += pnLogout_Click;
             // 
             // pnHistoryTab
             // 
@@ -386,14 +390,22 @@
             pnMain.Size = new Size(2310, 1475);
             pnMain.TabIndex = 1;
             // 
+            // pnLogIn
+            // 
+            pnLogIn.Location = new Point(0, 0);
+            pnLogIn.Name = "pnLogIn";
+            pnLogIn.Size = new Size(2566, 1500);
+            pnLogIn.TabIndex = 2;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(2564, 1511);
+            Controls.Add(pnLogIn);
             Controls.Add(pnMain);
-            Controls.Add(panel1);
+            Controls.Add(pnMenu);
             Font = new Font("Segoe UI", 8.142858F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.Black;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -402,7 +414,7 @@
             Text = "Reading";
             WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
-            panel1.ResumeLayout(false);
+            pnMenu.ResumeLayout(false);
             pnLogout.ResumeLayout(false);
             pnLogout.PerformLayout();
             panel8.ResumeLayout(false);
@@ -433,7 +445,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnMenu;
         private Panel pnHomeTab;
         private Label lbHomeTab;
         private PictureBox picHomeTab;
@@ -460,5 +472,6 @@
         private Label lbLogout;
         private PictureBox picLogout;
         private Panel pnMain;
+        private Panel pnLogIn;
     }
 }

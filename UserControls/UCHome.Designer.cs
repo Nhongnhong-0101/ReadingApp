@@ -59,7 +59,7 @@
             lbLastedName1 = new Label();
             label1 = new Label();
             pnSearch = new Panel();
-            button1 = new Button();
+            btnSearch = new Button();
             pnUpdating = new Panel();
             lbUpdating = new Label();
             picUpdating = new PictureBox();
@@ -427,7 +427,7 @@
             // pnSearch
             // 
             pnSearch.BorderStyle = BorderStyle.FixedSingle;
-            pnSearch.Controls.Add(button1);
+            pnSearch.Controls.Add(btnSearch);
             pnSearch.Controls.Add(pnUpdating);
             pnSearch.Controls.Add(pnFull);
             pnSearch.Controls.Add(pnFee);
@@ -442,18 +442,18 @@
             pnSearch.TabIndex = 6;
             pnSearch.Visible = false;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.BackColor = Color.ForestGreen;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(1918, 33);
-            button1.Name = "button1";
-            button1.Size = new Size(222, 60);
-            button1.TabIndex = 10;
-            button1.Text = "Tìm truyện";
-            button1.UseVisualStyleBackColor = false;
+            btnSearch.BackColor = Color.ForestGreen;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(1918, 33);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(222, 60);
+            btnSearch.TabIndex = 10;
+            btnSearch.Text = "Tìm truyện";
+            btnSearch.UseVisualStyleBackColor = false;
             // 
             // pnUpdating
             // 
@@ -863,7 +863,7 @@
         private Panel pnFree;
         private Label lbFree;
         private PictureBox picFree;
-        private Button button1;
+        private Button btnSearch;
         private Panel panelType;
         private Label lbTheLoai6;
         private Label lbTheLoai5;

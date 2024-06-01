@@ -83,9 +83,29 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_btnlogin {
+            get {
+                object obj = ResourceManager.GetObject("bg_btnlogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_lasted {
             get {
                 object obj = ResourceManager.GetObject("bg_lasted", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_login {
+            get {
+                object obj = ResourceManager.GetObject("bg_login", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +136,26 @@ namespace ReadingApp.Properties {
         internal static System.Drawing.Bitmap cost {
             get {
                 object obj = ResourceManager.GetObject("cost", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_slash {
+            get {
+                object obj = ResourceManager.GetObject("eye-slash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
