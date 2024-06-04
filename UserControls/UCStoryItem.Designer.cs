@@ -52,7 +52,7 @@
             // picImage
             // 
             picImage.Image = Properties.Resources.temp_image_story;
-            picImage.Location = new Point(35, 0);
+            picImage.Location = new Point(33, 0);
             picImage.Name = "picImage";
             picImage.Size = new Size(390, 530);
             picImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -66,7 +66,7 @@
             pnStar.Controls.Add(pictureBox2);
             pnStar.Controls.Add(pictureBox1);
             pnStar.Controls.Add(picHomeTab);
-            pnStar.Location = new Point(35, 532);
+            pnStar.Location = new Point(33, 532);
             pnStar.Name = "pnStar";
             pnStar.Size = new Size(220, 40);
             pnStar.TabIndex = 1;
@@ -75,7 +75,7 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = Properties.Resources.star;
-            pictureBox4.Location = new Point(180, 0);
+            pictureBox4.Location = new Point(178, 0);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(40, 40);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -86,7 +86,7 @@
             // 
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.Image = Properties.Resources.star;
-            pictureBox3.Location = new Point(135, 0);
+            pictureBox3.Location = new Point(133, 0);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(40, 40);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -97,7 +97,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = Properties.Resources.star;
-            pictureBox2.Location = new Point(90, 0);
+            pictureBox2.Location = new Point(88, 0);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(40, 40);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -108,7 +108,7 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.star;
-            pictureBox1.Location = new Point(45, 0);
+            pictureBox1.Location = new Point(43, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(40, 40);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -119,7 +119,7 @@
             // 
             picHomeTab.BackColor = Color.Transparent;
             picHomeTab.Image = Properties.Resources.star;
-            picHomeTab.Location = new Point(0, 0);
+            picHomeTab.Location = new Point(-2, 0);
             picHomeTab.Name = "picHomeTab";
             picHomeTab.Size = new Size(40, 40);
             picHomeTab.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -130,7 +130,7 @@
             // 
             pictureBox5.BackColor = Color.Transparent;
             pictureBox5.Image = Properties.Resources.cost;
-            pictureBox5.Location = new Point(385, 532);
+            pictureBox5.Location = new Point(383, 532);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(40, 40);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -142,7 +142,7 @@
             lbIsFull.BackColor = Color.Green;
             lbIsFull.Font = new Font("Segoe UI", 11F);
             lbIsFull.ForeColor = Color.White;
-            lbIsFull.Location = new Point(35, 0);
+            lbIsFull.Location = new Point(33, 0);
             lbIsFull.Name = "lbIsFull";
             lbIsFull.Size = new Size(80, 40);
             lbIsFull.TabIndex = 5;
@@ -152,7 +152,7 @@
             // lbName
             // 
             lbName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lbName.Location = new Point(35, 575);
+            lbName.Location = new Point(33, 575);
             lbName.Name = "lbName";
             lbName.Size = new Size(390, 40);
             lbName.TabIndex = 6;
@@ -162,7 +162,7 @@
             // 
             lbAuthor.Font = new Font("Segoe UI", 10F);
             lbAuthor.ForeColor = Color.Gray;
-            lbAuthor.Location = new Point(40, 615);
+            lbAuthor.Location = new Point(38, 615);
             lbAuthor.Name = "lbAuthor";
             lbAuthor.Size = new Size(385, 30);
             lbAuthor.TabIndex = 7;
@@ -180,7 +180,7 @@
             Controls.Add(pnStar);
             Controls.Add(picImage);
             Name = "UCStoryItem";
-            Size = new Size(425, 658);
+            Size = new Size(423, 658);
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             pnStar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();

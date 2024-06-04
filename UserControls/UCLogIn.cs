@@ -14,6 +14,7 @@ namespace ReadingApp.UserControls
     {
         public EventHandler loadUCHome;
         public EventHandler loadUCForgotPassword;
+        public EventHandler loadUCSignUp;
         public UCLogIn()
         {
             InitializeComponent();
@@ -24,12 +25,12 @@ namespace ReadingApp.UserControls
             if (txtPassword.PasswordChar == '*')
             {
                 txtPassword.PasswordChar = '\0';
-                picEye.Image = Properties.Resources.eye_slash;
+                picEye.Image = Properties.Resources.eye;
             }
             else
             {
                 txtPassword.PasswordChar = '*';
-                picEye.Image = Properties.Resources.eye;
+                picEye.Image = Properties.Resources.eye_slash;
             }
         }
 
@@ -41,6 +42,11 @@ namespace ReadingApp.UserControls
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
             loadUCForgotPassword?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void lbSignUp_Click(object sender, EventArgs e)
+        {
+            loadUCSignUp?.Invoke(this, EventArgs.Empty);
         }
     }
 }

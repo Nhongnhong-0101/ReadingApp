@@ -6,6 +6,9 @@ namespace ReadingApp
     public partial class Form1 : Form
     {
         private UCHome ucHome;
+        private UCLibrary ucLibrary;
+        private UCHistory ucHistory;
+        private UCAccount ucAccount;
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +31,14 @@ namespace ReadingApp
             picHistoryTab.Image = Properties.Resources.history;
         }
 
+        private void loadUCAccount(object? sender, EventArgs e)
+        {
+            pnMain.Controls.Clear();
+            ucAccount = new UCAccount();
+            ucAccount.loadUCPasswordChange += loadUCPasswordChange;
+            pnMain.Controls.Add(ucAccount);
+        }
+
         private void pnHomeTab_Click(object sender, EventArgs e)
         {
             unBackground();
@@ -47,7 +58,7 @@ namespace ReadingApp
             lbAccountTab.ForeColor = Color.White;
             picAccountTab.Image = Properties.Resources.user_white;
 
-            pnMain.Controls.Clear();
+            loadUCAccount(sender,e);
         }
 
         private void pnLibraryTab_Click(object sender, EventArgs e)
@@ -58,6 +69,8 @@ namespace ReadingApp
             picLibraryTab.Image = Properties.Resources.library_white;
 
             pnMain.Controls.Clear();
+            ucLibrary = new UCLibrary();
+            pnMain.Controls.Add(ucLibrary);
         }
 
         private void pnHistoryTab_Click(object sender, EventArgs e)
@@ -68,6 +81,8 @@ namespace ReadingApp
             picHistoryTab.Image = Properties.Resources.history_white;
 
             pnMain.Controls.Clear();
+            ucHistory = new UCHistory();
+            pnMain.Controls.Add(ucHistory);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,11 +90,30 @@ namespace ReadingApp
             UCLogIn uCLogIn = new UCLogIn();
             uCLogIn.loadUCHome += loadUCHome;
             uCLogIn.loadUCForgotPassword += loadUCForgotPassword;
+            uCLogIn.loadUCSignUp += loadUCSignUp;
             pnLogIn.Visible = true;
             pnLogIn.Controls.Clear();
             pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
         }
+
+        private void loadUCSignUp(object? sender, EventArgs e)
+        {
+            UCSignUp uCSignUp = new UCSignUp();
+            uCSignUp.loadUCLogIn += Form1_Load;
+            uCSignUp.loadUCHome += loadUCHome;
+            pnLogIn.Controls.Clear();
+            pnLogIn.Controls.Add(uCSignUp);
+        }
+
+        private void loadUCPasswordChange(object? sender, EventArgs e)
+        {
+            UCPasswordChange uCPasswordChange = new UCPasswordChange();
+            uCPasswordChange.loadUCAccount = loadUCAccount;
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(uCPasswordChange);
+        }
+
 
         private void loadUCForgotPassword(object? sender, EventArgs e)
         {

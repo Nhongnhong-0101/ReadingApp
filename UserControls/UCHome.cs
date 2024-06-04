@@ -170,7 +170,6 @@ namespace ReadingApp.UserControls
                 pictureBox.Image = Properties.Resources.check;
                 filter = false;
             }
-
         }
 
         private void pnComic_Click(object sender, EventArgs e)
@@ -201,14 +200,6 @@ namespace ReadingApp.UserControls
         private void pnFee_Click(object sender, EventArgs e)
         {
             filterSearch(ref isFee, picFee);
-        }
-
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == "Tìm kiếm tại đây...")
-            {
-                txtSearch.Text = "";
-            }
         }
     }
 }

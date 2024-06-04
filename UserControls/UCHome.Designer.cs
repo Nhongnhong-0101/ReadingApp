@@ -112,7 +112,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.image_user;
-            pictureBox1.Location = new Point(2070, 20);
+            pictureBox1.Location = new Point(2060, 30);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -126,7 +126,7 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(pictureBox2);
-            panel1.Location = new Point(840, 30);
+            panel1.Location = new Point(830, 40);
             panel1.Name = "panel1";
             panel1.Size = new Size(1200, 70);
             panel1.TabIndex = 2;
@@ -135,13 +135,12 @@
             // 
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 12F);
-            txtSearch.ForeColor = Color.Gray;
+            txtSearch.ForeColor = Color.Black;
             txtSearch.Location = new Point(15, 16);
             txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Tìm kiếm tại đây...";
             txtSearch.Size = new Size(1100, 38);
             txtSearch.TabIndex = 4;
-            txtSearch.Text = "Tìm kiếm tại đây...";
-            txtSearch.Click += txtSearch_Click;
             // 
             // pictureBox2
             // 
@@ -157,7 +156,7 @@
             // 
             pnType.Controls.Add(lbType);
             pnType.Controls.Add(picType);
-            pnType.Location = new Point(645, 40);
+            pnType.Location = new Point(635, 50);
             pnType.Name = "pnType";
             pnType.Size = new Size(170, 50);
             pnType.TabIndex = 3;

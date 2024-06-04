@@ -77,6 +77,7 @@
             lbSignUp.Size = new Size(119, 38);
             lbSignUp.TabIndex = 11;
             lbSignUp.Text = "Đăng ký";
+            lbSignUp.Click += lbSignUp_Click;
             // 
             // label4
             // 
@@ -140,7 +141,7 @@
             // 
             // picEye
             // 
-            picEye.Image = Properties.Resources.eye;
+            picEye.Image = Properties.Resources.eye_slash;
             picEye.Location = new Point(485, 6);
             picEye.Name = "picEye";
             picEye.Size = new Size(40, 40);
@@ -201,7 +202,7 @@
             txtEmail.ForeColor = Color.DimGray;
             txtEmail.Location = new Point(10, 5);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Nhập email";
+            txtEmail.PlaceholderText = "Nhập tên đăng nhập";
             txtEmail.Size = new Size(510, 41);
             txtEmail.TabIndex = 7;
             // 
@@ -212,9 +213,9 @@
             lbType.ForeColor = Color.DarkGreen;
             lbType.Location = new Point(50, 1);
             lbType.Name = "lbType";
-            lbType.Size = new Size(81, 36);
+            lbType.Size = new Size(196, 36);
             lbType.TabIndex = 6;
-            lbType.Text = "Email";
+            lbType.Text = "Tên đăng nhập";
             // 
             // lbAccountTab
             // 
