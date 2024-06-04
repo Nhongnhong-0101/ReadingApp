@@ -18,7 +18,7 @@ namespace ReadingApp.Model
 
         public string Content { get; set; }
 
-        public string Image { get; set; }
+        public List<String> Image { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

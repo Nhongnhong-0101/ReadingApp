@@ -21,6 +21,9 @@ create table Stories (
 	FreeChapters int DEFAULT 0,
 	Price int DEFAULT 0,
 	Status varchar (100),
+    Stars float,
+    CreatedAt Datetime ,
+    LastUpdateAt Datetime,
 	AuthorID int,
     FOREIGN KEY (AuthorID) REFERENCES Users(UserID),
     CHECK (Category IN ('truyện tranh', 'truyện chữ')),
@@ -33,9 +36,15 @@ CREATE TABLE Chapters (
     ChapterNumber int,                       
     Title nvarchar(200),                     
     Content nvarchar(MAX),                   -- Nội dung của chương của truyện chữ
-	Image varchar(MAX),						 -- Tranh cho truyện tranh
     CreatedAt datetime ,    -- Ngày tạo chương
     FOREIGN KEY (StoryID) REFERENCES Stories(StoryID) 
+);
+
+CREATE TABLE ChapterImages (
+    ImageID int PRIMARY KEY IDENTITY(1,1),
+    ChapterID int,
+    ImageURL varchar(MAX),
+    FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
 );
 
 CREATE TABLE ReadingProgress (

@@ -25,6 +25,8 @@ namespace ReadingApp.Model
         [MaxLength(50)]
         public string Category { get; set; }
 
+        public int NumberChapters { get; set; } = 0;
+
         public bool IsPaid { get; set; } = false;
 
         public int FreeChapters { get; set; } = 0;
@@ -34,7 +36,12 @@ namespace ReadingApp.Model
         [MaxLength(100)]
         public string Status { get; set; }
 
+        public double Star { get; set; } = 0;
+
         public User Author { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime LastUpdatedAt { get; set;}
 
     }
 }

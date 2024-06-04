@@ -14,7 +14,7 @@ namespace ReadingApp.Model
         Story Story { get; set; }
 
         [Range(1,5)]
-        int Star {  get; set; }
+        double Star {  get; set; }
 
         String Comment { get; set; }
 
