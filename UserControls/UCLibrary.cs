@@ -18,6 +18,7 @@ namespace ReadingApp.UserControls
         private bool isUpdating = false;
         private bool isFree = false;
         private bool isFee = false;
+        public EventHandler loadUCAccount;
         public UCLibrary()
         {
             InitializeComponent();
@@ -73,6 +74,11 @@ namespace ReadingApp.UserControls
         private void pnFee_Click(object sender, EventArgs e)
         {
             filterSearch(ref isFee, picFee);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            loadUCAccount?.Invoke(this, EventArgs.Empty);
         }
     }
 }

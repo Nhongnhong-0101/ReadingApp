@@ -12,9 +12,15 @@ namespace ReadingApp.UserControls
 {
     public partial class UCStoryItem : UserControl
     {
+        public EventHandler loadUCStoryDetails;
         public UCStoryItem()
         {
             InitializeComponent();
+        }
+
+        private void UCStoryItem_Click(object sender, EventArgs e)
+        {
+            loadUCStoryDetails?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -18,6 +18,8 @@ namespace ReadingApp.UserControls
         private bool isUpdating = false;
         private bool isFree = false;
         private bool isFee = false;
+        public EventHandler loadUCAccount;
+        public EventHandler loadUCStoryDetails;
         public UCHome()
         {
             InitializeComponent();
@@ -29,8 +31,14 @@ namespace ReadingApp.UserControls
             for (int i = 0; i <= 12; i++)
             {
                 UCStoryItem ucStoryItem = new UCStoryItem();
+                ucStoryItem.loadUCStoryDetails += _loadUCStoryDetails;
                 flowMain.Controls.Add(ucStoryItem);
             }
+        }
+
+        private void _loadUCStoryDetails(object? sender, EventArgs e)
+        {
+            loadUCStoryDetails?.Invoke(this, e);
         }
 
         private void pnType_Click(object sender, EventArgs e)
@@ -124,7 +132,7 @@ namespace ReadingApp.UserControls
             pnSearch.Visible = true;
             flowMain.Height = 1205;
             flowMain.Location = new System.Drawing.Point(0, 270);
-            pnLasted.Location = new System.Drawing.Point(1790, 270);
+            panelState.Location = new System.Drawing.Point(1790, 270);
             panelType.Visible = false;
         }
 
@@ -200,6 +208,11 @@ namespace ReadingApp.UserControls
         private void pnFee_Click(object sender, EventArgs e)
         {
             filterSearch(ref isFee, picFee);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            loadUCAccount?.Invoke(this, EventArgs.Empty);
         }
     }
 }

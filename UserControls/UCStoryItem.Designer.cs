@@ -30,22 +30,15 @@
         {
             picImage = new PictureBox();
             pnStar = new Panel();
-            pictureBox4 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox1 = new PictureBox();
-            picHomeTab = new PictureBox();
+            label1 = new Label();
+            picStar = new PictureBox();
             pictureBox5 = new PictureBox();
             lbIsFull = new Label();
             lbName = new Label();
             lbAuthor = new Label();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnStar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picHomeTab).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picStar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
@@ -58,84 +51,52 @@
             picImage.SizeMode = PictureBoxSizeMode.StretchImage;
             picImage.TabIndex = 0;
             picImage.TabStop = false;
+            picImage.Click += UCStoryItem_Click;
             // 
             // pnStar
             // 
-            pnStar.Controls.Add(pictureBox4);
-            pnStar.Controls.Add(pictureBox3);
-            pnStar.Controls.Add(pictureBox2);
-            pnStar.Controls.Add(pictureBox1);
-            pnStar.Controls.Add(picHomeTab);
+            pnStar.Controls.Add(label1);
+            pnStar.Controls.Add(picStar);
             pnStar.Location = new Point(33, 532);
             pnStar.Name = "pnStar";
-            pnStar.Size = new Size(220, 40);
+            pnStar.Size = new Size(102, 40);
             pnStar.TabIndex = 1;
+            pnStar.Click += UCStoryItem_Click;
             // 
-            // pictureBox4
+            // label1
             // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Image = Properties.Resources.star;
-            pictureBox4.Location = new Point(178, 0);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(40, 40);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 7;
-            pictureBox4.TabStop = false;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F);
+            label1.Location = new Point(42, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 36);
+            label1.TabIndex = 4;
+            label1.Text = "3.5";
+            label1.Click += UCStoryItem_Click;
             // 
-            // pictureBox3
+            // picStar
             // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Image = Properties.Resources.star;
-            pictureBox3.Location = new Point(133, 0);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(40, 40);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 6;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = Properties.Resources.star;
-            pictureBox2.Location = new Point(88, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(40, 40);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 5;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.star;
-            pictureBox1.Location = new Point(43, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 40);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
-            // picHomeTab
-            // 
-            picHomeTab.BackColor = Color.Transparent;
-            picHomeTab.Image = Properties.Resources.star;
-            picHomeTab.Location = new Point(-2, 0);
-            picHomeTab.Name = "picHomeTab";
-            picHomeTab.Size = new Size(40, 40);
-            picHomeTab.SizeMode = PictureBoxSizeMode.StretchImage;
-            picHomeTab.TabIndex = 3;
-            picHomeTab.TabStop = false;
+            picStar.BackColor = Color.Transparent;
+            picStar.Image = Properties.Resources.star;
+            picStar.Location = new Point(-2, 0);
+            picStar.Name = "picStar";
+            picStar.Size = new Size(40, 40);
+            picStar.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar.TabIndex = 3;
+            picStar.TabStop = false;
+            picStar.Click += UCStoryItem_Click;
             // 
             // pictureBox5
             // 
             pictureBox5.BackColor = Color.Transparent;
             pictureBox5.Image = Properties.Resources.cost;
-            pictureBox5.Location = new Point(383, 532);
+            pictureBox5.Location = new Point(141, 532);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(40, 40);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 4;
             pictureBox5.TabStop = false;
+            pictureBox5.Click += UCStoryItem_Click;
             // 
             // lbIsFull
             // 
@@ -148,6 +109,7 @@
             lbIsFull.TabIndex = 5;
             lbIsFull.Text = "Full";
             lbIsFull.TextAlign = ContentAlignment.MiddleCenter;
+            lbIsFull.Click += UCStoryItem_Click;
             // 
             // lbName
             // 
@@ -157,6 +119,7 @@
             lbName.Size = new Size(390, 40);
             lbName.TabIndex = 6;
             lbName.Text = "Nhớ mãi không quên";
+            lbName.Click += UCStoryItem_Click;
             // 
             // lbAuthor
             // 
@@ -167,6 +130,7 @@
             lbAuthor.Size = new Size(385, 30);
             lbAuthor.TabIndex = 7;
             lbAuthor.Text = "Thiên Hạ Thủy";
+            lbAuthor.Click += UCStoryItem_Click;
             // 
             // UCStoryItem
             // 
@@ -181,13 +145,11 @@
             Controls.Add(picImage);
             Name = "UCStoryItem";
             Size = new Size(423, 658);
+            Click += UCStoryItem_Click;
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             pnStar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picHomeTab).EndInit();
+            pnStar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picStar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);
         }
@@ -196,14 +158,11 @@
 
         private PictureBox picImage;
         private Panel pnStar;
-        private PictureBox picHomeTab;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox1;
+        private PictureBox picStar;
         private PictureBox pictureBox5;
         private Label lbIsFull;
         private Label lbName;
         private Label lbAuthor;
+        private Label label1;
     }
 }

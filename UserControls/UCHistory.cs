@@ -12,6 +12,7 @@ namespace ReadingApp.UserControls
 {
     public partial class UCHistory : UserControl
     {
+        public EventHandler loadUCAccount;
         public UCHistory()
         {
             InitializeComponent();
@@ -25,6 +26,11 @@ namespace ReadingApp.UserControls
                 UCStoryItem ucStoryItem = new UCStoryItem();
                 flowMain.Controls.Add(ucStoryItem);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            loadUCAccount?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -37,16 +37,6 @@
             picType = new PictureBox();
             flowMain = new FlowLayoutPanel();
             pnLasted = new Panel();
-            lbLastedAuthor10 = new Label();
-            lbLastedName10 = new Label();
-            lbLastedAuthor9 = new Label();
-            lbLastedName9 = new Label();
-            lbLastedAuthor8 = new Label();
-            lbLastedName8 = new Label();
-            lbLastedAuthor7 = new Label();
-            lbLastedName7 = new Label();
-            lbLastedAuthor6 = new Label();
-            lbLastedName6 = new Label();
             lbLastedAuthor5 = new Label();
             lbLastedName5 = new Label();
             lbLastedAuthor4 = new Label();
@@ -87,6 +77,27 @@
             lbCungDau = new Label();
             lbCoTrang = new Label();
             lbNgonTinh = new Label();
+            panelState = new Panel();
+            pnStar = new Panel();
+            lbStarAuthor4 = new Label();
+            lbStarName4 = new Label();
+            lbStarAuthor3 = new Label();
+            lbStarName3 = new Label();
+            lbStarAuthor2 = new Label();
+            lbStarName2 = new Label();
+            lbStarAuthor1 = new Label();
+            lbStarName1 = new Label();
+            label12 = new Label();
+            pnOutstanding = new Panel();
+            lbOutsAuthor4 = new Label();
+            lbOutsName4 = new Label();
+            lbOutsAuthor3 = new Label();
+            lbOutsName3 = new Label();
+            lbOutsAuthor2 = new Label();
+            lbOutsName2 = new Label();
+            lbOutsAuthor1 = new Label();
+            lbOutsName1 = new Label();
+            label22 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -107,6 +118,9 @@
             pnComic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picComic).BeginInit();
             panelType.SuspendLayout();
+            panelState.SuspendLayout();
+            pnStar.SuspendLayout();
+            pnOutstanding.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -118,6 +132,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // panel1
             // 
@@ -196,16 +211,6 @@
             // 
             pnLasted.BackgroundImage = Properties.Resources.bg_lasted;
             pnLasted.BackgroundImageLayout = ImageLayout.Stretch;
-            pnLasted.Controls.Add(lbLastedAuthor10);
-            pnLasted.Controls.Add(lbLastedName10);
-            pnLasted.Controls.Add(lbLastedAuthor9);
-            pnLasted.Controls.Add(lbLastedName9);
-            pnLasted.Controls.Add(lbLastedAuthor8);
-            pnLasted.Controls.Add(lbLastedName8);
-            pnLasted.Controls.Add(lbLastedAuthor7);
-            pnLasted.Controls.Add(lbLastedName7);
-            pnLasted.Controls.Add(lbLastedAuthor6);
-            pnLasted.Controls.Add(lbLastedName6);
             pnLasted.Controls.Add(lbLastedAuthor5);
             pnLasted.Controls.Add(lbLastedName5);
             pnLasted.Controls.Add(lbLastedAuthor4);
@@ -217,120 +222,25 @@
             pnLasted.Controls.Add(lbLastedAuthor1);
             pnLasted.Controls.Add(lbLastedName1);
             pnLasted.Controls.Add(label1);
-            pnLasted.Location = new Point(1790, 150);
+            pnLasted.Location = new Point(0, 0);
             pnLasted.Name = "pnLasted";
-            pnLasted.Size = new Size(370, 930);
+            pnLasted.Size = new Size(370, 405);
             pnLasted.TabIndex = 5;
-            // 
-            // lbLastedAuthor10
-            // 
-            lbLastedAuthor10.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor10.ForeColor = Color.Gray;
-            lbLastedAuthor10.Location = new Point(20, 880);
-            lbLastedAuthor10.Name = "lbLastedAuthor10";
-            lbLastedAuthor10.Size = new Size(330, 30);
-            lbLastedAuthor10.TabIndex = 27;
-            lbLastedAuthor10.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName10
-            // 
-            lbLastedName10.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName10.Location = new Point(20, 840);
-            lbLastedName10.Name = "lbLastedName10";
-            lbLastedName10.Size = new Size(330, 40);
-            lbLastedName10.TabIndex = 26;
-            lbLastedName10.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor9
-            // 
-            lbLastedAuthor9.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor9.ForeColor = Color.Gray;
-            lbLastedAuthor9.Location = new Point(20, 795);
-            lbLastedAuthor9.Name = "lbLastedAuthor9";
-            lbLastedAuthor9.Size = new Size(330, 30);
-            lbLastedAuthor9.TabIndex = 25;
-            lbLastedAuthor9.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName9
-            // 
-            lbLastedName9.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName9.Location = new Point(20, 755);
-            lbLastedName9.Name = "lbLastedName9";
-            lbLastedName9.Size = new Size(330, 40);
-            lbLastedName9.TabIndex = 24;
-            lbLastedName9.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor8
-            // 
-            lbLastedAuthor8.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor8.ForeColor = Color.Gray;
-            lbLastedAuthor8.Location = new Point(20, 710);
-            lbLastedAuthor8.Name = "lbLastedAuthor8";
-            lbLastedAuthor8.Size = new Size(330, 30);
-            lbLastedAuthor8.TabIndex = 23;
-            lbLastedAuthor8.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName8
-            // 
-            lbLastedName8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName8.Location = new Point(20, 670);
-            lbLastedName8.Name = "lbLastedName8";
-            lbLastedName8.Size = new Size(330, 40);
-            lbLastedName8.TabIndex = 22;
-            lbLastedName8.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor7
-            // 
-            lbLastedAuthor7.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor7.ForeColor = Color.Gray;
-            lbLastedAuthor7.Location = new Point(20, 625);
-            lbLastedAuthor7.Name = "lbLastedAuthor7";
-            lbLastedAuthor7.Size = new Size(330, 30);
-            lbLastedAuthor7.TabIndex = 21;
-            lbLastedAuthor7.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName7
-            // 
-            lbLastedName7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName7.Location = new Point(20, 585);
-            lbLastedName7.Name = "lbLastedName7";
-            lbLastedName7.Size = new Size(330, 40);
-            lbLastedName7.TabIndex = 20;
-            lbLastedName7.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor6
-            // 
-            lbLastedAuthor6.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor6.ForeColor = Color.Gray;
-            lbLastedAuthor6.Location = new Point(20, 540);
-            lbLastedAuthor6.Name = "lbLastedAuthor6";
-            lbLastedAuthor6.Size = new Size(330, 30);
-            lbLastedAuthor6.TabIndex = 19;
-            lbLastedAuthor6.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName6
-            // 
-            lbLastedName6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName6.Location = new Point(20, 500);
-            lbLastedName6.Name = "lbLastedName6";
-            lbLastedName6.Size = new Size(330, 40);
-            lbLastedName6.TabIndex = 18;
-            lbLastedName6.Text = "Nhớ mãi không quên";
             // 
             // lbLastedAuthor5
             // 
             lbLastedAuthor5.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor5.ForeColor = Color.Gray;
-            lbLastedAuthor5.Location = new Point(20, 455);
+            lbLastedAuthor5.Location = new Point(20, 374);
             lbLastedAuthor5.Name = "lbLastedAuthor5";
-            lbLastedAuthor5.Size = new Size(330, 30);
+            lbLastedAuthor5.Size = new Size(330, 25);
             lbLastedAuthor5.TabIndex = 17;
             lbLastedAuthor5.Text = "Thiên Hạ Thủy";
             // 
             // lbLastedName5
             // 
             lbLastedName5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName5.Location = new Point(20, 415);
+            lbLastedName5.Location = new Point(20, 334);
             lbLastedName5.Name = "lbLastedName5";
             lbLastedName5.Size = new Size(330, 40);
             lbLastedName5.TabIndex = 16;
@@ -340,16 +250,16 @@
             // 
             lbLastedAuthor4.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor4.ForeColor = Color.Gray;
-            lbLastedAuthor4.Location = new Point(20, 370);
+            lbLastedAuthor4.Location = new Point(20, 305);
             lbLastedAuthor4.Name = "lbLastedAuthor4";
-            lbLastedAuthor4.Size = new Size(330, 30);
+            lbLastedAuthor4.Size = new Size(330, 25);
             lbLastedAuthor4.TabIndex = 15;
             lbLastedAuthor4.Text = "Thiên Hạ Thủy";
             // 
             // lbLastedName4
             // 
             lbLastedName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName4.Location = new Point(20, 330);
+            lbLastedName4.Location = new Point(20, 265);
             lbLastedName4.Name = "lbLastedName4";
             lbLastedName4.Size = new Size(330, 40);
             lbLastedName4.TabIndex = 14;
@@ -359,16 +269,16 @@
             // 
             lbLastedAuthor3.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor3.ForeColor = Color.Gray;
-            lbLastedAuthor3.Location = new Point(20, 285);
+            lbLastedAuthor3.Location = new Point(20, 235);
             lbLastedAuthor3.Name = "lbLastedAuthor3";
-            lbLastedAuthor3.Size = new Size(330, 30);
+            lbLastedAuthor3.Size = new Size(330, 25);
             lbLastedAuthor3.TabIndex = 13;
             lbLastedAuthor3.Text = "Thiên Hạ Thủy";
             // 
             // lbLastedName3
             // 
             lbLastedName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName3.Location = new Point(20, 245);
+            lbLastedName3.Location = new Point(20, 195);
             lbLastedName3.Name = "lbLastedName3";
             lbLastedName3.Size = new Size(330, 40);
             lbLastedName3.TabIndex = 12;
@@ -378,16 +288,16 @@
             // 
             lbLastedAuthor2.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor2.ForeColor = Color.Gray;
-            lbLastedAuthor2.Location = new Point(20, 200);
+            lbLastedAuthor2.Location = new Point(20, 165);
             lbLastedAuthor2.Name = "lbLastedAuthor2";
-            lbLastedAuthor2.Size = new Size(330, 30);
+            lbLastedAuthor2.Size = new Size(330, 25);
             lbLastedAuthor2.TabIndex = 11;
             lbLastedAuthor2.Text = "Thiên Hạ Thủy";
             // 
             // lbLastedName2
             // 
             lbLastedName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName2.Location = new Point(20, 160);
+            lbLastedName2.Location = new Point(20, 125);
             lbLastedName2.Name = "lbLastedName2";
             lbLastedName2.Size = new Size(330, 40);
             lbLastedName2.TabIndex = 10;
@@ -397,16 +307,16 @@
             // 
             lbLastedAuthor1.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor1.ForeColor = Color.Gray;
-            lbLastedAuthor1.Location = new Point(20, 115);
+            lbLastedAuthor1.Location = new Point(20, 95);
             lbLastedAuthor1.Name = "lbLastedAuthor1";
-            lbLastedAuthor1.Size = new Size(330, 30);
+            lbLastedAuthor1.Size = new Size(330, 25);
             lbLastedAuthor1.TabIndex = 9;
             lbLastedAuthor1.Text = "Thiên Hạ Thủy";
             // 
             // lbLastedName1
             // 
             lbLastedName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName1.Location = new Point(20, 75);
+            lbLastedName1.Location = new Point(20, 55);
             lbLastedName1.Name = "lbLastedName1";
             lbLastedName1.Size = new Size(330, 40);
             lbLastedName1.TabIndex = 8;
@@ -416,9 +326,9 @@
             // 
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(10, 16);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(350, 32);
+            label1.Size = new Size(350, 37);
             label1.TabIndex = 0;
             label1.Text = "Mới nhất";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -435,7 +345,7 @@
             pnSearch.Controls.Add(pnComic);
             pnSearch.Controls.Add(cbArrange);
             pnSearch.Controls.Add(cbType);
-            pnSearch.Location = new Point(-1, 120);
+            pnSearch.Location = new Point(0, 120);
             pnSearch.Name = "pnSearch";
             pnSearch.Size = new Size(2192, 130);
             pnSearch.TabIndex = 6;
@@ -763,14 +673,234 @@
             lbNgonTinh.MouseLeave += lbNgonTinh_MouseLeave;
             lbNgonTinh.MouseHover += lbNgonTinh_MouseHover;
             // 
+            // panelState
+            // 
+            panelState.Controls.Add(pnStar);
+            panelState.Controls.Add(pnOutstanding);
+            panelState.Controls.Add(pnLasted);
+            panelState.Location = new Point(1780, 150);
+            panelState.Name = "panelState";
+            panelState.Size = new Size(375, 1159);
+            panelState.TabIndex = 8;
+            // 
+            // pnStar
+            // 
+            pnStar.BackgroundImage = Properties.Resources.bg_lasted;
+            pnStar.BackgroundImageLayout = ImageLayout.Stretch;
+            pnStar.Controls.Add(lbStarAuthor4);
+            pnStar.Controls.Add(lbStarName4);
+            pnStar.Controls.Add(lbStarAuthor3);
+            pnStar.Controls.Add(lbStarName3);
+            pnStar.Controls.Add(lbStarAuthor2);
+            pnStar.Controls.Add(lbStarName2);
+            pnStar.Controls.Add(lbStarAuthor1);
+            pnStar.Controls.Add(lbStarName1);
+            pnStar.Controls.Add(label12);
+            pnStar.Location = new Point(0, 825);
+            pnStar.Name = "pnStar";
+            pnStar.Size = new Size(370, 335);
+            pnStar.TabIndex = 18;
+            // 
+            // lbStarAuthor4
+            // 
+            lbStarAuthor4.Font = new Font("Segoe UI", 8F);
+            lbStarAuthor4.ForeColor = Color.Gray;
+            lbStarAuthor4.Location = new Point(20, 305);
+            lbStarAuthor4.Name = "lbStarAuthor4";
+            lbStarAuthor4.Size = new Size(330, 25);
+            lbStarAuthor4.TabIndex = 15;
+            lbStarAuthor4.Text = "Thiên Hạ Thủy";
+            // 
+            // lbStarName4
+            // 
+            lbStarName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbStarName4.Location = new Point(20, 265);
+            lbStarName4.Name = "lbStarName4";
+            lbStarName4.Size = new Size(330, 40);
+            lbStarName4.TabIndex = 14;
+            lbStarName4.Text = "Nhớ mãi không quên";
+            // 
+            // lbStarAuthor3
+            // 
+            lbStarAuthor3.Font = new Font("Segoe UI", 8F);
+            lbStarAuthor3.ForeColor = Color.Gray;
+            lbStarAuthor3.Location = new Point(20, 235);
+            lbStarAuthor3.Name = "lbStarAuthor3";
+            lbStarAuthor3.Size = new Size(330, 25);
+            lbStarAuthor3.TabIndex = 13;
+            lbStarAuthor3.Text = "Thiên Hạ Thủy";
+            // 
+            // lbStarName3
+            // 
+            lbStarName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbStarName3.Location = new Point(20, 195);
+            lbStarName3.Name = "lbStarName3";
+            lbStarName3.Size = new Size(330, 40);
+            lbStarName3.TabIndex = 12;
+            lbStarName3.Text = "Nhớ mãi không quên";
+            // 
+            // lbStarAuthor2
+            // 
+            lbStarAuthor2.Font = new Font("Segoe UI", 8F);
+            lbStarAuthor2.ForeColor = Color.Gray;
+            lbStarAuthor2.Location = new Point(20, 165);
+            lbStarAuthor2.Name = "lbStarAuthor2";
+            lbStarAuthor2.Size = new Size(330, 25);
+            lbStarAuthor2.TabIndex = 11;
+            lbStarAuthor2.Text = "Thiên Hạ Thủy";
+            // 
+            // lbStarName2
+            // 
+            lbStarName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbStarName2.Location = new Point(20, 125);
+            lbStarName2.Name = "lbStarName2";
+            lbStarName2.Size = new Size(330, 40);
+            lbStarName2.TabIndex = 10;
+            lbStarName2.Text = "Nhớ mãi không quên";
+            // 
+            // lbStarAuthor1
+            // 
+            lbStarAuthor1.Font = new Font("Segoe UI", 8F);
+            lbStarAuthor1.ForeColor = Color.Gray;
+            lbStarAuthor1.Location = new Point(20, 95);
+            lbStarAuthor1.Name = "lbStarAuthor1";
+            lbStarAuthor1.Size = new Size(330, 25);
+            lbStarAuthor1.TabIndex = 9;
+            lbStarAuthor1.Text = "Thiên Hạ Thủy";
+            // 
+            // lbStarName1
+            // 
+            lbStarName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbStarName1.Location = new Point(20, 55);
+            lbStarName1.Name = "lbStarName1";
+            lbStarName1.Size = new Size(330, 40);
+            lbStarName1.TabIndex = 8;
+            lbStarName1.Text = "Nhớ mãi không quên";
+            // 
+            // label12
+            // 
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label12.ForeColor = Color.DarkGreen;
+            label12.Location = new Point(10, 7);
+            label12.Name = "label12";
+            label12.Size = new Size(350, 37);
+            label12.TabIndex = 0;
+            label12.Text = "Đánh giá cao";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnOutstanding
+            // 
+            pnOutstanding.BackgroundImage = Properties.Resources.bg_lasted;
+            pnOutstanding.BackgroundImageLayout = ImageLayout.Stretch;
+            pnOutstanding.Controls.Add(lbOutsAuthor4);
+            pnOutstanding.Controls.Add(lbOutsName4);
+            pnOutstanding.Controls.Add(lbOutsAuthor3);
+            pnOutstanding.Controls.Add(lbOutsName3);
+            pnOutstanding.Controls.Add(lbOutsAuthor2);
+            pnOutstanding.Controls.Add(lbOutsName2);
+            pnOutstanding.Controls.Add(lbOutsAuthor1);
+            pnOutstanding.Controls.Add(lbOutsName1);
+            pnOutstanding.Controls.Add(label22);
+            pnOutstanding.Location = new Point(0, 450);
+            pnOutstanding.Name = "pnOutstanding";
+            pnOutstanding.Size = new Size(370, 335);
+            pnOutstanding.TabIndex = 6;
+            // 
+            // lbOutsAuthor4
+            // 
+            lbOutsAuthor4.Font = new Font("Segoe UI", 8F);
+            lbOutsAuthor4.ForeColor = Color.Gray;
+            lbOutsAuthor4.Location = new Point(20, 305);
+            lbOutsAuthor4.Name = "lbOutsAuthor4";
+            lbOutsAuthor4.Size = new Size(330, 25);
+            lbOutsAuthor4.TabIndex = 15;
+            lbOutsAuthor4.Text = "Thiên Hạ Thủy";
+            // 
+            // lbOutsName4
+            // 
+            lbOutsName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbOutsName4.Location = new Point(20, 265);
+            lbOutsName4.Name = "lbOutsName4";
+            lbOutsName4.Size = new Size(330, 40);
+            lbOutsName4.TabIndex = 14;
+            lbOutsName4.Text = "Nhớ mãi không quên";
+            // 
+            // lbOutsAuthor3
+            // 
+            lbOutsAuthor3.Font = new Font("Segoe UI", 8F);
+            lbOutsAuthor3.ForeColor = Color.Gray;
+            lbOutsAuthor3.Location = new Point(20, 235);
+            lbOutsAuthor3.Name = "lbOutsAuthor3";
+            lbOutsAuthor3.Size = new Size(330, 25);
+            lbOutsAuthor3.TabIndex = 13;
+            lbOutsAuthor3.Text = "Thiên Hạ Thủy";
+            // 
+            // lbOutsName3
+            // 
+            lbOutsName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbOutsName3.Location = new Point(20, 195);
+            lbOutsName3.Name = "lbOutsName3";
+            lbOutsName3.Size = new Size(330, 40);
+            lbOutsName3.TabIndex = 12;
+            lbOutsName3.Text = "Nhớ mãi không quên";
+            // 
+            // lbOutsAuthor2
+            // 
+            lbOutsAuthor2.Font = new Font("Segoe UI", 8F);
+            lbOutsAuthor2.ForeColor = Color.Gray;
+            lbOutsAuthor2.Location = new Point(20, 165);
+            lbOutsAuthor2.Name = "lbOutsAuthor2";
+            lbOutsAuthor2.Size = new Size(330, 25);
+            lbOutsAuthor2.TabIndex = 11;
+            lbOutsAuthor2.Text = "Thiên Hạ Thủy";
+            // 
+            // lbOutsName2
+            // 
+            lbOutsName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbOutsName2.Location = new Point(20, 125);
+            lbOutsName2.Name = "lbOutsName2";
+            lbOutsName2.Size = new Size(330, 40);
+            lbOutsName2.TabIndex = 10;
+            lbOutsName2.Text = "Nhớ mãi không quên";
+            // 
+            // lbOutsAuthor1
+            // 
+            lbOutsAuthor1.Font = new Font("Segoe UI", 8F);
+            lbOutsAuthor1.ForeColor = Color.Gray;
+            lbOutsAuthor1.Location = new Point(20, 95);
+            lbOutsAuthor1.Name = "lbOutsAuthor1";
+            lbOutsAuthor1.Size = new Size(330, 25);
+            lbOutsAuthor1.TabIndex = 9;
+            lbOutsAuthor1.Text = "Thiên Hạ Thủy";
+            // 
+            // lbOutsName1
+            // 
+            lbOutsName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbOutsName1.Location = new Point(20, 55);
+            lbOutsName1.Name = "lbOutsName1";
+            lbOutsName1.Size = new Size(330, 40);
+            lbOutsName1.TabIndex = 8;
+            lbOutsName1.Text = "Nhớ mãi không quên";
+            // 
+            // label22
+            // 
+            label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label22.ForeColor = Color.DarkGreen;
+            label22.Location = new Point(10, 7);
+            label22.Name = "label22";
+            label22.Size = new Size(350, 37);
+            label22.TabIndex = 0;
+            label22.Text = "Nổi bật";
+            label22.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // UCHome
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(panelState);
             Controls.Add(panelType);
             Controls.Add(pnSearch);
-            Controls.Add(pnLasted);
             Controls.Add(flowMain);
             Controls.Add(pnType);
             Controls.Add(panel1);
@@ -806,6 +936,9 @@
             pnComic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picComic).EndInit();
             panelType.ResumeLayout(false);
+            panelState.ResumeLayout(false);
+            pnStar.ResumeLayout(false);
+            pnOutstanding.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -823,24 +956,12 @@
         private Label label1;
         private Label lbLastedAuthor1;
         private Label lbLastedName1;
-        private Label lbLastedAuthor6;
-        private Label lbLastedName6;
-        private Label lbLastedAuthor5;
-        private Label lbLastedName5;
         private Label lbLastedAuthor4;
         private Label lbLastedName4;
         private Label lbLastedAuthor3;
         private Label lbLastedName3;
         private Label lbLastedAuthor2;
         private Label lbLastedName2;
-        private Label lbLastedAuthor10;
-        private Label lbLastedName10;
-        private Label lbLastedAuthor9;
-        private Label lbLastedName9;
-        private Label lbLastedAuthor8;
-        private Label lbLastedName8;
-        private Label lbLastedAuthor7;
-        private Label lbLastedName7;
         private Panel pnSearch;
         private ComboBox cbType;
         private ComboBox cbArrange;
@@ -870,5 +991,28 @@
         private Label lbCungDau;
         private Label lbCoTrang;
         private Label lbNgonTinh;
+        private Panel panelState;
+        private Panel pnOutstanding;
+        private Label lbOutsAuthor4;
+        private Label lbOutsName4;
+        private Label lbOutsAuthor3;
+        private Label lbOutsName3;
+        private Label lbOutsAuthor2;
+        private Label lbOutsName2;
+        private Label lbOutsAuthor1;
+        private Label lbOutsName1;
+        private Label label22;
+        private Panel pnStar;
+        private Label lbStarAuthor4;
+        private Label lbStarName4;
+        private Label lbStarAuthor3;
+        private Label lbStarName3;
+        private Label lbStarAuthor2;
+        private Label lbStarName2;
+        private Label lbStarAuthor1;
+        private Label lbStarName1;
+        private Label label12;
+        private Label lbLastedAuthor5;
+        private Label lbLastedName5;
     }
 }

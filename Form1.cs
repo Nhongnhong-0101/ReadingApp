@@ -48,6 +48,8 @@ namespace ReadingApp
 
             pnMain.Controls.Clear();
             ucHome = new UCHome();
+            ucHome.loadUCAccount += pnAccountTab_Click;
+            ucHome.loadUCStoryDetails += loadUCStoryDetails;
             pnMain.Controls.Add(ucHome);
         }
 
@@ -70,6 +72,7 @@ namespace ReadingApp
 
             pnMain.Controls.Clear();
             ucLibrary = new UCLibrary();
+            ucLibrary.loadUCAccount += pnAccountTab_Click;
             pnMain.Controls.Add(ucLibrary);
         }
 
@@ -82,6 +85,7 @@ namespace ReadingApp
 
             pnMain.Controls.Clear();
             ucHistory = new UCHistory();
+            ucHistory.loadUCAccount += pnAccountTab_Click;
             pnMain.Controls.Add(ucHistory);
         }
 
@@ -114,6 +118,12 @@ namespace ReadingApp
             pnMain.Controls.Add(uCPasswordChange);
         }
 
+        private void loadUCStoryDetails(object? sender, EventArgs e)
+        {
+            UCStoryDetails ucStoryDetails = new UCStoryDetails();
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(ucStoryDetails);
+        }
 
         private void loadUCForgotPassword(object? sender, EventArgs e)
         {
