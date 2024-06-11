@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReadingApp.Model;
 
 namespace ReadingApp.UserControls
 {
@@ -20,13 +21,18 @@ namespace ReadingApp.UserControls
         private bool isFee = false;
         public EventHandler loadUCAccount;
         public EventHandler loadUCStoryDetails;
-        public UCHome()
+        private User user;
+        public UCHome(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void UCHome_Load(object sender, EventArgs e)
-        {
+        {            
+            picAvat.Image = Image.FromFile(@user.Avatar);
+            //picImage.Image = Image.FromFile(@song.Image);
+
             flowMain.Controls.Clear();
             for (int i = 0; i <= 12; i++)
             {

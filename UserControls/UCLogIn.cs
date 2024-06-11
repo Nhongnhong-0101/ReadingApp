@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReadingApp.Model;
+using ReadingApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,10 @@ namespace ReadingApp.UserControls
 {
     public partial class UCLogIn : UserControl
     {
-        public EventHandler loadUCHome;
+        public EventHandler<User> loadUCHome;
         public EventHandler loadUCForgotPassword;
         public EventHandler loadUCSignUp;
+        public User user = new User();
         public UCLogIn()
         {
             InitializeComponent();
@@ -36,7 +39,32 @@ namespace ReadingApp.UserControls
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            loadUCHome?.Invoke(this, EventArgs.Empty);
+            if (txtEmail.Text == "" || txtPassword.Text == "")
+            {
+                lbEmptyEmailPass.Text = "Vui lòng nhập email và mật khẩu!";
+                lbEmptyEmailPass.Visible = true;
+                return;
+            }
+
+            if (txtPassword.TextLength != 8)
+            {
+                lbEmptyEmailPass.Text = "Vui lòng nhập mật khẩu có 8 ký tự!";
+                lbEmptyEmailPass.Visible = true;
+                return;
+            }
+            lbEmptyEmailPass.Visible = false;
+
+            if (UserServices.loginSuccess(txtEmail.Text, txtPassword.Text))
+            {
+                lbUnsuccess.Text = "Đăng nhập thành công!";
+                lbUnsuccess.Visible = true;
+                timer1.Start();
+            }
+            else
+            {
+                lbUnsuccess.Text = "Đăng nhập không thành công!";
+                lbUnsuccess.Visible = true;
+            }
         }
 
         private void lbForgotPassword_Click(object sender, EventArgs e)
@@ -47,6 +75,13 @@ namespace ReadingApp.UserControls
         private void lbSignUp_Click(object sender, EventArgs e)
         {
             loadUCSignUp?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            user = UserServices.getUser(txtEmail.Text, txtPassword.Text);
+            loadUCHome?.Invoke(this, user);
+            timer1.Stop();
         }
     }
 }

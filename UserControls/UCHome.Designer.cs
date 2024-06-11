@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            picAvat = new PictureBox();
             panel1 = new Panel();
             txtSearch = new TextBox();
             pictureBox2 = new PictureBox();
@@ -98,7 +98,7 @@
             lbOutsAuthor1 = new Label();
             lbOutsName1 = new Label();
             label22 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             pnType.SuspendLayout();
@@ -123,16 +123,16 @@
             pnOutstanding.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picAvat
             // 
-            pictureBox1.Image = Properties.Resources.image_user;
-            pictureBox1.Location = new Point(2060, 30);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(90, 90);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            picAvat.Image = Properties.Resources.image_user;
+            picAvat.Location = new Point(2060, 30);
+            picAvat.Name = "picAvat";
+            picAvat.Size = new Size(90, 90);
+            picAvat.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAvat.TabIndex = 1;
+            picAvat.TabStop = false;
+            picAvat.Click += pictureBox1_Click;
             // 
             // panel1
             // 
@@ -231,7 +231,7 @@
             // 
             lbLastedAuthor5.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor5.ForeColor = Color.Gray;
-            lbLastedAuthor5.Location = new Point(20, 374);
+            lbLastedAuthor5.Location = new Point(20, 370);
             lbLastedAuthor5.Name = "lbLastedAuthor5";
             lbLastedAuthor5.Size = new Size(330, 25);
             lbLastedAuthor5.TabIndex = 17;
@@ -250,7 +250,7 @@
             // 
             lbLastedAuthor4.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor4.ForeColor = Color.Gray;
-            lbLastedAuthor4.Location = new Point(20, 305);
+            lbLastedAuthor4.Location = new Point(20, 300);
             lbLastedAuthor4.Name = "lbLastedAuthor4";
             lbLastedAuthor4.Size = new Size(330, 25);
             lbLastedAuthor4.TabIndex = 15;
@@ -269,7 +269,7 @@
             // 
             lbLastedAuthor3.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor3.ForeColor = Color.Gray;
-            lbLastedAuthor3.Location = new Point(20, 235);
+            lbLastedAuthor3.Location = new Point(20, 230);
             lbLastedAuthor3.Name = "lbLastedAuthor3";
             lbLastedAuthor3.Size = new Size(330, 25);
             lbLastedAuthor3.TabIndex = 13;
@@ -288,7 +288,7 @@
             // 
             lbLastedAuthor2.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor2.ForeColor = Color.Gray;
-            lbLastedAuthor2.Location = new Point(20, 165);
+            lbLastedAuthor2.Location = new Point(20, 160);
             lbLastedAuthor2.Name = "lbLastedAuthor2";
             lbLastedAuthor2.Size = new Size(330, 25);
             lbLastedAuthor2.TabIndex = 11;
@@ -307,7 +307,7 @@
             // 
             lbLastedAuthor1.Font = new Font("Segoe UI", 8F);
             lbLastedAuthor1.ForeColor = Color.Gray;
-            lbLastedAuthor1.Location = new Point(20, 95);
+            lbLastedAuthor1.Location = new Point(20, 90);
             lbLastedAuthor1.Name = "lbLastedAuthor1";
             lbLastedAuthor1.Size = new Size(330, 25);
             lbLastedAuthor1.TabIndex = 9;
@@ -705,7 +705,7 @@
             // 
             lbStarAuthor4.Font = new Font("Segoe UI", 8F);
             lbStarAuthor4.ForeColor = Color.Gray;
-            lbStarAuthor4.Location = new Point(20, 305);
+            lbStarAuthor4.Location = new Point(20, 300);
             lbStarAuthor4.Name = "lbStarAuthor4";
             lbStarAuthor4.Size = new Size(330, 25);
             lbStarAuthor4.TabIndex = 15;
@@ -724,7 +724,7 @@
             // 
             lbStarAuthor3.Font = new Font("Segoe UI", 8F);
             lbStarAuthor3.ForeColor = Color.Gray;
-            lbStarAuthor3.Location = new Point(20, 235);
+            lbStarAuthor3.Location = new Point(20, 230);
             lbStarAuthor3.Name = "lbStarAuthor3";
             lbStarAuthor3.Size = new Size(330, 25);
             lbStarAuthor3.TabIndex = 13;
@@ -743,7 +743,7 @@
             // 
             lbStarAuthor2.Font = new Font("Segoe UI", 8F);
             lbStarAuthor2.ForeColor = Color.Gray;
-            lbStarAuthor2.Location = new Point(20, 165);
+            lbStarAuthor2.Location = new Point(20, 160);
             lbStarAuthor2.Name = "lbStarAuthor2";
             lbStarAuthor2.Size = new Size(330, 25);
             lbStarAuthor2.TabIndex = 11;
@@ -762,7 +762,7 @@
             // 
             lbStarAuthor1.Font = new Font("Segoe UI", 8F);
             lbStarAuthor1.ForeColor = Color.Gray;
-            lbStarAuthor1.Location = new Point(20, 95);
+            lbStarAuthor1.Location = new Point(20, 90);
             lbStarAuthor1.Name = "lbStarAuthor1";
             lbStarAuthor1.Size = new Size(330, 25);
             lbStarAuthor1.TabIndex = 9;
@@ -810,7 +810,7 @@
             // 
             lbOutsAuthor4.Font = new Font("Segoe UI", 8F);
             lbOutsAuthor4.ForeColor = Color.Gray;
-            lbOutsAuthor4.Location = new Point(20, 305);
+            lbOutsAuthor4.Location = new Point(20, 300);
             lbOutsAuthor4.Name = "lbOutsAuthor4";
             lbOutsAuthor4.Size = new Size(330, 25);
             lbOutsAuthor4.TabIndex = 15;
@@ -829,7 +829,7 @@
             // 
             lbOutsAuthor3.Font = new Font("Segoe UI", 8F);
             lbOutsAuthor3.ForeColor = Color.Gray;
-            lbOutsAuthor3.Location = new Point(20, 235);
+            lbOutsAuthor3.Location = new Point(20, 230);
             lbOutsAuthor3.Name = "lbOutsAuthor3";
             lbOutsAuthor3.Size = new Size(330, 25);
             lbOutsAuthor3.TabIndex = 13;
@@ -848,7 +848,7 @@
             // 
             lbOutsAuthor2.Font = new Font("Segoe UI", 8F);
             lbOutsAuthor2.ForeColor = Color.Gray;
-            lbOutsAuthor2.Location = new Point(20, 165);
+            lbOutsAuthor2.Location = new Point(20, 160);
             lbOutsAuthor2.Name = "lbOutsAuthor2";
             lbOutsAuthor2.Size = new Size(330, 25);
             lbOutsAuthor2.TabIndex = 11;
@@ -867,7 +867,7 @@
             // 
             lbOutsAuthor1.Font = new Font("Segoe UI", 8F);
             lbOutsAuthor1.ForeColor = Color.Gray;
-            lbOutsAuthor1.Location = new Point(20, 95);
+            lbOutsAuthor1.Location = new Point(20, 90);
             lbOutsAuthor1.Name = "lbOutsAuthor1";
             lbOutsAuthor1.Size = new Size(330, 25);
             lbOutsAuthor1.TabIndex = 9;
@@ -904,11 +904,11 @@
             Controls.Add(flowMain);
             Controls.Add(pnType);
             Controls.Add(panel1);
-            Controls.Add(pictureBox1);
+            Controls.Add(picAvat);
             Name = "UCHome";
             Size = new Size(2190, 1475);
             Load += UCHome_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -944,7 +944,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox picAvat;
         private Panel panel1;
         private TextBox txtSearch;
         private PictureBox pictureBox2;

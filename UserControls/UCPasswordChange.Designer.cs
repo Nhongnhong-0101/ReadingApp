@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnChangePassword = new Label();
             lbType = new Label();
             panel2 = new Panel();
@@ -47,6 +48,8 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             lbCancle = new Label();
+            lbInfor = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picPasswordEye).BeginInit();
@@ -275,11 +278,30 @@
             lbCancle.TextAlign = ContentAlignment.MiddleCenter;
             lbCancle.Click += lbCancle_Click;
             // 
+            // lbInfor
+            // 
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(820, 1039);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(550, 25);
+            lbInfor.TabIndex = 18;
+            lbInfor.Text = "Cập nhật thành công";
+            lbInfor.TextAlign = ContentAlignment.MiddleCenter;
+            lbInfor.Visible = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
+            // 
             // UCPasswordChange
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lbInfor);
             Controls.Add(lbCancle);
             Controls.Add(btnChangePassword);
             Controls.Add(panel1);
@@ -327,5 +349,7 @@
         private PictureBox picConfirmEye;
         private TextBox txtConfirmPassword;
         private Label lbCancle;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

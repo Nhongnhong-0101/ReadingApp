@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            components = new System.ComponentModel.Container();
+            picAvat = new PictureBox();
             panel1 = new Panel();
             panel4 = new Panel();
             txtEmail = new TextBox();
@@ -54,7 +55,9 @@
             btnChangePassword = new Label();
             btnUpdateAccount = new Label();
             picEditAvat = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            lbInfor = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
@@ -69,15 +72,15 @@
             ((System.ComponentModel.ISupportInitialize)picEditAvat).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picAvat
             // 
-            pictureBox1.Image = Properties.Resources.image_user;
-            pictureBox1.Location = new Point(910, 120);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(370, 370);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            picAvat.Image = Properties.Resources.image_user;
+            picAvat.Location = new Point(910, 120);
+            picAvat.Name = "picAvat";
+            picAvat.Size = new Size(370, 370);
+            picAvat.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAvat.TabIndex = 0;
+            picAvat.TabStop = false;
             // 
             // panel1
             // 
@@ -342,6 +345,7 @@
             btnUpdateAccount.TabIndex = 1;
             btnUpdateAccount.Text = "Cập nhật thông tin";
             btnUpdateAccount.TextAlign = ContentAlignment.MiddleCenter;
+            btnUpdateAccount.Click += btnUpdateAccount_Click;
             // 
             // picEditAvat
             // 
@@ -353,19 +357,40 @@
             picEditAvat.SizeMode = PictureBoxSizeMode.StretchImage;
             picEditAvat.TabIndex = 14;
             picEditAvat.TabStop = false;
+            picEditAvat.Click += picEditAvat_Click;
+            // 
+            // lbInfor
+            // 
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(780, 937);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(640, 25);
+            lbInfor.TabIndex = 17;
+            lbInfor.Text = "Cập nhật thành công";
+            lbInfor.TextAlign = ContentAlignment.MiddleCenter;
+            lbInfor.Visible = false;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
             // 
             // UCAccount
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lbInfor);
             Controls.Add(picEditAvat);
             Controls.Add(panel8);
             Controls.Add(panel1);
-            Controls.Add(pictureBox1);
+            Controls.Add(picAvat);
             Name = "UCAccount";
             Size = new Size(2190, 1475);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += UCAccount_Load;
+            ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
@@ -390,7 +415,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox picAvat;
         private Panel panel1;
         private Panel panel2;
         private Label lbType;
@@ -416,5 +441,7 @@
         private Label btnChangePassword;
         private Label btnUpdateAccount;
         private PictureBox picEditAvat;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

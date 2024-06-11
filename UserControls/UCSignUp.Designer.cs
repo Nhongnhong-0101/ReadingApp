@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            lbInfor = new Label();
+            panel9 = new Panel();
+            panel13 = new Panel();
+            txtEmail = new TextBox();
+            label4 = new Label();
             lbCancle = new Label();
             panel11 = new Panel();
             panel12 = new Panel();
@@ -44,7 +50,7 @@
             picMale = new PictureBox();
             label5 = new Label();
             panel8 = new Panel();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker = new DateTimePicker();
             label3 = new Label();
             panel4 = new Panel();
             panel5 = new Panel();
@@ -61,7 +67,10 @@
             txtUsername = new TextBox();
             lbType = new Label();
             label = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
+            panel9.SuspendLayout();
+            panel13.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picConfirmEye).BeginInit();
@@ -84,6 +93,8 @@
             // 
             panel1.BackgroundImage = Properties.Resources.bg_login;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lbInfor);
+            panel1.Controls.Add(panel9);
             panel1.Controls.Add(lbCancle);
             panel1.Controls.Add(panel11);
             panel1.Controls.Add(panel10);
@@ -95,15 +106,71 @@
             panel1.Controls.Add(label);
             panel1.Location = new Point(955, 212);
             panel1.Name = "panel1";
-            panel1.Size = new Size(650, 877);
+            panel1.Size = new Size(650, 1001);
             panel1.TabIndex = 1;
+            // 
+            // lbInfor
+            // 
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(1, 810);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(640, 25);
+            lbInfor.TabIndex = 16;
+            lbInfor.Text = "Đăng ký không thành công!";
+            lbInfor.TextAlign = ContentAlignment.MiddleCenter;
+            lbInfor.Visible = false;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.Transparent;
+            panel9.Controls.Add(panel13);
+            panel9.Controls.Add(label4);
+            panel9.Location = new Point(0, 337);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(640, 116);
+            panel9.TabIndex = 10;
+            // 
+            // panel13
+            // 
+            panel13.BackColor = Color.White;
+            panel13.BorderStyle = BorderStyle.FixedSingle;
+            panel13.Controls.Add(txtEmail);
+            panel13.Location = new Point(50, 40);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(530, 55);
+            panel13.TabIndex = 8;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BackColor = Color.White;
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Segoe UI", 12F);
+            txtEmail.ForeColor = Color.Black;
+            txtEmail.Location = new Point(10, 5);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "Nhập email";
+            txtEmail.Size = new Size(510, 38);
+            txtEmail.TabIndex = 7;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label4.ForeColor = Color.DarkGreen;
+            label4.Location = new Point(50, 1);
+            label4.Name = "label4";
+            label4.Size = new Size(81, 36);
+            label4.TabIndex = 6;
+            label4.Text = "Email";
             // 
             // lbCancle
             // 
             lbCancle.BackColor = Color.Transparent;
             lbCancle.Font = new Font("Segoe UI", 12F);
             lbCancle.ForeColor = Color.DarkGreen;
-            lbCancle.Location = new Point(275, 797);
+            lbCancle.Location = new Point(276, 922);
             lbCancle.Name = "lbCancle";
             lbCancle.Size = new Size(100, 38);
             lbCancle.TabIndex = 14;
@@ -116,7 +183,7 @@
             panel11.BackColor = Color.Transparent;
             panel11.Controls.Add(panel12);
             panel11.Controls.Add(label6);
-            panel11.Location = new Point(0, 573);
+            panel11.Location = new Point(1, 691);
             panel11.Name = "panel11";
             panel11.Size = new Size(640, 116);
             panel11.TabIndex = 10;
@@ -173,7 +240,7 @@
             panel10.Controls.Add(pnFemale);
             panel10.Controls.Add(pnMale);
             panel10.Controls.Add(label5);
-            panel10.Location = new Point(337, 337);
+            panel10.Location = new Point(338, 455);
             panel10.Name = "panel10";
             panel10.Size = new Size(280, 116);
             panel10.TabIndex = 13;
@@ -254,22 +321,22 @@
             // panel8
             // 
             panel8.BackColor = Color.Transparent;
-            panel8.Controls.Add(dateTimePicker1);
+            panel8.Controls.Add(dateTimePicker);
             panel8.Controls.Add(label3);
-            panel8.Location = new Point(0, 337);
+            panel8.Location = new Point(1, 455);
             panel8.Name = "panel8";
             panel8.Size = new Size(331, 116);
             panel8.TabIndex = 12;
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 12F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(50, 40);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 45);
-            dateTimePicker1.TabIndex = 2;
-            dateTimePicker1.Value = new DateTime(2024, 6, 3, 0, 0, 0, 0);
+            dateTimePicker.Font = new Font("Segoe UI", 12F);
+            dateTimePicker.Format = DateTimePickerFormat.Short;
+            dateTimePicker.Location = new Point(50, 40);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(250, 45);
+            dateTimePicker.TabIndex = 2;
+            dateTimePicker.Value = new DateTime(2024, 6, 3, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -287,7 +354,7 @@
             panel4.BackColor = Color.Transparent;
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(label1);
-            panel4.Location = new Point(0, 455);
+            panel4.Location = new Point(1, 573);
             panel4.Name = "panel4";
             panel4.Size = new Size(640, 116);
             panel4.TabIndex = 9;
@@ -387,7 +454,7 @@
             btnSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnSignUp.ForeColor = Color.White;
             btnSignUp.Image = Properties.Resources.bg_btnlogin;
-            btnSignUp.Location = new Point(150, 712);
+            btnSignUp.Location = new Point(151, 839);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(350, 65);
             btnSignUp.TabIndex = 0;
@@ -450,6 +517,11 @@
             label.Text = "ĐĂNG KÝ";
             label.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
+            // 
             // UCSignUp
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -459,6 +531,10 @@
             Name = "UCSignUp";
             Size = new Size(2560, 1500);
             panel1.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            panel13.ResumeLayout(false);
+            panel13.PerformLayout();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel12.ResumeLayout(false);
@@ -524,6 +600,12 @@
         private TextBox txtConfirmPassword;
         private Label label6;
         private Label lbCancle;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker;
+        private Panel panel9;
+        private Panel panel13;
+        private TextBox txtEmail;
+        private Label label4;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

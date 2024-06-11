@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            lbUnsuccess = new Label();
             lbSignUp = new Label();
             label4 = new Label();
             btnLogIn = new Label();
             panel4 = new Panel();
+            lbEmptyEmailPass = new Label();
             lbForgotPassword = new Label();
             panel5 = new Panel();
             picEye = new PictureBox();
@@ -43,6 +46,7 @@
             txtEmail = new TextBox();
             lbType = new Label();
             lbAccountTab = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
@@ -55,6 +59,7 @@
             // 
             panel1.BackgroundImage = Properties.Resources.bg_login;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lbUnsuccess);
             panel1.Controls.Add(lbSignUp);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(btnLogIn);
@@ -65,6 +70,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(650, 677);
             panel1.TabIndex = 0;
+            // 
+            // lbUnsuccess
+            // 
+            lbUnsuccess.BackColor = Color.Transparent;
+            lbUnsuccess.Font = new Font("Segoe UI", 8F);
+            lbUnsuccess.ForeColor = Color.Red;
+            lbUnsuccess.Location = new Point(0, 413);
+            lbUnsuccess.Name = "lbUnsuccess";
+            lbUnsuccess.Size = new Size(640, 25);
+            lbUnsuccess.TabIndex = 12;
+            lbUnsuccess.Text = "Đăng nhập không thành công!";
+            lbUnsuccess.TextAlign = ContentAlignment.MiddleCenter;
+            lbUnsuccess.Visible = false;
             // 
             // lbSignUp
             // 
@@ -108,13 +126,26 @@
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(lbEmptyEmailPass);
             panel4.Controls.Add(lbForgotPassword);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(label1);
             panel4.Location = new Point(0, 271);
             panel4.Name = "panel4";
-            panel4.Size = new Size(640, 116);
+            panel4.Size = new Size(640, 130);
             panel4.TabIndex = 9;
+            // 
+            // lbEmptyEmailPass
+            // 
+            lbEmptyEmailPass.AutoSize = true;
+            lbEmptyEmailPass.Font = new Font("Segoe UI", 8F);
+            lbEmptyEmailPass.ForeColor = Color.Red;
+            lbEmptyEmailPass.Location = new Point(50, 99);
+            lbEmptyEmailPass.Name = "lbEmptyEmailPass";
+            lbEmptyEmailPass.Size = new Size(294, 25);
+            lbEmptyEmailPass.TabIndex = 11;
+            lbEmptyEmailPass.Text = "Vui lòng nhập email và mật khẩu!";
+            lbEmptyEmailPass.Visible = false;
             // 
             // lbForgotPassword
             // 
@@ -157,11 +188,13 @@
             txtPassword.Font = new Font("Segoe UI", 13F);
             txtPassword.ForeColor = Color.DimGray;
             txtPassword.Location = new Point(10, 5);
+            txtPassword.MaxLength = 8;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Nhập mật khẩu";
             txtPassword.Size = new Size(469, 41);
             txtPassword.TabIndex = 7;
+            txtPassword.Text = "12345678";
             // 
             // label1
             // 
@@ -181,7 +214,7 @@
             panel2.Controls.Add(lbType);
             panel2.Location = new Point(0, 142);
             panel2.Name = "panel2";
-            panel2.Size = new Size(640, 116);
+            panel2.Size = new Size(640, 125);
             panel2.TabIndex = 5;
             // 
             // panel3
@@ -205,6 +238,7 @@
             txtEmail.PlaceholderText = "Nhập tên đăng nhập";
             txtEmail.Size = new Size(510, 41);
             txtEmail.TabIndex = 7;
+            txtEmail.Text = "maianh";
             // 
             // lbType
             // 
@@ -228,6 +262,11 @@
             lbAccountTab.TabIndex = 4;
             lbAccountTab.Text = "ĐĂNG NHẬP";
             lbAccountTab.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
             // 
             // UCLogIn
             // 
@@ -268,5 +307,8 @@
         private Label lbSignUp;
         private Label label4;
         private Label btnLogIn;
+        private Label lbEmptyEmailPass;
+        private Label lbUnsuccess;
+        private System.Windows.Forms.Timer timer1;
     }
 }

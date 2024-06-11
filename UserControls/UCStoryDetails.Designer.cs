@@ -33,8 +33,9 @@
             picImage = new PictureBox();
             lbName = new Label();
             pnTitle = new Panel();
+            lbIsFree = new Label();
             pnStar = new Panel();
-            label9 = new Label();
+            lbStar = new Label();
             picStar = new PictureBox();
             panel2 = new Panel();
             lbType = new Label();
@@ -49,13 +50,34 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            flowChapter = new FlowLayoutPanel();
+            flowChapter1 = new FlowLayoutPanel();
             label7 = new Label();
+            flowChapter2 = new FlowLayoutPanel();
+            flowComment = new FlowLayoutPanel();
+            label8 = new Label();
+            pnNewComment = new Panel();
+            btnSearch = new Button();
+            txtNewComment = new RichTextBox();
+            panel1 = new Panel();
+            picStar5 = new PictureBox();
+            picStar4 = new PictureBox();
+            picStar3 = new PictureBox();
+            picStar2 = new PictureBox();
+            picStar1 = new PictureBox();
+            picAvat = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
             pnStar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).BeginInit();
             panel2.SuspendLayout();
+            pnNewComment.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picStar5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picStar4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picStar3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picStar2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picStar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             SuspendLayout();
             // 
             // lbIsFull
@@ -93,6 +115,7 @@
             // 
             // pnTitle
             // 
+            pnTitle.Controls.Add(lbIsFree);
             pnTitle.Controls.Add(pnStar);
             pnTitle.Controls.Add(lbName);
             pnTitle.Location = new Point(530, 60);
@@ -100,24 +123,38 @@
             pnTitle.Size = new Size(1618, 95);
             pnTitle.TabIndex = 14;
             // 
+            // lbIsFree
+            // 
+            lbIsFree.AutoSize = true;
+            lbIsFree.BackColor = Color.Green;
+            lbIsFree.Font = new Font("Segoe UI", 10F);
+            lbIsFree.ForeColor = Color.White;
+            lbIsFree.Location = new Point(129, 53);
+            lbIsFree.Name = "lbIsFree";
+            lbIsFree.Padding = new Padding(10, 2, 10, 2);
+            lbIsFree.Size = new Size(130, 36);
+            lbIsFree.TabIndex = 21;
+            lbIsFree.Text = "Miễn phí";
+            lbIsFree.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // pnStar
             // 
-            pnStar.Controls.Add(label9);
+            pnStar.Controls.Add(lbStar);
             pnStar.Controls.Add(picStar);
             pnStar.Location = new Point(21, 52);
             pnStar.Name = "pnStar";
             pnStar.Size = new Size(102, 40);
             pnStar.TabIndex = 13;
             // 
-            // label9
+            // lbStar
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 11F);
-            label9.Location = new Point(42, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(49, 36);
-            label9.TabIndex = 4;
-            label9.Text = "3.5";
+            lbStar.AutoSize = true;
+            lbStar.Font = new Font("Segoe UI", 11F);
+            lbStar.Location = new Point(42, 0);
+            lbStar.Name = "lbStar";
+            lbStar.Size = new Size(49, 36);
+            lbStar.TabIndex = 4;
+            lbStar.Text = "3.5";
             // 
             // picStar
             // 
@@ -147,7 +184,7 @@
             panel2.Controls.Add(label1);
             panel2.Location = new Point(555, 186);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1593, 593);
+            panel2.Size = new Size(1593, 555);
             panel2.TabIndex = 15;
             // 
             // lbType
@@ -163,9 +200,9 @@
             // label10
             // 
             label10.Font = new Font("Segoe UI", 11F);
-            label10.Location = new Point(0, 297);
+            label10.Location = new Point(0, 270);
             label10.Name = "label10";
-            label10.Size = new Size(1590, 273);
+            label10.Size = new Size(1590, 278);
             label10.TabIndex = 19;
             label10.Text = resources.GetString("label10.Text");
             // 
@@ -193,7 +230,7 @@
             // 
             lbNumberChapter.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lbNumberChapter.ForeColor = Color.Black;
-            lbNumberChapter.Location = new Point(141, 117);
+            lbNumberChapter.Location = new Point(141, 119);
             lbNumberChapter.Name = "lbNumberChapter";
             lbNumberChapter.Size = new Size(185, 36);
             lbNumberChapter.TabIndex = 16;
@@ -269,32 +306,179 @@
             label1.TabIndex = 0;
             label1.Text = "Tác giả:";
             // 
-            // flowChapter
+            // flowChapter1
             // 
-            flowChapter.AutoScroll = true;
-            flowChapter.FlowDirection = FlowDirection.TopDown;
-            flowChapter.Location = new Point(50, 800);
-            flowChapter.Name = "flowChapter";
-            flowChapter.Size = new Size(2098, 650);
-            flowChapter.TabIndex = 16;
+            flowChapter1.AutoScroll = true;
+            flowChapter1.FlowDirection = FlowDirection.TopDown;
+            flowChapter1.Location = new Point(50, 798);
+            flowChapter1.Name = "flowChapter1";
+            flowChapter1.Size = new Size(670, 650);
+            flowChapter1.TabIndex = 16;
             // 
             // label7
             // 
             label7.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             label7.ForeColor = Color.DarkGreen;
-            label7.Location = new Point(50, 756);
+            label7.Location = new Point(50, 751);
             label7.Name = "label7";
             label7.Size = new Size(365, 44);
             label7.TabIndex = 14;
             label7.Text = "DANH SÁCH CHƯƠNG";
+            // 
+            // flowChapter2
+            // 
+            flowChapter2.AutoScroll = true;
+            flowChapter2.FlowDirection = FlowDirection.TopDown;
+            flowChapter2.Location = new Point(760, 798);
+            flowChapter2.Name = "flowChapter2";
+            flowChapter2.Size = new Size(670, 650);
+            flowChapter2.TabIndex = 17;
+            // 
+            // flowComment
+            // 
+            flowComment.AutoScroll = true;
+            flowComment.BackColor = Color.White;
+            flowComment.Location = new Point(1475, 983);
+            flowComment.Name = "flowComment";
+            flowComment.Size = new Size(673, 465);
+            flowComment.TabIndex = 18;
+            // 
+            // label8
+            // 
+            label8.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            label8.ForeColor = Color.DarkGreen;
+            label8.Location = new Point(1475, 751);
+            label8.Name = "label8";
+            label8.Size = new Size(365, 44);
+            label8.TabIndex = 19;
+            label8.Text = "ĐÁNH GIÁ";
+            // 
+            // pnNewComment
+            // 
+            pnNewComment.Controls.Add(btnSearch);
+            pnNewComment.Controls.Add(txtNewComment);
+            pnNewComment.Controls.Add(panel1);
+            pnNewComment.Controls.Add(picAvat);
+            pnNewComment.Location = new Point(1475, 810);
+            pnNewComment.Name = "pnNewComment";
+            pnNewComment.Size = new Size(673, 167);
+            pnNewComment.TabIndex = 20;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.LightGreen;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.DarkGreen;
+            btnSearch.Location = new Point(545, 3);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(128, 47);
+            btnSearch.TabIndex = 16;
+            btnSearch.Text = "Đăng";
+            btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // txtNewComment
+            // 
+            txtNewComment.Location = new Point(120, 56);
+            txtNewComment.Name = "txtNewComment";
+            txtNewComment.Size = new Size(550, 100);
+            txtNewComment.TabIndex = 15;
+            txtNewComment.Text = "";
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(picStar5);
+            panel1.Controls.Add(picStar4);
+            panel1.Controls.Add(picStar3);
+            panel1.Controls.Add(picStar2);
+            panel1.Controls.Add(picStar1);
+            panel1.Location = new Point(120, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(229, 40);
+            panel1.TabIndex = 14;
+            // 
+            // picStar5
+            // 
+            picStar5.BackColor = Color.Transparent;
+            picStar5.Image = Properties.Resources.star_gray;
+            picStar5.Location = new Point(182, 0);
+            picStar5.Name = "picStar5";
+            picStar5.Size = new Size(40, 40);
+            picStar5.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar5.TabIndex = 7;
+            picStar5.TabStop = false;
+            picStar5.Click += picStar5_Click;
+            // 
+            // picStar4
+            // 
+            picStar4.BackColor = Color.Transparent;
+            picStar4.Image = Properties.Resources.star_gray;
+            picStar4.Location = new Point(136, 0);
+            picStar4.Name = "picStar4";
+            picStar4.Size = new Size(40, 40);
+            picStar4.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar4.TabIndex = 6;
+            picStar4.TabStop = false;
+            picStar4.Click += picStar4_Click;
+            // 
+            // picStar3
+            // 
+            picStar3.BackColor = Color.Transparent;
+            picStar3.Image = Properties.Resources.star_gray;
+            picStar3.Location = new Point(90, 0);
+            picStar3.Name = "picStar3";
+            picStar3.Size = new Size(40, 40);
+            picStar3.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar3.TabIndex = 5;
+            picStar3.TabStop = false;
+            picStar3.Click += picStar3_Click;
+            // 
+            // picStar2
+            // 
+            picStar2.BackColor = Color.Transparent;
+            picStar2.Image = Properties.Resources.star_gray;
+            picStar2.Location = new Point(44, 0);
+            picStar2.Name = "picStar2";
+            picStar2.Size = new Size(40, 40);
+            picStar2.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar2.TabIndex = 4;
+            picStar2.TabStop = false;
+            picStar2.Click += picStar2_Click;
+            // 
+            // picStar1
+            // 
+            picStar1.BackColor = Color.Transparent;
+            picStar1.Image = Properties.Resources.star_gray;
+            picStar1.Location = new Point(-2, 0);
+            picStar1.Name = "picStar1";
+            picStar1.Size = new Size(40, 40);
+            picStar1.SizeMode = PictureBoxSizeMode.StretchImage;
+            picStar1.TabIndex = 3;
+            picStar1.TabStop = false;
+            picStar1.Click += picStar1_Click;
+            // 
+            // picAvat
+            // 
+            picAvat.BackColor = Color.Transparent;
+            picAvat.Image = Properties.Resources.avat_default;
+            picAvat.Location = new Point(0, 0);
+            picAvat.Name = "picAvat";
+            picAvat.Size = new Size(100, 100);
+            picAvat.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAvat.TabIndex = 4;
+            picAvat.TabStop = false;
             // 
             // UCStoryDetails
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(pnNewComment);
+            Controls.Add(label8);
+            Controls.Add(flowComment);
+            Controls.Add(flowChapter2);
             Controls.Add(label7);
-            Controls.Add(flowChapter);
+            Controls.Add(flowChapter1);
             Controls.Add(picImage);
             Controls.Add(panel2);
             Controls.Add(pnTitle);
@@ -303,17 +487,26 @@
             Load += UCStoryDetails_Load;
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             pnTitle.ResumeLayout(false);
+            pnTitle.PerformLayout();
             pnStar.ResumeLayout(false);
             pnStar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            pnNewComment.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picStar5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picStar4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picStar3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picStar2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picStar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnNewComment;
         private Label lbName;
         private Label lbIsFull;
         private PictureBox picImage;
@@ -332,9 +525,22 @@
         private Panel pnStar;
         private PictureBox picStar;
         private Label label10;
-        private Label label9;
+        private Label lbStar;
         private Label lbType;
-        private FlowLayoutPanel flowChapter;
+        private FlowLayoutPanel flowChapter1;
         private Label label7;
+        private Label lbIsFree;
+        private FlowLayoutPanel flowChapter2;
+        private FlowLayoutPanel flowComment;
+        private Label label8;
+        private Panel panel1;
+        private PictureBox picStar1;
+        private PictureBox picAvat;
+        private PictureBox picStar5;
+        private PictureBox picStar4;
+        private PictureBox picStar3;
+        private PictureBox picStar2;
+        private RichTextBox txtNewComment;
+        private Button btnSearch;
     }
 }

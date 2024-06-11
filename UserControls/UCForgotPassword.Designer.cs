@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
-            lbSignUp = new Label();
+            lbInfor = new Label();
+            lbCancle = new Label();
             label4 = new Label();
-            btnLogIn = new Label();
+            btnSend = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
             txtEmail = new TextBox();
             lbType = new Label();
             lbAccountTab = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -46,9 +49,10 @@
             // 
             panel1.BackgroundImage = Properties.Resources.bg_login;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(lbSignUp);
+            panel1.Controls.Add(lbInfor);
+            panel1.Controls.Add(lbCancle);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(btnLogIn);
+            panel1.Controls.Add(btnSend);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(lbAccountTab);
             panel1.Location = new Point(980, 450);
@@ -56,18 +60,31 @@
             panel1.Size = new Size(650, 433);
             panel1.TabIndex = 1;
             // 
-            // lbSignUp
+            // lbInfor
             // 
-            lbSignUp.AutoSize = true;
-            lbSignUp.BackColor = Color.Transparent;
-            lbSignUp.Font = new Font("Segoe UI", 12F);
-            lbSignUp.ForeColor = Color.DarkGreen;
-            lbSignUp.Location = new Point(532, 333);
-            lbSignUp.Name = "lbSignUp";
-            lbSignUp.Size = new Size(67, 38);
-            lbSignUp.TabIndex = 11;
-            lbSignUp.Text = "Hủy";
-            lbSignUp.Click += lbSignUp_Click;
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(-3, 291);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(640, 25);
+            lbInfor.TabIndex = 17;
+            lbInfor.Text = "Đăng ký không thành công!";
+            lbInfor.TextAlign = ContentAlignment.MiddleCenter;
+            lbInfor.Visible = false;
+            // 
+            // lbCancle
+            // 
+            lbCancle.AutoSize = true;
+            lbCancle.BackColor = Color.Transparent;
+            lbCancle.Font = new Font("Segoe UI", 12F);
+            lbCancle.ForeColor = Color.DarkGreen;
+            lbCancle.Location = new Point(532, 333);
+            lbCancle.Name = "lbCancle";
+            lbCancle.Size = new Size(67, 38);
+            lbCancle.TabIndex = 11;
+            lbCancle.Text = "Hủy";
+            lbCancle.Click += lbCancle_Click;
             // 
             // label4
             // 
@@ -80,18 +97,19 @@
             label4.TabIndex = 10;
             label4.Text = "Mật khẩu mới sẽ được gửi đến email của bạn. Vui lòng nhập email!";
             // 
-            // btnLogIn
+            // btnSend
             // 
-            btnLogIn.BackColor = Color.Transparent;
-            btnLogIn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnLogIn.ForeColor = Color.White;
-            btnLogIn.Image = Properties.Resources.bg_btnlogin;
-            btnLogIn.Location = new Point(150, 320);
-            btnLogIn.Name = "btnLogIn";
-            btnLogIn.Size = new Size(350, 65);
-            btnLogIn.TabIndex = 0;
-            btnLogIn.Text = "Gửi mật khẩu";
-            btnLogIn.TextAlign = ContentAlignment.MiddleCenter;
+            btnSend.BackColor = Color.Transparent;
+            btnSend.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnSend.ForeColor = Color.White;
+            btnSend.Image = Properties.Resources.bg_btnlogin;
+            btnSend.Location = new Point(150, 320);
+            btnSend.Name = "btnSend";
+            btnSend.Size = new Size(350, 65);
+            btnSend.TabIndex = 0;
+            btnSend.Text = "Gửi mật khẩu";
+            btnSend.TextAlign = ContentAlignment.MiddleCenter;
+            btnSend.Click += btnSend_Click;
             // 
             // panel2
             // 
@@ -148,6 +166,11 @@
             lbAccountTab.Text = "QUÊN MẬT KHẨU";
             lbAccountTab.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
+            // 
             // UCForgotPassword
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -168,13 +191,15 @@
         #endregion
 
         private Panel panel1;
-        private Label lbSignUp;
+        private Label lbCancle;
         private Label label4;
-        private Label btnLogIn;
+        private Label btnSend;
         private Panel panel2;
         private Panel panel3;
         private TextBox txtEmail;
         private Label lbType;
         private Label lbAccountTab;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

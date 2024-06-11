@@ -1,5 +1,6 @@
 using ReadingApp.UserControls;
 using System.Security.Principal;
+using ReadingApp.Model;
 
 namespace ReadingApp
 {
@@ -9,9 +10,11 @@ namespace ReadingApp
         private UCLibrary ucLibrary;
         private UCHistory ucHistory;
         private UCAccount ucAccount;
+        public User cruUser;
         public Form1()
         {
             InitializeComponent();
+            this.cruUser = new User();
         }
         private void unBackground()
         {
@@ -34,7 +37,7 @@ namespace ReadingApp
         private void loadUCAccount(object? sender, EventArgs e)
         {
             pnMain.Controls.Clear();
-            ucAccount = new UCAccount();
+            ucAccount = new UCAccount(cruUser);
             ucAccount.loadUCPasswordChange += loadUCPasswordChange;
             pnMain.Controls.Add(ucAccount);
         }
@@ -47,7 +50,7 @@ namespace ReadingApp
             picHomeTab.Image = Properties.Resources.home_white;
 
             pnMain.Controls.Clear();
-            ucHome = new UCHome();
+            ucHome = new UCHome(cruUser);
             ucHome.loadUCAccount += pnAccountTab_Click;
             ucHome.loadUCStoryDetails += loadUCStoryDetails;
             pnMain.Controls.Add(ucHome);
@@ -91,7 +94,7 @@ namespace ReadingApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UCLogIn uCLogIn = new UCLogIn();
+            UCLogIn uCLogIn = new UCLogIn();            
             uCLogIn.loadUCHome += loadUCHome;
             uCLogIn.loadUCForgotPassword += loadUCForgotPassword;
             uCLogIn.loadUCSignUp += loadUCSignUp;
@@ -112,7 +115,7 @@ namespace ReadingApp
 
         private void loadUCPasswordChange(object? sender, EventArgs e)
         {
-            UCPasswordChange uCPasswordChange = new UCPasswordChange();
+            UCPasswordChange uCPasswordChange = new UCPasswordChange(cruUser);
             uCPasswordChange.loadUCAccount = loadUCAccount;
             pnMain.Controls.Clear();
             pnMain.Controls.Add(uCPasswordChange);
@@ -133,10 +136,11 @@ namespace ReadingApp
             pnLogIn.Controls.Add(uCForgotPassword);
         }
 
-        private void loadUCHome(object? sender, EventArgs e)
+        private void loadUCHome(object? sender, User e)
         {
             pnLogIn.Visible = false;
-            pnHomeTab_Click(sender, e);
+            cruUser = e;
+            pnHomeTab_Click(sender, EventArgs.Empty);
         }
 
         private void pnLogout_Click(object sender, EventArgs e)

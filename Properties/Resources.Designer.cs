@@ -83,6 +83,16 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avat_default {
+            get {
+                object obj = ResourceManager.GetObject("avat_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_btnlogin {
             get {
                 object obj = ResourceManager.GetObject("bg_btnlogin", resourceCulture);
@@ -286,6 +296,16 @@ namespace ReadingApp.Properties {
         internal static System.Drawing.Bitmap star {
             get {
                 object obj = ResourceManager.GetObject("star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star_gray {
+            get {
+                object obj = ResourceManager.GetObject("star_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

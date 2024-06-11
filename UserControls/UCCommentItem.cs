@@ -10,40 +10,16 @@ using System.Windows.Forms;
 
 namespace ReadingApp.UserControls
 {
-    public partial class UCStoryDetails : UserControl
+    public partial class UCCommentItem : UserControl
     {
-        int star = 0;
-        public UCStoryDetails()
+        private int star;
+        private string comment;
+        public UCCommentItem(int star, string comment)
         {
             InitializeComponent();
-        }               
-
-        private void UCStoryDetails_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter1);
-                addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter2);
-            }
-
-            flowComment.Controls.Clear();
-            for (int i = 0; i < 10; i++)
-            {
-                UCCommentItem ucCommentItem = new UCCommentItem(5, "text comment");
-                flowComment.Controls.Add(ucCommentItem);
-            }
+            this.star = star;
+            this.comment = comment;
         }
-
-        private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel)
-        {
-            Label labelChapter = new Label();
-            labelChapter.Text = chapterName;
-            labelChapter.AutoSize = true;
-            labelChapter.Padding = new Padding(0, 5, 0, 5);
-            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            flowpanel.Controls.Add(labelChapter);
-        }
-
         private void addStar()
         {
             switch (star)
@@ -95,35 +71,10 @@ namespace ReadingApp.UserControls
                     }
             }
         }
-
-        private void picStar1_Click(object sender, EventArgs e)
+        private void UCCommentItem_Load(object sender, EventArgs e)
         {
-            star = 1;
             addStar();
-        }
-
-        private void picStar2_Click(object sender, EventArgs e)
-        {
-            star = 2;
-            addStar();
-        }
-
-        private void picStar3_Click(object sender, EventArgs e)
-        {
-            star = 3;
-            addStar();
-        }
-
-        private void picStar4_Click(object sender, EventArgs e)
-        {
-            star = 4;
-            addStar();
-        }
-
-        private void picStar5_Click(object sender, EventArgs e)
-        {
-            star = 5;
-            addStar();
+            txtComment.Text = comment;
         }
     }
 }
