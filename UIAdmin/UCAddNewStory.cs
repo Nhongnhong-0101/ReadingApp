@@ -113,7 +113,8 @@ namespace ReadingApp.UIAdmin
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Vui lòng kiểm tra lại các thông tin" + ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
 
 
