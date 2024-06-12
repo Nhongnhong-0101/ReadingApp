@@ -19,7 +19,7 @@ namespace ReadingApp.Model
 
         public string Description { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(1000)]
         public string Type { get; set; }
 
         [MaxLength(50)]
@@ -38,10 +38,10 @@ namespace ReadingApp.Model
 
         public double Star { get; set; } = 0;
 
-        public User Author { get; set; }
+        public string Author { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime LastUpdatedAt { get; set;}
-
+        public int Views { get; set; }
     }
 }

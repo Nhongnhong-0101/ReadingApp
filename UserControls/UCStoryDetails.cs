@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadingApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,16 +14,35 @@ namespace ReadingApp.UserControls
     public partial class UCStoryDetails : UserControl
     {
         int star = 0;
-        public UCStoryDetails()
+        private Story story = new Story();
+        public UCStoryDetails(Story story)
         {
             InitializeComponent();
+            this.story = story;
         }               
 
         private void UCStoryDetails_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            lbName.Text = story.Title;
+            lbAuthor.Text = story.Author;
+            lbStar.Text = story.Star.ToString();
+            if (story.Price > 0) { lbIsFree.Visible = false; pnPrice.Visible = true; lbPrice.Text = story.Price.ToString(); } 
+            else { lbIsFree.Visible = true; pnPrice.Visible = false; }
+            lbType.Text = story.Type;
+            lbStatus.Text = story.Status;
+            lbNumberChapter.Text = story.NumberChapters.ToString();
+            lbLastUpdate.Text = story.LastUpdatedAt.ToString();
+            lbCreatedAt.Text = story.CreatedAt.ToString();
+            lbDescription.Text = story.Description;
+
+            if (story.NumberChapters > 10)
+            for (int i = 0; i < story.NumberChapters/2; i++)
             {
                 addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter1);
+            }
+
+            for (int i = story.NumberChapters/2; i < story.NumberChapters; i++)
+            {
                 addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter2);
             }
 
@@ -38,13 +58,14 @@ namespace ReadingApp.UserControls
         {
             Label labelChapter = new Label();
             labelChapter.Text = chapterName;
-            labelChapter.AutoSize = true;
+            labelChapter.AutoSize = false;
+            labelChapter.Size = new Size(630, 36);
             labelChapter.Padding = new Padding(0, 5, 0, 5);
             labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
             flowpanel.Controls.Add(labelChapter);
         }
 
-        private void addStar()
+        private void addStarComment()
         {
             switch (star)
             {
@@ -99,31 +120,31 @@ namespace ReadingApp.UserControls
         private void picStar1_Click(object sender, EventArgs e)
         {
             star = 1;
-            addStar();
+            addStarComment();
         }
 
         private void picStar2_Click(object sender, EventArgs e)
         {
             star = 2;
-            addStar();
+            addStarComment();
         }
 
         private void picStar3_Click(object sender, EventArgs e)
         {
             star = 3;
-            addStar();
+            addStarComment();
         }
 
         private void picStar4_Click(object sender, EventArgs e)
         {
             star = 4;
-            addStar();
+            addStarComment();
         }
 
         private void picStar5_Click(object sender, EventArgs e)
         {
             star = 5;
-            addStar();
+            addStarComment();
         }
     }
 }

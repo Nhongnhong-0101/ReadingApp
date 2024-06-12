@@ -29,8 +29,8 @@ namespace ReadingApp.UserControls
             flowMain.Controls.Clear();
             for (int i = 0; i <= 12; i++)
             {
-                UCStoryItem ucStoryItem = new UCStoryItem();
-                flowMain.Controls.Add(ucStoryItem);
+                //UCStoryItem ucStoryItem = new UCStoryItem();
+                //flowMain.Controls.Add(ucStoryItem);
             }
         }
         private void filterSearch(ref bool filter, PictureBox pictureBox)

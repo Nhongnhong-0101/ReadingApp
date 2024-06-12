@@ -37,16 +37,7 @@
             picType = new PictureBox();
             flowMain = new FlowLayoutPanel();
             pnLasted = new Panel();
-            lbLastedAuthor5 = new Label();
-            lbLastedName5 = new Label();
-            lbLastedAuthor4 = new Label();
-            lbLastedName4 = new Label();
-            lbLastedAuthor3 = new Label();
-            lbLastedName3 = new Label();
-            lbLastedAuthor2 = new Label();
-            lbLastedName2 = new Label();
-            lbLastedAuthor1 = new Label();
-            lbLastedName1 = new Label();
+            flowLasted = new FlowLayoutPanel();
             label1 = new Label();
             pnSearch = new Panel();
             btnSearch = new Button();
@@ -79,24 +70,10 @@
             lbNgonTinh = new Label();
             panelState = new Panel();
             pnStar = new Panel();
-            lbStarAuthor4 = new Label();
-            lbStarName4 = new Label();
-            lbStarAuthor3 = new Label();
-            lbStarName3 = new Label();
-            lbStarAuthor2 = new Label();
-            lbStarName2 = new Label();
-            lbStarAuthor1 = new Label();
-            lbStarName1 = new Label();
+            flowStar = new FlowLayoutPanel();
             label12 = new Label();
             pnOutstanding = new Panel();
-            lbOutsAuthor4 = new Label();
-            lbOutsName4 = new Label();
-            lbOutsAuthor3 = new Label();
-            lbOutsName3 = new Label();
-            lbOutsAuthor2 = new Label();
-            lbOutsName2 = new Label();
-            lbOutsAuthor1 = new Label();
-            lbOutsName1 = new Label();
+            flowOuts = new FlowLayoutPanel();
             label22 = new Label();
             ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             panel1.SuspendLayout();
@@ -211,116 +188,20 @@
             // 
             pnLasted.BackgroundImage = Properties.Resources.bg_lasted;
             pnLasted.BackgroundImageLayout = ImageLayout.Stretch;
-            pnLasted.Controls.Add(lbLastedAuthor5);
-            pnLasted.Controls.Add(lbLastedName5);
-            pnLasted.Controls.Add(lbLastedAuthor4);
-            pnLasted.Controls.Add(lbLastedName4);
-            pnLasted.Controls.Add(lbLastedAuthor3);
-            pnLasted.Controls.Add(lbLastedName3);
-            pnLasted.Controls.Add(lbLastedAuthor2);
-            pnLasted.Controls.Add(lbLastedName2);
-            pnLasted.Controls.Add(lbLastedAuthor1);
-            pnLasted.Controls.Add(lbLastedName1);
+            pnLasted.Controls.Add(flowLasted);
             pnLasted.Controls.Add(label1);
             pnLasted.Location = new Point(0, 0);
             pnLasted.Name = "pnLasted";
-            pnLasted.Size = new Size(370, 405);
+            pnLasted.Size = new Size(370, 380);
             pnLasted.TabIndex = 5;
             // 
-            // lbLastedAuthor5
+            // flowLasted
             // 
-            lbLastedAuthor5.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor5.ForeColor = Color.Gray;
-            lbLastedAuthor5.Location = new Point(20, 370);
-            lbLastedAuthor5.Name = "lbLastedAuthor5";
-            lbLastedAuthor5.Size = new Size(330, 25);
-            lbLastedAuthor5.TabIndex = 17;
-            lbLastedAuthor5.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName5
-            // 
-            lbLastedName5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName5.Location = new Point(20, 334);
-            lbLastedName5.Name = "lbLastedName5";
-            lbLastedName5.Size = new Size(330, 40);
-            lbLastedName5.TabIndex = 16;
-            lbLastedName5.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor4
-            // 
-            lbLastedAuthor4.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor4.ForeColor = Color.Gray;
-            lbLastedAuthor4.Location = new Point(20, 300);
-            lbLastedAuthor4.Name = "lbLastedAuthor4";
-            lbLastedAuthor4.Size = new Size(330, 25);
-            lbLastedAuthor4.TabIndex = 15;
-            lbLastedAuthor4.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName4
-            // 
-            lbLastedName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName4.Location = new Point(20, 265);
-            lbLastedName4.Name = "lbLastedName4";
-            lbLastedName4.Size = new Size(330, 40);
-            lbLastedName4.TabIndex = 14;
-            lbLastedName4.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor3
-            // 
-            lbLastedAuthor3.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor3.ForeColor = Color.Gray;
-            lbLastedAuthor3.Location = new Point(20, 230);
-            lbLastedAuthor3.Name = "lbLastedAuthor3";
-            lbLastedAuthor3.Size = new Size(330, 25);
-            lbLastedAuthor3.TabIndex = 13;
-            lbLastedAuthor3.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName3
-            // 
-            lbLastedName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName3.Location = new Point(20, 195);
-            lbLastedName3.Name = "lbLastedName3";
-            lbLastedName3.Size = new Size(330, 40);
-            lbLastedName3.TabIndex = 12;
-            lbLastedName3.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor2
-            // 
-            lbLastedAuthor2.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor2.ForeColor = Color.Gray;
-            lbLastedAuthor2.Location = new Point(20, 160);
-            lbLastedAuthor2.Name = "lbLastedAuthor2";
-            lbLastedAuthor2.Size = new Size(330, 25);
-            lbLastedAuthor2.TabIndex = 11;
-            lbLastedAuthor2.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName2
-            // 
-            lbLastedName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName2.Location = new Point(20, 125);
-            lbLastedName2.Name = "lbLastedName2";
-            lbLastedName2.Size = new Size(330, 40);
-            lbLastedName2.TabIndex = 10;
-            lbLastedName2.Text = "Nhớ mãi không quên";
-            // 
-            // lbLastedAuthor1
-            // 
-            lbLastedAuthor1.Font = new Font("Segoe UI", 8F);
-            lbLastedAuthor1.ForeColor = Color.Gray;
-            lbLastedAuthor1.Location = new Point(20, 90);
-            lbLastedAuthor1.Name = "lbLastedAuthor1";
-            lbLastedAuthor1.Size = new Size(330, 25);
-            lbLastedAuthor1.TabIndex = 9;
-            lbLastedAuthor1.Text = "Thiên Hạ Thủy";
-            // 
-            // lbLastedName1
-            // 
-            lbLastedName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbLastedName1.Location = new Point(20, 55);
-            lbLastedName1.Name = "lbLastedName1";
-            lbLastedName1.Size = new Size(330, 40);
-            lbLastedName1.TabIndex = 8;
-            lbLastedName1.Text = "Nhớ mãi không quên";
+            flowLasted.FlowDirection = FlowDirection.TopDown;
+            flowLasted.Location = new Point(20, 50);
+            flowLasted.Name = "flowLasted";
+            flowLasted.Size = new Size(340, 324);
+            flowLasted.TabIndex = 0;
             // 
             // label1
             // 
@@ -363,6 +244,7 @@
             btnSearch.TabIndex = 10;
             btnSearch.Text = "Tìm truyện";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // pnUpdating
             // 
@@ -562,7 +444,7 @@
             cbArrange.ForeColor = Color.Gray;
             cbArrange.FormattingEnabled = true;
             cbArrange.ItemHeight = 38;
-            cbArrange.Items.AddRange(new object[] { "Full", "Mới nhất", "Tác giả", "Tên truyện" });
+            cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
             cbArrange.Location = new Point(580, 40);
             cbArrange.Name = "cbArrange";
             cbArrange.Size = new Size(500, 46);
@@ -620,7 +502,7 @@
             lbTheLoai5.Name = "lbTheLoai5";
             lbTheLoai5.Size = new Size(140, 38);
             lbTheLoai5.TabIndex = 10;
-            lbTheLoai5.Text = "Thể loại 5";
+            lbTheLoai5.Text = "Đam mỹ";
             lbTheLoai5.Click += lbTheLoai5_Click;
             lbTheLoai5.MouseLeave += lbTheLoai5_MouseLeave;
             lbTheLoai5.MouseHover += lbTheLoai5_MouseHover;
@@ -680,102 +562,27 @@
             panelState.Controls.Add(pnLasted);
             panelState.Location = new Point(1780, 150);
             panelState.Name = "panelState";
-            panelState.Size = new Size(375, 1159);
+            panelState.Size = new Size(375, 1268);
             panelState.TabIndex = 8;
             // 
             // pnStar
             // 
             pnStar.BackgroundImage = Properties.Resources.bg_lasted;
             pnStar.BackgroundImageLayout = ImageLayout.Stretch;
-            pnStar.Controls.Add(lbStarAuthor4);
-            pnStar.Controls.Add(lbStarName4);
-            pnStar.Controls.Add(lbStarAuthor3);
-            pnStar.Controls.Add(lbStarName3);
-            pnStar.Controls.Add(lbStarAuthor2);
-            pnStar.Controls.Add(lbStarName2);
-            pnStar.Controls.Add(lbStarAuthor1);
-            pnStar.Controls.Add(lbStarName1);
+            pnStar.Controls.Add(flowStar);
             pnStar.Controls.Add(label12);
-            pnStar.Location = new Point(0, 825);
+            pnStar.Location = new Point(0, 770);
             pnStar.Name = "pnStar";
-            pnStar.Size = new Size(370, 335);
+            pnStar.Size = new Size(370, 378);
             pnStar.TabIndex = 18;
             // 
-            // lbStarAuthor4
+            // flowStar
             // 
-            lbStarAuthor4.Font = new Font("Segoe UI", 8F);
-            lbStarAuthor4.ForeColor = Color.Gray;
-            lbStarAuthor4.Location = new Point(20, 300);
-            lbStarAuthor4.Name = "lbStarAuthor4";
-            lbStarAuthor4.Size = new Size(330, 25);
-            lbStarAuthor4.TabIndex = 15;
-            lbStarAuthor4.Text = "Thiên Hạ Thủy";
-            // 
-            // lbStarName4
-            // 
-            lbStarName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbStarName4.Location = new Point(20, 265);
-            lbStarName4.Name = "lbStarName4";
-            lbStarName4.Size = new Size(330, 40);
-            lbStarName4.TabIndex = 14;
-            lbStarName4.Text = "Nhớ mãi không quên";
-            // 
-            // lbStarAuthor3
-            // 
-            lbStarAuthor3.Font = new Font("Segoe UI", 8F);
-            lbStarAuthor3.ForeColor = Color.Gray;
-            lbStarAuthor3.Location = new Point(20, 230);
-            lbStarAuthor3.Name = "lbStarAuthor3";
-            lbStarAuthor3.Size = new Size(330, 25);
-            lbStarAuthor3.TabIndex = 13;
-            lbStarAuthor3.Text = "Thiên Hạ Thủy";
-            // 
-            // lbStarName3
-            // 
-            lbStarName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbStarName3.Location = new Point(20, 195);
-            lbStarName3.Name = "lbStarName3";
-            lbStarName3.Size = new Size(330, 40);
-            lbStarName3.TabIndex = 12;
-            lbStarName3.Text = "Nhớ mãi không quên";
-            // 
-            // lbStarAuthor2
-            // 
-            lbStarAuthor2.Font = new Font("Segoe UI", 8F);
-            lbStarAuthor2.ForeColor = Color.Gray;
-            lbStarAuthor2.Location = new Point(20, 160);
-            lbStarAuthor2.Name = "lbStarAuthor2";
-            lbStarAuthor2.Size = new Size(330, 25);
-            lbStarAuthor2.TabIndex = 11;
-            lbStarAuthor2.Text = "Thiên Hạ Thủy";
-            // 
-            // lbStarName2
-            // 
-            lbStarName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbStarName2.Location = new Point(20, 125);
-            lbStarName2.Name = "lbStarName2";
-            lbStarName2.Size = new Size(330, 40);
-            lbStarName2.TabIndex = 10;
-            lbStarName2.Text = "Nhớ mãi không quên";
-            // 
-            // lbStarAuthor1
-            // 
-            lbStarAuthor1.Font = new Font("Segoe UI", 8F);
-            lbStarAuthor1.ForeColor = Color.Gray;
-            lbStarAuthor1.Location = new Point(20, 90);
-            lbStarAuthor1.Name = "lbStarAuthor1";
-            lbStarAuthor1.Size = new Size(330, 25);
-            lbStarAuthor1.TabIndex = 9;
-            lbStarAuthor1.Text = "Thiên Hạ Thủy";
-            // 
-            // lbStarName1
-            // 
-            lbStarName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbStarName1.Location = new Point(20, 55);
-            lbStarName1.Name = "lbStarName1";
-            lbStarName1.Size = new Size(330, 40);
-            lbStarName1.TabIndex = 8;
-            lbStarName1.Text = "Nhớ mãi không quên";
+            flowStar.FlowDirection = FlowDirection.TopDown;
+            flowStar.Location = new Point(16, 47);
+            flowStar.Name = "flowStar";
+            flowStar.Size = new Size(340, 324);
+            flowStar.TabIndex = 2;
             // 
             // label12
             // 
@@ -792,95 +599,20 @@
             // 
             pnOutstanding.BackgroundImage = Properties.Resources.bg_lasted;
             pnOutstanding.BackgroundImageLayout = ImageLayout.Stretch;
-            pnOutstanding.Controls.Add(lbOutsAuthor4);
-            pnOutstanding.Controls.Add(lbOutsName4);
-            pnOutstanding.Controls.Add(lbOutsAuthor3);
-            pnOutstanding.Controls.Add(lbOutsName3);
-            pnOutstanding.Controls.Add(lbOutsAuthor2);
-            pnOutstanding.Controls.Add(lbOutsName2);
-            pnOutstanding.Controls.Add(lbOutsAuthor1);
-            pnOutstanding.Controls.Add(lbOutsName1);
+            pnOutstanding.Controls.Add(flowOuts);
             pnOutstanding.Controls.Add(label22);
-            pnOutstanding.Location = new Point(0, 450);
+            pnOutstanding.Location = new Point(0, 386);
             pnOutstanding.Name = "pnOutstanding";
-            pnOutstanding.Size = new Size(370, 335);
+            pnOutstanding.Size = new Size(370, 378);
             pnOutstanding.TabIndex = 6;
             // 
-            // lbOutsAuthor4
+            // flowOuts
             // 
-            lbOutsAuthor4.Font = new Font("Segoe UI", 8F);
-            lbOutsAuthor4.ForeColor = Color.Gray;
-            lbOutsAuthor4.Location = new Point(20, 300);
-            lbOutsAuthor4.Name = "lbOutsAuthor4";
-            lbOutsAuthor4.Size = new Size(330, 25);
-            lbOutsAuthor4.TabIndex = 15;
-            lbOutsAuthor4.Text = "Thiên Hạ Thủy";
-            // 
-            // lbOutsName4
-            // 
-            lbOutsName4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbOutsName4.Location = new Point(20, 265);
-            lbOutsName4.Name = "lbOutsName4";
-            lbOutsName4.Size = new Size(330, 40);
-            lbOutsName4.TabIndex = 14;
-            lbOutsName4.Text = "Nhớ mãi không quên";
-            // 
-            // lbOutsAuthor3
-            // 
-            lbOutsAuthor3.Font = new Font("Segoe UI", 8F);
-            lbOutsAuthor3.ForeColor = Color.Gray;
-            lbOutsAuthor3.Location = new Point(20, 230);
-            lbOutsAuthor3.Name = "lbOutsAuthor3";
-            lbOutsAuthor3.Size = new Size(330, 25);
-            lbOutsAuthor3.TabIndex = 13;
-            lbOutsAuthor3.Text = "Thiên Hạ Thủy";
-            // 
-            // lbOutsName3
-            // 
-            lbOutsName3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbOutsName3.Location = new Point(20, 195);
-            lbOutsName3.Name = "lbOutsName3";
-            lbOutsName3.Size = new Size(330, 40);
-            lbOutsName3.TabIndex = 12;
-            lbOutsName3.Text = "Nhớ mãi không quên";
-            // 
-            // lbOutsAuthor2
-            // 
-            lbOutsAuthor2.Font = new Font("Segoe UI", 8F);
-            lbOutsAuthor2.ForeColor = Color.Gray;
-            lbOutsAuthor2.Location = new Point(20, 160);
-            lbOutsAuthor2.Name = "lbOutsAuthor2";
-            lbOutsAuthor2.Size = new Size(330, 25);
-            lbOutsAuthor2.TabIndex = 11;
-            lbOutsAuthor2.Text = "Thiên Hạ Thủy";
-            // 
-            // lbOutsName2
-            // 
-            lbOutsName2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbOutsName2.Location = new Point(20, 125);
-            lbOutsName2.Name = "lbOutsName2";
-            lbOutsName2.Size = new Size(330, 40);
-            lbOutsName2.TabIndex = 10;
-            lbOutsName2.Text = "Nhớ mãi không quên";
-            // 
-            // lbOutsAuthor1
-            // 
-            lbOutsAuthor1.Font = new Font("Segoe UI", 8F);
-            lbOutsAuthor1.ForeColor = Color.Gray;
-            lbOutsAuthor1.Location = new Point(20, 90);
-            lbOutsAuthor1.Name = "lbOutsAuthor1";
-            lbOutsAuthor1.Size = new Size(330, 25);
-            lbOutsAuthor1.TabIndex = 9;
-            lbOutsAuthor1.Text = "Thiên Hạ Thủy";
-            // 
-            // lbOutsName1
-            // 
-            lbOutsName1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lbOutsName1.Location = new Point(20, 55);
-            lbOutsName1.Name = "lbOutsName1";
-            lbOutsName1.Size = new Size(330, 40);
-            lbOutsName1.TabIndex = 8;
-            lbOutsName1.Text = "Nhớ mãi không quên";
+            flowOuts.FlowDirection = FlowDirection.TopDown;
+            flowOuts.Location = new Point(20, 47);
+            flowOuts.Name = "flowOuts";
+            flowOuts.Size = new Size(340, 324);
+            flowOuts.TabIndex = 1;
             // 
             // label22
             // 
@@ -954,14 +686,6 @@
         private FlowLayoutPanel flowMain;
         private Panel pnLasted;
         private Label label1;
-        private Label lbLastedAuthor1;
-        private Label lbLastedName1;
-        private Label lbLastedAuthor4;
-        private Label lbLastedName4;
-        private Label lbLastedAuthor3;
-        private Label lbLastedName3;
-        private Label lbLastedAuthor2;
-        private Label lbLastedName2;
         private Panel pnSearch;
         private ComboBox cbType;
         private ComboBox cbArrange;
@@ -993,26 +717,11 @@
         private Label lbNgonTinh;
         private Panel panelState;
         private Panel pnOutstanding;
-        private Label lbOutsAuthor4;
-        private Label lbOutsName4;
-        private Label lbOutsAuthor3;
-        private Label lbOutsName3;
-        private Label lbOutsAuthor2;
-        private Label lbOutsName2;
-        private Label lbOutsAuthor1;
-        private Label lbOutsName1;
         private Label label22;
         private Panel pnStar;
-        private Label lbStarAuthor4;
-        private Label lbStarName4;
-        private Label lbStarAuthor3;
-        private Label lbStarName3;
-        private Label lbStarAuthor2;
-        private Label lbStarName2;
-        private Label lbStarAuthor1;
-        private Label lbStarName1;
         private Label label12;
-        private Label lbLastedAuthor5;
-        private Label lbLastedName5;
+        private FlowLayoutPanel flowLasted;
+        private FlowLayoutPanel flowOuts;
+        private FlowLayoutPanel flowStar;
     }
 }

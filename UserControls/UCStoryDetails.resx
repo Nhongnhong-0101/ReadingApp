@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="lbDescription.Text" xml:space="preserve">
     <value>Có hai nhóm quý tộc trong truyện, gia đình của anh là chủ tịch một tập đoàn lớn và cô là một cô gái nuôi trong gia đình khác. Cha nuôi của cô đang gặp khó khăn trong công việc, do đó cô đã ký hợp đồng sinh con thuê cho với giá trị trăm vạn đô la. 
 Tuy nhiên, cô lại mang thai song thai đến lúc sinh. Một trong hai bé không thể sống được và đứa bé còn lại được anh nuôi dưỡng. Cô hoàn thành hợp đồng và nhận tiền thù lao rồi biến mất mà không để lại bất cứ dấu vết nào.</value>
   </data>

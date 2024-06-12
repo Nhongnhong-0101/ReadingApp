@@ -87,7 +87,8 @@ namespace ReadingApp
             picHistoryTab.Image = Properties.Resources.history_white;
 
             pnMain.Controls.Clear();
-            ucHistory = new UCHistory();
+            ucHistory = new UCHistory(cruUser);
+            ucHistory.loadUCStoryDetails += loadUCStoryDetails;
             ucHistory.loadUCAccount += pnAccountTab_Click;
             pnMain.Controls.Add(ucHistory);
         }
@@ -121,9 +122,9 @@ namespace ReadingApp
             pnMain.Controls.Add(uCPasswordChange);
         }
 
-        private void loadUCStoryDetails(object? sender, EventArgs e)
+        private void loadUCStoryDetails(object? sender, Story e)
         {
-            UCStoryDetails ucStoryDetails = new UCStoryDetails();
+            UCStoryDetails ucStoryDetails = new UCStoryDetails(e);
             pnMain.Controls.Clear();
             pnMain.Controls.Add(ucStoryDetails);
         }
