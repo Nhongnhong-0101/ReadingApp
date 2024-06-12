@@ -10,6 +10,6 @@ namespace ReadingApp.Model
 {
     internal class ConnectionString
     {
-        public static System.String conectionString = @"Data Source=DESKTOP-BUGHUG3\SQLEXPRESS;Initial Catalog = READINGBOOK; Integrated Security = True; Trust Server Certificate=True";
+        public static System.String conectionString = @"Data Source=DESKTOP-BUGHUG3\SQLEXPRESS;Initial Catalog = READINGBOOK; Integrated Security = True; TrustServerCertificate=True";
     }
 }

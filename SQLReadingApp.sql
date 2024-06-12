@@ -16,20 +16,20 @@ create table Stories (
     Image varchar(MAX),
     Title nvarchar(200),
     Description nvarchar(MAX),
-    Type nvarchar(100), -- Thể loại truyện : ttrinh thám, ảo tưởng, ...
+    Type nvarchar(100), -- Thể loại truyện : trinh thám, ảo tưởng, ...
 	Category nvarchar(50), 
-	IsPaid bit DEFAULT 0, 
+    ChapterNumber int,
+    Views int DEFAULT 0,
 	FreeChapters int DEFAULT 0,
 	Price int DEFAULT 0,
 	Status varchar (100),
     Stars float,
     CreatedAt Datetime ,
     LastUpdateAt Datetime,
-	AuthorID int,
-    FOREIGN KEY (AuthorID) REFERENCES Users(UserID),
+	Author nvarchar(50),
     CHECK (Category IN ('truyện tranh', 'truyện chữ')),
-	CHECK (Status IN ('đang sáng tác', 'đã hoàn thành', 'tạm ngưng'))
-)
+	CHECK (Status IN ('Đang cập nhật', 'Full'))
+) 
 
 CREATE TABLE Chapters (
     ChapterID int PRIMARY KEY IDENTITY(1,1),

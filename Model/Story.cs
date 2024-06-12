@@ -27,8 +27,6 @@ namespace ReadingApp.Model
 
         public int NumberChapters { get; set; } = 0;
 
-        public bool IsPaid { get; set; } = false;
-
         public int FreeChapters { get; set; } = 0;
 
         public int Price { get; set; } = 0;
@@ -38,7 +36,9 @@ namespace ReadingApp.Model
 
         public double Star { get; set; } = 0;
 
-        public User Author { get; set; }
+        public int Views { get; set; } = 0;
+
+        public String Author { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime LastUpdatedAt { get; set;}
