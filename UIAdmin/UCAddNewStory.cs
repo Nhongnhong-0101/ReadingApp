@@ -17,20 +17,38 @@ namespace ReadingApp.UIAdmin
     public partial class UCAddNewStory : UserControl
     {
         String selectedImagePath;
+        int maxTitle = 150;
+        int maxDes = 500;
+        System.Windows.Forms.Timer updateTimer ;
+
         Image ImageDF = ReadingApp.Properties.Resources.image;
+
         List<string> types = new List<string>
             {
                 "Ngôn tình",
                 "Bách hợp",
+                "Đam mỹ",
                 "Cung đấu",
                 "Học đường",
                 "Trinh thám",
+                "Viễn tưởng",
+                "Phiêu lưu",
+                
             };
 
-        StoryService storyService = new StoryService();
+        public Story story { get; set; }
+
+        StoryService storyService ;
+
+        //Sự kiện 
+        public delegate void StorySavedEventHandler(object sender, Story story);
+        public event StorySavedEventHandler StorySaved;
         public UCAddNewStory()
         {
             InitializeComponent();
+            InitializeTimer();
+
+            storyService = new StoryService();
 
             this.tbTitle.ForeColor = Color.Gray;
             this.tbAuthor.ForeColor = Color.Gray;
@@ -41,17 +59,35 @@ namespace ReadingApp.UIAdmin
             this.cmbType.SelectedIndex = -1;
         }
 
+        private void InitializeTimer()
+        {
+            updateTimer = new System.Windows.Forms.Timer();
+            updateTimer.Interval = 3000; // 3 giay
+            updateTimer.Tick += new EventHandler(UpdateCountWord);
+            updateTimer.Start();
+        }
+
+        private void UpdateCountWord(object sender, EventArgs e)
+        {
+            int tille = tbTitle.TextLength;
+            int des = tbDes.TextLength;
+            lbCountDes.Text = des.ToString() + "/" + maxDes.ToString() + " từ";
+            lbCountTitle.Text = tille.ToString() + "/" + maxTitle.ToString() + " từ";
+        }
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
             //tao new story 
             try
             {
-                Story story = new Story();
+                story = new Story();
                 if (!String.Equals(tbTitle.Text, "Truyện chưa có tiêu đề")
                     && !String.IsNullOrEmpty(tbDes.Text)
                     && !String.Equals(tbAuthor.Text, "Điền tên tác giả")
                     && (rdTC.Checked || rdTT.Checked)
-                    && cmbType.SelectedIndex != -1)
+                    && cmbType.SelectedIndex != -1
+                    && tbTitle.Text.Length <= maxTitle
+                    && tbDes.Text.Length <= maxDes )
                 {
                     story.Title = tbTitle.Text;
                     story.Description = tbDes.Text;
@@ -98,6 +134,7 @@ namespace ReadingApp.UIAdmin
                     if (storyService.SaveNewStory(story))
                     {
                         MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
+                        OnStorySaved(story);
                     }
                     else
                     {
@@ -117,7 +154,10 @@ namespace ReadingApp.UIAdmin
                 MessageBox.Show("Vui lòng kiểm tra lại các thông tin" + ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
 
-
+        }
+        protected virtual void OnStorySaved(Story e)
+        {
+            StorySaved?.Invoke(this, e);
         }
 
         private void pcImage_Click(object sender, EventArgs e)

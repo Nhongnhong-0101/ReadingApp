@@ -10,7 +10,7 @@ CREATE TABLE Users (
     Email nvarchar(200) NOT NULL , 
 	IsMale bit, 
 	Dob Date,
-    Avatar varchar(100) ,
+    Avatar varchar(100),
 );
 
 create table Stories (

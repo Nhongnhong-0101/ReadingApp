@@ -49,9 +49,14 @@
             panel2 = new Panel();
             rdTT = new RadioButton();
             rdTC = new RadioButton();
+            pcBack = new PictureBox();
+            lbCountTitle = new Label();
+            label10 = new Label();
+            lbCountDes = new Label();
             ((System.ComponentModel.ISupportInitialize)pcImage).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcBack).BeginInit();
             SuspendLayout();
             // 
             // pcImage
@@ -70,6 +75,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lbCountDes);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(lbCountTitle);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(btnCreate);
             panel1.Controls.Add(label8);
@@ -120,18 +128,20 @@
             label8.AllowDrop = true;
             label8.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.Highlight;
-            label8.Location = new Point(390, 494);
+            label8.Location = new Point(404, 494);
             label8.Name = "label8";
-            label8.Size = new Size(150, 47);
+            label8.Size = new Size(145, 87);
             label8.TabIndex = 13;
             label8.Text = "Để trống nếu bạn đăng truyện miễn phí";
             // 
             // tbFreeChap
             // 
+            tbFreeChap.BorderStyle = BorderStyle.None;
             tbFreeChap.Location = new Point(247, 541);
             tbFreeChap.Name = "tbFreeChap";
-            tbFreeChap.Size = new Size(56, 27);
+            tbFreeChap.Size = new Size(56, 20);
             tbFreeChap.TabIndex = 12;
+            tbFreeChap.Text = "0";
             // 
             // label7
             // 
@@ -145,9 +155,10 @@
             // 
             // tbPrice
             // 
+            tbPrice.BorderStyle = BorderStyle.None;
             tbPrice.Location = new Point(168, 494);
             tbPrice.Name = "tbPrice";
-            tbPrice.Size = new Size(202, 27);
+            tbPrice.Size = new Size(202, 20);
             tbPrice.TabIndex = 10;
             // 
             // label6
@@ -181,9 +192,10 @@
             // 
             // tbAuthor
             // 
-            tbAuthor.Location = new Point(21, 392);
+            tbAuthor.BorderStyle = BorderStyle.None;
+            tbAuthor.Location = new Point(24, 392);
             tbAuthor.Name = "tbAuthor";
-            tbAuthor.Size = new Size(533, 27);
+            tbAuthor.Size = new Size(525, 20);
             tbAuthor.TabIndex = 6;
             tbAuthor.Text = "Tác giả truyện 1";
             tbAuthor.Enter += tbAuthor_Enter;
@@ -201,6 +213,7 @@
             // 
             // tbDes
             // 
+            tbDes.BorderStyle = BorderStyle.None;
             tbDes.Location = new Point(21, 189);
             tbDes.Name = "tbDes";
             tbDes.Size = new Size(528, 148);
@@ -281,10 +294,50 @@
             rdTC.Text = "Truyện chữ";
             rdTC.UseVisualStyleBackColor = true;
             // 
+            // pcBack
+            // 
+            pcBack.BackColor = SystemColors.ActiveCaption;
+            pcBack.BackgroundImageLayout = ImageLayout.Stretch;
+            pcBack.Location = new Point(28, 17);
+            pcBack.Name = "pcBack";
+            pcBack.Size = new Size(36, 35);
+            pcBack.TabIndex = 4;
+            pcBack.TabStop = false;
+            // 
+            // lbCountTitle
+            // 
+            lbCountTitle.AutoSize = true;
+            lbCountTitle.ForeColor = SystemColors.Highlight;
+            lbCountTitle.Location = new Point(489, 88);
+            lbCountTitle.Name = "lbCountTitle";
+            lbCountTitle.Size = new Size(65, 20);
+            lbCountTitle.TabIndex = 16;
+            lbCountTitle.Text = "0/150 từ";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = SystemColors.Highlight;
+            label10.Location = new Point(254, 354);
+            label10.Name = "label10";
+            label10.Size = new Size(0, 20);
+            label10.TabIndex = 17;
+            // 
+            // lbCountDes
+            // 
+            lbCountDes.AutoSize = true;
+            lbCountDes.ForeColor = SystemColors.Highlight;
+            lbCountDes.Location = new Point(484, 165);
+            lbCountDes.Name = "lbCountDes";
+            lbCountDes.Size = new Size(65, 20);
+            lbCountDes.TabIndex = 18;
+            lbCountDes.Text = "0/500 từ";
+            // 
             // UCAddNewStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pcBack);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(pcImage);
@@ -295,6 +348,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pcBack).EndInit();
             ResumeLayout(false);
         }
 
@@ -320,5 +374,9 @@
         private Panel panel2;
         private RadioButton rdTT;
         private RadioButton rdTC;
+        private PictureBox pcBack;
+        private Label lbCountTitle;
+        private Label lbCountDes;
+        private Label label10;
     }
 }

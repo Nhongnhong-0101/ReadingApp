@@ -30,9 +30,9 @@
         {
             tbTitle = new TextBox();
             rtbContent = new RichTextBox();
-            label1 = new Label();
+            lbCountWord = new Label();
             btnSave = new Button();
-            label2 = new Label();
+            lbNumChapter = new Label();
             SuspendLayout();
             // 
             // tbTitle
@@ -40,8 +40,9 @@
             tbTitle.BorderStyle = BorderStyle.None;
             tbTitle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tbTitle.Location = new Point(265, 72);
+            tbTitle.Multiline = true;
             tbTitle.Name = "tbTitle";
-            tbTitle.Size = new Size(463, 24);
+            tbTitle.Size = new Size(463, 27);
             tbTitle.TabIndex = 0;
             tbTitle.Text = "Tiêu đề của chương";
             tbTitle.TextAlign = HorizontalAlignment.Center;
@@ -56,15 +57,15 @@
             rtbContent.Text = "";
             rtbContent.TextChanged += rtbContent_TextChanged;
             // 
-            // label1
+            // lbCountWord
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(24, 103);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 20);
-            label1.TabIndex = 2;
-            label1.Text = "0/ 500 Từ";
+            lbCountWord.AutoSize = true;
+            lbCountWord.ForeColor = SystemColors.Highlight;
+            lbCountWord.Location = new Point(24, 103);
+            lbCountWord.Name = "lbCountWord";
+            lbCountWord.Size = new Size(72, 20);
+            lbCountWord.TabIndex = 2;
+            lbCountWord.Text = "0/ 500 Từ";
             // 
             // btnSave
             // 
@@ -77,27 +78,28 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // label2
+            // lbNumChapter
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(24, 18);
-            label2.Name = "label2";
-            label2.Size = new Size(125, 28);
-            label2.TabIndex = 4;
-            label2.Text = "Chương số 1";
+            lbNumChapter.AutoSize = true;
+            lbNumChapter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbNumChapter.Location = new Point(24, 18);
+            lbNumChapter.Name = "lbNumChapter";
+            lbNumChapter.Size = new Size(125, 28);
+            lbNumChapter.TabIndex = 4;
+            lbNumChapter.Text = "Chương số 1";
             // 
             // UCWriteWordStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label2);
+            Controls.Add(lbNumChapter);
             Controls.Add(btnSave);
-            Controls.Add(label1);
+            Controls.Add(lbCountWord);
             Controls.Add(rtbContent);
             Controls.Add(tbTitle);
             Name = "UCWriteWordStory";
             Size = new Size(1000, 800);
+            Load += UCWriteWordStory_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -108,6 +110,7 @@
         private RichTextBox rtbContent;
         private Label label1;
         private Button btnSave;
-        private Label label2;
+        private Label lbNumChapter;
+        private Label lbCountWord;
     }
 }

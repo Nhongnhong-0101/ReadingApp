@@ -1,4 +1,6 @@
-﻿using ReadingApp.UIAdmin;
+﻿using ReadingApp.Model;
+using ReadingApp.UIAdmin;
+using ReadingApp.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +15,62 @@ namespace ReadingApp
 {
     public partial class FormTest : Form
     {
+        UCHome ucHome;
+
+        User Admin;
         public FormTest()
         {
             InitializeComponent();
-            UCAddNewStory uC = new UCAddNewStory();
 
-            this.Controls.Add(uC);  
+            Admin = new User();
+            Admin.FullName = "Admin";
+            ucHome = new UCHome(Admin);
 
+            this.Controls.Add(ucHome);
+
+            ucHome.ShowAddNewStr += UcHome_ShowAddNewStr;
+
+
+        }
+
+        private void UcHome_ShowAddNewStr(object sender, EventArgs e)
+        {
+            try
+            {
+                UCAddNewStory uCAddNewStory = new UCAddNewStory();
+                this.Controls.Clear();
+                this.Controls.Add(uCAddNewStory);
+
+                uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
+            }
+            catch { 
+
+            }
+        }
+
+        private void UCAddNewStory_StorySaved(object sender, Story story)
+        {
+            try
+            {
+                if(story.Category == "truyện tranh")
+                {
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
+                    
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteImageStory);
+
+                }
+                else
+                {
+                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
+                    uCWriteWordStory.story = story; 
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteWordStory);
+                }
+                
+            }
+            catch (Exception ex) { 
+            }
         }
     }
 }
