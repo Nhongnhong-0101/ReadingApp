@@ -33,7 +33,7 @@
             lbCountWord = new Label();
             pnImages = new Panel();
             btnAddImage = new Button();
-            button1 = new Button();
+            btnSave = new Button();
             SuspendLayout();
             // 
             // lbNumChapter
@@ -88,20 +88,21 @@
             btnAddImage.UseVisualStyleBackColor = true;
             btnAddImage.Click += btnAddImage_Click;
             // 
-            // button1
+            // btnSave
             // 
-            button1.Location = new Point(889, 92);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 9;
-            button1.Text = "Đăng ";
-            button1.UseVisualStyleBackColor = true;
+            btnSave.Location = new Point(889, 92);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 29);
+            btnSave.TabIndex = 9;
+            btnSave.Text = "Đăng";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // UCWriteImageStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button1);
+            Controls.Add(btnSave);
             Controls.Add(btnAddImage);
             Controls.Add(pnImages);
             Controls.Add(lbCountWord);
@@ -120,6 +121,6 @@
         private Label lbCountWord;
         private Panel pnImages;
         private Button btnAddImage;
-        private Button button1;
+        private Button btnSave;
     }
 }

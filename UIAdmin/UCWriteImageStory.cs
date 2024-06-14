@@ -14,13 +14,13 @@ namespace ReadingApp.UIAdmin
 {
     public partial class UCWriteImageStory : UserControl
     {
-        //TODO: chưa xóa và thay đổi hình được
         int maxImage = 30;
 
-        private List<String> imagePaths = new List<string>();
+        private Dictionary<int, string> imagePaths = new Dictionary<int, string>();
+
         private ContextMenuStrip contextMenu;
 
-        public Story story {  get; set; }
+        public Story story { get; set; }
         public UCWriteImageStory()
         {
             InitializeComponent();
@@ -44,7 +44,8 @@ namespace ReadingApp.UIAdmin
                 {
                     foreach (string selectedImagePath in openFileDialog.FileNames)
                     {
-                        imagePaths.Add(selectedImagePath);
+                        int newSTT = imagePaths.Count + 1;
+                        imagePaths[newSTT] = selectedImagePath;
                     }
 
                     LoadImages();
@@ -58,13 +59,17 @@ namespace ReadingApp.UIAdmin
             pnImages.Controls.Clear();
 
             Point locationImage = new Point(0, 0);
-            int stt = 1;
 
-            foreach (string imagePath in imagePaths)
+            foreach (var row in imagePaths)
             {
+                int stt = row.Key;
+                string imagePath = row.Value;
+
                 PictureBox image = new PictureBox();
                 image.SizeMode = PictureBoxSizeMode.AutoSize;
                 image.Image = System.Drawing.Image.FromFile(imagePath);
+                image.Tag = stt;
+
                 image.MouseClick += Image_MouseClick; // Gắn sự kiện MouseClick
 
                 pnImages.Controls.Add(image);
@@ -76,7 +81,7 @@ namespace ReadingApp.UIAdmin
 
                 Point locationStt = new Point();
                 locationStt.Y = image.Location.Y + image.Height + 10;
-                locationStt.X = image.Location.X + image.Width/2;
+                locationStt.X = image.Location.X + image.Width / 2;
                 locationStt.X = 300;
 
                 Label lbStt = new Label();
@@ -86,20 +91,32 @@ namespace ReadingApp.UIAdmin
 
                 pnImages.Controls.Add(lbStt);
 
-                stt++;
             }
 
-            lbNumChapter.Text = (stt - 1).ToString() + " hình";
+            lbCountWord.Text = imagePaths.Count.ToString() + " hình";
         }
         private void DeleteImage(object sender, EventArgs e)
         {
             if (contextMenu.Tag is PictureBox image)
             {
+                int stt = (int)image.Tag;
+                imagePaths.Remove(stt);
+                //cập nhập lại stt 
+                // nếu kv có value >= stt thì mới thay đổi
+                var updatedImagePaths = new Dictionary<int, string>();
 
-                string imagePathToRemove = imagePaths[pnImages.Controls.IndexOf(image)];
+                foreach (var row in imagePaths)
+                {
+                    int key = row.Key;
+                    string value = row.Value;
+                    if (key > stt)
+                    {
+                        key = key - 1;
+                    }
+                    updatedImagePaths[key] = value;
+                }
 
-                MessageBox.Show(pnImages.Controls.IndexOf(image).ToString());
-                imagePaths.Remove(imagePathToRemove);
+                imagePaths = updatedImagePaths;
 
                 LoadImages();
             }
@@ -114,9 +131,8 @@ namespace ReadingApp.UIAdmin
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string newImagePath = openFileDialog.FileName;
-
-                        int index = pnImages.Controls.IndexOf(image);
-                        imagePaths[index] = newImagePath;
+                        int stt = (int)image.Tag;
+                        imagePaths[stt] = newImagePath;
 
                         // Cập nhật hình ảnh cho PictureBox
                         image.Image = System.Drawing.Image.FromFile(newImagePath);
@@ -127,12 +143,28 @@ namespace ReadingApp.UIAdmin
 
         private void Image_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Left)
             {
                 PictureBox clickedImage = sender as PictureBox;
-                contextMenu.Tag = clickedImage; 
+                contextMenu.Tag = clickedImage;
                 contextMenu.Show(Cursor.Position);
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn lưu không?", "Xác nhận lưu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                SaveData();
+            }
+        }
+
+        private void SaveData()
+        {
+            //mỗi một string trong dictionry thì lưu 1 lần 
+
         }
     }
 }

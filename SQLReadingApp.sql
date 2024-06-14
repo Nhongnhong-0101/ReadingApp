@@ -45,6 +45,7 @@ CREATE TABLE ChapterImages (
     ImageID int PRIMARY KEY IDENTITY(1,1),
     ChapterID int,
     ImageURL varchar(MAX),
+	ImageOrder int, 
     FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
 );
 
@@ -98,9 +99,4 @@ CREATE TABLE Notifications (
 );
 
 Drop database READINGBOOK
-
-select * from Stories
-INSERT INTO Stories (Image, Title, Description, Type, Category, ChapterNumber, Views, FreeChapters, Price, Status, Stars, CreatedAt, LastUpdateAt, Author)
-VALUES ('image_link.jpg', 'Title Example', 'Description Example', 'ảo tưởng', 'truyện tranh', 10, 100, 2, 5000, 'Đang cập nhật', 4.5, GETDATE(), GETDATE(), 'Author Name');
-
 
