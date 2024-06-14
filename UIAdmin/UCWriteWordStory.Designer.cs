@@ -33,6 +33,7 @@
             lbCountWord = new Label();
             btnSave = new Button();
             lbNumChapter = new Label();
+            btnNew = new Button();
             SuspendLayout();
             // 
             // tbTitle
@@ -88,10 +89,20 @@
             lbNumChapter.TabIndex = 4;
             lbNumChapter.Text = "Chương số 1";
             // 
+            // btnNew
+            // 
+            btnNew.Location = new Point(880, 101);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(101, 34);
+            btnNew.TabIndex = 11;
+            btnNew.Text = "Chương mới";
+            btnNew.UseVisualStyleBackColor = true;
+            // 
             // UCWriteWordStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnNew);
             Controls.Add(lbNumChapter);
             Controls.Add(btnSave);
             Controls.Add(lbCountWord);
@@ -112,5 +123,6 @@
         private Button btnSave;
         private Label lbNumChapter;
         private Label lbCountWord;
+        private Button btnNew;
     }
 }

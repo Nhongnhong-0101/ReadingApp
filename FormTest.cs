@@ -55,7 +55,9 @@ namespace ReadingApp
                 if(story.Category == "truyện tranh")
                 {
                     UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
-                    
+                    uCWriteImageStory.story = story;
+
+
                     this.Controls.Clear();
                     this.Controls.Add(uCWriteImageStory);
 

@@ -130,8 +130,9 @@ namespace ReadingApp.UIAdmin
                     story.CreatedAt = created;
 
                     story.LastUpdatedAt = created;
+                    story.StoryID = storyService.SaveNewStory(story);
 
-                    if (storyService.SaveNewStory(story))
+                    if (story.StoryID  != -1)
                     {
                         MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
                         OnStorySaved(story);

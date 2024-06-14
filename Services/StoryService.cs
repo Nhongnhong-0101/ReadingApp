@@ -11,8 +11,9 @@ namespace ReadingApp.Services
 {
     public class StoryService
     {
-        public bool SaveNewStory(Story story)
+        public int SaveNewStory(Story story)
         {
+            int idStory = -1;
             var validCategories = new List<string> { "truyện tranh", "truyện chữ" };
             var validStatuses = new List<string> { "Đang cập nhật", "Full" };
 
@@ -27,7 +28,8 @@ namespace ReadingApp.Services
 
                 string query = @"
                 INSERT INTO Stories (Image, Title, Description, Type, Category, ChapterNumber, FreeChapters, Price, Status, Stars, Views, Author, CreatedAt, LastUpdateAt)
-                VALUES (@Image, @Title, @Description, @Type, @Category, @ChapterNumber, @FreeChapters, @Price, @Status, @Stars, @Views, @Author, @CreatedAt, @LastUpdateAt)";
+                VALUES (@Image, @Title, @Description, @Type, @Category, @ChapterNumber, @FreeChapters, @Price, @Status, @Stars, @Views, @Author, @CreatedAt, @LastUpdateAt);
+                SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -46,16 +48,11 @@ namespace ReadingApp.Services
                     command.Parameters.AddWithValue("@CreatedAt", story.CreatedAt);
                     command.Parameters.AddWithValue("@LastUpdateAt", story.LastUpdatedAt);
 
-                    foreach (SqlParameter parameter in command.Parameters)
-                    {
-                        Console.WriteLine($"Parameter Name: {parameter.ParameterName}, Value: {parameter.Value}");
-                    }
-                
-                command.ExecuteNonQuery();
+                    idStory = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
 
-            return true;
+            return idStory;
 
         }
     }

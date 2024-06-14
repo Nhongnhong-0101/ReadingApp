@@ -45,7 +45,7 @@ CREATE TABLE ChapterImages (
     ImageID int PRIMARY KEY IDENTITY(1,1),
     ChapterID int,
     ImageURL varchar(MAX),
-	ImageOrder int, 
+	ImageOrder int, --stt cho hình
     FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
 );
 

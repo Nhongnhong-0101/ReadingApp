@@ -34,6 +34,7 @@
             pnImages = new Panel();
             btnAddImage = new Button();
             btnSave = new Button();
+            btnNew = new Button();
             SuspendLayout();
             // 
             // lbNumChapter
@@ -71,16 +72,16 @@
             // 
             pnImages.AutoScroll = true;
             pnImages.BackColor = SystemColors.AppWorkspace;
-            pnImages.Location = new Point(23, 133);
+            pnImages.Location = new Point(80, 133);
             pnImages.Name = "pnImages";
             pnImages.Padding = new Padding(0, 20, 0, 20);
-            pnImages.Size = new Size(960, 590);
+            pnImages.Size = new Size(850, 590);
             pnImages.TabIndex = 8;
             // 
             // btnAddImage
             // 
             btnAddImage.FlatStyle = FlatStyle.Flat;
-            btnAddImage.Location = new Point(447, 740);
+            btnAddImage.Location = new Point(305, 742);
             btnAddImage.Name = "btnAddImage";
             btnAddImage.Size = new Size(94, 29);
             btnAddImage.TabIndex = 2;
@@ -90,18 +91,28 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(889, 92);
+            btnSave.Location = new Point(579, 742);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 29);
             btnSave.TabIndex = 9;
-            btnSave.Text = "Đăng";
+            btnSave.Text = "Đăng tải";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
+            // 
+            // btnNew
+            // 
+            btnNew.Location = new Point(829, 87);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(101, 34);
+            btnNew.TabIndex = 10;
+            btnNew.Text = "Chương mới";
+            btnNew.UseVisualStyleBackColor = true;
             // 
             // UCWriteImageStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnNew);
             Controls.Add(btnSave);
             Controls.Add(btnAddImage);
             Controls.Add(pnImages);
@@ -122,5 +133,6 @@
         private Panel pnImages;
         private Button btnAddImage;
         private Button btnSave;
+        private Button btnNew;
     }
 }

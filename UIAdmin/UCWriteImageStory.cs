@@ -1,4 +1,5 @@
 ﻿using ReadingApp.Model;
+using ReadingApp.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Text.RegularExpressions;
 
 namespace ReadingApp.UIAdmin
 {
@@ -21,8 +23,14 @@ namespace ReadingApp.UIAdmin
         private ContextMenuStrip contextMenu;
 
         public Story story { get; set; }
+
+        public Chapter chapter;
+
+        public ChapterService chapterService { get; set; }
         public UCWriteImageStory()
         {
+            chapter = new Chapter();
+            chapterService = new ChapterService();
             InitializeComponent();
             InitializeContextMenu();
         }
@@ -65,17 +73,44 @@ namespace ReadingApp.UIAdmin
                 int stt = row.Key;
                 string imagePath = row.Value;
 
+                System.Drawing.Image originalImage = System.Drawing.Image.FromFile(imagePath);
+
+
                 PictureBox image = new PictureBox();
-                image.SizeMode = PictureBoxSizeMode.AutoSize;
-                image.Image = System.Drawing.Image.FromFile(imagePath);
+                image.Width = 800;
+                image.Height = originalImage.Height;
+
+                
+                image.SizeMode = PictureBoxSizeMode.Zoom;
+                image.Image = originalImage;
                 image.Tag = stt;
+
+                if (originalImage.Width > 800)
+                {
+                    int newWidth = 800;
+                    int newHeight = (int)(originalImage.Height * (800.0 / originalImage.Width));
+
+                    image.Height = newHeight;
+
+                    Bitmap resizedImage = new Bitmap(originalImage, newWidth, newHeight);
+
+                    // Set the PictureBox to the resized image
+                    image.Image = resizedImage;
+                }
+                else
+                {
+                    // Set the PictureBox to the original image
+                    image.Image = originalImage;
+                    
+                }
 
                 image.MouseClick += Image_MouseClick; // Gắn sự kiện MouseClick
 
-                pnImages.Controls.Add(image);
 
                 locationImage.X = pnImages.Width / 2 - image.Width / 2;
                 image.Location = locationImage;
+
+                pnImages.Controls.Add(image);
 
                 locationImage.Y += image.Height + 40;
 
@@ -93,7 +128,7 @@ namespace ReadingApp.UIAdmin
 
             }
 
-            lbCountWord.Text = imagePaths.Count.ToString() + " hình";
+            lbCountWord.Text = imagePaths.Count.ToString() +"/"+ maxImage.ToString() + " hình";
         }
         private void DeleteImage(object sender, EventArgs e)
         {
@@ -153,18 +188,72 @@ namespace ReadingApp.UIAdmin
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn lưu không?", "Xác nhận lưu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if(btnSave.Text == "Chỉnh sửa")
             {
-                SaveData();
+                btnSave.Text = "Đăng tải";
+                btnAddImage.Visible = true;
+                tbTitle.Enabled = true;
+                btnNew.Visible = false;
+
+            }   
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn đăng không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    SaveData();
+                }
             }
         }
 
         private void SaveData()
         {
-            //mỗi một string trong dictionry thì lưu 1 lần 
+            try {
+                if (!String.IsNullOrWhiteSpace(tbTitle.Text) 
+                    && tbTitle.Text != "Tiêu đề của chương"
+                    && imagePaths.Count <= 30)
+                {
+                    chapter.Title = tbTitle.Text.Trim();
+                    chapter.ChapterNumber = ExtractNumberFromString(lbNumChapter.Text);
+                    chapter.CreatedAt = DateTime.Now;
 
+                    if (chapterService.SaveNewImageChapter(story.StoryID, chapter, imagePaths))
+                    {
+                        MessageBox.Show("Bạn đã lưu chương mới thành công", "Thông báo");
+
+                        btnSave.Text = "Chỉnh sửa";
+                        btnAddImage.Visible = false;
+                        tbTitle.Enabled = false;
+                        btnNew.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đã xảy ra lõi. Hãy kiểm tra lại các thông tin", "Thông báo");
+                    }
+                }
+            } 
+            catch(Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lõi. " + ex.Message , "Thông báo");
+
+            }
         }
+        public static int ExtractNumberFromString(string input)
+        {
+            // Regular expression to match a sequence of digits
+            Regex regex = new Regex(@"\d+");
+            Match match = regex.Match(input);
+
+            if (match.Success)
+            {
+                return int.Parse(match.Value);
+            }
+            else
+            {
+                throw new FormatException("No digits found in the input string.");
+            }
+        }
+
     }
 }
