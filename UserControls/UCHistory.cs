@@ -18,6 +18,7 @@ namespace ReadingApp.UserControls
         private User user;
         private List<Story> stories = new List<Story>();
         public EventHandler<Story> loadUCStoryDetails;
+        private List<Story> searchStories = new List<Story>();
         public UCHistory(User user)
         {
             InitializeComponent();
@@ -52,6 +53,23 @@ namespace ReadingApp.UserControls
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             loadUCAccount?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                searchStories.Clear();
+                string searchText = txtSearch.Text.ToLower();
+                foreach (Story story in stories)
+                {
+                    if (story.Title.ToLower().Contains(searchText) || story.Author.ToLower().Contains(searchText))
+                    {
+                        searchStories.Add(story);
+                    }
+                }
+                loadFlowPanel(searchStories);
+            }
         }
     }
 }

@@ -133,6 +133,7 @@
             txtSearch.PlaceholderText = "Tìm kiếm tại đây...";
             txtSearch.Size = new Size(1100, 38);
             txtSearch.TabIndex = 4;
+            txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // pictureBox2
             // 

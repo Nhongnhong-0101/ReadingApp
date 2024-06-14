@@ -36,16 +36,20 @@
             lbIsFull = new Label();
             lbName = new Label();
             lbAuthor = new Label();
+            picDelete = new PictureBox();
+            picAdd = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnStar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picIsFee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picDelete).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).BeginInit();
             SuspendLayout();
             // 
             // picImage
             // 
             picImage.Image = Properties.Resources.temp_image_story;
-            picImage.Location = new Point(33, 0);
+            picImage.Location = new Point(32, 0);
             picImage.Name = "picImage";
             picImage.Size = new Size(390, 530);
             picImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -132,11 +136,37 @@
             lbAuthor.Text = "Thiên Hạ Thủy";
             lbAuthor.Click += UCStoryItem_Click;
             // 
+            // picDelete
+            // 
+            picDelete.Image = Properties.Resources.trash_50;
+            picDelete.Location = new Point(380, 532);
+            picDelete.Name = "picDelete";
+            picDelete.Size = new Size(40, 40);
+            picDelete.SizeMode = PictureBoxSizeMode.StretchImage;
+            picDelete.TabIndex = 10;
+            picDelete.TabStop = false;
+            picDelete.Visible = false;
+            picDelete.Click += picDelete_Click;
+            // 
+            // picAdd
+            // 
+            picAdd.Image = Properties.Resources.style_fill_add;
+            picAdd.Location = new Point(383, 532);
+            picAdd.Name = "picAdd";
+            picAdd.Size = new Size(40, 40);
+            picAdd.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAdd.TabIndex = 11;
+            picAdd.TabStop = false;
+            picAdd.Visible = false;
+            picAdd.Click += picAdd_Click;
+            // 
             // UCStoryItem
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(picAdd);
+            Controls.Add(picDelete);
             Controls.Add(lbAuthor);
             Controls.Add(lbName);
             Controls.Add(lbIsFull);
@@ -152,6 +182,8 @@
             pnStar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIsFee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picDelete).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,5 +197,7 @@
         private Label lbName;
         private Label lbAuthor;
         private Label lbStar;
+        public PictureBox picDelete;
+        public PictureBox picAdd;
     }
 }

@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCStoryDetails));
             lbStatus = new Label();
             picImage = new PictureBox();
             lbName = new Label();
             pnTitle = new Panel();
+            lbInfor = new Label();
+            cbReadingList = new ComboBox();
+            btnAddStoryIntoRL = new Button();
             pnPrice = new Panel();
             lbPrice = new Label();
             pictureBox1 = new PictureBox();
@@ -68,6 +72,7 @@
             picStar2 = new PictureBox();
             picStar1 = new PictureBox();
             picAvat = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
             pnPrice.SuspendLayout();
@@ -114,12 +119,15 @@
             lbName.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lbName.Location = new Point(3, 0);
             lbName.Name = "lbName";
-            lbName.Size = new Size(1615, 50);
+            lbName.Size = new Size(976, 50);
             lbName.TabIndex = 12;
             lbName.Text = "Nhớ mãi không quên";
             // 
             // pnTitle
             // 
+            pnTitle.Controls.Add(lbInfor);
+            pnTitle.Controls.Add(cbReadingList);
+            pnTitle.Controls.Add(btnAddStoryIntoRL);
             pnTitle.Controls.Add(pnPrice);
             pnTitle.Controls.Add(lbIsFree);
             pnTitle.Controls.Add(pnStar);
@@ -128,6 +136,43 @@
             pnTitle.Name = "pnTitle";
             pnTitle.Size = new Size(1618, 95);
             pnTitle.TabIndex = 14;
+            // 
+            // lbInfor
+            // 
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(985, 61);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(630, 25);
+            lbInfor.TabIndex = 24;
+            lbInfor.Text = "Thêm vào danh sách đọc thành công!";
+            lbInfor.TextAlign = ContentAlignment.MiddleLeft;
+            lbInfor.Visible = false;
+            // 
+            // cbReadingList
+            // 
+            cbReadingList.FormattingEnabled = true;
+            cbReadingList.Location = new Point(985, 9);
+            cbReadingList.Name = "cbReadingList";
+            cbReadingList.Size = new Size(350, 38);
+            cbReadingList.TabIndex = 23;
+            cbReadingList.Visible = false;
+            cbReadingList.SelectedIndexChanged += cbReadingList_SelectedIndexChanged;
+            // 
+            // btnAddStoryIntoRL
+            // 
+            btnAddStoryIntoRL.BackColor = Color.ForestGreen;
+            btnAddStoryIntoRL.FlatStyle = FlatStyle.Flat;
+            btnAddStoryIntoRL.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAddStoryIntoRL.ForeColor = Color.White;
+            btnAddStoryIntoRL.Location = new Point(1341, 0);
+            btnAddStoryIntoRL.Name = "btnAddStoryIntoRL";
+            btnAddStoryIntoRL.Size = new Size(277, 61);
+            btnAddStoryIntoRL.TabIndex = 22;
+            btnAddStoryIntoRL.Text = "Thêm vào danh sách đọc ";
+            btnAddStoryIntoRL.UseVisualStyleBackColor = false;
+            btnAddStoryIntoRL.Click += btnAddStoryIntoRL_Click;
             // 
             // pnPrice
             // 
@@ -502,6 +547,11 @@
             picAvat.TabIndex = 4;
             picAvat.TabStop = false;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
+            // 
             // UCStoryDetails
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -582,5 +632,9 @@
         private Panel pnPrice;
         private Label lbPrice;
         private PictureBox pictureBox1;
+        private ComboBox cbReadingList;
+        private Button btnAddStoryIntoRL;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

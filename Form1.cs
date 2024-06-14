@@ -74,7 +74,7 @@ namespace ReadingApp
             picLibraryTab.Image = Properties.Resources.library_white;
 
             pnMain.Controls.Clear();
-            ucLibrary = new UCLibrary();
+            ucLibrary = new UCLibrary(cruUser);
             ucLibrary.loadUCAccount += pnAccountTab_Click;
             pnMain.Controls.Add(ucLibrary);
         }

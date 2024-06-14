@@ -28,7 +28,7 @@ namespace ReadingApp.UserControls
         private List<Story> outs = new List<Story>();
         private List<Story> star = new List<Story>();
         private List<Story> lasted = new List<Story>();
-        private Story cruStory = new Story();
+        List<Story> searchStories = new List<Story>();
 
         public UCHome(User user)
         {
@@ -41,7 +41,7 @@ namespace ReadingApp.UserControls
             picAvat.Image = Image.FromFile(@user.Avatar);
 
             stories.Clear();
-            stories = StoriesServices.getAllStories();
+            stories = StoriesServices.get24Stories();
             loadFlowPanel(stories);
 
             lasted.Clear();
@@ -97,7 +97,7 @@ namespace ReadingApp.UserControls
             lbName.AutoSize = false;
             lbName.Size = new System.Drawing.Size(330, 40);
             lbName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            
+
             return lbName;
         }
 
@@ -119,7 +119,7 @@ namespace ReadingApp.UserControls
             flowMain.Controls.Clear();
             for (int i = 0; i < stories.Count; i++)
             {
-                UCStoryItem ucStoryItem = new UCStoryItem(stories[i]);                
+                UCStoryItem ucStoryItem = new UCStoryItem(stories[i]);
                 ucStoryItem.loadUCStoryDetails += _loadUCStoryDetails;
                 flowMain.Controls.Add(ucStoryItem);
             }
@@ -312,6 +312,24 @@ namespace ReadingApp.UserControls
             stories.Clear();
             stories = StoriesServices.getSearchStories(cbType.Text, cbArrange.Text, isStory, isComic, isFull, isUpdating, isFree, isFee);
             loadFlowPanel(stories);
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                List<Story> allstories = StoriesServices.getAllStories();
+                searchStories.Clear();
+                string searchText = txtSearch.Text.ToLower();
+                foreach (Story story in allstories)
+                {
+                    if (story.Title.ToLower().Contains(searchText) || story.Author.ToLower().Contains(searchText))
+                    {
+                        searchStories.Add(story);
+                    }
+                }
+                loadFlowPanel(searchStories);
+            }
         }
     }
 }
