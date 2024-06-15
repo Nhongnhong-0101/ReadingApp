@@ -776,6 +776,7 @@
         private Panel panelState;
         private Panel pnOutstanding;
         private Label label22;
+        private Button btnWrite;
         private Panel pnStar;
         private Label label12;
         private FlowLayoutPanel flowLasted;

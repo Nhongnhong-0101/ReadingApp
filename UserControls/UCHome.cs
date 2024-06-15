@@ -41,7 +41,7 @@ namespace ReadingApp.UserControls
 
         private void UCHome_Load(object sender, EventArgs e)
         {
-            picAvat.Image = Image.FromFile(@user.Avatar);
+            //picAvat.Image = Image.FromFile(@user.Avatar);
 
             stories.Clear();
             stories = StoriesServices.get24Stories();

@@ -45,7 +45,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -94,7 +94,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                   // story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -143,7 +143,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -192,7 +192,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -239,7 +239,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -287,7 +287,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -349,7 +349,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
@@ -398,7 +398,7 @@ namespace ReadingApp.Services
                                     story.Status = reader["status"].ToString();
                                     story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
                                     story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
-                                    story.IsPaid = bool.Parse(reader["ispaid"].ToString());
+                                    //story.IsPaid = bool.Parse(reader["ispaid"].ToString());
                                     story.FreeChapters = int.Parse(reader["freechapters"].ToString());
                                     story.Price = int.Parse(reader["price"].ToString());
                                     story.Views = int.Parse(reader["views"].ToString());
