@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReadingApp.Model;
 using ReadingApp.UIAdmin;
+using ReadingApp.Services;
 
 namespace ReadingApp.UserControls
 {
@@ -21,12 +23,15 @@ namespace ReadingApp.UserControls
         private bool isFree = false;
         private bool isFee = false;
         public EventHandler loadUCAccount;
-        public EventHandler loadUCStoryDetails;
+        public EventHandler<Story> loadUCStoryDetails;
         private User user;
-
         public delegate void ShowAddNewStoryEventHander(object sender, EventArgs e);
         public event ShowAddNewStoryEventHander ShowAddNewStr;
-
+        private List<Story> stories = new List<Story>();
+        private List<Story> outs = new List<Story>();
+        private List<Story> star = new List<Story>();
+        private List<Story> lasted = new List<Story>();
+        List<Story> searchStories = new List<Story>();
 
         public UCHome(User user)
         {
@@ -35,14 +40,89 @@ namespace ReadingApp.UserControls
         }
 
         private void UCHome_Load(object sender, EventArgs e)
-        {            
+        {
             picAvat.Image = Image.FromFile(@user.Avatar);
-            //picImage.Image = Image.FromFile(@song.Image);
 
-            flowMain.Controls.Clear();
-            for (int i = 0; i <= 12; i++)
+            stories.Clear();
+            stories = StoriesServices.get24Stories();
+            loadFlowPanel(stories);
+
+            lasted.Clear();
+            flowLasted.Controls.Clear();
+            lasted = StoriesServices.getLastedStories();
+            for (int i = 0; i < 4; i++)
             {
-                UCStoryItem ucStoryItem = new UCStoryItem();
+                int index = i;
+                Label lbName = labelName(lasted[index].Title);
+                Label lbAuthor = labelAuthor(lasted[index].Author);
+                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+
+                flowLasted.Controls.Add(lbName);
+                flowLasted.Controls.Add(lbAuthor);
+            }
+
+            outs.Clear();
+            flowOuts.Controls.Clear();
+            outs = StoriesServices.getOutsStories();
+            for (int i = 0; i < 4; i++)
+            {
+                int index = i;
+                Label lbName = labelName(outs[index].Title);
+                Label lbAuthor = labelAuthor(outs[index].Author);
+                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+
+                flowOuts.Controls.Add(lbName);
+                flowOuts.Controls.Add(lbAuthor);
+            }
+
+            star.Clear();
+            flowStar.Controls.Clear();
+            star = StoriesServices.getStarStories();
+            for (int i = 0; i < 4; i++)
+            {
+                int index = i;
+                Label lbName = labelName(star[index].Title);
+                Label lbAuthor = labelAuthor(star[index].Author);
+                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+
+                flowStar.Controls.Add(lbName);
+                flowStar.Controls.Add(lbAuthor);
+            }
+        }
+
+        private Label labelName(string name)
+        {
+            Label lbName = new Label();
+            lbName.Text = name;
+            lbName.AutoSize = false;
+            lbName.Size = new System.Drawing.Size(330, 40);
+            lbName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+
+            return lbName;
+        }
+
+        private Label labelAuthor(string author)
+        {
+            Label lbName = new Label();
+            lbName.Text = author;
+            lbName.AutoSize = false;
+            lbName.Size = new System.Drawing.Size(330, 40);
+            lbName.Padding = new Padding(2, 0, 0, 0);
+            lbName.Font = new Font("Segoe UI", 8F, FontStyle.Regular);
+            lbName.ForeColor = System.Drawing.Color.Gray;
+
+            return lbName;
+        }
+
+        private void loadFlowPanel(List<Story> stories)
+        {
+            flowMain.Controls.Clear();
+            for (int i = 0; i < stories.Count; i++)
+            {
+                UCStoryItem ucStoryItem = new UCStoryItem(stories[i]);
                 ucStoryItem.loadUCStoryDetails += _loadUCStoryDetails;
                 flowMain.Controls.Add(ucStoryItem);
             }
@@ -68,7 +148,7 @@ namespace ReadingApp.UserControls
             ShowAddNewStr?.Invoke(this, e);
         }
 
-        private void _loadUCStoryDetails(object? sender, EventArgs e)
+        private void _loadUCStoryDetails(object? sender, Story e)
         {
             loadUCStoryDetails?.Invoke(this, e);
         }
@@ -83,6 +163,7 @@ namespace ReadingApp.UserControls
             {
                 panelType.Visible = true;
             }
+
         }
 
         private void hoverType(Label label)
@@ -166,6 +247,8 @@ namespace ReadingApp.UserControls
             flowMain.Location = new System.Drawing.Point(0, 270);
             panelState.Location = new System.Drawing.Point(1790, 270);
             panelType.Visible = false;
+
+            btnSearch_Click(this, EventArgs.Empty);
         }
 
         private void lbNgonTinh_Click(object sender, EventArgs e)
@@ -245,6 +328,31 @@ namespace ReadingApp.UserControls
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             loadUCAccount?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            stories.Clear();
+            stories = StoriesServices.getSearchStories(cbType.Text, cbArrange.Text, isStory, isComic, isFull, isUpdating, isFree, isFee);
+            loadFlowPanel(stories);
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                List<Story> allstories = StoriesServices.getAllStories();
+                searchStories.Clear();
+                string searchText = txtSearch.Text.ToLower();
+                foreach (Story story in allstories)
+                {
+                    if (story.Title.ToLower().Contains(searchText) || story.Author.ToLower().Contains(searchText))
+                    {
+                        searchStories.Add(story);
+                    }
+                }
+                loadFlowPanel(searchStories);
+            }
         }
     }
 }

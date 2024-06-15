@@ -30,22 +30,26 @@
         {
             picImage = new PictureBox();
             pnStar = new Panel();
-            label1 = new Label();
+            lbStar = new Label();
             picStar = new PictureBox();
-            pictureBox5 = new PictureBox();
+            picIsFee = new PictureBox();
             lbIsFull = new Label();
             lbName = new Label();
             lbAuthor = new Label();
+            picDelete = new PictureBox();
+            picAdd = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnStar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picIsFee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picDelete).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).BeginInit();
             SuspendLayout();
             // 
             // picImage
             // 
             picImage.Image = Properties.Resources.temp_image_story;
-            picImage.Location = new Point(33, 0);
+            picImage.Location = new Point(32, 0);
             picImage.Name = "picImage";
             picImage.Size = new Size(390, 530);
             picImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -55,7 +59,7 @@
             // 
             // pnStar
             // 
-            pnStar.Controls.Add(label1);
+            pnStar.Controls.Add(lbStar);
             pnStar.Controls.Add(picStar);
             pnStar.Location = new Point(33, 532);
             pnStar.Name = "pnStar";
@@ -63,16 +67,16 @@
             pnStar.TabIndex = 1;
             pnStar.Click += UCStoryItem_Click;
             // 
-            // label1
+            // lbStar
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11F);
-            label1.Location = new Point(42, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(49, 36);
-            label1.TabIndex = 4;
-            label1.Text = "3.5";
-            label1.Click += UCStoryItem_Click;
+            lbStar.AutoSize = true;
+            lbStar.Font = new Font("Segoe UI", 11F);
+            lbStar.Location = new Point(42, 0);
+            lbStar.Name = "lbStar";
+            lbStar.Size = new Size(49, 36);
+            lbStar.TabIndex = 4;
+            lbStar.Text = "3.5";
+            lbStar.Click += UCStoryItem_Click;
             // 
             // picStar
             // 
@@ -86,17 +90,17 @@
             picStar.TabStop = false;
             picStar.Click += UCStoryItem_Click;
             // 
-            // pictureBox5
+            // picIsFee
             // 
-            pictureBox5.BackColor = Color.Transparent;
-            pictureBox5.Image = Properties.Resources.cost;
-            pictureBox5.Location = new Point(141, 532);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(40, 40);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 4;
-            pictureBox5.TabStop = false;
-            pictureBox5.Click += UCStoryItem_Click;
+            picIsFee.BackColor = Color.Transparent;
+            picIsFee.Image = Properties.Resources.cost;
+            picIsFee.Location = new Point(141, 532);
+            picIsFee.Name = "picIsFee";
+            picIsFee.Size = new Size(40, 40);
+            picIsFee.SizeMode = PictureBoxSizeMode.StretchImage;
+            picIsFee.TabIndex = 4;
+            picIsFee.TabStop = false;
+            picIsFee.Click += UCStoryItem_Click;
             // 
             // lbIsFull
             // 
@@ -127,30 +131,59 @@
             lbAuthor.ForeColor = Color.Gray;
             lbAuthor.Location = new Point(38, 615);
             lbAuthor.Name = "lbAuthor";
-            lbAuthor.Size = new Size(385, 30);
+            lbAuthor.Size = new Size(385, 43);
             lbAuthor.TabIndex = 7;
             lbAuthor.Text = "Thiên Hạ Thủy";
             lbAuthor.Click += UCStoryItem_Click;
+            // 
+            // picDelete
+            // 
+            picDelete.Image = Properties.Resources.trash_50;
+            picDelete.Location = new Point(380, 532);
+            picDelete.Name = "picDelete";
+            picDelete.Size = new Size(40, 40);
+            picDelete.SizeMode = PictureBoxSizeMode.StretchImage;
+            picDelete.TabIndex = 10;
+            picDelete.TabStop = false;
+            picDelete.Visible = false;
+            picDelete.Click += picDelete_Click;
+            // 
+            // picAdd
+            // 
+            picAdd.Image = Properties.Resources.style_fill_add;
+            picAdd.Location = new Point(383, 532);
+            picAdd.Name = "picAdd";
+            picAdd.Size = new Size(40, 40);
+            picAdd.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAdd.TabIndex = 11;
+            picAdd.TabStop = false;
+            picAdd.Visible = false;
+            picAdd.Click += picAdd_Click;
             // 
             // UCStoryItem
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(picAdd);
+            Controls.Add(picDelete);
             Controls.Add(lbAuthor);
             Controls.Add(lbName);
             Controls.Add(lbIsFull);
-            Controls.Add(pictureBox5);
+            Controls.Add(picIsFee);
             Controls.Add(pnStar);
             Controls.Add(picImage);
             Name = "UCStoryItem";
             Size = new Size(423, 658);
+            Load += UCStoryItem_Load;
             Click += UCStoryItem_Click;
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             pnStar.ResumeLayout(false);
             pnStar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picIsFee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picDelete).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAdd).EndInit();
             ResumeLayout(false);
         }
 
@@ -159,10 +192,12 @@
         private PictureBox picImage;
         private Panel pnStar;
         private PictureBox picStar;
-        private PictureBox pictureBox5;
+        private PictureBox picIsFee;
         private Label lbIsFull;
         private Label lbName;
         private Label lbAuthor;
-        private Label label1;
+        private Label lbStar;
+        public PictureBox picDelete;
+        public PictureBox picAdd;
     }
 }

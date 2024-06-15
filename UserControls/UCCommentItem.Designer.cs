@@ -37,6 +37,7 @@
             picAvat = new PictureBox();
             txtComment = new RichTextBox();
             lbUserName = new Label();
+            lbTime = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picStar4).BeginInit();
@@ -144,11 +145,22 @@
             lbUserName.TabIndex = 19;
             lbUserName.Text = "Nhớ mãi không quên";
             // 
+            // lbTime
+            // 
+            lbTime.AutoSize = true;
+            lbTime.ForeColor = Color.Gray;
+            lbTime.Location = new Point(295, 32);
+            lbTime.Name = "lbTime";
+            lbTime.Size = new Size(117, 30);
+            lbTime.TabIndex = 20;
+            lbTime.Text = "13/06/2024";
+            // 
             // UCCommentItem
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lbTime);
             Controls.Add(lbUserName);
             Controls.Add(txtComment);
             Controls.Add(panel1);
@@ -164,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)picStar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -177,5 +190,6 @@
         private PictureBox picAvat;
         private RichTextBox txtComment;
         private Label lbUserName;
+        private Label lbTime;
     }
 }

@@ -29,7 +29,9 @@ create table Stories (
     CreatedAt Datetime ,
     LastUpdateAt Datetime,
 	Author nvarchar(50),
-) 
+    Views int Default 0,
+    ChapterNumber int
+)
 
 CREATE TABLE Chapters (
     ChapterID int PRIMARY KEY IDENTITY(1,1),

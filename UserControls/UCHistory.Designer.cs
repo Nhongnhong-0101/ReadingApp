@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            picAvat = new PictureBox();
             txtSearch = new TextBox();
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
             flowMain = new FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picAvat
             // 
-            pictureBox1.Image = Properties.Resources.image_user;
-            pictureBox1.Location = new Point(2060, 30);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(90, 90);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            picAvat.Image = Properties.Resources.image_user;
+            picAvat.Location = new Point(2060, 30);
+            picAvat.Name = "picAvat";
+            picAvat.Size = new Size(90, 90);
+            picAvat.SizeMode = PictureBoxSizeMode.StretchImage;
+            picAvat.TabIndex = 13;
+            picAvat.TabStop = false;
+            picAvat.Click += pictureBox1_Click;
             // 
             // txtSearch
             // 
@@ -59,6 +59,7 @@
             txtSearch.PlaceholderText = "Tìm kiếm tại đây...";
             txtSearch.Size = new Size(1100, 38);
             txtSearch.TabIndex = 4;
+            txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // pictureBox2
             // 
@@ -95,13 +96,13 @@
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(pictureBox1);
+            Controls.Add(picAvat);
             Controls.Add(panel1);
             Controls.Add(flowMain);
             Name = "UCHistory";
             Size = new Size(2190, 1475);
             Load += UCHistory_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -110,7 +111,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox picAvat;
         private TextBox txtSearch;
         private PictureBox pictureBox2;
         private Panel panel1;

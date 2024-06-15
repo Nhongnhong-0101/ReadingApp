@@ -103,6 +103,26 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_itemRL {
+            get {
+                object obj = ResourceManager.GetObject("bg_itemRL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_itemRL1 {
+            get {
+                object obj = ResourceManager.GetObject("bg_itemRL1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_lasted {
             get {
                 object obj = ResourceManager.GetObject("bg_lasted", resourceCulture);
@@ -116,6 +136,16 @@ namespace ReadingApp.Properties {
         internal static System.Drawing.Bitmap bg_login {
             get {
                 object obj = ResourceManager.GetObject("bg_login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_RL {
+            get {
+                object obj = ResourceManager.GetObject("bg_RL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,6 +323,16 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pen_50 {
+            get {
+                object obj = ResourceManager.GetObject("pen_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -323,9 +363,59 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap style_fill_50 {
+            get {
+                object obj = ResourceManager.GetObject("style_fill_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap style_fill_add {
+            get {
+                object obj = ResourceManager.GetObject("style_fill_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap style_fill_cancle {
+            get {
+                object obj = ResourceManager.GetObject("style_fill_cancle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap style_sharp_50 {
+            get {
+                object obj = ResourceManager.GetObject("style_sharp_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap temp_image_story {
             get {
                 object obj = ResourceManager.GetObject("temp_image_story", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_50 {
+            get {
+                object obj = ResourceManager.GetObject("trash_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

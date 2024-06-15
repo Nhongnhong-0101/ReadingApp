@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCStoryDetails));
-            lbIsFull = new Label();
+            lbStatus = new Label();
             picImage = new PictureBox();
             lbName = new Label();
             pnTitle = new Panel();
+            lbInfor = new Label();
+            cbReadingList = new ComboBox();
+            btnAddStoryIntoRL = new Button();
+            pnPrice = new Panel();
+            lbPrice = new Label();
+            pictureBox1 = new PictureBox();
             lbIsFree = new Label();
             pnStar = new Panel();
             lbStar = new Label();
             picStar = new PictureBox();
             panel2 = new Panel();
             lbType = new Label();
-            label10 = new Label();
+            lbDescription = new Label();
             lbLastUpdate = new Label();
             lbCreatedAt = new Label();
             lbNumberChapter = new Label();
@@ -65,8 +72,11 @@
             picStar2 = new PictureBox();
             picStar1 = new PictureBox();
             picAvat = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
+            pnPrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnStar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).BeginInit();
             panel2.SuspendLayout();
@@ -80,19 +90,19 @@
             ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             SuspendLayout();
             // 
-            // lbIsFull
+            // lbStatus
             // 
-            lbIsFull.AutoSize = true;
-            lbIsFull.BackColor = Color.Green;
-            lbIsFull.Font = new Font("Segoe UI", 10F);
-            lbIsFull.ForeColor = Color.White;
-            lbIsFull.Location = new Point(136, 81);
-            lbIsFull.Name = "lbIsFull";
-            lbIsFull.Padding = new Padding(10, 2, 10, 2);
-            lbIsFull.Size = new Size(190, 36);
-            lbIsFull.TabIndex = 15;
-            lbIsFull.Text = "Đang cập nhật";
-            lbIsFull.TextAlign = ContentAlignment.MiddleCenter;
+            lbStatus.AutoSize = true;
+            lbStatus.BackColor = Color.Green;
+            lbStatus.Font = new Font("Segoe UI", 10F);
+            lbStatus.ForeColor = Color.White;
+            lbStatus.Location = new Point(136, 81);
+            lbStatus.Name = "lbStatus";
+            lbStatus.Padding = new Padding(10, 2, 10, 2);
+            lbStatus.Size = new Size(190, 36);
+            lbStatus.TabIndex = 15;
+            lbStatus.Text = "Đang cập nhật";
+            lbStatus.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // picImage
             // 
@@ -109,12 +119,16 @@
             lbName.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lbName.Location = new Point(3, 0);
             lbName.Name = "lbName";
-            lbName.Size = new Size(1615, 50);
+            lbName.Size = new Size(976, 50);
             lbName.TabIndex = 12;
             lbName.Text = "Nhớ mãi không quên";
             // 
             // pnTitle
             // 
+            pnTitle.Controls.Add(lbInfor);
+            pnTitle.Controls.Add(cbReadingList);
+            pnTitle.Controls.Add(btnAddStoryIntoRL);
+            pnTitle.Controls.Add(pnPrice);
             pnTitle.Controls.Add(lbIsFree);
             pnTitle.Controls.Add(pnStar);
             pnTitle.Controls.Add(lbName);
@@ -122,6 +136,73 @@
             pnTitle.Name = "pnTitle";
             pnTitle.Size = new Size(1618, 95);
             pnTitle.TabIndex = 14;
+            // 
+            // lbInfor
+            // 
+            lbInfor.BackColor = Color.Transparent;
+            lbInfor.Font = new Font("Segoe UI", 8F);
+            lbInfor.ForeColor = Color.Red;
+            lbInfor.Location = new Point(985, 61);
+            lbInfor.Name = "lbInfor";
+            lbInfor.Size = new Size(630, 25);
+            lbInfor.TabIndex = 24;
+            lbInfor.Text = "Thêm vào danh sách đọc thành công!";
+            lbInfor.TextAlign = ContentAlignment.MiddleLeft;
+            lbInfor.Visible = false;
+            // 
+            // cbReadingList
+            // 
+            cbReadingList.FormattingEnabled = true;
+            cbReadingList.Location = new Point(985, 9);
+            cbReadingList.Name = "cbReadingList";
+            cbReadingList.Size = new Size(350, 38);
+            cbReadingList.TabIndex = 23;
+            cbReadingList.Visible = false;
+            cbReadingList.SelectedIndexChanged += cbReadingList_SelectedIndexChanged;
+            // 
+            // btnAddStoryIntoRL
+            // 
+            btnAddStoryIntoRL.BackColor = Color.ForestGreen;
+            btnAddStoryIntoRL.FlatStyle = FlatStyle.Flat;
+            btnAddStoryIntoRL.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAddStoryIntoRL.ForeColor = Color.White;
+            btnAddStoryIntoRL.Location = new Point(1341, 0);
+            btnAddStoryIntoRL.Name = "btnAddStoryIntoRL";
+            btnAddStoryIntoRL.Size = new Size(277, 61);
+            btnAddStoryIntoRL.TabIndex = 22;
+            btnAddStoryIntoRL.Text = "Thêm vào danh sách đọc ";
+            btnAddStoryIntoRL.UseVisualStyleBackColor = false;
+            btnAddStoryIntoRL.Click += btnAddStoryIntoRL_Click;
+            // 
+            // pnPrice
+            // 
+            pnPrice.Controls.Add(lbPrice);
+            pnPrice.Controls.Add(pictureBox1);
+            pnPrice.Location = new Point(129, 52);
+            pnPrice.Name = "pnPrice";
+            pnPrice.Size = new Size(150, 40);
+            pnPrice.TabIndex = 14;
+            // 
+            // lbPrice
+            // 
+            lbPrice.AutoSize = true;
+            lbPrice.Font = new Font("Segoe UI", 11F);
+            lbPrice.Location = new Point(42, 0);
+            lbPrice.Name = "lbPrice";
+            lbPrice.Size = new Size(49, 36);
+            lbPrice.TabIndex = 4;
+            lbPrice.Text = "3.5";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.cost;
+            pictureBox1.Location = new Point(-2, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(40, 40);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
             // 
             // lbIsFree
             // 
@@ -170,11 +251,11 @@
             // panel2
             // 
             panel2.Controls.Add(lbType);
-            panel2.Controls.Add(label10);
+            panel2.Controls.Add(lbDescription);
             panel2.Controls.Add(lbLastUpdate);
             panel2.Controls.Add(lbCreatedAt);
             panel2.Controls.Add(lbNumberChapter);
-            panel2.Controls.Add(lbIsFull);
+            panel2.Controls.Add(lbStatus);
             panel2.Controls.Add(lbAuthor);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label5);
@@ -197,14 +278,14 @@
             lbType.TabIndex = 20;
             lbType.Text = "Ngôn tình";
             // 
-            // label10
+            // lbDescription
             // 
-            label10.Font = new Font("Segoe UI", 11F);
-            label10.Location = new Point(0, 270);
-            label10.Name = "label10";
-            label10.Size = new Size(1590, 278);
-            label10.TabIndex = 19;
-            label10.Text = resources.GetString("label10.Text");
+            lbDescription.Font = new Font("Segoe UI", 11F);
+            lbDescription.Location = new Point(0, 270);
+            lbDescription.Name = "lbDescription";
+            lbDescription.Size = new Size(1590, 278);
+            lbDescription.TabIndex = 19;
+            lbDescription.Text = resources.GetString("lbDescription.Text");
             // 
             // lbLastUpdate
             // 
@@ -309,7 +390,6 @@
             // flowChapter1
             // 
             flowChapter1.AutoScroll = true;
-            flowChapter1.FlowDirection = FlowDirection.TopDown;
             flowChapter1.Location = new Point(50, 798);
             flowChapter1.Name = "flowChapter1";
             flowChapter1.Size = new Size(670, 650);
@@ -328,7 +408,6 @@
             // flowChapter2
             // 
             flowChapter2.AutoScroll = true;
-            flowChapter2.FlowDirection = FlowDirection.TopDown;
             flowChapter2.Location = new Point(760, 798);
             flowChapter2.Name = "flowChapter2";
             flowChapter2.Size = new Size(670, 650);
@@ -468,6 +547,11 @@
             picAvat.TabIndex = 4;
             picAvat.TabStop = false;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1200;
+            timer1.Tick += timer1_Tick;
+            // 
             // UCStoryDetails
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
@@ -488,6 +572,9 @@
             ((System.ComponentModel.ISupportInitialize)picImage).EndInit();
             pnTitle.ResumeLayout(false);
             pnTitle.PerformLayout();
+            pnPrice.ResumeLayout(false);
+            pnPrice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnStar.ResumeLayout(false);
             pnStar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picStar).EndInit();
@@ -508,7 +595,7 @@
 
         private Panel pnNewComment;
         private Label lbName;
-        private Label lbIsFull;
+        private Label lbStatus;
         private PictureBox picImage;
         private Panel pnTitle;
         private Panel panel2;
@@ -524,7 +611,7 @@
         private Label lbCreatedAt;
         private Panel pnStar;
         private PictureBox picStar;
-        private Label label10;
+        private Label lbDescription;
         private Label lbStar;
         private Label lbType;
         private FlowLayoutPanel flowChapter1;
@@ -542,5 +629,12 @@
         private PictureBox picStar2;
         private RichTextBox txtNewComment;
         private Button btnSearch;
+        private Panel pnPrice;
+        private Label lbPrice;
+        private PictureBox pictureBox1;
+        private ComboBox cbReadingList;
+        private Button btnAddStoryIntoRL;
+        private Label lbInfor;
+        private System.Windows.Forms.Timer timer1;
     }
 }

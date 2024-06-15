@@ -8,11 +8,11 @@ namespace ReadingApp.Model
 {
     public class ReadingList
     {
-        int ListID {  get; set; }   
-        User User { get; set; }
-        String ListName { get; set; }
-        DateTime CreatedAt { get; set; }
-        DateTime UpdatedAt { get; set; }
+        public int ListID {  get; set; }
+        public int UserID { get; set; }
+        public String ListName { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
     }
 }
