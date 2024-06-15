@@ -28,9 +28,7 @@ create table Stories (
     Stars float,
     CreatedAt Datetime ,
     LastUpdateAt Datetime,
-	Author nvarchar(50),
-    Views int Default 0,
-    ChapterNumber int
+	Author nvarchar(50)
 )
 
 CREATE TABLE Chapters (

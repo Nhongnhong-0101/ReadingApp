@@ -69,12 +69,12 @@
             lbCoTrang = new Label();
             lbNgonTinh = new Label();
             panelState = new Panel();
-            pnStar = new Panel();
-            flowStar = new FlowLayoutPanel();
-            label12 = new Label();
             pnOutstanding = new Panel();
             flowOuts = new FlowLayoutPanel();
             label22 = new Label();
+            pnStar = new Panel();
+            flowStar = new FlowLayoutPanel();
+            label12 = new Label();
             btnWrite = new Button();
             ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             panel1.SuspendLayout();
@@ -97,17 +97,16 @@
             ((System.ComponentModel.ISupportInitialize)picComic).BeginInit();
             panelType.SuspendLayout();
             panelState.SuspendLayout();
-            pnStar.SuspendLayout();
             pnOutstanding.SuspendLayout();
+            pnStar.SuspendLayout();
             SuspendLayout();
             // 
             // picAvat
             // 
             picAvat.Image = Properties.Resources.image_user;
-            picAvat.Location = new Point(1373, 20);
-            picAvat.Margin = new Padding(2);
+            picAvat.Location = new Point(2060, 30);
             picAvat.Name = "picAvat";
-            picAvat.Size = new Size(60, 60);
+            picAvat.Size = new Size(90, 90);
             picAvat.SizeMode = PictureBoxSizeMode.StretchImage;
             picAvat.TabIndex = 1;
             picAvat.TabStop = false;
@@ -120,10 +119,9 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(pictureBox2);
-            panel1.Location = new Point(553, 27);
-            panel1.Margin = new Padding(2);
+            panel1.Location = new Point(830, 40);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 47);
+            panel1.Size = new Size(1200, 70);
             panel1.TabIndex = 2;
             // 
             // txtSearch
@@ -131,21 +129,19 @@
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Font = new Font("Segoe UI", 12F);
             txtSearch.ForeColor = Color.Black;
-            txtSearch.Location = new Point(10, 11);
-            txtSearch.Margin = new Padding(2);
+            txtSearch.Location = new Point(15, 16);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Tìm kiếm tại đây...";
-            txtSearch.Size = new Size(733, 27);
+            txtSearch.Size = new Size(1100, 38);
             txtSearch.TabIndex = 4;
             txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.search;
-            pictureBox2.Location = new Point(763, 8);
-            pictureBox2.Margin = new Padding(2);
+            pictureBox2.Location = new Point(1144, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(30, 30);
+            pictureBox2.Size = new Size(45, 45);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
@@ -154,10 +150,9 @@
             // 
             pnType.Controls.Add(lbType);
             pnType.Controls.Add(picType);
-            pnType.Location = new Point(423, 33);
-            pnType.Margin = new Padding(2);
+            pnType.Location = new Point(634, 50);
             pnType.Name = "pnType";
-            pnType.Size = new Size(113, 33);
+            pnType.Size = new Size(170, 50);
             pnType.TabIndex = 3;
             pnType.Click += pnType_Click;
             // 
@@ -165,10 +160,9 @@
             // 
             lbType.AutoSize = true;
             lbType.Font = new Font("Segoe UI", 12F);
-            lbType.Location = new Point(28, 4);
-            lbType.Margin = new Padding(2, 0, 2, 0);
+            lbType.Location = new Point(42, 6);
             lbType.Name = "lbType";
-            lbType.Size = new Size(80, 28);
+            lbType.Size = new Size(115, 38);
             lbType.TabIndex = 5;
             lbType.Text = "Thể loại";
             lbType.Click += pnType_Click;
@@ -176,10 +170,9 @@
             // picType
             // 
             picType.Image = Properties.Resources.type;
-            picType.Location = new Point(3, 5);
-            picType.Margin = new Padding(2);
+            picType.Location = new Point(4, 8);
             picType.Name = "picType";
-            picType.Size = new Size(23, 23);
+            picType.Size = new Size(34, 34);
             picType.SizeMode = PictureBoxSizeMode.StretchImage;
             picType.TabIndex = 4;
             picType.TabStop = false;
@@ -188,10 +181,9 @@
             // flowMain
             // 
             flowMain.AutoScroll = true;
-            flowMain.Location = new Point(0, 100);
-            flowMain.Margin = new Padding(2);
+            flowMain.Location = new Point(0, 150);
             flowMain.Name = "flowMain";
-            flowMain.Size = new Size(1173, 883);
+            flowMain.Size = new Size(1760, 1324);
             flowMain.TabIndex = 4;
             // 
             // pnLasted
@@ -201,27 +193,26 @@
             pnLasted.Controls.Add(flowLasted);
             pnLasted.Controls.Add(label1);
             pnLasted.Location = new Point(0, 0);
-            pnLasted.Margin = new Padding(2);
             pnLasted.Name = "pnLasted";
-            pnLasted.Size = new Size(370, 380);
+            pnLasted.Size = new Size(380, 390);
             pnLasted.TabIndex = 5;
             // 
             // flowLasted
             // 
             flowLasted.FlowDirection = FlowDirection.TopDown;
-            flowLasted.Location = new Point(20, 50);
+            flowLasted.Location = new Point(22, 60);
+            flowLasted.Margin = new Padding(4);
             flowLasted.Name = "flowLasted";
-            flowLasted.Size = new Size(340, 324);
+            flowLasted.Size = new Size(336, 320);
             flowLasted.TabIndex = 0;
             // 
             // label1
             // 
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(7, 5);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(10, 8);
             label1.Name = "label1";
-            label1.Size = new Size(233, 25);
+            label1.Size = new Size(350, 38);
             label1.TabIndex = 0;
             label1.Text = "Mới nhất";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -235,13 +226,12 @@
             pnSearch.Controls.Add(pnFee);
             pnSearch.Controls.Add(pnStory);
             pnSearch.Controls.Add(pnFree);
-            pnSearch.Controls.Add(pnComic);
             pnSearch.Controls.Add(cbArrange);
+            pnSearch.Controls.Add(pnComic);
             pnSearch.Controls.Add(cbType);
-            pnSearch.Location = new Point(0, 80);
-            pnSearch.Margin = new Padding(2);
+            pnSearch.Location = new Point(0, 120);
             pnSearch.Name = "pnSearch";
-            pnSearch.Size = new Size(1462, 87);
+            pnSearch.Size = new Size(2192, 130);
             pnSearch.TabIndex = 6;
             pnSearch.Visible = false;
             // 
@@ -251,10 +241,9 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(1279, 22);
-            btnSearch.Margin = new Padding(2);
+            btnSearch.Location = new Point(1918, 33);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(148, 40);
+            btnSearch.Size = new Size(222, 60);
             btnSearch.TabIndex = 10;
             btnSearch.Text = "Tìm truyện";
             btnSearch.UseVisualStyleBackColor = false;
@@ -264,10 +253,9 @@
             // 
             pnUpdating.Controls.Add(lbUpdating);
             pnUpdating.Controls.Add(picUpdating);
-            pnUpdating.Location = new Point(909, 44);
-            pnUpdating.Margin = new Padding(2);
+            pnUpdating.Location = new Point(1364, 66);
             pnUpdating.Name = "pnUpdating";
-            pnUpdating.Size = new Size(191, 27);
+            pnUpdating.Size = new Size(286, 40);
             pnUpdating.TabIndex = 9;
             pnUpdating.Click += pnUpdating_Click;
             // 
@@ -275,10 +263,9 @@
             // 
             lbUpdating.AutoSize = true;
             lbUpdating.Font = new Font("Segoe UI", 10F);
-            lbUpdating.Location = new Point(24, 3);
-            lbUpdating.Margin = new Padding(2, 0, 2, 0);
+            lbUpdating.Location = new Point(36, 4);
             lbUpdating.Name = "lbUpdating";
-            lbUpdating.Size = new Size(177, 23);
+            lbUpdating.Size = new Size(246, 32);
             lbUpdating.TabIndex = 5;
             lbUpdating.Text = "Truyện đang cập nhật";
             lbUpdating.Click += pnUpdating_Click;
@@ -286,10 +273,9 @@
             // picUpdating
             // 
             picUpdating.Image = Properties.Resources.check;
-            picUpdating.Location = new Point(0, 3);
-            picUpdating.Margin = new Padding(2);
+            picUpdating.Location = new Point(0, 4);
             picUpdating.Name = "picUpdating";
-            picUpdating.Size = new Size(20, 20);
+            picUpdating.Size = new Size(30, 30);
             picUpdating.SizeMode = PictureBoxSizeMode.StretchImage;
             picUpdating.TabIndex = 4;
             picUpdating.TabStop = false;
@@ -299,10 +285,9 @@
             // 
             pnFull.Controls.Add(lbFull);
             pnFull.Controls.Add(picFull);
-            pnFull.Location = new Point(909, 13);
-            pnFull.Margin = new Padding(2);
+            pnFull.Location = new Point(1364, 20);
             pnFull.Name = "pnFull";
-            pnFull.Size = new Size(114, 27);
+            pnFull.Size = new Size(171, 40);
             pnFull.TabIndex = 8;
             pnFull.Click += pnFull_Click;
             // 
@@ -310,10 +295,9 @@
             // 
             lbFull.AutoSize = true;
             lbFull.Font = new Font("Segoe UI", 10F);
-            lbFull.Location = new Point(24, 3);
-            lbFull.Margin = new Padding(2, 0, 2, 0);
+            lbFull.Location = new Point(36, 4);
             lbFull.Name = "lbFull";
-            lbFull.Size = new Size(89, 23);
+            lbFull.Size = new Size(127, 32);
             lbFull.TabIndex = 5;
             lbFull.Text = "Truyện full";
             lbFull.Click += pnFull_Click;
@@ -321,10 +305,9 @@
             // picFull
             // 
             picFull.Image = Properties.Resources.check;
-            picFull.Location = new Point(0, 3);
-            picFull.Margin = new Padding(2);
+            picFull.Location = new Point(0, 4);
             picFull.Name = "picFull";
-            picFull.Size = new Size(20, 20);
+            picFull.Size = new Size(30, 30);
             picFull.SizeMode = PictureBoxSizeMode.StretchImage;
             picFull.TabIndex = 4;
             picFull.TabStop = false;
@@ -334,10 +317,9 @@
             // 
             pnFee.Controls.Add(lbFee);
             pnFee.Controls.Add(picFee);
-            pnFee.Location = new Point(1143, 44);
-            pnFee.Margin = new Padding(2);
+            pnFee.Location = new Point(1714, 66);
             pnFee.Name = "pnFee";
-            pnFee.Size = new Size(85, 27);
+            pnFee.Size = new Size(128, 40);
             pnFee.TabIndex = 7;
             pnFee.Click += pnFee_Click;
             // 
@@ -345,10 +327,9 @@
             // 
             lbFee.AutoSize = true;
             lbFee.Font = new Font("Segoe UI", 10F);
-            lbFee.Location = new Point(24, 3);
-            lbFee.Margin = new Padding(2, 0, 2, 0);
+            lbFee.Location = new Point(36, 4);
             lbFee.Name = "lbFee";
-            lbFee.Size = new Size(60, 23);
+            lbFee.Size = new Size(84, 32);
             lbFee.TabIndex = 5;
             lbFee.Text = "Có phí";
             lbFee.Click += pnFee_Click;
@@ -356,10 +337,9 @@
             // picFee
             // 
             picFee.Image = Properties.Resources.check;
-            picFee.Location = new Point(0, 3);
-            picFee.Margin = new Padding(2);
+            picFee.Location = new Point(0, 4);
             picFee.Name = "picFee";
-            picFee.Size = new Size(20, 20);
+            picFee.Size = new Size(30, 30);
             picFee.SizeMode = PictureBoxSizeMode.StretchImage;
             picFee.TabIndex = 4;
             picFee.TabStop = false;
@@ -369,10 +349,9 @@
             // 
             pnStory.Controls.Add(lbStory);
             pnStory.Controls.Add(picStory);
-            pnStory.Location = new Point(743, 44);
-            pnStory.Margin = new Padding(2);
+            pnStory.Location = new Point(1114, 66);
             pnStory.Name = "pnStory";
-            pnStory.Size = new Size(123, 27);
+            pnStory.Size = new Size(184, 40);
             pnStory.TabIndex = 5;
             pnStory.Click += pnStory_Click;
             // 
@@ -380,10 +359,9 @@
             // 
             lbStory.AutoSize = true;
             lbStory.Font = new Font("Segoe UI", 10F);
-            lbStory.Location = new Point(24, 3);
-            lbStory.Margin = new Padding(2, 0, 2, 0);
+            lbStory.Location = new Point(36, 4);
             lbStory.Name = "lbStory";
-            lbStory.Size = new Size(94, 23);
+            lbStory.Size = new Size(132, 32);
             lbStory.TabIndex = 5;
             lbStory.Text = "Truyện chữ";
             lbStory.Click += pnStory_Click;
@@ -391,10 +369,9 @@
             // picStory
             // 
             picStory.Image = Properties.Resources.check;
-            picStory.Location = new Point(0, 3);
-            picStory.Margin = new Padding(2);
+            picStory.Location = new Point(0, 4);
             picStory.Name = "picStory";
-            picStory.Size = new Size(20, 20);
+            picStory.Size = new Size(30, 30);
             picStory.SizeMode = PictureBoxSizeMode.StretchImage;
             picStory.TabIndex = 4;
             picStory.TabStop = false;
@@ -404,10 +381,9 @@
             // 
             pnFree.Controls.Add(lbFree);
             pnFree.Controls.Add(picFree);
-            pnFree.Location = new Point(1143, 13);
-            pnFree.Margin = new Padding(2);
+            pnFree.Location = new Point(1714, 20);
             pnFree.Name = "pnFree";
-            pnFree.Size = new Size(102, 27);
+            pnFree.Size = new Size(153, 40);
             pnFree.TabIndex = 6;
             pnFree.Click += pnFree_Click;
             // 
@@ -415,10 +391,9 @@
             // 
             lbFree.AutoSize = true;
             lbFree.Font = new Font("Segoe UI", 10F);
-            lbFree.Location = new Point(24, 3);
-            lbFree.Margin = new Padding(2, 0, 2, 0);
+            lbFree.Location = new Point(36, 4);
             lbFree.Name = "lbFree";
-            lbFree.Size = new Size(77, 23);
+            lbFree.Size = new Size(110, 32);
             lbFree.TabIndex = 5;
             lbFree.Text = "Miễn phí";
             lbFree.Click += pnFree_Click;
@@ -426,10 +401,9 @@
             // picFree
             // 
             picFree.Image = Properties.Resources.check;
-            picFree.Location = new Point(0, 3);
-            picFree.Margin = new Padding(2);
+            picFree.Location = new Point(0, 4);
             picFree.Name = "picFree";
-            picFree.Size = new Size(20, 20);
+            picFree.Size = new Size(30, 30);
             picFree.SizeMode = PictureBoxSizeMode.StretchImage;
             picFree.TabIndex = 4;
             picFree.TabStop = false;
@@ -439,10 +413,9 @@
             // 
             pnComic.Controls.Add(lbComic);
             pnComic.Controls.Add(picComic);
-            pnComic.Location = new Point(743, 13);
-            pnComic.Margin = new Padding(2);
+            pnComic.Location = new Point(1114, 20);
             pnComic.Name = "pnComic";
-            pnComic.Size = new Size(123, 27);
+            pnComic.Size = new Size(184, 40);
             pnComic.TabIndex = 4;
             pnComic.Click += pnComic_Click;
             // 
@@ -450,10 +423,9 @@
             // 
             lbComic.AutoSize = true;
             lbComic.Font = new Font("Segoe UI", 10F);
-            lbComic.Location = new Point(24, 3);
-            lbComic.Margin = new Padding(2, 0, 2, 0);
+            lbComic.Location = new Point(36, 4);
             lbComic.Name = "lbComic";
-            lbComic.Size = new Size(107, 23);
+            lbComic.Size = new Size(149, 32);
             lbComic.TabIndex = 5;
             lbComic.Text = "Truyện tranh";
             lbComic.Click += pnComic_Click;
@@ -461,10 +433,9 @@
             // picComic
             // 
             picComic.Image = Properties.Resources.check;
-            picComic.Location = new Point(0, 3);
-            picComic.Margin = new Padding(2);
+            picComic.Location = new Point(0, 4);
             picComic.Name = "picComic";
-            picComic.Size = new Size(20, 20);
+            picComic.Size = new Size(30, 30);
             picComic.SizeMode = PictureBoxSizeMode.StretchImage;
             picComic.TabIndex = 4;
             picComic.TabStop = false;
@@ -477,9 +448,10 @@
             cbArrange.FormattingEnabled = true;
             cbArrange.ItemHeight = 38;
             cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
-            cbArrange.Location = new Point(580, 40);
+            cbArrange.Location = new Point(581, 39);
+            cbArrange.Margin = new Padding(4);
             cbArrange.Name = "cbArrange";
-            cbArrange.Size = new Size(335, 36);
+            cbArrange.Size = new Size(500, 46);
             cbArrange.Sorted = true;
             cbArrange.TabIndex = 1;
             cbArrange.Tag = "";
@@ -490,12 +462,11 @@
             cbType.Font = new Font("Segoe UI", 12F);
             cbType.ForeColor = Color.Gray;
             cbType.FormattingEnabled = true;
-            cbType.ItemHeight = 28;
+            cbType.ItemHeight = 38;
             cbType.Items.AddRange(new object[] { "Ngôn tình", "Cổ trang", "Bách hợp", "Cung đấu", "Thể loại 5", "Thể loại 6" });
-            cbType.Location = new Point(23, 27);
-            cbType.Margin = new Padding(2);
+            cbType.Location = new Point(34, 40);
             cbType.Name = "cbType";
-            cbType.Size = new Size(335, 36);
+            cbType.Size = new Size(500, 46);
             cbType.TabIndex = 0;
             cbType.Tag = "";
             cbType.Text = "Thể loại 5";
@@ -510,20 +481,18 @@
             panelType.Controls.Add(lbCungDau);
             panelType.Controls.Add(lbCoTrang);
             panelType.Controls.Add(lbNgonTinh);
-            panelType.Location = new Point(310, 67);
-            panelType.Margin = new Padding(2);
+            panelType.Location = new Point(465, 100);
             panelType.Name = "panelType";
-            panelType.Size = new Size(233, 107);
+            panelType.Size = new Size(350, 160);
             panelType.TabIndex = 7;
             panelType.Visible = false;
             // 
             // lbTheLoai6
             // 
             lbTheLoai6.Font = new Font("Segoe UI", 11F);
-            lbTheLoai6.Location = new Point(131, 73);
-            lbTheLoai6.Margin = new Padding(2, 0, 2, 0);
+            lbTheLoai6.Location = new Point(196, 110);
             lbTheLoai6.Name = "lbTheLoai6";
-            lbTheLoai6.Size = new Size(93, 25);
+            lbTheLoai6.Size = new Size(140, 38);
             lbTheLoai6.TabIndex = 11;
             lbTheLoai6.Text = "Thể loại 6";
             lbTheLoai6.Click += lbTheLoai6_Click;
@@ -533,10 +502,9 @@
             // lbTheLoai5
             // 
             lbTheLoai5.Font = new Font("Segoe UI", 11F);
-            lbTheLoai5.Location = new Point(131, 40);
-            lbTheLoai5.Margin = new Padding(2, 0, 2, 0);
+            lbTheLoai5.Location = new Point(196, 60);
             lbTheLoai5.Name = "lbTheLoai5";
-            lbTheLoai5.Size = new Size(93, 25);
+            lbTheLoai5.Size = new Size(140, 38);
             lbTheLoai5.TabIndex = 10;
             lbTheLoai5.Text = "Đam mỹ";
             lbTheLoai5.Click += lbTheLoai5_Click;
@@ -546,10 +514,9 @@
             // lbBachHop
             // 
             lbBachHop.Font = new Font("Segoe UI", 11F);
-            lbBachHop.Location = new Point(131, 7);
-            lbBachHop.Margin = new Padding(2, 0, 2, 0);
+            lbBachHop.Location = new Point(196, 10);
             lbBachHop.Name = "lbBachHop";
-            lbBachHop.Size = new Size(83, 25);
+            lbBachHop.Size = new Size(124, 38);
             lbBachHop.TabIndex = 9;
             lbBachHop.Text = "Bách hợp";
             lbBachHop.Click += lbBachHop_Click;
@@ -559,10 +526,9 @@
             // lbCungDau
             // 
             lbCungDau.Font = new Font("Segoe UI", 11F);
-            lbCungDau.Location = new Point(13, 73);
-            lbCungDau.Margin = new Padding(2, 0, 2, 0);
+            lbCungDau.Location = new Point(20, 110);
             lbCungDau.Name = "lbCungDau";
-            lbCungDau.Size = new Size(89, 25);
+            lbCungDau.Size = new Size(134, 38);
             lbCungDau.TabIndex = 8;
             lbCungDau.Text = "Cung đấu";
             lbCungDau.Click += lbCungDau_Click;
@@ -572,10 +538,9 @@
             // lbCoTrang
             // 
             lbCoTrang.Font = new Font("Segoe UI", 11F);
-            lbCoTrang.Location = new Point(13, 40);
-            lbCoTrang.Margin = new Padding(2, 0, 2, 0);
+            lbCoTrang.Location = new Point(20, 60);
             lbCoTrang.Name = "lbCoTrang";
-            lbCoTrang.Size = new Size(78, 25);
+            lbCoTrang.Size = new Size(117, 38);
             lbCoTrang.TabIndex = 7;
             lbCoTrang.Text = "Cổ trang";
             lbCoTrang.Click += lbCoTrang_Click;
@@ -585,10 +550,9 @@
             // lbNgonTinh
             // 
             lbNgonTinh.Font = new Font("Segoe UI", 11F);
-            lbNgonTinh.Location = new Point(13, 7);
-            lbNgonTinh.Margin = new Padding(2, 0, 2, 0);
+            lbNgonTinh.Location = new Point(20, 10);
             lbNgonTinh.Name = "lbNgonTinh";
-            lbNgonTinh.Size = new Size(89, 25);
+            lbNgonTinh.Size = new Size(134, 38);
             lbNgonTinh.TabIndex = 6;
             lbNgonTinh.Text = "Ngôn tình";
             lbNgonTinh.Click += lbNgonTinh_Click;
@@ -597,45 +561,12 @@
             // 
             // panelState
             // 
-            panelState.Controls.Add(pnStar);
             panelState.Controls.Add(pnOutstanding);
             panelState.Controls.Add(pnLasted);
-            panelState.Location = new Point(1187, 100);
-            panelState.Margin = new Padding(2);
+            panelState.Location = new Point(1780, 150);
             panelState.Name = "panelState";
-            panelState.Size = new Size(375, 1268);
+            panelState.Size = new Size(562, 1902);
             panelState.TabIndex = 8;
-            // 
-            // pnStar
-            // 
-            pnStar.BackgroundImage = Properties.Resources.bg_lasted;
-            pnStar.BackgroundImageLayout = ImageLayout.Stretch;
-            pnStar.Controls.Add(flowStar);
-            pnStar.Controls.Add(label12);
-            pnStar.Location = new Point(0, 770);
-            pnStar.Name = "pnStar";
-            pnStar.Size = new Size(370, 378);
-            pnStar.TabIndex = 18;
-            // 
-            // flowStar
-            // 
-            flowStar.FlowDirection = FlowDirection.TopDown;
-            flowStar.Location = new Point(16, 47);
-            flowStar.Name = "flowStar";
-            flowStar.Size = new Size(340, 324);
-            flowStar.TabIndex = 2;
-            // 
-            // label12
-            // 
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label12.ForeColor = Color.DarkGreen;
-            label12.Location = new Point(7, 5);
-            label12.Margin = new Padding(2, 0, 2, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(233, 25);
-            label12.TabIndex = 0;
-            label12.Text = "Đánh giá cao";
-            label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnOutstanding
             // 
@@ -643,30 +574,63 @@
             pnOutstanding.BackgroundImageLayout = ImageLayout.Stretch;
             pnOutstanding.Controls.Add(flowOuts);
             pnOutstanding.Controls.Add(label22);
-            pnOutstanding.Location = new Point(0, 386);
+            pnOutstanding.Location = new Point(0, 396);
+            pnOutstanding.Margin = new Padding(4);
             pnOutstanding.Name = "pnOutstanding";
-            pnOutstanding.Size = new Size(370, 378);
+            pnOutstanding.Size = new Size(380, 390);
             pnOutstanding.TabIndex = 6;
             // 
             // flowOuts
             // 
             flowOuts.FlowDirection = FlowDirection.TopDown;
-            flowOuts.Location = new Point(20, 47);
+            flowOuts.Location = new Point(22, 60);
+            flowOuts.Margin = new Padding(4);
             flowOuts.Name = "flowOuts";
-            flowOuts.Size = new Size(340, 324);
+            flowOuts.Size = new Size(336, 320);
             flowOuts.TabIndex = 1;
             // 
             // label22
             // 
             label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label22.ForeColor = Color.DarkGreen;
-            label22.Location = new Point(7, 5);
-            label22.Margin = new Padding(2, 0, 2, 0);
+            label22.Location = new Point(10, 8);
             label22.Name = "label22";
-            label22.Size = new Size(233, 25);
+            label22.Size = new Size(350, 38);
             label22.TabIndex = 0;
             label22.Text = "Nổi bật";
             label22.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnStar
+            // 
+            pnStar.BackgroundImage = Properties.Resources.bg_lasted;
+            pnStar.BackgroundImageLayout = ImageLayout.Stretch;
+            pnStar.Controls.Add(flowStar);
+            pnStar.Controls.Add(label12);
+            pnStar.Location = new Point(1780, 944);
+            pnStar.Margin = new Padding(4);
+            pnStar.Name = "pnStar";
+            pnStar.Size = new Size(380, 390);
+            pnStar.TabIndex = 18;
+            // 
+            // flowStar
+            // 
+            flowStar.FlowDirection = FlowDirection.TopDown;
+            flowStar.Location = new Point(22, 60);
+            flowStar.Margin = new Padding(4);
+            flowStar.Name = "flowStar";
+            flowStar.Size = new Size(336, 320);
+            flowStar.TabIndex = 2;
+            // 
+            // label12
+            // 
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label12.ForeColor = Color.DarkGreen;
+            label12.Location = new Point(10, 8);
+            label12.Name = "label12";
+            label12.Size = new Size(350, 38);
+            label12.TabIndex = 0;
+            label12.Text = "Đánh giá cao";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnWrite
             // 
@@ -674,18 +638,20 @@
             btnWrite.BackgroundImageLayout = ImageLayout.Stretch;
             btnWrite.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWrite.ForeColor = SystemColors.ButtonHighlight;
-            btnWrite.Location = new Point(24, 24);
+            btnWrite.Location = new Point(36, 36);
+            btnWrite.Margin = new Padding(4);
             btnWrite.Name = "btnWrite";
-            btnWrite.Size = new Size(116, 46);
+            btnWrite.Size = new Size(174, 69);
             btnWrite.TabIndex = 9;
             btnWrite.Text = "Viết truyện";
             btnWrite.UseVisualStyleBackColor = true;
             // 
             // UCHome
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(pnStar);
             Controls.Add(btnWrite);
             Controls.Add(panelState);
             Controls.Add(panelType);
@@ -694,9 +660,8 @@
             Controls.Add(pnType);
             Controls.Add(panel1);
             Controls.Add(picAvat);
-            Margin = new Padding(2);
             Name = "UCHome";
-            Size = new Size(1460, 983);
+            Size = new Size(2190, 1474);
             Load += UCHome_Load;
             ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             panel1.ResumeLayout(false);
@@ -727,8 +692,8 @@
             ((System.ComponentModel.ISupportInitialize)picComic).EndInit();
             panelType.ResumeLayout(false);
             panelState.ResumeLayout(false);
-            pnStar.ResumeLayout(false);
             pnOutstanding.ResumeLayout(false);
+            pnStar.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -776,6 +741,7 @@
         private Panel panelState;
         private Panel pnOutstanding;
         private Label label22;
+        private Button btnWrite;
         private Panel pnStar;
         private Label label12;
         private FlowLayoutPanel flowLasted;

@@ -19,8 +19,8 @@ namespace ReadingApp.Model
 
         public User() 
         {
-            //Avatar = "C:\\Users\\DELL\\Desktop\\C#\\Avatars\\avatDefault.png";
-            Avatar = @"D:\\Downloads\\UITHoc\\C#\\Hinh\\AnThan.jpg";
+            Avatar = "C:\\Users\\DELL\\Desktop\\C#\\Avatars\\avatDefault.png";
+            //Avatar = @"D:\\Downloads\\UITHoc\\C#\\Hinh\\AnThan.jpg";
         }
 
         public User(int userID, string fullName, string userName, string password, string email, bool? isMale, DateTime? dob, string avatar)
