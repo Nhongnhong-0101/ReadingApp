@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ReadingApp.Model;
+using ReadingApp.UIAdmin;
 using ReadingApp.Services;
 
 namespace ReadingApp.UserControls
@@ -24,6 +25,8 @@ namespace ReadingApp.UserControls
         public EventHandler loadUCAccount;
         public EventHandler<Story> loadUCStoryDetails;
         private User user;
+        public delegate void ShowAddNewStoryEventHander(object sender, EventArgs e);
+        public event ShowAddNewStoryEventHander ShowAddNewStr;
         private List<Story> stories = new List<Story>();
         private List<Story> outs = new List<Story>();
         private List<Story> star = new List<Story>();
@@ -123,6 +126,26 @@ namespace ReadingApp.UserControls
                 ucStoryItem.loadUCStoryDetails += _loadUCStoryDetails;
                 flowMain.Controls.Add(ucStoryItem);
             }
+
+            //Admin thì hiện nút viết truyện 
+            btnWrite.Visible = (user.FullName == "Admin") ? true : false;
+            btnWrite.Click += BtnWrite_Click;
+
+        }
+
+        private void BtnWrite_Click(object? sender, EventArgs e)
+        {
+            try
+            {
+                OnShowAddNewStr(EventArgs.Empty);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+        protected virtual void OnShowAddNewStr(EventArgs e)
+        {
+            ShowAddNewStr?.Invoke(this, e);
         }
 
         private void _loadUCStoryDetails(object? sender, Story e)

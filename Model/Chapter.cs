@@ -18,7 +18,7 @@ namespace ReadingApp.Model
 
         public string Content { get; set; }
 
-        public List<String> Image { get; set; }
+        public List<ChapterImages> Images { get; set; }//nếu là truyện tranh thì get hết image ra
 
         public DateTime CreatedAt { get; set; }
 
