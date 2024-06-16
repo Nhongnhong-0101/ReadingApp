@@ -88,7 +88,7 @@
             pnMenu.Controls.Add(pictureBox1);
             pnMenu.Location = new Point(0, 0);
             pnMenu.Name = "pnMenu";
-            pnMenu.Size = new Size(370, 1500);
+            pnMenu.Size = new Size(370, 1465);
             pnMenu.TabIndex = 0;
             // 
             // pnLogout
@@ -167,7 +167,7 @@
             pnHistoryTab.Controls.Add(panel6);
             pnHistoryTab.Controls.Add(lbHistoryTab);
             pnHistoryTab.Controls.Add(picHistoryTab);
-            pnHistoryTab.Location = new Point(0, 700);
+            pnHistoryTab.Location = new Point(0, 460);
             pnHistoryTab.Name = "pnHistoryTab";
             pnHistoryTab.Size = new Size(370, 100);
             pnHistoryTab.TabIndex = 5;
@@ -306,7 +306,7 @@
             pnAccountTab.BackColor = Color.Transparent;
             pnAccountTab.Controls.Add(lbAccountTab);
             pnAccountTab.Controls.Add(picAccountTab);
-            pnAccountTab.Location = new Point(0, 460);
+            pnAccountTab.Location = new Point(0, 700);
             pnAccountTab.Name = "pnAccountTab";
             pnAccountTab.Size = new Size(370, 100);
             pnAccountTab.TabIndex = 2;

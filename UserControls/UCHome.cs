@@ -130,7 +130,7 @@ namespace ReadingApp.UserControls
             //Admin thì hiện nút viết truyện 
             btnWrite.Visible = (user.FullName == "Admin") ? true : false;
             btnWrite.Click += BtnWrite_Click;
-
+                        
         }
 
         private void BtnWrite_Click(object? sender, EventArgs e)

@@ -68,16 +68,13 @@ namespace ReadingApp
 
                 uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
             }
-            catch
-            {
-
-            }
+            catch { }
         }
 
         private void UCAddNewStory_StorySaved(object sender, Story story)
         {
-            //try
-            //{
+            try
+            {
                 if (story.Category == "truyện tranh")
                 {
                     UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
@@ -95,10 +92,8 @@ namespace ReadingApp
                     this.Controls.Add(uCWriteWordStory);
                 }
 
-            //}
-            //catch (Exception ex)
-            //{
-            //}
+            }
+            catch (Exception ex){ }
         }
 
         private void pnAccountTab_Click(object sender, EventArgs e)
@@ -148,6 +143,8 @@ namespace ReadingApp
             pnLogIn.Controls.Clear();
             pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
+
+            pnAccountTab.Visible = (cruUser.FullName == "Admin") ? true : false;
         }
 
         private void loadUCSignUp(object? sender, EventArgs e)
@@ -170,8 +167,18 @@ namespace ReadingApp
         private void loadUCStoryDetails(object? sender, Story e)
         {
             UCStoryDetails ucStoryDetails = new UCStoryDetails(e, cruUser);
+            ucStoryDetails.loadChapter += loadChapter;
             pnMain.Controls.Clear();
             pnMain.Controls.Add(ucStoryDetails);
+        }
+
+        private void loadChapter(object? sender, Chapter e)
+        {
+            UCChapterImage ucChapterImage = new UCChapterImage(e);
+            ucChapterImage.loadStoryDetails += loadUCStoryDetails;
+            ucChapterImage.loadChapter += loadChapter;
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(ucChapterImage);
         }
 
         private void loadUCForgotPassword(object? sender, EventArgs e)

@@ -56,10 +56,10 @@
             pnFree = new Panel();
             lbFree = new Label();
             picFree = new PictureBox();
+            cbArrange = new ComboBox();
             pnComic = new Panel();
             lbComic = new Label();
             picComic = new PictureBox();
-            cbArrange = new ComboBox();
             cbType = new ComboBox();
             panelType = new Panel();
             lbTheLoai6 = new Label();
@@ -409,6 +409,22 @@
             picFree.TabStop = false;
             picFree.Click += pnFree_Click;
             // 
+            // cbArrange
+            // 
+            cbArrange.Font = new Font("Segoe UI", 12F);
+            cbArrange.ForeColor = Color.Gray;
+            cbArrange.FormattingEnabled = true;
+            cbArrange.ItemHeight = 38;
+            cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
+            cbArrange.Location = new Point(581, 39);
+            cbArrange.Margin = new Padding(4);
+            cbArrange.Name = "cbArrange";
+            cbArrange.Size = new Size(500, 46);
+            cbArrange.Sorted = true;
+            cbArrange.TabIndex = 1;
+            cbArrange.Tag = "";
+            cbArrange.Text = "Sắp xếp theo";
+            // 
             // pnComic
             // 
             pnComic.Controls.Add(lbComic);
@@ -440,22 +456,6 @@
             picComic.TabIndex = 4;
             picComic.TabStop = false;
             picComic.Click += pnComic_Click;
-            // 
-            // cbArrange
-            // 
-            cbArrange.Font = new Font("Segoe UI", 12F);
-            cbArrange.ForeColor = Color.Gray;
-            cbArrange.FormattingEnabled = true;
-            cbArrange.ItemHeight = 38;
-            cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
-            cbArrange.Location = new Point(581, 39);
-            cbArrange.Margin = new Padding(4);
-            cbArrange.Name = "cbArrange";
-            cbArrange.Size = new Size(500, 46);
-            cbArrange.Sorted = true;
-            cbArrange.TabIndex = 1;
-            cbArrange.Tag = "";
-            cbArrange.Text = "Sắp xếp theo";
             // 
             // cbType
             // 
@@ -561,6 +561,7 @@
             // 
             // panelState
             // 
+            panelState.Controls.Add(pnStar);
             panelState.Controls.Add(pnOutstanding);
             panelState.Controls.Add(pnLasted);
             panelState.Location = new Point(1780, 150);
@@ -606,7 +607,7 @@
             pnStar.BackgroundImageLayout = ImageLayout.Stretch;
             pnStar.Controls.Add(flowStar);
             pnStar.Controls.Add(label12);
-            pnStar.Location = new Point(1780, 944);
+            pnStar.Location = new Point(0, 794);
             pnStar.Margin = new Padding(4);
             pnStar.Name = "pnStar";
             pnStar.Size = new Size(380, 390);
@@ -651,7 +652,6 @@
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(pnStar);
             Controls.Add(btnWrite);
             Controls.Add(panelState);
             Controls.Add(panelType);

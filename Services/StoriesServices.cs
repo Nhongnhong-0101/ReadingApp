@@ -160,7 +160,7 @@ namespace ReadingApp.Services
         static public List<Story> getLastedStories()
         {
             List<Story> stories = new List<Story>();
-            string sqlQuery = "SELECT TOP 4 * FROM STORIES ORDER BY LastUpdateAt DESC";
+            string sqlQuery = "SELECT TOP 4 * FROM STORIES ORDER BY LastUpdateAt ASC";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DataProvider.con))
@@ -481,6 +481,73 @@ namespace ReadingApp.Services
             }
             catch { }
             return result;
+        }
+
+        static public Story getStory(int storyID)
+        {
+            Story story = new Story();
+            string sqlQuery = "SELECT * FROM STORIES WHERE StoryID = @storyID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    story.Title = reader["title"].ToString();
+                                    story.Image = reader["image"].ToString();
+                                    story.Description = reader["description"].ToString();
+                                    story.Type = reader["type"].ToString();
+                                    story.Category = reader["category"].ToString();
+                                    story.Author = reader["author"].ToString();
+                                    story.NumberChapters = int.Parse(reader["ChapterNumber"].ToString());
+                                    story.StoryID = int.Parse(reader["StoryID"].ToString());
+                                    story.Star = float.Parse(reader["stars"].ToString());
+                                    story.Status = reader["status"].ToString();
+                                    story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
+                                    story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
+                                    story.FreeChapters = int.Parse(reader["freechapters"].ToString());
+                                    story.Price = int.Parse(reader["price"].ToString());
+                                    story.Views = int.Parse(reader["views"].ToString());
+                                }
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch { }
+            return story;
+        }
+        
+        static public void viewStory(int storyID)
+        {
+            string sqlQuery = "UPDATE STORIES SET VIEWS = VIEWS + 1 WHERE STORYID = @storyID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+            catch { }
         }
     }
 }

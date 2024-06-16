@@ -21,6 +21,8 @@ namespace ReadingApp.UserControls
         private int ListID = 0;
         private User user;
         private List<Rating> ratings = new List<Rating>();
+        private List<Chapter> chapters = new List<Chapter>();
+        public EventHandler<Chapter> loadChapter;
         public UCStoryDetails(Story story, User user)
         {
             InitializeComponent();
@@ -40,33 +42,42 @@ namespace ReadingApp.UserControls
             lbLastUpdate.Text = story.LastUpdatedAt.ToString();
             lbCreatedAt.Text = story.CreatedAt.ToString();
             lbDescription.Text = story.Description;
+            picImage.Image = Image.FromFile(story.Image);
 
             listRL = ReadingListServices.getRLNotContainStory(story.StoryID);
             if (listRL.Count == 0) { btnAddStoryIntoRL.Visible = false; }
 
-            if (story.NumberChapters > 10)
-                for (int i = 0; i < story.NumberChapters / 2; i++)
-                {
-                    addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter1);
-                }
+            if (story.Category == "truyện chữ") { chapters = ChapterService.getChapters(story.StoryID); }
+            else { chapters = ChapterService.getImageChapters(story.StoryID); }
 
-            for (int i = story.NumberChapters / 2; i < story.NumberChapters; i++)
+            int i = 0;
+            while (i< chapters.Count)
             {
-                addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter2);
+                int middle = chapters.Count % 2 == 0 ? chapters.Count/2 : chapters.Count/2 + 1;
+                if (i < middle) { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter1, chapters[i]); }
+                else { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter2, chapters[i]); }
+                i++;
             }
 
             reloadListCmt(user.UserID, story.StoryID);            
         }
 
-        private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel)
+        private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel, Chapter chapter)
         {
             Label labelChapter = new Label();
             labelChapter.Text = chapterName;
             labelChapter.AutoSize = false;
             labelChapter.Size = new Size(630, 45);
             labelChapter.Padding = new Padding(0, 5, 0, 5);
-            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);         
             flowpanel.Controls.Add(labelChapter);
+            labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapter);
+        }
+
+        private void labelChapter_Click(object? sender,Chapter chapter)
+        {
+            StoriesServices.viewStory(story.StoryID);
+            loadChapter?.Invoke(this, chapter);
         }
 
         private void addStarComment()
