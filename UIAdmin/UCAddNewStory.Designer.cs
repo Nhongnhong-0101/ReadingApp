@@ -105,9 +105,9 @@
             lbCountDes.ForeColor = SystemColors.Highlight;
             lbCountDes.Location = new Point(484, 165);
             lbCountDes.Name = "lbCountDes";
-            lbCountDes.Size = new Size(65, 20);
+            lbCountDes.Size = new Size(73, 20);
             lbCountDes.TabIndex = 18;
-            lbCountDes.Text = "0/500 từ";
+            lbCountDes.Text = "0/1500 từ";
             // 
             // label10
             // 
@@ -142,6 +142,7 @@
             // btnCreate
             // 
             btnCreate.BackgroundImage = Properties.Resources.bg_btnlogin;
+            btnCreate.Cursor = Cursors.Hand;
             btnCreate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = SystemColors.ControlLightLight;
             btnCreate.Location = new Point(187, 657);
@@ -165,10 +166,9 @@
             // 
             // tbFreeChap
             // 
-            tbFreeChap.BorderStyle = BorderStyle.None;
             tbFreeChap.Location = new Point(247, 541);
             tbFreeChap.Name = "tbFreeChap";
-            tbFreeChap.Size = new Size(56, 20);
+            tbFreeChap.Size = new Size(56, 27);
             tbFreeChap.TabIndex = 12;
             tbFreeChap.Text = "0";
             // 
@@ -184,11 +184,11 @@
             // 
             // tbPrice
             // 
-            tbPrice.BorderStyle = BorderStyle.None;
             tbPrice.Location = new Point(168, 494);
             tbPrice.Name = "tbPrice";
-            tbPrice.Size = new Size(202, 20);
+            tbPrice.Size = new Size(202, 27);
             tbPrice.TabIndex = 10;
+            tbPrice.Text = "0";
             // 
             // label6
             // 
@@ -215,16 +215,15 @@
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(21, 434);
             label5.Name = "label5";
-            label5.Size = new Size(105, 28);
+            label5.Size = new Size(93, 28);
             label5.TabIndex = 7;
-            label5.Text = "Thể loại  *";
+            label5.Text = "Thể loại*";
             // 
             // tbAuthor
             // 
-            tbAuthor.BorderStyle = BorderStyle.None;
             tbAuthor.Location = new Point(24, 392);
             tbAuthor.Name = "tbAuthor";
-            tbAuthor.Size = new Size(525, 20);
+            tbAuthor.Size = new Size(525, 27);
             tbAuthor.TabIndex = 6;
             tbAuthor.Text = "Tác giả truyện 1";
             tbAuthor.Enter += tbAuthor_Enter;
@@ -236,13 +235,12 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(21, 361);
             label4.Name = "label4";
-            label4.Size = new Size(88, 28);
+            label4.Size = new Size(82, 28);
             label4.TabIndex = 5;
-            label4.Text = "Tác giả *";
+            label4.Text = "Tác giả*";
             // 
             // tbDes
             // 
-            tbDes.BorderStyle = BorderStyle.None;
             tbDes.Location = new Point(21, 189);
             tbDes.Name = "tbDes";
             tbDes.Size = new Size(528, 148);
@@ -255,9 +253,9 @@
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(21, 158);
             label3.Name = "label3";
-            label3.Size = new Size(80, 28);
+            label3.Size = new Size(74, 28);
             label3.TabIndex = 3;
-            label3.Text = "Mô tả *";
+            label3.Text = "Mô tả*";
             // 
             // tbTitle
             // 
@@ -276,19 +274,20 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(21, 80);
             label2.Name = "label2";
-            label2.Size = new Size(95, 28);
+            label2.Size = new Size(89, 28);
             label2.TabIndex = 1;
-            label2.Text = "Tiêu đề *";
+            label2.Text = "Tiêu đề*";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(21, 29);
+            label1.Location = new Point(21, 16);
             label1.Name = "label1";
             label1.Size = new Size(187, 31);
             label1.TabIndex = 0;
             label1.Text = "Thông tin truyện";
+            label1.Click += label1_Click;
             // 
             // panel2
             // 
@@ -302,6 +301,7 @@
             // rdTT
             // 
             rdTT.AutoSize = true;
+            rdTT.Cursor = Cursors.Hand;
             rdTT.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             rdTT.Location = new Point(34, 65);
             rdTT.Name = "rdTT";
@@ -314,6 +314,7 @@
             // rdTC
             // 
             rdTC.AutoSize = true;
+            rdTC.Cursor = Cursors.Hand;
             rdTC.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             rdTC.Location = new Point(34, 26);
             rdTC.Name = "rdTC";
@@ -325,8 +326,10 @@
             // 
             // pcBack
             // 
-            pcBack.BackColor = SystemColors.ActiveCaption;
+            pcBack.BackColor = Color.Transparent;
+            pcBack.BackgroundImage = Properties.Resources.icons8_back_64;
             pcBack.BackgroundImageLayout = ImageLayout.Stretch;
+            pcBack.Cursor = Cursors.Hand;
             pcBack.Location = new Point(28, 17);
             pcBack.Name = "pcBack";
             pcBack.Size = new Size(36, 35);

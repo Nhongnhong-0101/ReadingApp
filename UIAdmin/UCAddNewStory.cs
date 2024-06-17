@@ -249,6 +249,11 @@ namespace ReadingApp.UIAdmin
 
         private void pcBack_Click(object sender, EventArgs e)
         {
+            BackClick?.Invoke(this);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

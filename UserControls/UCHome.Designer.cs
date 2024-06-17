@@ -672,6 +672,7 @@
             // 
             btnWrite.BackgroundImage = Properties.Resources.bg_updateAccount;
             btnWrite.BackgroundImageLayout = ImageLayout.Stretch;
+            btnWrite.Cursor = Cursors.Hand;
             btnWrite.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWrite.ForeColor = SystemColors.ButtonHighlight;
             btnWrite.Location = new Point(24, 24);
@@ -680,7 +681,6 @@
             btnWrite.TabIndex = 9;
             btnWrite.Text = "Viết truyện";
             btnWrite.UseVisualStyleBackColor = true;
-            btnWrite.Click += btnWrite_Click_1;
             // 
             // UCHome
             // 

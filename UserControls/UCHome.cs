@@ -359,9 +359,6 @@ namespace ReadingApp.UserControls
             }
         }
 
-        private void btnWrite_Click_1(object sender, EventArgs e)
-        {
 
-        }
     }
 }

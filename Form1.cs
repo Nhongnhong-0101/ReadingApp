@@ -1,6 +1,7 @@
-using ReadingApp.UserControls;
+﻿using ReadingApp.UserControls;
 using System.Security.Principal;
 using ReadingApp.Model;
+using ReadingApp.UIAdmin;
 
 namespace ReadingApp
 {
@@ -53,7 +54,72 @@ namespace ReadingApp
             ucHome = new UCHome(cruUser);
             ucHome.loadUCAccount += pnAccountTab_Click;
             ucHome.loadUCStoryDetails += loadUCStoryDetails;
+            ucHome.ShowAddNewStr += UcHome_ShowAddNewStr;
             pnMain.Controls.Add(ucHome);
+        }
+
+        private void UcHome_ShowAddNewStr(object sender, EventArgs e)
+        {
+            try
+            {
+                UCAddNewStory uCAddNewStory = new UCAddNewStory();
+                uCAddNewStory.BackClick += UCAddNewStory_BackClick;
+                pnMain.Controls.Clear();
+                pnMain.Controls.Add(uCAddNewStory);
+
+                uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void UCAddNewStory_BackClick(object sender)
+        {
+            //Show lại home
+
+            pnMain.Controls.Clear();
+
+            unBackground();
+            pnHomeTab.BackColor = Color.ForestGreen;
+            lbHomeTab.ForeColor = Color.White;
+            picHomeTab.Image = Properties.Resources.home_white;
+
+            //pnMain.Controls.Clear();
+            ucHome = new UCHome(cruUser);
+            ucHome.loadUCAccount += pnAccountTab_Click;
+            ucHome.loadUCStoryDetails += loadUCStoryDetails;
+            ucHome.ShowAddNewStr += UcHome_ShowAddNewStr;
+            pnMain.Controls.Add(ucHome);
+        }
+
+        private void UCAddNewStory_StorySaved(object sender, Story story)
+        {
+            try
+            {
+                if (story.Category == "truyện tranh")
+                {
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
+                    uCWriteImageStory.story = story;
+
+
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteImageStory);
+
+                }
+                else
+                {
+                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
+                    uCWriteWordStory.story = story;
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteWordStory);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void pnAccountTab_Click(object sender, EventArgs e)
