@@ -9,16 +9,16 @@ namespace ReadingApp.Model
 {
     public class Rating
     {
-        int RatingID { get; set; }
-        User User { get; set; }
-        Story Story { get; set; }
+        public int RatingID { get; set; }
+        public int UserID { get; set; }
+        public int StoryID { get; set; }
 
         [Range(1,5)]
-        double Star {  get; set; }
+        public int Star {  get; set; }
 
-        String Comment { get; set; }
+        public String Comment { get; set; }
 
-        DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
 
     }

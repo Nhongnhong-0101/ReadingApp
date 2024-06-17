@@ -1,4 +1,5 @@
-﻿using ReadingApp.Model;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using ReadingApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -191,14 +192,121 @@ namespace ReadingApp.Services
                         count = (int)command.ExecuteScalar();
                     }
 
-                    if (count != 0)
+                if (count != 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        static public List<Chapter> getChapters(int storyID) 
+        {
+            List<Chapter> chapters = new List<Chapter>();
+            string sqlQuery = "SELECT * FROM CHAPTERS WHERE STORYID = @storyID";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                     {
-                        return true;
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Chapter chapter = new Chapter();
+                                    chapter.Title = reader["title"].ToString();
+                                    chapter.ChapterID = int.Parse(reader["ChapterID"].ToString());
+                                    chapter.Story = StoriesServices.getStory(int.Parse(reader["StoryID"].ToString()));
+                                    chapter.Content = reader["content"].ToString();
+                                    chapter.ChapterNumber = int.Parse(reader["ChapterNumber"].ToString());
+                                    chapter.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
+                                    chapters.Add(chapter);
+                                }
+                            }
+                        }
                     }
-                    return false;
+                    connection.Close();
                 }
             }
+            catch { }
+            return chapters;
+        }
 
+        static public List<Chapter> getImageChapters(int storyID)
+        {
+            List<Chapter> chapters = new List<Chapter>();
+            string sqlQuery = "SELECT * FROM CHAPTERS WHERE STORYID = @storyID";
 
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Chapter chapter = new Chapter();
+                                    chapter.Title = reader["title"].ToString();
+                                    chapter.ChapterID = int.Parse(reader["ChapterID"].ToString());
+                                    chapter.Story = StoriesServices.getStory(int.Parse(reader["StoryID"].ToString()));
+                                    chapter.Images = new List<ChapterImages>();
+                                    chapter.ChapterNumber = int.Parse(reader["ChapterNumber"].ToString());
+                                    chapter.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
+                                    chapters.Add(chapter);
+                                }
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+
+                foreach (Chapter chapter in chapters)
+                {
+                    sqlQuery = "SELECT * FROM CHAPTERIMAGES WHERE CHAPTERID = @chapterID";
+
+                    using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                    {
+                        connection.Open();
+
+                        using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@chapterID", chapter.ChapterID);
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ChapterImages chapterimage = new ChapterImages();
+                                        chapterimage.ImageURL = reader["ImageURL"].ToString();
+                                        chapterimage.ImageID = int.Parse(reader["ImageID"].ToString());
+                                        chapterimage.ImageOrder = int.Parse(reader["ImageOrder"].ToString());
+                                        chapterimage.ChapterID = chapter.ChapterID;
+                                        chapter.Images.Add(chapterimage);
+                                    }
+                                }
+                            }
+                        }
+                        connection.Close();
+                    }
+                }
+            }
+            catch { }
+            return chapters;
+        }
     }
 }

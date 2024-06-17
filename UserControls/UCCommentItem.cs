@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReadingApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,17 +13,15 @@ namespace ReadingApp.UserControls
 {
     public partial class UCCommentItem : UserControl
     {
-        private int star;
-        private string comment;
-        public UCCommentItem(int star, string comment)
+        private Rating rating = new Rating();
+        public UCCommentItem(Rating rating)
         {
             InitializeComponent();
-            this.star = star;
-            this.comment = comment;
+            this.rating = rating;
         }
         private void addStar()
         {
-            switch (star)
+            switch (rating.Star)
             {
                 case 5:
                     {
@@ -74,7 +73,8 @@ namespace ReadingApp.UserControls
         private void UCCommentItem_Load(object sender, EventArgs e)
         {
             addStar();
-            txtComment.Text = comment;
+            txtComment.Text = rating.Comment;
+            lbTime.Text = rating.CreatedAt.ToString();
         }
     }
 }

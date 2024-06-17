@@ -19,17 +19,21 @@ namespace ReadingApp.UserControls
         private Story story = new Story();
         private List<ReadingList> listRL = new List<ReadingList>();
         private int ListID = 0;
-        public UCStoryDetails(Story story)
+        private User user;
+        private List<Rating> ratings = new List<Rating>();
+        private List<Chapter> chapters = new List<Chapter>();
+        public EventHandler<Chapter> loadChapter;
+        public UCStoryDetails(Story story, User user)
         {
             InitializeComponent();
             this.story = story;
+            this.user = user;
         }
 
         private void UCStoryDetails_Load(object sender, EventArgs e)
         {
             lbName.Text = story.Title;
             lbAuthor.Text = story.Author;
-            lbStar.Text = story.Star.ToString();
             if (story.Price > 0) { lbIsFree.Visible = false; pnPrice.Visible = true; lbPrice.Text = story.Price.ToString(); }
             else { lbIsFree.Visible = true; pnPrice.Visible = false; }
             lbType.Text = story.Type;
@@ -38,38 +42,42 @@ namespace ReadingApp.UserControls
             lbLastUpdate.Text = story.LastUpdatedAt.ToString();
             lbCreatedAt.Text = story.CreatedAt.ToString();
             lbDescription.Text = story.Description;
+            picImage.Image = Image.FromFile(story.Image);
 
             listRL = ReadingListServices.getRLNotContainStory(story.StoryID);
             if (listRL.Count == 0) { btnAddStoryIntoRL.Visible = false; }
 
-            if (story.NumberChapters > 10)
-                for (int i = 0; i < story.NumberChapters / 2; i++)
-                {
-                    addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter1);
-                }
+            if (story.Category == "truyện chữ") { chapters = ChapterService.getChapters(story.StoryID); }
+            else { chapters = ChapterService.getImageChapters(story.StoryID); }
 
-            for (int i = story.NumberChapters / 2; i < story.NumberChapters; i++)
+            int i = 0;
+            while (i< chapters.Count)
             {
-                addLabelChapter("Chương " + (i + 1).ToString() + ":", flowChapter2);
+                int middle = chapters.Count % 2 == 0 ? chapters.Count/2 : chapters.Count/2 + 1;
+                if (i < middle) { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter1, chapters[i]); }
+                else { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter2, chapters[i]); }
+                i++;
             }
 
-            flowComment.Controls.Clear();
-            for (int i = 0; i < 10; i++)
-            {
-                UCCommentItem ucCommentItem = new UCCommentItem(5, "text comment");
-                flowComment.Controls.Add(ucCommentItem);
-            }
+            reloadListCmt(user.UserID, story.StoryID);            
         }
 
-        private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel)
+        private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel, Chapter chapter)
         {
             Label labelChapter = new Label();
             labelChapter.Text = chapterName;
             labelChapter.AutoSize = false;
             labelChapter.Size = new Size(630, 45);
             labelChapter.Padding = new Padding(0, 5, 0, 5);
-            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
+            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);         
             flowpanel.Controls.Add(labelChapter);
+            labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapter);
+        }
+
+        private void labelChapter_Click(object? sender,Chapter chapter)
+        {
+            StoriesServices.viewStory(story.StoryID);
+            loadChapter?.Invoke(this, chapter);
         }
 
         private void addStarComment()
@@ -115,6 +123,15 @@ namespace ReadingApp.UserControls
                 case 1:
                     {
                         picStar1.Image = Properties.Resources.star;
+                        picStar2.Image = Properties.Resources.star_gray;
+                        picStar3.Image = Properties.Resources.star_gray;
+                        picStar4.Image = Properties.Resources.star_gray;
+                        picStar5.Image = Properties.Resources.star_gray;
+                        break;
+                    }
+                case 0:
+                    {
+                        picStar1.Image = Properties.Resources.star_gray;
                         picStar2.Image = Properties.Resources.star_gray;
                         picStar3.Image = Properties.Resources.star_gray;
                         picStar4.Image = Properties.Resources.star_gray;
@@ -191,6 +208,35 @@ namespace ReadingApp.UserControls
             lbInfor.Visible = false;
             cbReadingList.Visible = false;
             timer1.Stop();
+        }
+
+        private void btnPostCmt_Click(object sender, EventArgs e)
+        {
+            if (star!=0)
+            {
+                lbInforCmt.Visible = false;
+                if (CommentServices.addCmt(user.UserID, story.StoryID, star, txtNewComment.Text))
+                {
+                    reloadListCmt(user.UserID, story.StoryID);
+                }
+            }
+            else { lbInforCmt.Visible = true; }
+        }
+
+        private void reloadListCmt(int userID, int storyID)
+        {
+            flowComment.Controls.Clear();
+            ratings = CommentServices.getCmt(userID, storyID);
+            for (int i = 0; i < ratings.Count; i++)
+            {
+                UCCommentItem ucCommentItem = new UCCommentItem(ratings[i]);
+                flowComment.Controls.Add(ucCommentItem);
+            }
+
+            star = 0;
+            addStarComment();
+            txtNewComment.Clear();
+            lbStar.Text = StoriesServices.getStarsStory(story.StoryID);
         }
     }
 }

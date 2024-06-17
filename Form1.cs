@@ -94,6 +94,40 @@ namespace ReadingApp
             pnMain.Controls.Add(ucHome);
         }
 
+        private void UcHome_ShowAddNewStr(object sender, EventArgs e)
+        {
+            try
+            {
+                UCAddNewStory uCAddNewStory = new UCAddNewStory();
+                this.Controls.Clear();
+                this.Controls.Add(uCAddNewStory);
+
+                uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
+            }
+            catch { }
+        }
+
+        private void UCAddNewStory_StorySaved(object sender, Story story)
+        {
+            try
+            {
+                if (story.Category == "truyện tranh")
+                {
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
+                    uCWriteImageStory.story = story;
+
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteImageStory);
+
+                }
+                else
+                {
+                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
+                    uCWriteWordStory.story = story;
+                    this.Controls.Clear();
+                    this.Controls.Add(uCWriteWordStory);
+                }
+
         private void UCAddNewStory_StorySaved(object sender, Story story)
         {
             try
@@ -169,6 +203,8 @@ namespace ReadingApp
             pnLogIn.Controls.Clear();
             pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
+
+            pnAccountTab.Visible = (cruUser.FullName == "Admin") ? true : false;
         }
 
         private void loadUCSignUp(object? sender, EventArgs e)
@@ -190,9 +226,19 @@ namespace ReadingApp
 
         private void loadUCStoryDetails(object? sender, Story e)
         {
-            UCStoryDetails ucStoryDetails = new UCStoryDetails(e);
+            UCStoryDetails ucStoryDetails = new UCStoryDetails(e, cruUser);
+            ucStoryDetails.loadChapter += loadChapter;
             pnMain.Controls.Clear();
             pnMain.Controls.Add(ucStoryDetails);
+        }
+
+        private void loadChapter(object? sender, Chapter e)
+        {
+            UCChapterImage ucChapterImage = new UCChapterImage(e);
+            ucChapterImage.loadStoryDetails += loadUCStoryDetails;
+            ucChapterImage.loadChapter += loadChapter;
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(ucChapterImage);
         }
 
         private void loadUCForgotPassword(object? sender, EventArgs e)

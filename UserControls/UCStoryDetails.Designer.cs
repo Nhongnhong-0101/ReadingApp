@@ -63,7 +63,7 @@
             flowComment = new FlowLayoutPanel();
             label8 = new Label();
             pnNewComment = new Panel();
-            btnSearch = new Button();
+            btnPostCmt = new Button();
             txtNewComment = new RichTextBox();
             panel1 = new Panel();
             picStar5 = new PictureBox();
@@ -73,6 +73,7 @@
             picStar1 = new PictureBox();
             picAvat = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            lbInforCmt = new Label();
             pcAddChapter = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
@@ -468,7 +469,7 @@
             // 
             // pnNewComment
             // 
-            pnNewComment.Controls.Add(btnSearch);
+            pnNewComment.Controls.Add(btnPostCmt);
             pnNewComment.Controls.Add(txtNewComment);
             pnNewComment.Controls.Add(panel1);
             pnNewComment.Controls.Add(picAvat);
@@ -478,8 +479,19 @@
             pnNewComment.Size = new Size(449, 111);
             pnNewComment.TabIndex = 20;
             // 
-            // btnSearch
+            // btnPostCmt
             // 
+            btnPostCmt.BackColor = Color.LightGreen;
+            btnPostCmt.FlatStyle = FlatStyle.Flat;
+            btnPostCmt.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnPostCmt.ForeColor = Color.DarkGreen;
+            btnPostCmt.Location = new Point(545, 3);
+            btnPostCmt.Name = "btnPostCmt";
+            btnPostCmt.Size = new Size(128, 47);
+            btnPostCmt.TabIndex = 16;
+            btnPostCmt.Text = "Đăng";
+            btnPostCmt.UseVisualStyleBackColor = false;
+            btnPostCmt.Click += btnPostCmt_Click;
             btnSearch.BackColor = Color.LightGreen;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -596,6 +608,19 @@
             timer1.Interval = 1200;
             timer1.Tick += timer1_Tick;
             // 
+            // lbInforCmt
+            // 
+            lbInforCmt.BackColor = Color.Transparent;
+            lbInforCmt.Font = new Font("Segoe UI", 8F);
+            lbInforCmt.ForeColor = Color.Red;
+            lbInforCmt.Location = new Point(1884, 785);
+            lbInforCmt.Name = "lbInforCmt";
+            lbInforCmt.Size = new Size(274, 25);
+            lbInforCmt.TabIndex = 25;
+            lbInforCmt.Text = "Vui lòng chọn số sao đánh giá!";
+            lbInforCmt.TextAlign = ContentAlignment.MiddleLeft;
+            lbInforCmt.Visible = false;
+            // 
             // pcAddChapter
             // 
             pcAddChapter.BackgroundImage = Properties.Resources.icons8_add_48;
@@ -613,6 +638,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(pcAddChapter);
+            Controls.Add(lbInforCmt);
             Controls.Add(pnNewComment);
             Controls.Add(label8);
             Controls.Add(flowComment);
@@ -686,7 +712,7 @@
         private PictureBox picStar3;
         private PictureBox picStar2;
         private RichTextBox txtNewComment;
-        private Button btnSearch;
+        private Button btnPostCmt;
         private Panel pnPrice;
         private Label lbPrice;
         private PictureBox pictureBox1;
@@ -695,5 +721,6 @@
         private Label lbInfor;
         private System.Windows.Forms.Timer timer1;
         private PictureBox pcAddChapter;
+        private Label lbInforCmt;
     }
 }
