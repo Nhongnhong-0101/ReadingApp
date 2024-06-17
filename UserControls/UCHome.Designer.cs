@@ -138,7 +138,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.search;
+            //pictureBox2.Image = Properties.Resources.search;
             pictureBox2.Location = new Point(1144, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(45, 45);

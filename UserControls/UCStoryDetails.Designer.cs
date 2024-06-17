@@ -75,6 +75,8 @@
             timer1 = new System.Windows.Forms.Timer(components);
             lbInforCmt = new Label();
             pcAddChapter = new PictureBox();
+            btnModify = new Button();
+            btnDel = new Button();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
             pnPrice.SuspendLayout();
@@ -114,7 +116,7 @@
             picImage.Location = new Point(33, 40);
             picImage.Margin = new Padding(2);
             picImage.Name = "picImage";
-            picImage.Size = new Size(300, 420);
+            picImage.Size = new Size(300, 400);
             picImage.SizeMode = PictureBoxSizeMode.StretchImage;
             picImage.TabIndex = 14;
             picImage.TabStop = false;
@@ -492,17 +494,6 @@
             btnPostCmt.Text = "Đăng";
             btnPostCmt.UseVisualStyleBackColor = false;
             btnPostCmt.Click += btnPostCmt_Click;
-            btnSearch.BackColor = Color.LightGreen;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnSearch.ForeColor = Color.DarkGreen;
-            btnSearch.Location = new Point(363, 2);
-            btnSearch.Margin = new Padding(2);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(85, 31);
-            btnSearch.TabIndex = 16;
-            btnSearch.Text = "Đăng";
-            btnSearch.UseVisualStyleBackColor = false;
             // 
             // txtNewComment
             // 
@@ -625,18 +616,52 @@
             // 
             pcAddChapter.BackgroundImage = Properties.Resources.icons8_add_48;
             pcAddChapter.BackgroundImageLayout = ImageLayout.Stretch;
-            pcAddChapter.Location = new Point(182, 490);
+            pcAddChapter.Cursor = Cursors.Hand;
+            pcAddChapter.Location = new Point(182, 500);
             pcAddChapter.Name = "pcAddChapter";
-            pcAddChapter.Size = new Size(40, 40);
+            pcAddChapter.Size = new Size(35, 35);
             pcAddChapter.TabIndex = 21;
             pcAddChapter.TabStop = false;
             pcAddChapter.Visible = false;
+            pcAddChapter.Click += pcAddChapter_Click;
+            // 
+            // btnModify
+            // 
+            btnModify.BackgroundImage = Properties.Resources.bg_updateAccount;
+            btnModify.BackgroundImageLayout = ImageLayout.Stretch;
+            btnModify.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnModify.ForeColor = SystemColors.ButtonHighlight;
+            btnModify.Location = new Point(33, 449);
+            btnModify.Name = "btnModify";
+            btnModify.Size = new Size(120, 40);
+            btnModify.TabIndex = 26;
+            btnModify.Text = "Chỉnh sửa";
+            btnModify.UseVisualStyleBackColor = true;
+            btnModify.Visible = false;
+            btnModify.Click += btnModify_Click;
+            // 
+            // btnDel
+            // 
+            btnDel.BackgroundImage = Properties.Resources.bg_search;
+            btnDel.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDel.ForeColor = SystemColors.ActiveCaptionText;
+            btnDel.Location = new Point(213, 449);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(120, 40);
+            btnDel.TabIndex = 27;
+            btnDel.Text = "Xóa truyện";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Visible = false;
+            btnDel.Click += btnDel_Click;
             // 
             // UCStoryDetails
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(btnDel);
+            Controls.Add(btnModify);
             Controls.Add(pcAddChapter);
             Controls.Add(lbInforCmt);
             Controls.Add(pnNewComment);
@@ -722,5 +747,7 @@
         private System.Windows.Forms.Timer timer1;
         private PictureBox pcAddChapter;
         private Label lbInforCmt;
+        private Button btnModify;
+        private Button btnDel;
     }
 }

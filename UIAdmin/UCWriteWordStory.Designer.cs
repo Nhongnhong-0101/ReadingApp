@@ -34,16 +34,19 @@
             btnSave = new Button();
             lbNumChapter = new Label();
             btnNew = new Button();
+            pcBack = new PictureBox();
+            tbStt = new TextBox();
+            btnDel = new Button();
+            ((System.ComponentModel.ISupportInitialize)pcBack).BeginInit();
             SuspendLayout();
             // 
             // tbTitle
             // 
-            tbTitle.BorderStyle = BorderStyle.None;
             tbTitle.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tbTitle.Location = new Point(265, 72);
+            tbTitle.Location = new Point(298, 16);
             tbTitle.Multiline = true;
             tbTitle.Name = "tbTitle";
-            tbTitle.Size = new Size(463, 27);
+            tbTitle.Size = new Size(463, 40);
             tbTitle.TabIndex = 0;
             tbTitle.Text = "Tiêu đề của chương";
             tbTitle.TextAlign = HorizontalAlignment.Center;
@@ -51,9 +54,9 @@
             // rtbContent
             // 
             rtbContent.BorderStyle = BorderStyle.FixedSingle;
-            rtbContent.Location = new Point(21, 141);
+            rtbContent.Location = new Point(21, 118);
             rtbContent.Name = "rtbContent";
-            rtbContent.Size = new Size(960, 586);
+            rtbContent.Size = new Size(960, 609);
             rtbContent.TabIndex = 1;
             rtbContent.Text = "";
             rtbContent.TextChanged += rtbContent_TextChanged;
@@ -62,16 +65,16 @@
             // 
             lbCountWord.AutoSize = true;
             lbCountWord.ForeColor = SystemColors.Highlight;
-            lbCountWord.Location = new Point(24, 103);
+            lbCountWord.Location = new Point(24, 80);
             lbCountWord.Name = "lbCountWord";
-            lbCountWord.Size = new Size(72, 20);
+            lbCountWord.Size = new Size(80, 20);
             lbCountWord.TabIndex = 2;
-            lbCountWord.Text = "0/ 500 Từ";
+            lbCountWord.Text = "0/ 3000 Từ";
             // 
             // btnSave
             // 
             btnSave.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.Location = new Point(451, 748);
+            btnSave.Location = new Point(447, 748);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(126, 35);
             btnSave.TabIndex = 3;
@@ -83,25 +86,56 @@
             // 
             lbNumChapter.AutoSize = true;
             lbNumChapter.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbNumChapter.Location = new Point(24, 18);
+            lbNumChapter.Location = new Point(95, 16);
             lbNumChapter.Name = "lbNumChapter";
-            lbNumChapter.Size = new Size(125, 28);
+            lbNumChapter.Size = new Size(126, 28);
             lbNumChapter.TabIndex = 4;
-            lbNumChapter.Text = "Chương số 1";
+            lbNumChapter.Text = "Chương số* ";
             // 
             // btnNew
             // 
-            btnNew.Location = new Point(880, 101);
+            btnNew.Location = new Point(880, 78);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(101, 34);
             btnNew.TabIndex = 11;
             btnNew.Text = "Chương mới";
             btnNew.UseVisualStyleBackColor = true;
             // 
+            // pcBack
+            // 
+            pcBack.BackgroundImage = Properties.Resources.icons8_back_64;
+            pcBack.BackgroundImageLayout = ImageLayout.Stretch;
+            pcBack.Location = new Point(24, 16);
+            pcBack.Name = "pcBack";
+            pcBack.Size = new Size(35, 35);
+            pcBack.TabIndex = 12;
+            pcBack.TabStop = false;
+            pcBack.Click += pictureBox1_Click;
+            // 
+            // tbStt
+            // 
+            tbStt.Location = new Point(227, 20);
+            tbStt.Name = "tbStt";
+            tbStt.Size = new Size(55, 27);
+            tbStt.TabIndex = 13;
+            // 
+            // btnDel
+            // 
+            btnDel.Location = new Point(887, 15);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(94, 29);
+            btnDel.TabIndex = 14;
+            btnDel.Text = "Xóa";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Click += btnDel_Click;
+            // 
             // UCWriteWordStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDel);
+            Controls.Add(tbStt);
+            Controls.Add(pcBack);
             Controls.Add(btnNew);
             Controls.Add(lbNumChapter);
             Controls.Add(btnSave);
@@ -111,6 +145,7 @@
             Name = "UCWriteWordStory";
             Size = new Size(1000, 800);
             Load += UCWriteWordStory_Load;
+            ((System.ComponentModel.ISupportInitialize)pcBack).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,5 +159,8 @@
         private Label lbNumChapter;
         private Label lbCountWord;
         private Button btnNew;
+        private PictureBox pcBack;
+        private TextBox tbStt;
+        private Button btnDel;
     }
 }

@@ -54,9 +54,7 @@ namespace ReadingApp
             {
                 if(story.Category == "truyện tranh")
                 {
-                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
-                    uCWriteImageStory.story = story;
-
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(story, Admin, true);
 
                     this.Controls.Clear();
                     this.Controls.Add(uCWriteImageStory);
@@ -64,8 +62,7 @@ namespace ReadingApp
                 }
                 else
                 {
-                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
-                    uCWriteWordStory.story = story; 
+                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory(story, Admin, true);
                     this.Controls.Clear();
                     this.Controls.Add(uCWriteWordStory);
                 }

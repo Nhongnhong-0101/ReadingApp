@@ -63,7 +63,7 @@
             // 
             pcImage.BackColor = SystemColors.ControlLight;
             pcImage.BackgroundImage = Properties.Resources.image;
-            pcImage.BackgroundImageLayout = ImageLayout.Zoom;
+            pcImage.BackgroundImageLayout = ImageLayout.Stretch;
             pcImage.Cursor = Cursors.Hand;
             pcImage.Location = new Point(51, 77);
             pcImage.Name = "pcImage";

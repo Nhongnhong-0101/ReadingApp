@@ -23,6 +23,18 @@ namespace ReadingApp.UserControls
         private List<Rating> ratings = new List<Rating>();
         private List<Chapter> chapters = new List<Chapter>();
         public EventHandler<Chapter> loadChapter;
+
+
+
+        public delegate void WriteNewChpaterEventHandler(object sender, Story s);
+        public event WriteNewChpaterEventHandler WriteNewChapterClick;
+
+
+        public delegate void ModifyStoryEventHandler(object sender, Story s);
+        public event ModifyStoryEventHandler ModifyStoryClick;
+
+        public delegate void LoadChapterForAdmin(object sender,Story story, Chapter chapter);
+        public event LoadChapterForAdmin LoadChapterAdmin;
         public UCStoryDetails(Story story, User user)
         {
             InitializeComponent();
@@ -51,15 +63,21 @@ namespace ReadingApp.UserControls
             else { chapters = ChapterService.getImageChapters(story.StoryID); }
 
             int i = 0;
-            while (i< chapters.Count)
+            while (i < chapters.Count)
             {
-                int middle = chapters.Count % 2 == 0 ? chapters.Count/2 : chapters.Count/2 + 1;
+                int middle = chapters.Count % 2 == 0 ? chapters.Count / 2 : chapters.Count / 2 + 1;
                 if (i < middle) { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter1, chapters[i]); }
                 else { addLabelChapter("Chương " + (i + 1).ToString() + ":" + chapters[i].Title, flowChapter2, chapters[i]); }
                 i++;
             }
 
-            reloadListCmt(user.UserID, story.StoryID);            
+            reloadListCmt(user.UserID, story.StoryID);
+
+            if (user.FullName == "Admin")
+            {
+                pcAddChapter.Visible = true;
+                btnModify.Visible = true;
+            }
         }
 
         private void addLabelChapter(string chapterName, FlowLayoutPanel flowpanel, Chapter chapter)
@@ -69,15 +87,24 @@ namespace ReadingApp.UserControls
             labelChapter.AutoSize = false;
             labelChapter.Size = new Size(630, 45);
             labelChapter.Padding = new Padding(0, 5, 0, 5);
-            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);         
+            labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
             flowpanel.Controls.Add(labelChapter);
-            labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapter);
+            labelChapter.Click += (sender, e) => labelChapter_Click(sender,story, chapter);
         }
 
-        private void labelChapter_Click(object? sender,Chapter chapter)
+        private void labelChapter_Click(object? sender, Story s, Chapter chapter)
         {
-            StoriesServices.viewStory(story.StoryID);
-            loadChapter?.Invoke(this, chapter);
+
+
+            if (user.FullName == "Admin")
+            {
+                LoadChapterAdmin?.Invoke(this, s, chapter);
+            }
+            else
+            {
+                StoriesServices.viewStory(story.StoryID);
+                loadChapter?.Invoke(this, chapter);
+            }
         }
 
         private void addStarComment()
@@ -212,7 +239,7 @@ namespace ReadingApp.UserControls
 
         private void btnPostCmt_Click(object sender, EventArgs e)
         {
-            if (star!=0)
+            if (star != 0)
             {
                 lbInforCmt.Visible = false;
                 if (CommentServices.addCmt(user.UserID, story.StoryID, star, txtNewComment.Text))
@@ -238,5 +265,28 @@ namespace ReadingApp.UserControls
             txtNewComment.Clear();
             lbStar.Text = StoriesServices.getStarsStory(story.StoryID);
         }
+
+        private void pcAddChapter_Click(object sender, EventArgs e)
+        {
+            //show màn hình viết lên
+            WriteNewChapterClick?.Invoke(this, story);
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            //load UC AddNewStory
+            ModifyStoryClick!.Invoke(this, story);
+
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Nếu bạn xác nhận xóa truyện, mọi thông tin về truyện gồm chương, các lượt thích đều bị xóa. \n Bạn có chắc muốn xóa truyện không?", "Xác nhận", MessageBoxButtons.OKCancel);
+            if (dialogResult == DialogResult.OK)
+            {
+                
+            }
+        }
+    
     }
 }

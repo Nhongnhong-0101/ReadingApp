@@ -93,68 +93,25 @@ namespace ReadingApp
             ucHome.ShowAddNewStr += UcHome_ShowAddNewStr;
             pnMain.Controls.Add(ucHome);
         }
-
-        private void UcHome_ShowAddNewStr(object sender, EventArgs e)
-        {
-            try
-            {
-                UCAddNewStory uCAddNewStory = new UCAddNewStory();
-                this.Controls.Clear();
-                this.Controls.Add(uCAddNewStory);
-
-                uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
-            }
-            catch { }
-        }
-
         private void UCAddNewStory_StorySaved(object sender, Story story)
         {
             try
             {
-                if (story.Category == "truyện tranh")
-                {
-                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
-                    uCWriteImageStory.story = story;
 
-                    this.Controls.Clear();
-                    this.Controls.Add(uCWriteImageStory);
+                UCStoryDetails ucStoryDetails = new UCStoryDetails(story, cruUser);
+                ucStoryDetails.loadChapter += loadChapter;
+                ucStoryDetails.WriteNewChapterClick += UcStoryDetails_WriteNewChapterClick1;
+                ucStoryDetails.ModifyStoryClick += UcStoryDetails_ModifyStoryClick;
+                pnMain.Controls.Clear();
+                pnMain.Controls.Add(ucStoryDetails);
 
-                }
-                else
-                {
-                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
-                    uCWriteWordStory.story = story;
-                    this.Controls.Clear();
-                    this.Controls.Add(uCWriteWordStory);
-                }
-
-        private void UCAddNewStory_StorySaved(object sender, Story story)
-        {
-            try
+            } catch (Exception ex)
             {
-                if (story.Category == "truyện tranh")
-                {
-                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory();
-                    uCWriteImageStory.story = story;
 
-
-                    this.Controls.Clear();
-                    this.Controls.Add(uCWriteImageStory);
-
-                }
-                else
-                {
-                    UCWriteWordStory uCWriteWordStory = new UCWriteWordStory();
-                    uCWriteWordStory.story = story;
-                    this.Controls.Clear();
-                    this.Controls.Add(uCWriteWordStory);
-                }
-
-            }
-            catch (Exception ex)
-            {
             }
         }
+
+
 
         private void pnAccountTab_Click(object sender, EventArgs e)
         {
@@ -228,6 +185,96 @@ namespace ReadingApp
         {
             UCStoryDetails ucStoryDetails = new UCStoryDetails(e, cruUser);
             ucStoryDetails.loadChapter += loadChapter;
+            ucStoryDetails.WriteNewChapterClick += UcStoryDetails_WriteNewChapterClick1;
+            ucStoryDetails.ModifyStoryClick += UcStoryDetails_ModifyStoryClick;
+            ucStoryDetails.LoadChapterAdmin += UcStoryDetails_LoadChapterAdmin1; ; ;
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(ucStoryDetails);
+        }
+
+        private void UcStoryDetails_LoadChapterAdmin1(object sender, Story story, Chapter chapter)
+        {
+            try
+            {
+
+                if (chapter.Content.Length > 0)
+                {
+                    UCWriteWordStory ucWriteWordStory = new UCWriteWordStory(chapter, story,cruUser, false);
+
+                    ucWriteWordStory.BackToDetailStrClick += UcWriteWordStory_BackToDetailStrClick;
+
+                    pnMain.Controls.Clear();
+                    pnMain.Controls.Add(ucWriteWordStory);
+
+
+                }
+                else
+                {
+                    //UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(story, cruUser, true);
+                    //uCWriteImageStory.BackClick += UCWriteImageStory_BackClick;
+
+                    //pnMain.Controls.Clear();
+                    //pnMain.Controls.Add(uCWriteImageStory);
+                }
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        private void UcStoryDetails_ModifyStoryClick(object sender, Story s)
+        {
+            try
+            {
+                UCAddNewStory uCAddNewStory = new UCAddNewStory(s);
+                uCAddNewStory.BackClick += UCAddNewStory_BackClick;
+                pnMain.Controls.Clear();
+                pnMain.Controls.Add(uCAddNewStory);
+
+                uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
+            }
+             catch { 
+            }
+        }
+
+        private void UcStoryDetails_WriteNewChapterClick1(object sender, Story s)
+        {
+             try
+            {
+
+                if (s.Category == "truyện tranh")
+                {
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(s, cruUser, true);
+                    //uCWriteImageStory.BackClick += UCWriteImageStory_BackClick;
+
+                    pnMain.Controls.Clear();
+                    pnMain.Controls.Add(uCWriteImageStory);
+
+                }
+                else
+                {
+                    UCWriteWordStory ucWriteWordStory = new UCWriteWordStory(s, cruUser, true);
+                    ucWriteWordStory.BackToDetailStrClick += UcWriteWordStory_BackToDetailStrClick;
+                    pnMain.Controls.Clear();
+                    pnMain.Controls.Add(ucWriteWordStory);
+                }
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void UcWriteWordStory_BackToDetailStrClick(object sender, Story story)
+        {
+            UCStoryDetails ucStoryDetails = new UCStoryDetails(story, cruUser);
+            ucStoryDetails.loadChapter += loadChapter;
+            ucStoryDetails.WriteNewChapterClick += UcStoryDetails_WriteNewChapterClick1;
+            ucStoryDetails.ModifyStoryClick += UcStoryDetails_ModifyStoryClick;
             pnMain.Controls.Clear();
             pnMain.Controls.Add(ucStoryDetails);
         }

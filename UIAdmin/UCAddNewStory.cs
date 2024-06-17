@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
 using ReadingApp.Services;
+using System.Security.Cryptography;
 
 namespace ReadingApp.UIAdmin
 {
@@ -38,7 +39,6 @@ namespace ReadingApp.UIAdmin
 
         public Story story { get; set; }
 
-        StoryService storyService;
 
         //Sự kiện 
         public delegate void StorySavedEventHandler(object sender, Story story);
@@ -46,12 +46,14 @@ namespace ReadingApp.UIAdmin
 
         public delegate void BackEventHandler(object sender);
         public event BackEventHandler BackClick;
+
+        public delegate void ShowDetailEventHandler(object sender, Story story);
+        public event ShowDetailEventHandler ShowDetail;
         public UCAddNewStory()
         {
             InitializeComponent();
             InitializeTimer();
 
-            storyService = new StoryService();
 
             this.tbTitle.ForeColor = Color.Gray;
             this.tbAuthor.ForeColor = Color.Gray;
@@ -60,6 +62,50 @@ namespace ReadingApp.UIAdmin
 
             this.cmbType.DataSource = types;
             this.cmbType.SelectedIndex = -1;
+        }
+
+        //chinh sua thong tin truyen
+        public UCAddNewStory(Story s)
+        {
+            InitializeComponent();
+            InitializeTimer();
+
+            this.story = s;
+
+
+            this.tbTitle.ForeColor = Color.Gray;
+            this.tbAuthor.ForeColor = Color.Gray;
+            this.rdTC.Checked = true;
+            this.pcImage.BackgroundImage = ImageDF;
+
+            this.cmbType.DataSource = types;
+            this.cmbType.SelectedIndex = -1;
+
+            tbTitle.Text = s.Title;
+            tbDes.Text = s.Description;
+            tbAuthor.Text = s.Author;
+            tbPrice.Text = s.Price.ToString();
+            tbFreeChap.Text = s.FreeChapters.ToString();
+            cmbType.SelectedItem = s.Type;
+            
+
+            Image image = Image.FromFile(s.Image);
+            pcImage.BackgroundImage = image;
+            selectedImagePath = s.Image;
+
+
+            if (s.Category =="truyện tranh")
+            {
+                rdTT.Checked = true;
+            }
+            else
+            {
+                rdTC.Checked = true;
+            }
+            rdTC.Enabled = false;
+            rdTT.Enabled = false;
+
+            btnCreate.Text = "Lưu truyện";
         }
 
         private void InitializeTimer()
@@ -83,62 +129,70 @@ namespace ReadingApp.UIAdmin
             //tao new story 
             try
             {
-                story = new Story();
-                if (!String.Equals(tbTitle.Text, "Truyện chưa có tiêu đề")
-                    && !String.IsNullOrEmpty(tbDes.Text)
-                    && !String.Equals(tbAuthor.Text, "Điền tên tác giả")
-                    && (rdTC.Checked || rdTT.Checked)
-                    && cmbType.SelectedIndex != -1
-                    && tbTitle.Text.Length <= maxTitle
-                    && tbDes.Text.Length <= maxDes)
+                if(btnCreate.Text =="Tạo truyện")
                 {
-                    story.Title = tbTitle.Text;
-                    story.Description = tbDes.Text;
-                    story.Author = tbAuthor.Text;
-                    story.Category = (rdTC.Checked) ? "truyện chữ" : "truyện tranh";
-                    story.Type = cmbType.SelectedValue.ToString();
-
-
-                    if (String.IsNullOrEmpty(tbPrice.Text))
+                    story = new Story();
+                    if (!String.Equals(tbTitle.Text, "Truyện chưa có tiêu đề")
+                        && !String.IsNullOrEmpty(tbDes.Text)
+                        && !String.Equals(tbAuthor.Text, "Điền tên tác giả")
+                        && (rdTC.Checked || rdTT.Checked)
+                        && cmbType.SelectedIndex != -1
+                        && tbTitle.Text.Length <= maxTitle
+                        && tbDes.Text.Length <= maxDes)
                     {
-                        story.Price = 0;
-                    }
-                    else
-                    {
-                        story.Price = int.Parse(tbPrice.Text);
-                    }
+                        story.Title = tbTitle.Text;
+                        story.Description = tbDes.Text;
+                        story.Author = tbAuthor.Text;
+                        story.Category = (rdTC.Checked) ? "truyện chữ" : "truyện tranh";
+                        story.Type = cmbType.SelectedValue.ToString();
 
 
-                    if (String.IsNullOrEmpty(tbFreeChap.Text))
-                    {
-                        story.FreeChapters = 0;
-
-                    }
-                    else
-                    {
-                        story.FreeChapters = int.Parse(tbFreeChap.Text);
-                    }
-
-                    story.Status = "Đang cập nhập";
-
-                    if (pcImage.BackgroundImage != null)
-                    {
-                        if (!ImagesAreEqual(pcImage.BackgroundImage, ImageDF))
+                        if (String.IsNullOrEmpty(tbPrice.Text))
                         {
-                            story.Image = selectedImagePath;
+                            story.Price = 0;
                         }
-                    }
+                        else
+                        {
+                            story.Price = int.Parse(tbPrice.Text);
+                        }
 
-                    DateTime created = DateTime.Now;
-                    story.CreatedAt = created;
 
-                    story.LastUpdatedAt = created;
-                    story.StoryID = storyService.SaveNewStory(story);
+                        if (String.IsNullOrEmpty(tbFreeChap.Text))
+                        {
+                            story.FreeChapters = 0;
 
-                    if (story.StoryID != -1)
-                    {
-                        MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
-                        OnStorySaved(story);
+                        }
+                        else
+                        {
+                            story.FreeChapters = int.Parse(tbFreeChap.Text);
+                        }
+
+                        story.Status = "Đang cập nhập";
+
+                        if (pcImage.BackgroundImage != null)
+                        {
+                            if (!ImagesAreEqual(pcImage.BackgroundImage, ImageDF))
+                            {
+                                story.Image = selectedImagePath;
+                            }
+                        }
+
+                        DateTime created = DateTime.Now;
+                        story.CreatedAt = created;
+
+                        story.LastUpdatedAt = created;
+                        story.StoryID = StoriesServices.SaveNewStory(story);
+
+                        if (story.StoryID != -1)
+                        {
+                            MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
+                            OnStorySaved(story);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+
+                        }
                     }
                     else
                     {
@@ -148,8 +202,73 @@ namespace ReadingApp.UIAdmin
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+                    //Chỉnh sửa thoogn tin truyện
 
+                    if (!String.Equals(tbTitle.Text, "Truyện chưa có tiêu đề")
+                        && !String.IsNullOrEmpty(tbDes.Text)
+                        && !String.Equals(tbAuthor.Text, "Điền tên tác giả")
+                        && (rdTC.Checked || rdTT.Checked)
+                        && cmbType.SelectedIndex != -1
+                        && tbTitle.Text.Length <= maxTitle
+                        && tbDes.Text.Length <= maxDes)
+                    {
+                        story.Title = tbTitle.Text;
+                        story.Description = tbDes.Text;
+                        story.Author = tbAuthor.Text;
+                        story.Type = cmbType.SelectedValue.ToString();
+
+
+                        if (String.IsNullOrEmpty(tbPrice.Text))
+                        {
+                            story.Price = 0;
+                        }
+                        else
+                        {
+                            story.Price = int.Parse(tbPrice.Text);
+                        }
+
+
+                        if (String.IsNullOrEmpty(tbFreeChap.Text))
+                        {
+                            story.FreeChapters = 0;
+
+                        }
+                        else
+                        {
+                            story.FreeChapters = int.Parse(tbFreeChap.Text);
+                        }
+
+
+                        if (pcImage.BackgroundImage != null)
+                        {
+                            if (!ImagesAreEqual(pcImage.BackgroundImage, ImageDF))
+                            {
+                                story.Image = selectedImagePath;
+                            }
+                        }
+
+
+                        story.LastUpdatedAt = DateTime.Now;
+                        story.StoryID = StoriesServices.ModifyStory(story);
+
+                        if (story.StoryID != -1)
+                        {
+                            MessageBox.Show("Lưu thông tin truyện thành công", "Thông báo", MessageBoxButtons.OK);
+                            OnStorySaved(story);
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+
+                    }
                 }
             }
             catch (Exception ex)
