@@ -50,16 +50,19 @@ namespace ReadingApp.UserControls
             lasted.Clear();
             flowLasted.Controls.Clear();
             lasted = StoriesServices.getLastedStories();
-            for (int i = 0; i < 4; i++)
+            if (lasted.Count > 0)
             {
-                int index = i;
-                Label lbName = labelName(lasted[index].Title);
-                Label lbAuthor = labelAuthor(lasted[index].Author);
-                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
-                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                for (int i = 0; i < 4; i++)
+                {
+                    int index = i;
+                    Label lbName = labelName(lasted[index].Title);
+                    Label lbAuthor = labelAuthor(lasted[index].Author);
+                    lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                    lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
 
-                flowLasted.Controls.Add(lbName);
-                flowLasted.Controls.Add(lbAuthor);
+                    flowLasted.Controls.Add(lbName);
+                    flowLasted.Controls.Add(lbAuthor);
+                }
             }
 
             outs.Clear();
@@ -139,7 +142,8 @@ namespace ReadingApp.UserControls
             {
                 OnShowAddNewStr(EventArgs.Empty);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
         }
@@ -353,6 +357,11 @@ namespace ReadingApp.UserControls
                 }
                 loadFlowPanel(searchStories);
             }
+        }
+
+        private void btnWrite_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

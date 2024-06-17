@@ -19,7 +19,7 @@ namespace ReadingApp.UIAdmin
         String selectedImagePath;
         int maxTitle = 150;
         int maxDes = 500;
-        System.Windows.Forms.Timer updateTimer ;
+        System.Windows.Forms.Timer updateTimer;
 
         Image ImageDF = ReadingApp.Properties.Resources.image;
 
@@ -33,16 +33,19 @@ namespace ReadingApp.UIAdmin
                 "Trinh thám",
                 "Viễn tưởng",
                 "Phiêu lưu",
-                
+
             };
 
         public Story story { get; set; }
 
-        StoryService storyService ;
+        StoryService storyService;
 
         //Sự kiện 
         public delegate void StorySavedEventHandler(object sender, Story story);
         public event StorySavedEventHandler StorySaved;
+
+        public delegate void BackEventHandler(object sender);
+        public event BackEventHandler BackClick;
         public UCAddNewStory()
         {
             InitializeComponent();
@@ -87,7 +90,7 @@ namespace ReadingApp.UIAdmin
                     && (rdTC.Checked || rdTT.Checked)
                     && cmbType.SelectedIndex != -1
                     && tbTitle.Text.Length <= maxTitle
-                    && tbDes.Text.Length <= maxDes )
+                    && tbDes.Text.Length <= maxDes)
                 {
                     story.Title = tbTitle.Text;
                     story.Description = tbDes.Text;
@@ -103,12 +106,12 @@ namespace ReadingApp.UIAdmin
                     else
                     {
                         story.Price = int.Parse(tbPrice.Text);
-                    } 
-                   
+                    }
+
 
                     if (String.IsNullOrEmpty(tbFreeChap.Text))
                     {
-                        story.FreeChapters =  0;
+                        story.FreeChapters = 0;
 
                     }
                     else
@@ -132,7 +135,7 @@ namespace ReadingApp.UIAdmin
                     story.LastUpdatedAt = created;
                     story.StoryID = storyService.SaveNewStory(story);
 
-                    if (story.StoryID  != -1)
+                    if (story.StoryID != -1)
                     {
                         MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
                         OnStorySaved(story);
@@ -159,6 +162,11 @@ namespace ReadingApp.UIAdmin
         protected virtual void OnStorySaved(Story e)
         {
             StorySaved?.Invoke(this, e);
+        }
+
+        protected virtual void BackToHome()
+        {
+            BackClick?.Invoke(this);
         }
 
         private void pcImage_Click(object sender, EventArgs e)
@@ -237,6 +245,11 @@ namespace ReadingApp.UIAdmin
                 tbTitle.Clear();
                 tbTitle.ForeColor = Color.Black;
             }
+        }
+
+        private void pcBack_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

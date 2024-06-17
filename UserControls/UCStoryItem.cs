@@ -32,7 +32,11 @@ namespace ReadingApp.UserControls
 
         private void UCStoryItem_Load(object sender, EventArgs e)
         {
-            picImage.Image = Image.FromFile(@story.Image);
+            if (@story.Image !=null && !String.IsNullOrWhiteSpace(story.Image))
+            {
+                picImage.Image = Image.FromFile(@story.Image);
+
+            }
             if (story.Price > 0) { picIsFee.Visible = true; } else { picIsFee.Visible = false; }
             lbAuthor.Text = story.Author;
             lbName.Text = story.Title;

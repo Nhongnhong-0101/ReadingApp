@@ -30,6 +30,9 @@
         {
             pcImage = new PictureBox();
             panel1 = new Panel();
+            lbCountDes = new Label();
+            label10 = new Label();
+            lbCountTitle = new Label();
             label9 = new Label();
             btnCreate = new Button();
             label8 = new Label();
@@ -50,9 +53,6 @@
             rdTT = new RadioButton();
             rdTC = new RadioButton();
             pcBack = new PictureBox();
-            lbCountTitle = new Label();
-            label10 = new Label();
-            lbCountDes = new Label();
             ((System.ComponentModel.ISupportInitialize)pcImage).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -98,6 +98,35 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(572, 728);
             panel1.TabIndex = 2;
+            // 
+            // lbCountDes
+            // 
+            lbCountDes.AutoSize = true;
+            lbCountDes.ForeColor = SystemColors.Highlight;
+            lbCountDes.Location = new Point(484, 165);
+            lbCountDes.Name = "lbCountDes";
+            lbCountDes.Size = new Size(65, 20);
+            lbCountDes.TabIndex = 18;
+            lbCountDes.Text = "0/500 từ";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = SystemColors.Highlight;
+            label10.Location = new Point(254, 354);
+            label10.Name = "label10";
+            label10.Size = new Size(0, 20);
+            label10.TabIndex = 17;
+            // 
+            // lbCountTitle
+            // 
+            lbCountTitle.AutoSize = true;
+            lbCountTitle.ForeColor = SystemColors.Highlight;
+            lbCountTitle.Location = new Point(489, 88);
+            lbCountTitle.Name = "lbCountTitle";
+            lbCountTitle.Size = new Size(65, 20);
+            lbCountTitle.TabIndex = 16;
+            lbCountTitle.Text = "0/150 từ";
             // 
             // label9
             // 
@@ -303,35 +332,7 @@
             pcBack.Size = new Size(36, 35);
             pcBack.TabIndex = 4;
             pcBack.TabStop = false;
-            // 
-            // lbCountTitle
-            // 
-            lbCountTitle.AutoSize = true;
-            lbCountTitle.ForeColor = SystemColors.Highlight;
-            lbCountTitle.Location = new Point(489, 88);
-            lbCountTitle.Name = "lbCountTitle";
-            lbCountTitle.Size = new Size(65, 20);
-            lbCountTitle.TabIndex = 16;
-            lbCountTitle.Text = "0/150 từ";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.ForeColor = SystemColors.Highlight;
-            label10.Location = new Point(254, 354);
-            label10.Name = "label10";
-            label10.Size = new Size(0, 20);
-            label10.TabIndex = 17;
-            // 
-            // lbCountDes
-            // 
-            lbCountDes.AutoSize = true;
-            lbCountDes.ForeColor = SystemColors.Highlight;
-            lbCountDes.Location = new Point(484, 165);
-            lbCountDes.Name = "lbCountDes";
-            lbCountDes.Size = new Size(65, 20);
-            lbCountDes.TabIndex = 18;
-            lbCountDes.Text = "0/500 từ";
+            pcBack.Click += pcBack_Click;
             // 
             // UCAddNewStory
             // 

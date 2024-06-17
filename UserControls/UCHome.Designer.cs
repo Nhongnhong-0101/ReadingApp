@@ -475,7 +475,7 @@
             cbArrange.Font = new Font("Segoe UI", 12F);
             cbArrange.ForeColor = Color.Gray;
             cbArrange.FormattingEnabled = true;
-            cbArrange.ItemHeight = 38;
+            cbArrange.ItemHeight = 28;
             cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
             cbArrange.Location = new Point(580, 40);
             cbArrange.Name = "cbArrange";
@@ -680,6 +680,7 @@
             btnWrite.TabIndex = 9;
             btnWrite.Text = "Viết truyện";
             btnWrite.UseVisualStyleBackColor = true;
+            btnWrite.Click += btnWrite_Click_1;
             // 
             // UCHome
             // 
