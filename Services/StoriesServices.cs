@@ -550,5 +550,53 @@ namespace ReadingApp.Services
             catch { }
         }
 
+
+        static public List<Story> getHistoryStories(int userID)
+        {
+            List<Story> stories = new List<Story>();
+            string sqlQuery = "SELECT TOP 20 * FROM STORIES STR JOIN ReadingProgress PRO ON STR.STORYID = PRO.STORYID WHERE PRO.USERID = @userID ORDER BY PRO.PROGRESS DESC";
+            //try
+            //{
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@userID", userID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Story story = new Story();
+                                    story.Title = reader["title"].ToString();
+                                    story.Image = reader["image"].ToString();
+                                    story.Description = reader["description"].ToString();
+                                    story.Type = reader["type"].ToString();
+                                    story.Category = reader["category"].ToString();
+                                    story.Author = reader["author"].ToString();
+                                    story.NumberChapters = int.Parse(reader["ChapterNumber"].ToString());
+                                    story.StoryID = int.Parse(reader["StoryID"].ToString());
+                                    story.Star = float.Parse(reader["stars"].ToString());
+                                    story.Status = reader["status"].ToString();
+                                    story.CreatedAt = DateTime.Parse(reader["createdat"].ToString());
+                                    story.LastUpdatedAt = DateTime.Parse(reader["LastUpdateAt"].ToString());
+                                    story.FreeChapters = int.Parse(reader["freechapters"].ToString());
+                                    story.Price = int.Parse(reader["price"].ToString());
+                                    story.Views = int.Parse(reader["views"].ToString());
+
+                                    stories.Add(story);
+                                }
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            //}
+            //catch { }
+            return stories;
+        }
     }
 }

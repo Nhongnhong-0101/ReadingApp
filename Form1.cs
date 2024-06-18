@@ -39,6 +39,7 @@ namespace ReadingApp
 
         private void loadUCAccount(object? sender, EventArgs e)
         {
+            SaveIndexStart();
             pnMain.Controls.Clear();
             ucAccount = new UCAccount(cruUser);
             ucAccount.loadUCPasswordChange += loadUCPasswordChange;
@@ -52,6 +53,7 @@ namespace ReadingApp
             lbHomeTab.ForeColor = Color.White;
             picHomeTab.Image = Properties.Resources.home_white;
 
+            SaveIndexStart();
             pnMain.Controls.Clear();
             ucHome = new UCHome(cruUser);
             ucHome.loadUCAccount += pnAccountTab_Click;
@@ -115,6 +117,7 @@ namespace ReadingApp
             lbLibraryTab.ForeColor = Color.White;
             picLibraryTab.Image = Properties.Resources.library_white;
 
+            SaveIndexStart();
             pnMain.Controls.Clear();
             ucLibrary = new UCLibrary(cruUser);
             ucLibrary.loadUCAccount += pnAccountTab_Click;
@@ -128,6 +131,7 @@ namespace ReadingApp
             lbHistoryTab.ForeColor = Color.White;
             picHistoryTab.Image = Properties.Resources.history_white;
 
+            SaveIndexStart();
             pnMain.Controls.Clear();
             ucHistory = new UCHistory(cruUser);
             ucHistory.loadUCStoryDetails += loadUCStoryDetails;
@@ -146,7 +150,6 @@ namespace ReadingApp
             pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
 
-            pnAccountTab.Visible = (cruUser.FullName == "Admin") ? false : true;
         }
 
         private void loadUCSignUp(object? sender, EventArgs e)
@@ -185,7 +188,7 @@ namespace ReadingApp
 
         private void loadChapter(object? sender, Chapter e)
         {
-            ucChapterImage = new UCChapterImage(e,0,cruUser.UserID);
+            ucChapterImage = new UCChapterImage(e,cruUser.UserID);
             ucChapterImage.loadStoryDetails += loadUCStoryDetails;
             ucChapterImage.loadChapter += loadChapter;
             pnMain.Controls.Clear();

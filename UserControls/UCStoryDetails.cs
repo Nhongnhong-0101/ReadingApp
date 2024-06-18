@@ -81,7 +81,7 @@ namespace ReadingApp.UserControls
                 if (index < middle)
                 {
                     Label labelChapter = addLabelChapter("Chương " + chapters[i].ChapterNumber + ": " + chapters[i].Title);
-                    flowChapter1.Controls.Add(labelChapter);
+                    flowChapter1.Controls.Add(labelChapter);                    
                     if (user.FullName != "Admin" && !isPaid && index >= story.FreeChapters) { labelChapter.Click += labelChapterNonPaid_Click; }
                     else { labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapters[index]); }
                 }

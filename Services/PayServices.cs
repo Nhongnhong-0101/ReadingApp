@@ -129,5 +129,57 @@ namespace ReadingApp.Services
             catch { }
             return result;
         }
+
+        static public int getIndex(int userID, int storyID)
+        {
+            int result = 0;
+            string sqlQuery = "SELECT INDEXSTART FROM READINGPROGRESS WHERE USERID = @userID AND STORYID = @storyID ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@userID", userID);
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read()) { result = int.Parse(reader["indexstart"].ToString()); }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch { }
+            return result;
+        }
+
+        static public int getChapterID(int userID, int storyID)
+        {
+            int result = 0;
+            string sqlQuery = "SELECT CHAPTERID FROM READINGPROGRESS WHERE USERID = @userID AND STORYID = @storyID ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@userID", userID);
+                        command.Parameters.AddWithValue("@storyID", storyID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read()) { result = int.Parse(reader["chapterID"].ToString()); }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch { }
+            return result;
+        }
     }
 }
