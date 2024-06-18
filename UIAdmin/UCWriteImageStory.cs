@@ -160,10 +160,10 @@ namespace ReadingApp.UIAdmin
                 image.Image = originalImage;
                 image.Tag = stt;
 
-                if (originalImage.Width > 800)
+                if (originalImage.Width > 500)
                 {
-                    int newWidth = 800;
-                    int newHeight = (int)(originalImage.Height * (800.0 / originalImage.Width));
+                    int newWidth = 500;
+                    int newHeight = (int)(originalImage.Height * (500.0 / originalImage.Width));
 
                     image.Height = newHeight;
 
@@ -191,8 +191,7 @@ namespace ReadingApp.UIAdmin
 
                 Point locationStt = new Point();
                 locationStt.Y = image.Location.Y + image.Height + 10;
-                locationStt.X = image.Location.X + image.Width / 2;
-                locationStt.X = 300;
+                locationStt.X = image.Location.X + image.Width / 2 ;
 
                 Label lbStt = new Label();
                 lbStt.Text = stt.ToString();

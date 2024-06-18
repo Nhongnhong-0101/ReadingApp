@@ -16,7 +16,7 @@ namespace ReadingApp.UIAdmin
 {
     public partial class UCWriteWordStory : UserControl
     {
-        int maxLength = 3000;
+        int maxLength = 4000;
         Timer updateTimer;
 
         public User user;
@@ -50,6 +50,7 @@ namespace ReadingApp.UIAdmin
                     tbStt.Enabled = true;
                     tbTitle.Enabled = true; 
                     rtbContent.Enabled = true;
+                    btnDel.Visible = false;
 
                 }
                 else

@@ -37,6 +37,7 @@
             lbBack = new Label();
             btnSpeaker = new Button();
             cmbVoice = new ComboBox();
+            lbWait = new Label();
             SuspendLayout();
             // 
             // lbStoryName
@@ -147,11 +148,24 @@
             cmbVoice.Size = new Size(201, 31);
             cmbVoice.TabIndex = 19;
             // 
+            // lbWait
+            // 
+            lbWait.AutoSize = true;
+            lbWait.ForeColor = Color.IndianRed;
+            lbWait.Location = new Point(130, 81);
+            lbWait.Name = "lbWait";
+            lbWait.Size = new Size(126, 20);
+            lbWait.TabIndex = 20;
+            lbWait.Text = "*Dữ liệu đang tải ";
+            lbWait.Visible = false;
+            lbWait.Click += lbWait_Click;
+            // 
             // UCChapterImage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lbWait);
             Controls.Add(cmbVoice);
             Controls.Add(btnSpeaker);
             Controls.Add(lbBack);
@@ -166,6 +180,7 @@
             Size = new Size(1460, 983);
             Load += UCChapterImage_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -179,5 +194,6 @@
         private Label lbBack;
         private Button btnSpeaker;
         private ComboBox cmbVoice;
+        private Label lbWait;
     }
 }

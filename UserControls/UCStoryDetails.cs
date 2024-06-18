@@ -47,6 +47,13 @@ namespace ReadingApp.UserControls
 
         private void UCStoryDetails_Load(object sender, EventArgs e)
         {
+            if (user.FullName == "Admin")
+            {
+                btnModify.Visible = true;
+                btnDel.Visible = true;
+                pcAddChapter.Visible = true;
+            }
+
             lbName.Text = story.Title;
             lbAuthor.Text = story.Author;
             lbType.Text = story.Type;
@@ -64,6 +71,8 @@ namespace ReadingApp.UserControls
                 lbPrice.Text = story.Price.ToString();
                 btnPay.Visible = (PayServices.isPaid(user.UserID, story.StoryID) || user.FullName == "Admin") ? false : true;
                 isPaid = PayServices.isPaid(user.UserID, story.StoryID);
+
+                
             }
             else
             {

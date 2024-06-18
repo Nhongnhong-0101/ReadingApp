@@ -38,6 +38,8 @@ namespace ReadingApp.UserControls
             this.chapter = chapter;
             this.indexStart = indexStart;
             this.userID = userID;
+
+
         }
 
         public UCChapterImage(Chapter chapter)
@@ -50,14 +52,15 @@ namespace ReadingApp.UserControls
         }
         public void saveIndexStart()
         {
-            if (!PayServices.isProgress(userID,chapter.Story.StoryID)) {
+            if (!PayServices.isProgress(userID, chapter.Story.StoryID))
+            {
                 //PayServices.newIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.VerticalScroll.Value);
             }
-            else 
+            else
             {
                 PayServices.saveIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.SelectionStart);
             }
-        
+
             cmbVoice.DataSource = voices;
             cmbVoice.SelectedIndex = -1;
         }
@@ -71,6 +74,9 @@ namespace ReadingApp.UserControls
                 txtContent.SelectionStart = indexStart;
                 txtContent.ScrollToCaret();
                 txtContent.Visible = true;
+
+                cmbVoice.DataSource = voices;
+                cmbVoice.SelectedIndex = -1;
             }
             else
             {
@@ -123,11 +129,11 @@ namespace ReadingApp.UserControls
             loadChapter?.Invoke(sender, chapters[cbSelectChapter.SelectedIndex]);
         }
 
-        private async void  btnSpeaker_Click(object sender, EventArgs e)
+        private async void btnSpeaker_Click(object sender, EventArgs e)
         {
             int idSpeaker = cmbVoice.SelectedIndex + 1;
             string content = chapter.Content;
-            if(content.Length > 2000)
+            if (content.Length > 2000)
             {
                 content = content.Substring(0, 1999);
             }
@@ -137,6 +143,8 @@ namespace ReadingApp.UserControls
 
         private async Task ReadContent(String inputText, int speakerId)
         {
+            btnSpeaker.Enabled = false;
+            lbWait.Visible = true;
             string apiKey = "0LiDyWNSptHD4HXYzqo1n0Igx24rWh3l";
 
             string apiUrl = $"https://api.zalo.ai/v1/tts/synthesize";
@@ -174,7 +182,8 @@ namespace ReadingApp.UserControls
                         {
                             using (SoundPlayer player = new SoundPlayer(memoryStream))
                             {
-                                player.PlaySync(); 
+                                player.PlaySync();
+
                             }
                         }
 
@@ -182,9 +191,16 @@ namespace ReadingApp.UserControls
                 }
                 else
                 {
-                    Console.WriteLine($"API Request failed: {response.StatusCode}");
+                    MessageBox.Show("Chưa thể phát tiếng ngay lúc này.\nBạn vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK);
                 }
+                lbWait.Visible = false;
+                btnSpeaker.Enabled = true;
             }
+        }
+
+        private void lbWait_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

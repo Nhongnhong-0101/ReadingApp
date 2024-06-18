@@ -87,14 +87,14 @@ namespace ReadingApp.UIAdmin
             tbPrice.Text = s.Price.ToString();
             tbFreeChap.Text = s.FreeChapters.ToString();
             cmbType.SelectedItem = s.Type;
-            
+
 
             Image image = Image.FromFile(s.Image);
             pcImage.BackgroundImage = image;
             selectedImagePath = s.Image;
 
 
-            if (s.Category =="truyện tranh")
+            if (s.Category == "truyện tranh")
             {
                 rdTT.Checked = true;
             }
@@ -129,7 +129,7 @@ namespace ReadingApp.UIAdmin
             //tao new story 
             try
             {
-                if(btnCreate.Text =="Tạo truyện")
+                if (btnCreate.Text == "Tạo truyện")
                 {
                     story = new Story();
                     if (!String.Equals(tbTitle.Text, "Truyện chưa có tiêu đề")
@@ -373,6 +373,11 @@ namespace ReadingApp.UIAdmin
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
