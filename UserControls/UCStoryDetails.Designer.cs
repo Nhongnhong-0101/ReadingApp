@@ -617,7 +617,7 @@
             pcAddChapter.BackgroundImage = Properties.Resources.icons8_add_48;
             pcAddChapter.BackgroundImageLayout = ImageLayout.Stretch;
             pcAddChapter.Cursor = Cursors.Hand;
-            pcAddChapter.Location = new Point(182, 500);
+            pcAddChapter.Location = new Point(189, 501);
             pcAddChapter.Name = "pcAddChapter";
             pcAddChapter.Size = new Size(35, 35);
             pcAddChapter.TabIndex = 21;

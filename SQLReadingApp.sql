@@ -91,7 +91,9 @@ CREATE TABLE ReadingListItems (
 CREATE TABLE Notifications (
     NotificationID int PRIMARY KEY IDENTITY(1,1),
     Message nvarchar(MAX),
-    CreatedAt datetime DEFAULT GETDATE()
+    CreatedAt datetime DEFAULT GETDATE(),
+    StoryID int,
+    FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
 );
 
 Drop database READINGBOOK

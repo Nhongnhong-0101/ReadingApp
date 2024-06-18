@@ -45,21 +45,21 @@ namespace ReadingApp.UIAdmin
 
             if (user.FullName == "Admin")
             {
-                btnNew.Visible = true;
                 btnSave.Visible = true;
                 tbStt.Enabled = true;
+                btnDel.Visible = true;
 
 
                 if (IsNew)
                 {
                     btnSave.Text = "Đăng truyện";
-                    btnNew.Visible = false;
+                    btnDel.Visible = false;
 
                 }
                 else
                 {
                     btnSave.Text = "Chỉnh sửa";
-                    btnNew.Visible = false;
+                    btnDel.Visible = true;
 
                 }
             }
@@ -67,7 +67,7 @@ namespace ReadingApp.UIAdmin
         public UCWriteImageStory(Chapter chapter, Story story, User user, bool IsNew)
 
         {
-            this.chapter = chapter; 
+            this.chapter = chapter;
             this.story = story;
             this.user = user;
             this.IsNew = IsNew;
@@ -78,21 +78,21 @@ namespace ReadingApp.UIAdmin
 
             if (user.FullName == "Admin")
             {
-                btnSave.Visible =  true;
+                btnSave.Visible = true;
+                btnDel.Visible = true;
 
                 if (IsNew)
-                {                    
+                {
                     btnSave.Text = "Đăng truyện";
-                    btnNew.Visible = false;
                     btnAddImage.Visible = false;
                     tbStt.Enabled = true;
                     tbTitle.Enabled = true;
+                    btnDel.Visible = false;
 
                 }
                 else
                 {
                     btnSave.Text = "Chỉnh sửa";
-                    btnNew.Visible = false;
                     btnAddImage.Visible = false;
                     tbStt.Enabled = false;
                     tbTitle.Enabled = false;
@@ -300,16 +300,16 @@ namespace ReadingApp.UIAdmin
                     && tbTitle.Text != "Tiêu đề của chương"
                     && imagePaths.Count <= maxImage
                     && imagePaths.Count > 0
-                    && Convert.ToInt32(tbStt.Text) >-1)
+                    && Convert.ToInt32(tbStt.Text) > -1)
                 {
                     chapter.Title = tbTitle.Text.Trim();
                     chapter.ChapterNumber = Convert.ToInt32(tbStt.Text);
-                    
-                    if(chapter.ChapterID > 0)
+
+                    if (chapter.ChapterID > 0)
                     {
                         //sửa
-                       
-                        if (ChapterService.UpdateImageChapter(chapter, imagePaths))
+
+                        if (ChapterService.UpdateImageChapter(story.StoryID, chapter, imagePaths))
                         {
                             MessageBox.Show("Bạn đã lưu chương mới thành công", "Thông báo");
 
@@ -327,7 +327,7 @@ namespace ReadingApp.UIAdmin
                             MessageBox.Show("Đã xảy ra lõi. Hãy kiểm tra lại các thông tin", "Thông báo");
                             return false;
                         }
-                    }   
+                    }
                     else
                     {
                         //lưu mới
@@ -343,7 +343,7 @@ namespace ReadingApp.UIAdmin
                             btnNew.Visible = true;
                             tbStt.Enabled = false;
 
-                            NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!");
+                            NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
 
                             return true;
                         }
@@ -405,6 +405,31 @@ namespace ReadingApp.UIAdmin
             btnSave.Text = "Đăng tải";
 
 
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa chương này?", "Xác nhận", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                //Xóa chương
+                try
+                {
+                    if (ChapterService.DeleteImageChapter(chapter.ChapterID, story.StoryID))
+                    {
+                        MessageBox.Show("Xóa chương thành công");
+
+                        BackClick?.Invoke(this, story);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xóa chương không thành công.\nVui lòng thử lại sau.");
+
+                }
+            }
         }
     }
 }

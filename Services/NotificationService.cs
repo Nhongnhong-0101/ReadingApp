@@ -11,7 +11,7 @@ namespace ReadingApp.Services
 {
     public class NotificationService
     {
-        public static bool CreateNotification(String s)
+        public static bool CreateNotification(String s, int StoryID)
         {
             try
             {
@@ -21,11 +21,12 @@ namespace ReadingApp.Services
                 {
                     connection.Open();
 
-                    string query = "INSERT INTO Notifications (Message, CreatedAt) VALUES (@Message, GETDATE()); SELECT SCOPE_IDENTITY();";
+                    string query = "INSERT INTO Notifications (Message, CreatedAt, StoryID) VALUES (@Message, GETDATE(), @StoryID); SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Message", s);
+                        command.Parameters.AddWithValue("@StoryID", StoryID);
 
                         idNofi = Convert.ToInt32(command.ExecuteScalar());
                     }
@@ -48,7 +49,7 @@ namespace ReadingApp.Services
                 {
                     connection.Open();
 
-                    string query = "SELECT ID, Message, CreatedAt FROM Notifications";
+                    string query = "SELECT ID, Message, CreatedAt, StoryID FROM Notifications";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -60,7 +61,8 @@ namespace ReadingApp.Services
                                 {
                                     NotiID = reader.GetInt32(0),
                                     Message = reader.GetString(1),
-                                    CreatedAt = reader.GetDateTime(2)
+                                    CreatedAt = reader.GetDateTime(2),
+                                    StoryID = reader.GetInt32(3),
                                 };
 
                                 notifications.Add(notification);

@@ -100,8 +100,10 @@ namespace ReadingApp
 
                 UCStoryDetails ucStoryDetails = new UCStoryDetails(story, cruUser);
                 ucStoryDetails.loadChapter += loadChapter;
+
                 ucStoryDetails.WriteNewChapterClick += UcStoryDetails_WriteNewChapterClick1;
                 ucStoryDetails.ModifyStoryClick += UcStoryDetails_ModifyStoryClick;
+
                 pnMain.Controls.Clear();
                 pnMain.Controls.Add(ucStoryDetails);
 

@@ -155,7 +155,7 @@ namespace ReadingApp.UIAdmin
 
                             if(chapter.ChapterID != 0)
                             {
-                                if (ChapterService.UpdateWordChapter(chapter))
+                                if (ChapterService.UpdateWordChapter(chapter, story.StoryID))
                                 {
                                     MessageBox.Show("Đã chỉnh sửa thành công", "Thông báo", MessageBoxButtons.OK);
 
@@ -184,7 +184,7 @@ namespace ReadingApp.UIAdmin
                                     rtbContent.Enabled = false;
                                     btnSave.Text = "Chỉnh sửa";
 
-                                    NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!");
+                                    NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
 
 
                                 }
@@ -244,7 +244,7 @@ namespace ReadingApp.UIAdmin
                 //Xóa chương
                 try
                 {
-                    if (ChapterService.DeleteWordChapter(chapter.ChapterID))
+                    if (ChapterService.DeleteWordChapter(chapter.ChapterID, story.StoryID))
                     {
                         MessageBox.Show("Xóa chương thành công");
 

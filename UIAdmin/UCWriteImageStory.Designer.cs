@@ -37,6 +37,7 @@
             btnNew = new Button();
             pictureBox1 = new PictureBox();
             tbStt = new TextBox();
+            btnDel = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             lbCountWord.Name = "lbCountWord";
             lbCountWord.Size = new Size(71, 20);
             lbCountWord.TabIndex = 7;
-            lbCountWord.Text = "0/30 hình";
+            lbCountWord.Text = "0/40 hình";
             // 
             // pnImages
             // 
@@ -131,10 +132,22 @@
             tbStt.Size = new Size(34, 27);
             tbStt.TabIndex = 14;
             // 
+            // btnDel
+            // 
+            btnDel.Location = new Point(844, 21);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(86, 35);
+            btnDel.TabIndex = 15;
+            btnDel.Text = "Xóa";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Visible = false;
+            btnDel.Click += btnDel_Click;
+            // 
             // UCWriteImageStory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDel);
             Controls.Add(tbStt);
             Controls.Add(btnSave);
             Controls.Add(pictureBox1);
@@ -162,5 +175,6 @@
         private Button btnNew;
         private PictureBox pictureBox1;
         private TextBox tbStt;
+        private Button btnDel;
     }
 }

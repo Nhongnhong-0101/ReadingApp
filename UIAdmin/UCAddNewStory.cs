@@ -186,7 +186,7 @@ namespace ReadingApp.UIAdmin
                         if (story.StoryID != -1)
                         {
                             MessageBox.Show("Tạo mới truyện thành công", "Thông báo", MessageBoxButtons.OK);
-                            NotificationService.CreateNotification(story.Title + " vừa được đăng tải!");
+                            NotificationService.CreateNotification(story.Title + " vừa được đăng tải!", story.StoryID);
                             OnStorySaved(story);
                         }
                         else

@@ -12,6 +12,8 @@ namespace ReadingApp.Model
 
         public string Message { get; set; }
 
+        public int StoryID { get; set; }    
+
         public DateTime CreatedAt {  get; set; }
         
     }
