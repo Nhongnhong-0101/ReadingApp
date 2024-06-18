@@ -41,7 +41,7 @@ namespace ReadingApp.UserControls
 
         private void UCHome_Load(object sender, EventArgs e)
         {
-            picAvat.Image = Image.FromFile(@user.Avatar);
+            //picAvat.Image = Image.FromFile(@user.Avatar);
 
             stories.Clear();
             stories = StoriesServices.get24Stories();
@@ -50,47 +50,62 @@ namespace ReadingApp.UserControls
             lasted.Clear();
             flowLasted.Controls.Clear();
             lasted = StoriesServices.getLastedStories();
-            for (int i = 0; i < 4; i++)
+            if (lasted.Count > 0)
             {
-                int index = i;
-                Label lbName = labelName(lasted[index].Title);
-                Label lbAuthor = labelAuthor(lasted[index].Author);
-                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
-                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                for (int i = 0; i < 1; i++)
+                {
+                    //ToDo fix lại bawgf 4
+                    int index = i;
+                    Label lbName = labelName(lasted[index].Title);
+                    Label lbAuthor = labelAuthor(lasted[index].Author);
+                    lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                    lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
 
-                flowLasted.Controls.Add(lbName);
-                flowLasted.Controls.Add(lbAuthor);
+                    flowLasted.Controls.Add(lbName);
+                    flowLasted.Controls.Add(lbAuthor);
+                }
             }
 
             outs.Clear();
             flowOuts.Controls.Clear();
             outs = StoriesServices.getOutsStories();
-            for (int i = 0; i < 4; i++)
+            if(outs.Count > 0)
             {
-                int index = i;
-                Label lbName = labelName(outs[index].Title);
-                Label lbAuthor = labelAuthor(outs[index].Author);
-                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
-                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                for (int i = 0; i < 1; i++)
+                {
+                    //ToDo: fix lại bằng 4
+                    int index = i;
+                    Label lbName = labelName(outs[index].Title);
+                    Label lbAuthor = labelAuthor(outs[index].Author);
+                    lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                    lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
 
-                flowOuts.Controls.Add(lbName);
-                flowOuts.Controls.Add(lbAuthor);
+                    flowOuts.Controls.Add(lbName);
+                    flowOuts.Controls.Add(lbAuthor);
+                }
             }
+            
 
             star.Clear();
             flowStar.Controls.Clear();
             star = StoriesServices.getStarStories();
-            for (int i = 0; i < 4; i++)
-            {
-                int index = i;
-                Label lbName = labelName(star[index].Title);
-                Label lbAuthor = labelAuthor(star[index].Author);
-                lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
-                lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
 
-                flowStar.Controls.Add(lbName);
-                flowStar.Controls.Add(lbAuthor);
+            if(star.Count > 0)
+            {
+                for (int i = 0; i < 1; i++)
+                {
+                    //ToDo: fix lại băng 4
+                    int index = i;
+                    Label lbName = labelName(star[index].Title);
+                    Label lbAuthor = labelAuthor(star[index].Author);
+                    lbName.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+                    lbAuthor.Click += (sender, e) => _loadUCStoryDetails(sender, lasted[index]);
+
+                    flowStar.Controls.Add(lbName);
+                    flowStar.Controls.Add(lbAuthor);
+                }
             }
+           
         }
 
         private Label labelName(string name)
@@ -139,7 +154,8 @@ namespace ReadingApp.UserControls
             {
                 OnShowAddNewStr(EventArgs.Empty);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
         }
@@ -354,5 +370,7 @@ namespace ReadingApp.UserControls
                 loadFlowPanel(searchStories);
             }
         }
+
+
     }
 }

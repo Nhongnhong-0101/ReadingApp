@@ -138,7 +138,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.search;
+            //pictureBox2.Image = Properties.Resources.search;
             pictureBox2.Location = new Point(1144, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(45, 45);
@@ -414,7 +414,7 @@
             cbArrange.Font = new Font("Segoe UI", 12F);
             cbArrange.ForeColor = Color.Gray;
             cbArrange.FormattingEnabled = true;
-            cbArrange.ItemHeight = 38;
+            cbArrange.ItemHeight = 28;
             cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
             cbArrange.Location = new Point(581, 39);
             cbArrange.Margin = new Padding(4);
@@ -637,6 +637,7 @@
             // 
             btnWrite.BackgroundImage = Properties.Resources.bg_updateAccount;
             btnWrite.BackgroundImageLayout = ImageLayout.Stretch;
+            btnWrite.Cursor = Cursors.Hand;
             btnWrite.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWrite.ForeColor = SystemColors.ButtonHighlight;
             btnWrite.Location = new Point(36, 36);

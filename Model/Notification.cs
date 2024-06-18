@@ -9,13 +9,10 @@ namespace ReadingApp.Model
     public class Notification
     {
         public int NotiID { get; set; }
-        public String StoryName { get; set; }
-
-        public int ChapterID { get; set; }
 
         public string Message { get; set; }
 
-        public bool IsRead { get; set; } = false;
+        public int StoryID { get; set; }    
 
         public DateTime CreatedAt {  get; set; }
         

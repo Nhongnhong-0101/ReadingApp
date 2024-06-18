@@ -16,30 +16,95 @@ namespace ReadingApp.UIAdmin
 {
     public partial class UCWriteWordStory : UserControl
     {
-        int maxLength = 1500;
+        int maxLength = 4000;
         Timer updateTimer;
-        bool isAdmin { get; set; }
+
+        public User user;
         public Story story { get; set; }
         public Chapter chapter { get; set; }
 
-        public ChapterService  chapterService { get; set; }
+        public bool IsNew { get; set; }
 
-        public UCWriteWordStory()
+        public delegate void BackToDetailStoryEventHandler(object sender, Story story);
+        public event BackToDetailStoryEventHandler BackToDetailStrClick;
+        public UCWriteWordStory(Story story, User user, bool IsNew)
         {
+            this.story = story;
+            this.user = user;
+            this.IsNew = IsNew;
 
             InitializeComponent();
             InitializeTimer();
-            chapterService = new ChapterService();
+
             chapter = new Chapter();
-
-            isAdmin = true;
-            btnNew.Visible = isAdmin;
-            btnSave.Visible = isAdmin;
-
-            if (isAdmin)
+            lbCountWord.Text = rtbContent.Text.Length.ToString() + "/" + maxLength.ToString() + " chữ";
+            if (user.FullName == "Admin")
             {
+                btnSave.Visible = true;
+
                 btnSave.Text = "Chỉnh sửa";
+
+                if (IsNew)
+                {
+                    btnSave.Text = "Đăng truyện";
+                    tbStt.Enabled = true;
+                    tbTitle.Enabled = true; 
+                    rtbContent.Enabled = true;
+                    btnDel.Visible = false;
+
+                }
+                else
+                {
+                    btnSave.Text = "Chỉnh sửa";
+                    tbStt.Enabled = false;
+                    tbTitle.Enabled = false;
+                    rtbContent.Enabled = false;
+                }
+
             }
+        }
+
+        public UCWriteWordStory (Chapter chapter,Story story, User user, bool IsNew)
+        {
+            this.chapter = chapter;
+            this.story = story; 
+            this.user = user;
+            this.IsNew = IsNew;
+
+            InitializeComponent();
+            InitializeTimer();
+
+            tbStt.Text = chapter.ChapterNumber.ToString();
+            tbTitle.Text = chapter.Title;
+            rtbContent.Text = chapter.Content;
+            lbCountWord.Text = rtbContent.Text.Length.ToString() + "/" + maxLength.ToString() + " chữ";
+
+
+            if (user.FullName == "Admin")
+            {
+                btnSave.Visible = true;
+
+                btnSave.Text = "Chỉnh sửa";
+
+                if (IsNew)
+                {
+                    btnSave.Text = "Đăng tải";
+                    tbStt.Enabled = true;
+                    tbTitle.Enabled = true;
+                    rtbContent.Enabled = true;
+
+                }
+                else
+                {
+                    btnSave.Text = "Chỉnh sửa";
+                    tbTitle.Enabled = false;
+                    rtbContent.Enabled = false;
+                    tbStt.Enabled = false;
+                }
+
+            }
+
+
         }
         private void InitializeTimer()
         {
@@ -63,46 +128,74 @@ namespace ReadingApp.UIAdmin
         {
             try
             {
-                if(btnSave.Text == "Chỉnh sửa")
+                if (btnSave.Text == "Chỉnh sửa")
                 {
+                    //lưu sua chuong
                     btnSave.Text = "Đăng tải";
                     tbTitle.Enabled = true;
+                    tbStt.Enabled = true;
                     rtbContent.Enabled = true;
-                    btnNew.Visible = false;
                 }
                 else
                 {
                     if (rtbContent.Text.Length > maxLength)
                     {
-                        MessageBox.Show("Giới hạn của chương này là 1500 từ.", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Giới hạn của chương này là " + maxLength.ToString() + " từ.", "Thông báo", MessageBoxButtons.OK);
                         rtbContent.SelectionStart = maxLength;
                     }
                     else
                     {
                         if (!String.IsNullOrWhiteSpace(tbTitle.Text)
                             && tbTitle.Text != "Tiêu đề của chương"
-                            && rtbContent.Text.Length <= maxLength)
+                            && rtbContent.Text.Length <= maxLength
+                            && Convert.ToInt32(tbStt.Text) > -1)
                         {
+                            chapter.ChapterNumber = Convert.ToInt32(tbStt.Text);
                             chapter.Title = tbTitle.Text.Trim();
-                            chapter.ChapterNumber = ExtractNumberFromString(lbNumChapter.Text);
                             chapter.Content = rtbContent.Text.Trim();
-                            chapter.CreatedAt = DateTime.Now;
 
-                            if (chapterService.SaveNewWordChapter(story.StoryID, chapter))
+                            if(chapter.ChapterID != 0)
                             {
-                                MessageBox.Show("Đã lưu chương thành công", "Thông báo", MessageBoxButtons.OK);
+                                if (ChapterService.UpdateWordChapter(chapter, story.StoryID))
+                                {
+                                    MessageBox.Show("Đã chỉnh sửa thành công", "Thông báo", MessageBoxButtons.OK);
 
-                                tbTitle.Enabled = false;
-                                rtbContent.Enabled = false;
-                                btnSave.Text = "Chỉnh sửa";
-                                btnNew.Visible = true;
+                                    tbTitle.Enabled = false;
+                                    tbStt.Enabled = false;
+                                    rtbContent.Enabled = false;
+                                    btnSave.Text = "Chỉnh sửa";
 
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+                                chapter.CreatedAt = DateTime.Now;
 
+                                if (ChapterService.SaveNewWordChapter(story.StoryID, chapter))
+                                {
+                                    MessageBox.Show("Đã lưu chương thành công", "Thông báo", MessageBoxButtons.OK);
+
+                                    tbTitle.Enabled = false;
+                                    tbStt.Enabled = false;
+                                    rtbContent.Enabled = false;
+                                    btnSave.Text = "Chỉnh sửa";
+
+                                    NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
+
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Vui lòng kiểm tra lại các thông tin", "Thông báo", MessageBoxButtons.OK);
+
+                                }
                             }
+                           
                         }
                         else
                         {
@@ -111,8 +204,9 @@ namespace ReadingApp.UIAdmin
                         }
                     }
                 }
-                
-            } catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Vui lòng kiểm tra lại các thông tin" + ex.Message, "Thông báo", MessageBoxButtons.OK);
 
@@ -139,5 +233,33 @@ namespace ReadingApp.UIAdmin
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            BackToDetailStrClick?.Invoke(this, story);
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa chương này?", "Xác nhận", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK) { 
+                //Xóa chương
+                try
+                {
+                    if (ChapterService.DeleteWordChapter(chapter.ChapterID, story.StoryID))
+                    {
+                        MessageBox.Show("Xóa chương thành công");
+
+                        BackToDetailStrClick?.Invoke(this, story);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xóa chương không thành công.\nVui lòng thử lại sau.");
+
+                }
+            }
+        }
     }
 }

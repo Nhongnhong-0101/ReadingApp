@@ -24,6 +24,18 @@ namespace ReadingApp.UserControls
         private List<Rating> ratings = new List<Rating>();
         private List<Chapter> chapters = new List<Chapter>();
         public EventHandler<Chapter> loadChapter;
+
+
+
+        public delegate void WriteNewChpaterEventHandler(object sender, Story s);
+        public event WriteNewChpaterEventHandler WriteNewChapterClick;
+
+
+        public delegate void ModifyStoryEventHandler(object sender, Story s);
+        public event ModifyStoryEventHandler ModifyStoryClick;
+
+        public delegate void LoadChapterForAdmin(object sender,Story story, Chapter chapter);
+        public event LoadChapterForAdmin LoadChapterAdmin;
         private string code = "";
         private bool isPaid = true;
         public UCStoryDetails(Story story, User user)
@@ -35,6 +47,13 @@ namespace ReadingApp.UserControls
 
         private void UCStoryDetails_Load(object sender, EventArgs e)
         {
+            if (user.FullName == "Admin")
+            {
+                btnModify.Visible = true;
+                btnDel.Visible = true;
+                pcAddChapter.Visible = true;
+            }
+
             lbName.Text = story.Title;
             lbAuthor.Text = story.Author;
             lbType.Text = story.Type;
@@ -52,6 +71,8 @@ namespace ReadingApp.UserControls
                 lbPrice.Text = story.Price.ToString();
                 btnPay.Visible = (PayServices.isPaid(user.UserID, story.StoryID) || user.FullName == "Admin") ? false : true;
                 isPaid = PayServices.isPaid(user.UserID, story.StoryID);
+
+                
             }
             else
             {
@@ -117,6 +138,20 @@ namespace ReadingApp.UserControls
         {
             StoriesServices.viewStory(story.StoryID);
             loadChapter?.Invoke(this, chapter);
+        }
+        private void labelChapter_Click(object? sender, Story s, Chapter chapter)
+        {
+
+
+            if (user.FullName == "Admin")
+            {
+                LoadChapterAdmin?.Invoke(this, s, chapter);
+            }
+            else
+            {
+                StoriesServices.viewStory(story.StoryID);
+                loadChapter?.Invoke(this, chapter);
+            }
         }
 
         private void addStarComment()
@@ -336,5 +371,35 @@ namespace ReadingApp.UserControls
                 }
             }
         }
+
+        private void pcAddChapter_Click(object sender, EventArgs e)
+        {
+            //show màn hình viết lên
+            WriteNewChapterClick?.Invoke(this, story);
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            //load UC AddNewStory
+            ModifyStoryClick!.Invoke(this, story);
+
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Nếu bạn xác nhận xóa truyện, mọi thông tin về truyện gồm chương, các lượt thích đều bị xóa. \n Bạn có chắc muốn xóa truyện không?", "Xác nhận", MessageBoxButtons.OKCancel);
+            if (dialogResult == DialogResult.OK)
+            {
+                if(story.Category =="truyện tranh")
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+    
     }
 }
