@@ -30,7 +30,7 @@ namespace ReadingApp.UserControls
             picAvat.Image = Image.FromFile(@user.Avatar);
 
             stories.Clear();
-            stories = StoriesServices.getAllStories();
+            stories = StoriesServices.getHistoryStories(user.UserID);
             loadFlowPanel(stories);
         }
 

@@ -30,13 +30,12 @@ namespace ReadingApp.UserControls
         private int index = 0;
         private int indexStart = 0;
         private int userID;
+        
         private List<String> voices = new List<string> { "Giọng nữ miền Nam", "Giọng nữ miền Bắc", "Giọng nam miền Nam", "Giọng nam miền Bắc" };
-
-        public UCChapterImage(Chapter chapter, int indexStart, int userID)
+          public UCChapterImage(Chapter chapter, int userID)
         {
             InitializeComponent();
             this.chapter = chapter;
-            this.indexStart = indexStart;
             this.userID = userID;
 
 
@@ -52,26 +51,30 @@ namespace ReadingApp.UserControls
         }
         public void saveIndexStart()
         {
+            int index = 0;
+            if (chapter.Story.Category == "truyện tranh") { index = flowImage.AutoScrollPosition.Y; }
+            else { index = txtContent.GetCharIndexFromPosition(new Point(0, 0)); }
             if (!PayServices.isProgress(userID, chapter.Story.StoryID))
             {
-                //PayServices.newIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.VerticalScroll.Value);
+                PayServices.newIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, index);
             }
             else
             {
-                PayServices.saveIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.SelectionStart);
+                PayServices.saveIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, index);
             }
 
             cmbVoice.DataSource = voices;
             cmbVoice.SelectedIndex = -1;
         }
 
+
         private void UCChapterImage_Load(object sender, EventArgs e)
-        {
+        {            
             if (chapter.Story.Category == "truyện chữ")
             {
                 chapters = ChapterService.getChapters(chapter.Story.StoryID);
                 txtContent.Text = chapter.Content;
-                txtContent.SelectionStart = indexStart;
+                txtContent.Select(indexStart, 0);
                 txtContent.ScrollToCaret();
                 txtContent.Visible = true;
 
@@ -94,10 +97,51 @@ namespace ReadingApp.UserControls
 
                     flowImage.Controls.Add(pictureBox);
                 }
-                flowImage.VerticalScroll.Value = indexStart;
                 flowImage.Visible = true;
             }
             lbStoryName.Text = chapter.Story.Title;
+
+            if (PayServices.isProgress(userID, chapter.Story.StoryID))
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn tiếp tục ở vị trí đã đọc trước đây không?", "Thông báo", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    indexStart = PayServices.getIndex(userID, chapter.Story.StoryID);
+                    int chapterID = PayServices.getChapterID(userID, chapter.Story.StoryID);
+                    foreach(Chapter _chapter in chapters)
+                    {
+                        if (_chapter.ChapterID == chapterID) { chapter = _chapter; break; }
+                    }
+
+                    if (chapter.Story.Category == "truyện chữ")
+                    {
+                        txtContent.Clear();
+                        txtContent.Text = chapter.Content;
+                        txtContent.Select(indexStart, 0);
+                        txtContent.ScrollToCaret();
+                        txtContent.Visible = true;
+                    }
+                    else
+                    {
+                        flowImage.Controls.Clear();
+                        foreach (ChapterImages chapterImages in chapter.Images)
+                        {
+                            PictureBox pictureBox = new PictureBox();
+                            pictureBox.Image = Image.FromFile(chapterImages.ImageURL);
+                            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pictureBox.Width = flowImage.Width - 70;
+                            pictureBox.Height = flowImage.Height * 2 - 100;
+                            pictureBox.Margin = new Padding(5);
+
+                            flowImage.Controls.Add(pictureBox);
+                        }
+                        flowImage.AutoScrollPosition = new Point(0, -indexStart);
+                        flowImage.Visible = true;
+                    }
+                    lbStoryName.Text = chapter.Story.Title;
+                }
+            }            
 
             cbSelectChapter.Items.Clear();
             for (int i = 0; i < chapters.Count; i++)

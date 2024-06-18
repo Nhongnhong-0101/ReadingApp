@@ -69,12 +69,12 @@
             lbCoTrang = new Label();
             lbNgonTinh = new Label();
             panelState = new Panel();
-            pnOutstanding = new Panel();
-            flowOuts = new FlowLayoutPanel();
-            label22 = new Label();
             pnStar = new Panel();
             flowStar = new FlowLayoutPanel();
             label12 = new Label();
+            pnOutstanding = new Panel();
+            flowOuts = new FlowLayoutPanel();
+            label22 = new Label();
             btnWrite = new Button();
             ((System.ComponentModel.ISupportInitialize)picAvat).BeginInit();
             panel1.SuspendLayout();
@@ -97,8 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)picComic).BeginInit();
             panelType.SuspendLayout();
             panelState.SuspendLayout();
-            pnOutstanding.SuspendLayout();
             pnStar.SuspendLayout();
+            pnOutstanding.SuspendLayout();
             SuspendLayout();
             // 
             // picAvat
@@ -492,9 +492,9 @@
             lbTheLoai6.Font = new Font("Segoe UI", 11F);
             lbTheLoai6.Location = new Point(196, 110);
             lbTheLoai6.Name = "lbTheLoai6";
-            lbTheLoai6.Size = new Size(140, 38);
+            lbTheLoai6.Size = new Size(151, 38);
             lbTheLoai6.TabIndex = 11;
-            lbTheLoai6.Text = "Thể loại 6";
+            lbTheLoai6.Text = "Học đường";
             lbTheLoai6.Click += lbTheLoai6_Click;
             lbTheLoai6.MouseLeave += lbTheLoai6_MouseLeave;
             lbTheLoai6.MouseHover += lbTheLoai6_MouseHover;
@@ -569,38 +569,6 @@
             panelState.Size = new Size(562, 1902);
             panelState.TabIndex = 8;
             // 
-            // pnOutstanding
-            // 
-            pnOutstanding.BackgroundImage = Properties.Resources.bg_lasted;
-            pnOutstanding.BackgroundImageLayout = ImageLayout.Stretch;
-            pnOutstanding.Controls.Add(flowOuts);
-            pnOutstanding.Controls.Add(label22);
-            pnOutstanding.Location = new Point(0, 396);
-            pnOutstanding.Margin = new Padding(4);
-            pnOutstanding.Name = "pnOutstanding";
-            pnOutstanding.Size = new Size(380, 390);
-            pnOutstanding.TabIndex = 6;
-            // 
-            // flowOuts
-            // 
-            flowOuts.FlowDirection = FlowDirection.TopDown;
-            flowOuts.Location = new Point(22, 60);
-            flowOuts.Margin = new Padding(4);
-            flowOuts.Name = "flowOuts";
-            flowOuts.Size = new Size(336, 320);
-            flowOuts.TabIndex = 1;
-            // 
-            // label22
-            // 
-            label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label22.ForeColor = Color.DarkGreen;
-            label22.Location = new Point(10, 8);
-            label22.Name = "label22";
-            label22.Size = new Size(350, 38);
-            label22.TabIndex = 0;
-            label22.Text = "Nổi bật";
-            label22.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // pnStar
             // 
             pnStar.BackgroundImage = Properties.Resources.bg_lasted;
@@ -632,6 +600,38 @@
             label12.TabIndex = 0;
             label12.Text = "Đánh giá cao";
             label12.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnOutstanding
+            // 
+            pnOutstanding.BackgroundImage = Properties.Resources.bg_lasted;
+            pnOutstanding.BackgroundImageLayout = ImageLayout.Stretch;
+            pnOutstanding.Controls.Add(flowOuts);
+            pnOutstanding.Controls.Add(label22);
+            pnOutstanding.Location = new Point(0, 396);
+            pnOutstanding.Margin = new Padding(4);
+            pnOutstanding.Name = "pnOutstanding";
+            pnOutstanding.Size = new Size(380, 390);
+            pnOutstanding.TabIndex = 6;
+            // 
+            // flowOuts
+            // 
+            flowOuts.FlowDirection = FlowDirection.TopDown;
+            flowOuts.Location = new Point(22, 60);
+            flowOuts.Margin = new Padding(4);
+            flowOuts.Name = "flowOuts";
+            flowOuts.Size = new Size(336, 320);
+            flowOuts.TabIndex = 1;
+            // 
+            // label22
+            // 
+            label22.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label22.ForeColor = Color.DarkGreen;
+            label22.Location = new Point(10, 8);
+            label22.Name = "label22";
+            label22.Size = new Size(350, 38);
+            label22.TabIndex = 0;
+            label22.Text = "Nổi bật";
+            label22.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnWrite
             // 
@@ -693,8 +693,8 @@
             ((System.ComponentModel.ISupportInitialize)picComic).EndInit();
             panelType.ResumeLayout(false);
             panelState.ResumeLayout(false);
-            pnOutstanding.ResumeLayout(false);
             pnStar.ResumeLayout(false);
+            pnOutstanding.ResumeLayout(false);
             ResumeLayout(false);
         }
 
