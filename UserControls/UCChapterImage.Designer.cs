@@ -106,7 +106,8 @@
             txtContent.Location = new Point(130, 159);
             txtContent.Margin = new Padding(2);
             txtContent.Name = "txtContent";
-            txtContent.Size = new Size(1201, 780);
+            txtContent.ReadOnly = true;
+            txtContent.Size = new Size(1800, 1240);
             txtContent.TabIndex = 0;
             txtContent.Text = "content";
             txtContent.Visible = false;

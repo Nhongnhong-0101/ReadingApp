@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ReadingApp.UserControls
 {
@@ -41,7 +42,7 @@ namespace ReadingApp.UserControls
             lbAuthor.Text = story.Author;
             lbName.Text = story.Title;
             if (story.Status == "Full") { lbIsFull.Visible = true; } else { lbIsFull.Visible = false; }
-            lbStar.Text = story.Star.ToString();
+            lbStar.Text = Math.Round(story.Star,1).ToString(); 
         }
 
         private void picDelete_Click(object sender, EventArgs e)

@@ -96,5 +96,13 @@ CREATE TABLE Notifications (
     FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
 );
 
+CREATE TABLE Paid (
+    PaidID int PRIMARY KEY IDENTITY(1,1),
+    StoryID int,                             
+    UserID int,                       
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
+);
+
 Drop database READINGBOOK
 

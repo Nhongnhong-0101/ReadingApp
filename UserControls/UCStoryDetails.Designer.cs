@@ -77,6 +77,9 @@
             pcAddChapter = new PictureBox();
             btnModify = new Button();
             btnDel = new Button();
+            btnPay = new Button();
+            txtCode = new TextBox();
+            lbInfor2 = new Label();
             ((System.ComponentModel.ISupportInitialize)picImage).BeginInit();
             pnTitle.SuspendLayout();
             pnPrice.SuspendLayout();
@@ -190,8 +193,7 @@
             // 
             pnPrice.Controls.Add(lbPrice);
             pnPrice.Controls.Add(pictureBox1);
-            pnPrice.Location = new Point(86, 35);
-            pnPrice.Margin = new Padding(2);
+            pnPrice.Location = new Point(134, 52);
             pnPrice.Name = "pnPrice";
             pnPrice.Size = new Size(100, 27);
             pnPrice.TabIndex = 14;
@@ -612,6 +614,48 @@
             lbInforCmt.TextAlign = ContentAlignment.MiddleLeft;
             lbInforCmt.Visible = false;
             // 
+            // btnPay
+            // 
+            btnPay.BackColor = Color.ForestGreen;
+            btnPay.FlatStyle = FlatStyle.Flat;
+            btnPay.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnPay.ForeColor = Color.White;
+            btnPay.Location = new Point(50, 661);
+            btnPay.Name = "btnPay";
+            btnPay.Size = new Size(238, 60);
+            btnPay.TabIndex = 26;
+            btnPay.Text = "Mua truyện";
+            btnPay.UseVisualStyleBackColor = false;
+            btnPay.Visible = false;
+            btnPay.Click += btnPay_Click;
+            // 
+            // txtCode
+            // 
+            txtCode.BorderStyle = BorderStyle.FixedSingle;
+            txtCode.Font = new Font("Segoe UI", 13F);
+            txtCode.ForeColor = Color.Black;
+            txtCode.Location = new Point(300, 666);
+            txtCode.MaxLength = 6;
+            txtCode.Name = "txtCode";
+            txtCode.PlaceholderText = "Mã CODE";
+            txtCode.Size = new Size(200, 48);
+            txtCode.TabIndex = 27;
+            txtCode.Visible = false;
+            txtCode.KeyPress += txtCode_KeyPress;
+            // 
+            // lbInfor2
+            // 
+            lbInfor2.BackColor = Color.Transparent;
+            lbInfor2.Font = new Font("Segoe UI", 8F);
+            lbInfor2.ForeColor = Color.Red;
+            lbInfor2.Location = new Point(50, 666);
+            lbInfor2.Name = "lbInfor2";
+            lbInfor2.Size = new Size(274, 25);
+            lbInfor2.TabIndex = 28;
+            lbInfor2.Text = "Mua truyện thành công!";
+            lbInfor2.TextAlign = ContentAlignment.MiddleLeft;
+            lbInfor2.Visible = false;
+            // 
             // pcAddChapter
             // 
             pcAddChapter.BackgroundImage = Properties.Resources.icons8_add_48;
@@ -660,6 +704,9 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lbInfor2);
+            Controls.Add(txtCode);
+            Controls.Add(btnPay);
             Controls.Add(btnDel);
             Controls.Add(btnModify);
             Controls.Add(pcAddChapter);
@@ -698,6 +745,7 @@
             ((System.ComponentModel.ISupportInitialize)picAvat).EndInit();
             ((System.ComponentModel.ISupportInitialize)pcAddChapter).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -747,6 +795,9 @@
         private System.Windows.Forms.Timer timer1;
         private PictureBox pcAddChapter;
         private Label lbInforCmt;
+        private Button btnPay;
+        private TextBox txtCode;
+        private Label lbInfor2;
         private Button btnModify;
         private Button btnDel;
     }
