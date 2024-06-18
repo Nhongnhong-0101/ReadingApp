@@ -98,5 +98,7 @@ namespace ReadingApp.UserControls
         {
             loadChapter?.Invoke(sender, chapters[cbSelectChapter.SelectedIndex]);
         }
+
+
     }
 }
