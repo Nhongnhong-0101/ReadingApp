@@ -30,9 +30,16 @@ namespace ReadingApp.UserControls
         private int index = 0;
         private int indexStart = 0;
         private int userID;
-        public UCChapterImage(Chapter chapter, int indexStart, int userID)
-
         private List<String> voices = new List<string> { "Giọng nữ miền Nam", "Giọng nữ miền Bắc", "Giọng nam miền Nam", "Giọng nam miền Bắc" };
+
+        public UCChapterImage(Chapter chapter, int indexStart, int userID)
+        {
+            InitializeComponent();
+            this.chapter = chapter;
+            this.indexStart = indexStart;
+            this.userID = userID;
+        }
+
         public UCChapterImage(Chapter chapter)
         {
             InitializeComponent();
@@ -50,11 +57,9 @@ namespace ReadingApp.UserControls
             {
                 PayServices.saveIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.SelectionStart);
             }
-        }
+        
             cmbVoice.DataSource = voices;
             cmbVoice.SelectedIndex = -1;
-
-
         }
 
         private void UCChapterImage_Load(object sender, EventArgs e)
