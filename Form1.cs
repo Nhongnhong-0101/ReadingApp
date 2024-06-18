@@ -197,9 +197,9 @@ namespace ReadingApp
             try
             {
 
-                if (chapter.Content.Length > 0)
+                if (chapter.Content !=null)
                 {
-                    UCWriteWordStory ucWriteWordStory = new UCWriteWordStory(chapter, story,cruUser, false);
+                    UCWriteWordStory ucWriteWordStory = new UCWriteWordStory(chapter, story, cruUser, false);
 
                     ucWriteWordStory.BackToDetailStrClick += UcWriteWordStory_BackToDetailStrClick;
 
@@ -210,11 +210,11 @@ namespace ReadingApp
                 }
                 else
                 {
-                    //UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(story, cruUser, true);
-                    //uCWriteImageStory.BackClick += UCWriteImageStory_BackClick;
+                    UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(chapter, story, cruUser, false);
+                    uCWriteImageStory.BackClick += UCWriteImageStory_BackClick;
 
-                    //pnMain.Controls.Clear();
-                    //pnMain.Controls.Add(uCWriteImageStory);
+                    pnMain.Controls.Clear();
+                    pnMain.Controls.Add(uCWriteImageStory);
                 }
             }
 
@@ -248,7 +248,7 @@ namespace ReadingApp
                 if (s.Category == "truyện tranh")
                 {
                     UCWriteImageStory uCWriteImageStory = new UCWriteImageStory(s, cruUser, true);
-                    //uCWriteImageStory.BackClick += UCWriteImageStory_BackClick;
+                    uCWriteImageStory.BackClick += UCWriteImageStory_BackClick; ;
 
                     pnMain.Controls.Clear();
                     pnMain.Controls.Add(uCWriteImageStory);
@@ -267,6 +267,16 @@ namespace ReadingApp
             {
 
             }
+        }
+
+        private void UCWriteImageStory_BackClick(object sender, Story story)
+        {
+            UCStoryDetails ucStoryDetails = new UCStoryDetails(story, cruUser);
+            ucStoryDetails.loadChapter += loadChapter;
+            ucStoryDetails.WriteNewChapterClick += UcStoryDetails_WriteNewChapterClick1;
+            ucStoryDetails.ModifyStoryClick += UcStoryDetails_ModifyStoryClick;
+            pnMain.Controls.Clear();
+            pnMain.Controls.Add(ucStoryDetails);
         }
 
         private void UcWriteWordStory_BackToDetailStrClick(object sender, Story story)

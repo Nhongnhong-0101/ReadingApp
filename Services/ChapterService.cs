@@ -107,7 +107,7 @@ namespace ReadingApp.Services
 
         static public bool UpdateImageChapter(Chapter chapter, Dictionary<int, string> updatedImagesPath)
         {
-            int chapterID;
+            int count;
             using (SqlConnection connection = new SqlConnection(ConnectionString.conectionString))
             {
                 connection.Open();
@@ -127,17 +127,17 @@ namespace ReadingApp.Services
                     command.Parameters.AddWithValue("@CreatedAt", chapter.CreatedAt);
 
 
-                    chapterID = (int)command.ExecuteScalar();
+                    count = (int)command.ExecuteNonQuery();
                 }
 
-                if (chapterID > 0)
+                if (count > 0)
                 {
                     //xóa hết các hình cũ
                     string deleteImagesQuery = "DELETE FROM ChapterImages WHERE ChapterID = @ChapterID";
 
                     using (SqlCommand deleteImagesCommand = new SqlCommand(deleteImagesQuery, connection))
                     {
-                        deleteImagesCommand.Parameters.AddWithValue("@ChapterID", chapterID);
+                        deleteImagesCommand.Parameters.AddWithValue("@ChapterID", chapter.ChapterID);
                         deleteImagesCommand.ExecuteNonQuery();
                     }
 
@@ -153,7 +153,7 @@ namespace ReadingApp.Services
 
                         using (SqlCommand insertImageCommand = new SqlCommand(insertImageQuery, connection))
                         {
-                            insertImageCommand.Parameters.AddWithValue("@ChapterID", chapterID);
+                            insertImageCommand.Parameters.AddWithValue("@ChapterID", chapter.ChapterID);
                             insertImageCommand.Parameters.AddWithValue("@ImageURL", imagePath);
                             insertImageCommand.Parameters.AddWithValue("@ImageOrder", orderOfImage);
 
@@ -309,6 +309,49 @@ namespace ReadingApp.Services
             }
             catch { }
             return chapters;
+        }
+
+        static public Dictionary<int, String> GetImagesOfChapter(int ChapterID)
+        {
+            try
+            {
+                Dictionary<int, String> images = new Dictionary<int, string>();
+
+                string sqlQuery = "SELECT * FROM CHAPTERIMAGES WHERE CHAPTERID = @chapterID";
+
+                using (SqlConnection connection = new SqlConnection(DataProvider.con))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@chapterID", ChapterID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ChapterImages chapterimage = new ChapterImages();
+                                    chapterimage.ImageURL = reader["ImageURL"].ToString();
+                                    chapterimage.ImageID = int.Parse(reader["ImageID"].ToString());
+                                    chapterimage.ImageOrder = int.Parse(reader["ImageOrder"].ToString());
+                                    chapterimage.ChapterID = ChapterID;
+                                    images[chapterimage.ImageOrder] = chapterimage.ImageURL;
+                                }
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+                return images;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
+
         }
 
         static public bool DeleteWordChapter(int ChapterID)

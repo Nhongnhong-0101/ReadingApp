@@ -82,13 +82,12 @@
             // 
             // btnAddImage
             // 
-            btnAddImage.Location = new Point(444, 745);
+            btnAddImage.Location = new Point(466, 745);
             btnAddImage.Name = "btnAddImage";
             btnAddImage.Size = new Size(100, 40);
             btnAddImage.TabIndex = 2;
             btnAddImage.Text = "Thêm hình";
             btnAddImage.UseVisualStyleBackColor = true;
-            btnAddImage.Visible = false;
             btnAddImage.Click += btnAddImage_Click;
             // 
             // btnSave
