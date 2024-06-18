@@ -98,6 +98,7 @@
             txtContent.Font = new Font("Segoe UI", 12F);
             txtContent.Location = new Point(195, 166);
             txtContent.Name = "txtContent";
+            txtContent.ReadOnly = true;
             txtContent.Size = new Size(1800, 1240);
             txtContent.TabIndex = 0;
             txtContent.Text = "content";

@@ -35,9 +35,9 @@
             picStar2 = new PictureBox();
             picStar1 = new PictureBox();
             picAvat = new PictureBox();
-            txtComment = new RichTextBox();
             lbUserName = new Label();
             lbTime = new Label();
+            txtComment = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picStar5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picStar4).BeginInit();
@@ -125,16 +125,6 @@
             picAvat.TabIndex = 16;
             picAvat.TabStop = false;
             // 
-            // txtComment
-            // 
-            txtComment.BackColor = Color.White;
-            txtComment.BorderStyle = BorderStyle.None;
-            txtComment.Location = new Point(109, 65);
-            txtComment.Name = "txtComment";
-            txtComment.Size = new Size(513, 71);
-            txtComment.TabIndex = 18;
-            txtComment.Text = "comment nè ";
-            // 
             // lbUserName
             // 
             lbUserName.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
@@ -155,14 +145,22 @@
             lbTime.TabIndex = 20;
             lbTime.Text = "13/06/2024";
             // 
+            // txtComment
+            // 
+            txtComment.Location = new Point(109, 65);
+            txtComment.Name = "txtComment";
+            txtComment.Size = new Size(513, 71);
+            txtComment.TabIndex = 21;
+            txtComment.Text = "label1";
+            // 
             // UCCommentItem
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(txtComment);
             Controls.Add(lbTime);
             Controls.Add(lbUserName);
-            Controls.Add(txtComment);
             Controls.Add(panel1);
             Controls.Add(picAvat);
             Name = "UCCommentItem";
@@ -188,8 +186,8 @@
         private PictureBox picStar2;
         private PictureBox picStar1;
         private PictureBox picAvat;
-        private RichTextBox txtComment;
         private Label lbUserName;
         private Label lbTime;
+        private Label txtComment;
     }
 }

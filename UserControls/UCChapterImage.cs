@@ -14,15 +14,30 @@ namespace ReadingApp.UserControls
 {
     public partial class UCChapterImage : UserControl
     {
-        private Chapter chapter;
+        public Chapter chapter;
         private List<Chapter> chapters = new List<Chapter>();
         public EventHandler<Story> loadStoryDetails;
         public EventHandler<Chapter> loadChapter;
+        public EventHandler<int> SaveIndexStart;
         private int index = 0;
-        public UCChapterImage(Chapter chapter)
+        private int indexStart = 0;
+        private int userID;
+        public UCChapterImage(Chapter chapter, int indexStart, int userID)
         {
             InitializeComponent();
             this.chapter = chapter;
+            this.indexStart = indexStart;
+            this.userID = userID;
+        }
+        public void saveIndexStart()
+        {
+            if (!PayServices.isProgress(userID,chapter.Story.StoryID)) {
+                //PayServices.newIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.VerticalScroll.Value);
+            }
+            else 
+            {
+                PayServices.saveIndexStart(userID, chapter.Story.StoryID, chapter.ChapterID, txtContent.SelectionStart);
+            }
         }
 
         private void UCChapterImage_Load(object sender, EventArgs e)
@@ -31,6 +46,8 @@ namespace ReadingApp.UserControls
             {
                 chapters = ChapterService.getChapters(chapter.Story.StoryID);
                 txtContent.Text = chapter.Content;
+                txtContent.SelectionStart = indexStart;
+                txtContent.ScrollToCaret();
                 txtContent.Visible = true;
             }
             else
@@ -47,6 +64,7 @@ namespace ReadingApp.UserControls
 
                     flowImage.Controls.Add(pictureBox);
                 }
+                flowImage.VerticalScroll.Value = indexStart;
                 flowImage.Visible = true;
             }
             lbStoryName.Text = chapter.Story.Title;
@@ -58,7 +76,7 @@ namespace ReadingApp.UserControls
                 if (chapters[i].Title == chapter.Title)
                 {
                     cbSelectChapter.SelectedIndex = i;
-                    lbChapterName.Text = ("Chương " + (i + 1).ToString() + ": " + chapter.Title);
+                    lbChapterName.Text = ("Chương " + chapter.ChapterNumber + ": " + chapter.Title);
                     index = i;
                     btnNextChapter.Enabled = (chapters.Count == i + 1) ? false : true;
                     cbSelectChapter.SelectedIndexChanged += cbSelectChapter_SelectedIndexChanged;

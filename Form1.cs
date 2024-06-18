@@ -2,6 +2,7 @@
 using System.Security.Principal;
 using ReadingApp.Model;
 using ReadingApp.UIAdmin;
+using System.Windows.Forms;
 
 namespace ReadingApp
 {
@@ -12,6 +13,7 @@ namespace ReadingApp
         private UCHistory ucHistory;
         private UCAccount ucAccount;
         public User cruUser;
+        private UCChapterImage ucChapterImage;
         public Form1()
         {
             InitializeComponent();
@@ -144,7 +146,7 @@ namespace ReadingApp
             pnLogIn.Controls.Add(uCLogIn);
             pnHomeTab_Click(sender, e);
 
-            pnAccountTab.Visible = (cruUser.FullName == "Admin") ? true : false;
+            pnAccountTab.Visible = (cruUser.FullName == "Admin") ? false : true;
         }
 
         private void loadUCSignUp(object? sender, EventArgs e)
@@ -168,13 +170,22 @@ namespace ReadingApp
         {
             UCStoryDetails ucStoryDetails = new UCStoryDetails(e, cruUser);
             ucStoryDetails.loadChapter += loadChapter;
+            SaveIndexStart();
             pnMain.Controls.Clear();
             pnMain.Controls.Add(ucStoryDetails);
         }
 
+        private void SaveIndexStart()
+        {
+            if (pnMain.Controls.OfType<UCChapterImage>().Any())
+            {
+                ucChapterImage.saveIndexStart();
+            }
+        }
+
         private void loadChapter(object? sender, Chapter e)
         {
-            UCChapterImage ucChapterImage = new UCChapterImage(e);
+            ucChapterImage = new UCChapterImage(e,0,cruUser.UserID);
             ucChapterImage.loadStoryDetails += loadUCStoryDetails;
             ucChapterImage.loadChapter += loadChapter;
             pnMain.Controls.Clear();
