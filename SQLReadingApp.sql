@@ -89,13 +89,9 @@ CREATE TABLE ReadingListItems (
 );
 
 CREATE TABLE Notifications (
-    NotificationID int PRIMARY KEY IDENTITY(1,1), 
-    StoryID int,                                 
-    ChapterID int,                               
-    Message nvarchar(MAX),                       
-    CreatedAt datetime DEFAULT GETDATE(),        -- Thời gian tạo thông báo
-    FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
-    FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
+    NotificationID int PRIMARY KEY IDENTITY(1,1),
+    Message nvarchar(MAX),
+    CreatedAt datetime DEFAULT GETDATE()
 );
 
 Drop database READINGBOOK

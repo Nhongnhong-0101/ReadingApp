@@ -33,7 +33,6 @@
             lbCountWord = new Label();
             btnSave = new Button();
             lbNumChapter = new Label();
-            btnNew = new Button();
             pcBack = new PictureBox();
             tbStt = new TextBox();
             btnDel = new Button();
@@ -92,15 +91,6 @@
             lbNumChapter.TabIndex = 4;
             lbNumChapter.Text = "Chương số* ";
             // 
-            // btnNew
-            // 
-            btnNew.Location = new Point(880, 78);
-            btnNew.Name = "btnNew";
-            btnNew.Size = new Size(101, 34);
-            btnNew.TabIndex = 11;
-            btnNew.Text = "Chương mới";
-            btnNew.UseVisualStyleBackColor = true;
-            // 
             // pcBack
             // 
             pcBack.BackgroundImage = Properties.Resources.icons8_back_64;
@@ -136,7 +126,6 @@
             Controls.Add(btnDel);
             Controls.Add(tbStt);
             Controls.Add(pcBack);
-            Controls.Add(btnNew);
             Controls.Add(lbNumChapter);
             Controls.Add(btnSave);
             Controls.Add(lbCountWord);
@@ -158,7 +147,6 @@
         private Button btnSave;
         private Label lbNumChapter;
         private Label lbCountWord;
-        private Button btnNew;
         private PictureBox pcBack;
         private TextBox tbStt;
         private Button btnDel;

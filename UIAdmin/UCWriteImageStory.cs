@@ -96,6 +96,7 @@ namespace ReadingApp.UIAdmin
                     btnAddImage.Visible = false;
                     tbStt.Enabled = false;
                     tbTitle.Enabled = false;
+
                 }
             }
             //truy xuat hinh cua chapter
@@ -282,7 +283,7 @@ namespace ReadingApp.UIAdmin
 
                         btnSave.Text = "Chỉnh sửa";
                         btnAddImage.Visible = false;
-                        btnNew.Visible = true;
+                        btnNew.Visible = false;
                         tbStt.Enabled = false;
                         tbTitle.Enabled = false;
                     }
@@ -299,7 +300,7 @@ namespace ReadingApp.UIAdmin
                     && tbTitle.Text != "Tiêu đề của chương"
                     && imagePaths.Count <= maxImage
                     && imagePaths.Count > 0
-                    && Convert.ToInt32(tbStt.Text) > 0)
+                    && Convert.ToInt32(tbStt.Text) >-1)
                 {
                     chapter.Title = tbTitle.Text.Trim();
                     chapter.ChapterNumber = Convert.ToInt32(tbStt.Text);
@@ -341,6 +342,9 @@ namespace ReadingApp.UIAdmin
                             tbTitle.Enabled = false;
                             btnNew.Visible = true;
                             tbStt.Enabled = false;
+
+                            NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!");
+
                             return true;
                         }
                         else

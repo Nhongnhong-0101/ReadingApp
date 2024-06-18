@@ -284,7 +284,14 @@ namespace ReadingApp.UserControls
             DialogResult dialogResult = MessageBox.Show("Nếu bạn xác nhận xóa truyện, mọi thông tin về truyện gồm chương, các lượt thích đều bị xóa. \n Bạn có chắc muốn xóa truyện không?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (dialogResult == DialogResult.OK)
             {
-                
+                if(story.Category =="truyện tranh")
+                {
+
+                }
+                else
+                {
+
+                }
             }
         }
     

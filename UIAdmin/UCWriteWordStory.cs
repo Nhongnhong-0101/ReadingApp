@@ -37,10 +37,9 @@ namespace ReadingApp.UIAdmin
             InitializeTimer();
 
             chapter = new Chapter();
-
+            lbCountWord.Text = rtbContent.Text.Length.ToString() + "/" + maxLength.ToString() + " chữ";
             if (user.FullName == "Admin")
             {
-                btnNew.Visible = true;
                 btnSave.Visible = true;
 
                 btnSave.Text = "Chỉnh sửa";
@@ -48,13 +47,17 @@ namespace ReadingApp.UIAdmin
                 if (IsNew)
                 {
                     btnSave.Text = "Đăng truyện";
-                    btnNew.Visible = false;
+                    tbStt.Enabled = true;
+                    tbTitle.Enabled = true; 
+                    rtbContent.Enabled = true;
 
                 }
                 else
                 {
                     btnSave.Text = "Chỉnh sửa";
-                    btnNew.Visible = true;
+                    tbStt.Enabled = false;
+                    tbTitle.Enabled = false;
+                    rtbContent.Enabled = false;
                 }
 
             }
@@ -73,10 +76,11 @@ namespace ReadingApp.UIAdmin
             tbStt.Text = chapter.ChapterNumber.ToString();
             tbTitle.Text = chapter.Title;
             rtbContent.Text = chapter.Content;
+            lbCountWord.Text = rtbContent.Text.Length.ToString() + "/" + maxLength.ToString() + " chữ";
+
 
             if (user.FullName == "Admin")
             {
-                btnNew.Visible = true;
                 btnSave.Visible = true;
 
                 btnSave.Text = "Chỉnh sửa";
@@ -84,15 +88,17 @@ namespace ReadingApp.UIAdmin
                 if (IsNew)
                 {
                     btnSave.Text = "Đăng tải";
-                    btnNew.Visible = false;
+                    tbStt.Enabled = true;
+                    tbTitle.Enabled = true;
+                    rtbContent.Enabled = true;
 
                 }
                 else
                 {
                     btnSave.Text = "Chỉnh sửa";
-                    btnNew.Visible = true;
                     tbTitle.Enabled = false;
                     rtbContent.Enabled = false;
+                    tbStt.Enabled = false;
                 }
 
             }
@@ -126,8 +132,8 @@ namespace ReadingApp.UIAdmin
                     //lưu sua chuong
                     btnSave.Text = "Đăng tải";
                     tbTitle.Enabled = true;
+                    tbStt.Enabled = true;
                     rtbContent.Enabled = true;
-                    btnNew.Visible = false;                  
                 }
                 else
                 {
@@ -141,7 +147,7 @@ namespace ReadingApp.UIAdmin
                         if (!String.IsNullOrWhiteSpace(tbTitle.Text)
                             && tbTitle.Text != "Tiêu đề của chương"
                             && rtbContent.Text.Length <= maxLength
-                            && Convert.ToInt32(tbStt.Text) > 0)
+                            && Convert.ToInt32(tbStt.Text) > -1)
                         {
                             chapter.ChapterNumber = Convert.ToInt32(tbStt.Text);
                             chapter.Title = tbTitle.Text.Trim();
@@ -154,9 +160,9 @@ namespace ReadingApp.UIAdmin
                                     MessageBox.Show("Đã chỉnh sửa thành công", "Thông báo", MessageBoxButtons.OK);
 
                                     tbTitle.Enabled = false;
+                                    tbStt.Enabled = false;
                                     rtbContent.Enabled = false;
                                     btnSave.Text = "Chỉnh sửa";
-                                    btnNew.Visible = true;
 
                                 }
                                 else
@@ -174,9 +180,12 @@ namespace ReadingApp.UIAdmin
                                     MessageBox.Show("Đã lưu chương thành công", "Thông báo", MessageBoxButtons.OK);
 
                                     tbTitle.Enabled = false;
+                                    tbStt.Enabled = false;
                                     rtbContent.Enabled = false;
                                     btnSave.Text = "Chỉnh sửa";
-                                    btnNew.Visible = true;
+
+                                    NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!");
+
 
                                 }
                                 else
