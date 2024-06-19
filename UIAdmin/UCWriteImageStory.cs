@@ -341,7 +341,7 @@ namespace ReadingApp.UIAdmin
                             tbTitle.Enabled = false;
                             btnNew.Visible = true;
                             tbStt.Enabled = false;
-
+                            story.NumberChapters++;
                             NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
 
                             return true;
@@ -417,7 +417,7 @@ namespace ReadingApp.UIAdmin
                     if (ChapterService.DeleteImageChapter(chapter.ChapterID, story.StoryID))
                     {
                         MessageBox.Show("Xóa chương thành công");
-
+                        story.NumberChapters--;
                         BackClick?.Invoke(this, story);
 
                     }

@@ -14,10 +14,12 @@ namespace ReadingApp.UserControls
     public partial class UCCommentItem : UserControl
     {
         private Rating rating = new Rating();
-        public UCCommentItem(Rating rating)
+        private string userName = "";
+        public UCCommentItem(Rating rating, string userName)
         {
             InitializeComponent();
             this.rating = rating;
+            this.userName = userName;
         }
         private void addStar()
         {
@@ -73,6 +75,7 @@ namespace ReadingApp.UserControls
         private void UCCommentItem_Load(object sender, EventArgs e)
         {
             addStar();
+            lbUserName.Text = userName;
             txtComment.Text = rating.Comment;
             lbTime.Text = rating.CreatedAt.ToString();
         }

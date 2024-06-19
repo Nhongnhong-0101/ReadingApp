@@ -55,16 +55,16 @@ namespace ReadingApp.UserControls
 
             lbEmptyEmailPass.Visible = false;
 
-            if(txtEmail.Text =="Admin" && txtPassword.Text == "12345678")
-            {
-                lbUnsuccess.Text = "Đăng nhập thành công!";
-                lbUnsuccess.Visible = true;
-                user.FullName = "Admin";
+            //if(txtEmail.Text =="Admin" && txtPassword.Text == "12345678")
+            //{
+            //    lbUnsuccess.Text = "Đăng nhập thành công!";
+            //    lbUnsuccess.Visible = true;
+            //    user.FullName = "Admin";
 
-                loadUCHome?.Invoke(this, user);
-            }
-            else
-            {
+            //    loadUCHome?.Invoke(this, user);
+            //}
+            //else
+            //{
                 if (UserServices.loginSuccess(txtEmail.Text, txtPassword.Text))
                 {
                     lbUnsuccess.Text = "Đăng nhập thành công!";
@@ -76,7 +76,7 @@ namespace ReadingApp.UserControls
                     lbUnsuccess.Text = "Đăng nhập không thành công!";
                     lbUnsuccess.Visible = true;
                 }
-            }
+            //}
             
         }
 

@@ -176,6 +176,7 @@ namespace ReadingApp.UIAdmin
                             {
                                 chapter.CreatedAt = DateTime.Now;
 
+
                                 if (ChapterService.SaveNewWordChapter(story.StoryID, chapter))
                                 {
                                     MessageBox.Show("Đã lưu chương thành công", "Thông báo", MessageBoxButtons.OK);
@@ -184,7 +185,7 @@ namespace ReadingApp.UIAdmin
                                     tbStt.Enabled = false;
                                     rtbContent.Enabled = false;
                                     btnSave.Text = "Chỉnh sửa";
-
+                                    story.NumberChapters++;
                                     NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
 
 
@@ -248,7 +249,7 @@ namespace ReadingApp.UIAdmin
                     if (ChapterService.DeleteWordChapter(chapter.ChapterID, story.StoryID))
                     {
                         MessageBox.Show("Xóa chương thành công");
-
+                        story.NumberChapters--;
                         BackToDetailStrClick?.Invoke(this, story);
 
                     }

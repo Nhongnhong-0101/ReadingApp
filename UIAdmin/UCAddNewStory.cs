@@ -30,11 +30,8 @@ namespace ReadingApp.UIAdmin
                 "Bách hợp",
                 "Đam mỹ",
                 "Cung đấu",
-                "Học đường",
                 "Trinh thám",
-                "Viễn tưởng",
-                "Phiêu lưu",
-
+                "Cổ trang",
             };
 
         public Story story { get; set; }

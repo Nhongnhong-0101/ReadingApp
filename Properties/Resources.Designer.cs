@@ -123,6 +123,16 @@ namespace ReadingApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg_addStory {
+            get {
+                object obj = ResourceManager.GetObject("bg_addStory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bg_btnlogin {
             get {
                 object obj = ResourceManager.GetObject("bg_btnlogin", resourceCulture);

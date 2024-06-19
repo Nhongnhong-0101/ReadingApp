@@ -34,7 +34,7 @@ namespace ReadingApp.UserControls
         public delegate void ModifyStoryEventHandler(object sender, Story s);
         public event ModifyStoryEventHandler ModifyStoryClick;
 
-        public delegate void LoadChapterForAdmin(object sender,Story story, Chapter chapter);
+        public delegate void LoadChapterForAdmin(object sender, Story story, Chapter chapter);
         public event LoadChapterForAdmin LoadChapterAdmin;
         private string code = "";
         private bool isPaid = true;
@@ -42,7 +42,7 @@ namespace ReadingApp.UserControls
         {
             InitializeComponent();
             this.story = story;
-            this.user = user;            
+            this.user = user;
         }
 
         private void UCStoryDetails_Load(object sender, EventArgs e)
@@ -50,7 +50,6 @@ namespace ReadingApp.UserControls
             if (user.FullName == "Admin")
             {
                 btnModify.Visible = true;
-                btnDel.Visible = true;
                 pcAddChapter.Visible = true;
             }
 
@@ -72,7 +71,7 @@ namespace ReadingApp.UserControls
                 btnPay.Visible = (PayServices.isPaid(user.UserID, story.StoryID) || user.FullName == "Admin") ? false : true;
                 isPaid = PayServices.isPaid(user.UserID, story.StoryID);
 
-                
+
             }
             else
             {
@@ -102,18 +101,18 @@ namespace ReadingApp.UserControls
                 if (index < middle)
                 {
                     Label labelChapter = addLabelChapter("Chương " + chapters[i].ChapterNumber + ": " + chapters[i].Title);
-                    flowChapter1.Controls.Add(labelChapter);                    
+                    flowChapter1.Controls.Add(labelChapter);
                     if (user.FullName != "Admin" && !isPaid && index >= story.FreeChapters) { labelChapter.Click += labelChapterNonPaid_Click; }
-                    else { labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapters[index]); }
+                    else { labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapters[index].Story, chapters[index]); }
                 }
                 else
                 {
                     Label labelChapter = addLabelChapter("Chương " + chapters[i].ChapterNumber + ": " + chapters[i].Title);
                     flowChapter2.Controls.Add(labelChapter);
                     if (user.FullName != "Admin" && !isPaid && index >= story.FreeChapters) { labelChapter.Click += labelChapterNonPaid_Click; }
-                    else { labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapters[index]); }                    
+                    else { labelChapter.Click += (sender, e) => labelChapter_Click(sender, chapters[index].Story, chapters[index]); }
                 }
-                i++; 
+                i++;
             }
         }
 
@@ -131,14 +130,14 @@ namespace ReadingApp.UserControls
             labelChapter.Padding = new Padding(0, 5, 0, 5);
             labelChapter.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
             return labelChapter;
-                
+
         }
 
-        private void labelChapter_Click(object? sender, Chapter chapter)
-        {
-            StoriesServices.viewStory(story.StoryID);
-            loadChapter?.Invoke(this, chapter);
-        }
+        //private void labelChapter_Click(object? sender, Chapter chapter)
+        //{
+        //    StoriesServices.viewStory(story.StoryID);
+        //    loadChapter?.Invoke(this, chapter);
+        //}
         private void labelChapter_Click(object? sender, Story s, Chapter chapter)
         {
 
@@ -309,7 +308,7 @@ namespace ReadingApp.UserControls
             ratings = CommentServices.getCmt(userID, storyID);
             for (int i = 0; i < ratings.Count; i++)
             {
-                UCCommentItem ucCommentItem = new UCCommentItem(ratings[i]);
+                UCCommentItem ucCommentItem = new UCCommentItem(ratings[i], user.UserName);
                 flowComment.Controls.Add(ucCommentItem);
             }
 
@@ -358,7 +357,7 @@ namespace ReadingApp.UserControls
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (txtCode.Text == code )
+                if (txtCode.Text == code)
                 {
                     if (PayServices.pay(story.StoryID, user.UserID))
                     {
@@ -385,21 +384,9 @@ namespace ReadingApp.UserControls
 
         }
 
-        private void btnDel_Click(object sender, EventArgs e)
+        private void btnDone_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Nếu bạn xác nhận xóa truyện, mọi thông tin về truyện gồm chương, các lượt thích đều bị xóa. \n Bạn có chắc muốn xóa truyện không?", "Xác nhận", MessageBoxButtons.OKCancel);
-            if (dialogResult == DialogResult.OK)
-            {
-                if(story.Category =="truyện tranh")
-                {
 
-                }
-                else
-                {
-
-                }
-            }
         }
-    
     }
 }

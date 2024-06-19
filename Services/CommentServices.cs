@@ -84,7 +84,7 @@ namespace ReadingApp.Services
         static public List<Rating> getCmt(int userID, int storyID)
         {
             List<Rating> ratings = new List<Rating>();
-            string sqlQuery = "SELECT * FROM RATINGS WHERE USERID = @userID and STORYID = @storyID ORDER BY CREATEDAT DESC";
+            string sqlQuery = "SELECT * FROM RATINGS WHERE STORYID = @storyID ORDER BY CREATEDAT DESC";
             try
             {
                 using (SqlConnection connection = new SqlConnection(DataProvider.con))

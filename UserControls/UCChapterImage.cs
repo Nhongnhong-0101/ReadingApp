@@ -32,13 +32,11 @@ namespace ReadingApp.UserControls
         private int userID;
         
         private List<String> voices = new List<string> { "Giọng nữ miền Nam", "Giọng nữ miền Bắc", "Giọng nam miền Nam", "Giọng nam miền Bắc" };
-          public UCChapterImage(Chapter chapter, int userID)
+        public UCChapterImage(Chapter chapter, int userID)
         {
             InitializeComponent();
             this.chapter = chapter;
             this.userID = userID;
-
-
         }
 
         public UCChapterImage(Chapter chapter)
@@ -66,7 +64,6 @@ namespace ReadingApp.UserControls
             cmbVoice.DataSource = voices;
             cmbVoice.SelectedIndex = -1;
         }
-
 
         private void UCChapterImage_Load(object sender, EventArgs e)
         {            
@@ -165,12 +162,26 @@ namespace ReadingApp.UserControls
 
         private void btnNextChapter_Click(object sender, EventArgs e)
         {
-            loadChapter?.Invoke(sender, chapters[index + 1]);
+            if (index + 1 >= chapter.Story.FreeChapters)
+            {
+                MessageBox.Show("Vui lòng mua truyện để tiếp tục đọc?", "Thông báo");
+            }
+            else
+            {
+                loadChapter?.Invoke(sender, chapters[index + 1]);
+            }
         }
 
         private void cbSelectChapter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadChapter?.Invoke(sender, chapters[cbSelectChapter.SelectedIndex]);
+            if (cbSelectChapter.SelectedIndex + 1 >= chapter.Story.FreeChapters)
+            {
+                MessageBox.Show("Vui lòng mua truyện để tiếp tục đọc?", "Thông báo");
+            }
+            else
+            {
+                loadChapter?.Invoke(sender, chapters[cbSelectChapter.SelectedIndex]);
+            }
         }
 
         private async void btnSpeaker_Click(object sender, EventArgs e)

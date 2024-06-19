@@ -121,7 +121,7 @@
             label6.ForeColor = Color.DarkGreen;
             label6.Location = new Point(90, 27);
             label6.Name = "label6";
-            label6.Size = new Size(128, 32);
+            label6.Size = new Size(175, 45);
             label6.TabIndex = 3;
             label6.Text = "THƯ VIỆN";
             // 
@@ -144,7 +144,7 @@
             lbLogout.ForeColor = Color.Black;
             lbLogout.Location = new Point(84, 8);
             lbLogout.Name = "lbLogout";
-            lbLogout.Size = new Size(101, 28);
+            lbLogout.Size = new Size(143, 38);
             lbLogout.TabIndex = 3;
             lbLogout.Text = "Đăng xuất";
             lbLogout.Click += pnLogout_Click;
@@ -191,7 +191,7 @@
             label4.ForeColor = Color.DarkGreen;
             label4.Location = new Point(90, 27);
             label4.Name = "label4";
-            label4.Size = new Size(128, 32);
+            label4.Size = new Size(175, 45);
             label4.TabIndex = 3;
             label4.Text = "THƯ VIỆN";
             // 
@@ -214,7 +214,7 @@
             lbHistoryTab.ForeColor = Color.DarkGreen;
             lbHistoryTab.Location = new Point(90, 27);
             lbHistoryTab.Name = "lbHistoryTab";
-            lbHistoryTab.Size = new Size(164, 32);
+            lbHistoryTab.Size = new Size(226, 45);
             lbHistoryTab.TabIndex = 3;
             lbHistoryTab.Text = "LỊCH SỬ ĐỌC";
             lbHistoryTab.Click += pnHistoryTab_Click;
@@ -261,7 +261,7 @@
             label3.ForeColor = Color.DarkGreen;
             label3.Location = new Point(90, 27);
             label3.Name = "label3";
-            label3.Size = new Size(128, 32);
+            label3.Size = new Size(175, 45);
             label3.TabIndex = 3;
             label3.Text = "THƯ VIỆN";
             // 
@@ -284,7 +284,7 @@
             lbLibraryTab.ForeColor = Color.DarkGreen;
             lbLibraryTab.Location = new Point(90, 27);
             lbLibraryTab.Name = "lbLibraryTab";
-            lbLibraryTab.Size = new Size(128, 32);
+            lbLibraryTab.Size = new Size(175, 45);
             lbLibraryTab.TabIndex = 3;
             lbLibraryTab.Text = "THƯ VIỆN";
             lbLibraryTab.Click += pnLibraryTab_Click;
@@ -320,7 +320,7 @@
             lbAccountTab.ForeColor = Color.DarkGreen;
             lbAccountTab.Location = new Point(90, 27);
             lbAccountTab.Name = "lbAccountTab";
-            lbAccountTab.Size = new Size(147, 32);
+            lbAccountTab.Size = new Size(199, 45);
             lbAccountTab.TabIndex = 3;
             lbAccountTab.Text = "TÀI KHOẢN";
             lbAccountTab.Click += pnAccountTab_Click;
@@ -356,7 +356,7 @@
             lbHomeTab.ForeColor = Color.White;
             lbHomeTab.Location = new Point(90, 27);
             lbHomeTab.Name = "lbHomeTab";
-            lbHomeTab.Size = new Size(154, 32);
+            lbHomeTab.Size = new Size(212, 45);
             lbHomeTab.TabIndex = 3;
             lbHomeTab.Text = "TRANG CHỦ";
             lbHomeTab.Click += pnHomeTab_Click;
@@ -399,7 +399,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 19F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1924, 1055);
@@ -408,7 +408,6 @@
             Controls.Add(pnMenu);
             Font = new Font("Segoe UI", 8.142858F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.Black;
-            FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";

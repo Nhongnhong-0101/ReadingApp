@@ -302,10 +302,10 @@ namespace ReadingApp.Services
             List<Story> stories = new List<Story>();
             string sqlQuery = "SELECT * FROM STORIES WHERE TYPE = @type";
 
-            if (isStory && !isComic) { sqlQuery += " AND CATEGORY = 'truyện chữ'"; }
-            if (!isStory && isComic) { sqlQuery += " AND CATEGORY = 'truyện tranh'"; }
+            if (isStory && !isComic) { sqlQuery += " AND CATEGORY = N'truyện chữ'"; }
+            if (!isStory && isComic) { sqlQuery += " AND CATEGORY = N'truyện tranh'"; }
             if (isFull && !isUpdating) { sqlQuery += " AND STATUS = 'Full'"; }
-            if (!isFull && isUpdating) { sqlQuery += " AND STATUS = 'Đang cập nhật'"; }
+            if (!isFull && isUpdating) { sqlQuery += " AND STATUS = N'Đang cập nhật'"; }
             if (isFree && !isFee) { sqlQuery += " AND PRICE = 0"; }
             if (!isFree && isFee) { sqlQuery += " AND PRICE > 0"; }
             switch (arrange)
@@ -315,8 +315,8 @@ namespace ReadingApp.Services
                 case "Nổi bật": { sqlQuery += " ORDER BY VIEWS DESC"; break; }
             }
 
-            try
-            {
+            //try
+            //{
                 using (SqlConnection connection = new SqlConnection(DataProvider.con))
                 {
                     connection.Open();
@@ -353,8 +353,8 @@ namespace ReadingApp.Services
                     }
                     connection.Close();
                 }
-            }
-            catch { }
+            //}
+            //catch { }
             return stories;
         }
 
@@ -555,8 +555,8 @@ namespace ReadingApp.Services
         {
             List<Story> stories = new List<Story>();
             string sqlQuery = "SELECT TOP 20 * FROM STORIES STR JOIN ReadingProgress PRO ON STR.STORYID = PRO.STORYID WHERE PRO.USERID = @userID ORDER BY PRO.PROGRESS DESC";
-            //try
-            //{
+            try
+            {
                 using (SqlConnection connection = new SqlConnection(DataProvider.con))
                 {
                     connection.Open();
@@ -594,8 +594,8 @@ namespace ReadingApp.Services
                     }
                     connection.Close();
                 }
-            //}
-            //catch { }
+            }
+            catch { }
             return stories;
         }
         static public int SaveNewStory(Story story)

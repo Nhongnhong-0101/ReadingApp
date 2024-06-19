@@ -66,10 +66,9 @@
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(lbAccountTab);
-            panel1.Location = new Point(653, 233);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Location = new Point(980, 350);
             panel1.Name = "panel1";
-            panel1.Size = new Size(433, 451);
+            panel1.Size = new Size(650, 676);
             panel1.TabIndex = 0;
             // 
             // lbUnsuccess
@@ -77,10 +76,9 @@
             lbUnsuccess.BackColor = Color.Transparent;
             lbUnsuccess.Font = new Font("Segoe UI", 8F);
             lbUnsuccess.ForeColor = Color.Red;
-            lbUnsuccess.Location = new Point(0, 275);
-            lbUnsuccess.Margin = new Padding(2, 0, 2, 0);
+            lbUnsuccess.Location = new Point(0, 412);
             lbUnsuccess.Name = "lbUnsuccess";
-            lbUnsuccess.Size = new Size(427, 17);
+            lbUnsuccess.Size = new Size(640, 26);
             lbUnsuccess.TabIndex = 12;
             lbUnsuccess.Text = "Đăng nhập không thành công!";
             lbUnsuccess.TextAlign = ContentAlignment.MiddleCenter;
@@ -92,10 +90,9 @@
             lbSignUp.BackColor = Color.Transparent;
             lbSignUp.Font = new Font("Segoe UI", 12F, FontStyle.Underline);
             lbSignUp.ForeColor = Color.DarkGreen;
-            lbSignUp.Location = new Point(270, 369);
-            lbSignUp.Margin = new Padding(2, 0, 2, 0);
+            lbSignUp.Location = new Point(405, 554);
             lbSignUp.Name = "lbSignUp";
-            lbSignUp.Size = new Size(84, 28);
+            lbSignUp.Size = new Size(119, 38);
             lbSignUp.TabIndex = 11;
             lbSignUp.Text = "Đăng ký";
             lbSignUp.Click += lbSignUp_Click;
@@ -106,10 +103,9 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 11F);
             label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(88, 370);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(132, 555);
             label4.Name = "label4";
-            label4.Size = new Size(207, 25);
+            label4.Size = new Size(279, 36);
             label4.TabIndex = 10;
             label4.Text = "Bạn chưa có tài khoản?";
             // 
@@ -119,10 +115,9 @@
             btnLogIn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnLogIn.ForeColor = Color.White;
             btnLogIn.Image = Properties.Resources.bg_btnlogin;
-            btnLogIn.Location = new Point(100, 300);
-            btnLogIn.Margin = new Padding(2, 0, 2, 0);
+            btnLogIn.Location = new Point(150, 450);
             btnLogIn.Name = "btnLogIn";
-            btnLogIn.Size = new Size(233, 43);
+            btnLogIn.Size = new Size(350, 64);
             btnLogIn.TabIndex = 0;
             btnLogIn.Text = "Đăng nhập";
             btnLogIn.TextAlign = ContentAlignment.MiddleCenter;
@@ -135,10 +130,9 @@
             panel4.Controls.Add(lbForgotPassword);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(label1);
-            panel4.Location = new Point(0, 181);
-            panel4.Margin = new Padding(2, 2, 2, 2);
+            panel4.Location = new Point(0, 272);
             panel4.Name = "panel4";
-            panel4.Size = new Size(427, 87);
+            panel4.Size = new Size(640, 130);
             panel4.TabIndex = 9;
             // 
             // lbEmptyEmailPass
@@ -146,10 +140,9 @@
             lbEmptyEmailPass.AutoSize = true;
             lbEmptyEmailPass.Font = new Font("Segoe UI", 8F);
             lbEmptyEmailPass.ForeColor = Color.Red;
-            lbEmptyEmailPass.Location = new Point(33, 66);
-            lbEmptyEmailPass.Margin = new Padding(2, 0, 2, 0);
+            lbEmptyEmailPass.Location = new Point(50, 99);
             lbEmptyEmailPass.Name = "lbEmptyEmailPass";
-            lbEmptyEmailPass.Size = new Size(215, 19);
+            lbEmptyEmailPass.Size = new Size(294, 25);
             lbEmptyEmailPass.TabIndex = 11;
             lbEmptyEmailPass.Text = "Vui lòng nhập email và mật khẩu!";
             lbEmptyEmailPass.Visible = false;
@@ -159,10 +152,9 @@
             lbForgotPassword.AutoSize = true;
             lbForgotPassword.Font = new Font("Segoe UI", 10F, FontStyle.Underline);
             lbForgotPassword.ForeColor = Color.DarkGreen;
-            lbForgotPassword.Location = new Point(271, 6);
-            lbForgotPassword.Margin = new Padding(2, 0, 2, 0);
+            lbForgotPassword.Location = new Point(406, 9);
             lbForgotPassword.Name = "lbForgotPassword";
-            lbForgotPassword.Size = new Size(129, 23);
+            lbForgotPassword.Size = new Size(180, 32);
             lbForgotPassword.TabIndex = 9;
             lbForgotPassword.Text = "Quên mật khẩu";
             lbForgotPassword.Click += lbForgotPassword_Click;
@@ -173,19 +165,17 @@
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(picEye);
             panel5.Controls.Add(txtPassword);
-            panel5.Location = new Point(33, 29);
-            panel5.Margin = new Padding(2, 2, 2, 2);
+            panel5.Location = new Point(50, 44);
             panel5.Name = "panel5";
-            panel5.Size = new Size(354, 37);
+            panel5.Size = new Size(530, 54);
             panel5.TabIndex = 8;
             // 
             // picEye
             // 
             picEye.Image = Properties.Resources.eye_slash;
-            picEye.Location = new Point(323, 4);
-            picEye.Margin = new Padding(2, 2, 2, 2);
+            picEye.Location = new Point(484, 6);
             picEye.Name = "picEye";
-            picEye.Size = new Size(27, 27);
+            picEye.Size = new Size(40, 40);
             picEye.SizeMode = PictureBoxSizeMode.StretchImage;
             picEye.TabIndex = 8;
             picEye.TabStop = false;
@@ -197,13 +187,12 @@
             txtPassword.BorderStyle = BorderStyle.None;
             txtPassword.Font = new Font("Segoe UI", 13F);
             txtPassword.ForeColor = Color.DimGray;
-            txtPassword.Location = new Point(7, 3);
-            txtPassword.Margin = new Padding(2, 2, 2, 2);
+            txtPassword.Location = new Point(10, 4);
             txtPassword.MaxLength = 8;
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "Nhập mật khẩu";
-            txtPassword.Size = new Size(313, 29);
+            txtPassword.Size = new Size(470, 41);
             txtPassword.TabIndex = 7;
             txtPassword.Text = "12345678";
             // 
@@ -212,10 +201,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = Color.DarkGreen;
-            label1.Location = new Point(33, 3);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(50, 4);
             label1.Name = "label1";
-            label1.Size = new Size(96, 25);
+            label1.Size = new Size(132, 36);
             label1.TabIndex = 6;
             label1.Text = "Mật khẩu";
             // 
@@ -224,10 +212,9 @@
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(lbType);
-            panel2.Location = new Point(0, 95);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Location = new Point(0, 142);
             panel2.Name = "panel2";
-            panel2.Size = new Size(427, 83);
+            panel2.Size = new Size(640, 124);
             panel2.TabIndex = 5;
             // 
             // panel3
@@ -235,10 +222,9 @@
             panel3.BackColor = Color.FromArgb(103, 216, 108);
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(txtEmail);
-            panel3.Location = new Point(33, 27);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Location = new Point(50, 40);
             panel3.Name = "panel3";
-            panel3.Size = new Size(354, 37);
+            panel3.Size = new Size(530, 54);
             panel3.TabIndex = 8;
             // 
             // txtEmail
@@ -247,23 +233,21 @@
             txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.Font = new Font("Segoe UI", 13F);
             txtEmail.ForeColor = Color.DimGray;
-            txtEmail.Location = new Point(7, 3);
-            txtEmail.Margin = new Padding(2, 2, 2, 2);
+            txtEmail.Location = new Point(10, 4);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Nhập tên đăng nhập";
-            txtEmail.Size = new Size(340, 29);
+            txtEmail.Size = new Size(510, 41);
             txtEmail.TabIndex = 7;
-            txtEmail.Text = "Admin";
+            txtEmail.Text = "maianh";
             // 
             // lbType
             // 
             lbType.AutoSize = true;
             lbType.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lbType.ForeColor = Color.DarkGreen;
-            lbType.Location = new Point(33, 1);
-            lbType.Margin = new Padding(2, 0, 2, 0);
+            lbType.Location = new Point(50, 2);
             lbType.Name = "lbType";
-            lbType.Size = new Size(144, 25);
+            lbType.Size = new Size(196, 36);
             lbType.TabIndex = 6;
             lbType.Text = "Tên đăng nhập";
             // 
@@ -272,10 +256,9 @@
             lbAccountTab.BackColor = Color.Transparent;
             lbAccountTab.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lbAccountTab.ForeColor = Color.Black;
-            lbAccountTab.Location = new Point(0, 20);
-            lbAccountTab.Margin = new Padding(2, 0, 2, 0);
+            lbAccountTab.Location = new Point(0, 30);
             lbAccountTab.Name = "lbAccountTab";
-            lbAccountTab.Size = new Size(427, 37);
+            lbAccountTab.Size = new Size(640, 56);
             lbAccountTab.TabIndex = 4;
             lbAccountTab.Text = "ĐĂNG NHẬP";
             lbAccountTab.TextAlign = ContentAlignment.MiddleCenter;
@@ -287,13 +270,12 @@
             // 
             // UCLogIn
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(202, 236, 208);
             Controls.Add(panel1);
-            Margin = new Padding(2, 2, 2, 2);
             Name = "UCLogIn";
-            Size = new Size(1707, 1000);
+            Size = new Size(2560, 1500);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel4.ResumeLayout(false);

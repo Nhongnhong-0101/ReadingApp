@@ -138,7 +138,6 @@
             // 
             // pictureBox2
             // 
-            //pictureBox2.Image = Properties.Resources.search;
             pictureBox2.Location = new Point(1144, 12);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(45, 45);
@@ -414,7 +413,7 @@
             cbArrange.Font = new Font("Segoe UI", 12F);
             cbArrange.ForeColor = Color.Gray;
             cbArrange.FormattingEnabled = true;
-            cbArrange.ItemHeight = 28;
+            cbArrange.ItemHeight = 38;
             cbArrange.Items.AddRange(new object[] { "Đánh giá cao", "Mới nhất", "Nổi bật" });
             cbArrange.Location = new Point(581, 39);
             cbArrange.Margin = new Padding(4);
@@ -494,7 +493,7 @@
             lbTheLoai6.Name = "lbTheLoai6";
             lbTheLoai6.Size = new Size(151, 38);
             lbTheLoai6.TabIndex = 11;
-            lbTheLoai6.Text = "Học đường";
+            lbTheLoai6.Text = "Trinh thám";
             lbTheLoai6.Click += lbTheLoai6_Click;
             lbTheLoai6.MouseLeave += lbTheLoai6_MouseLeave;
             lbTheLoai6.MouseHover += lbTheLoai6_MouseHover;
@@ -635,10 +634,11 @@
             // 
             // btnWrite
             // 
-            btnWrite.BackgroundImage = Properties.Resources.bg_updateAccount;
-            btnWrite.BackgroundImageLayout = ImageLayout.Stretch;
+            btnWrite.BackColor = Color.ForestGreen;
+            btnWrite.BackgroundImageLayout = ImageLayout.None;
             btnWrite.Cursor = Cursors.Hand;
-            btnWrite.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnWrite.FlatStyle = FlatStyle.Flat;
+            btnWrite.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWrite.ForeColor = SystemColors.ButtonHighlight;
             btnWrite.Location = new Point(36, 36);
             btnWrite.Margin = new Padding(4);
@@ -646,7 +646,7 @@
             btnWrite.Size = new Size(174, 69);
             btnWrite.TabIndex = 9;
             btnWrite.Text = "Viết truyện";
-            btnWrite.UseVisualStyleBackColor = true;
+            btnWrite.UseVisualStyleBackColor = false;
             // 
             // UCHome
             // 

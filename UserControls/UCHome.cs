@@ -41,7 +41,7 @@ namespace ReadingApp.UserControls
 
         private void UCHome_Load(object sender, EventArgs e)
         {
-            //picAvat.Image = Image.FromFile(@user.Avatar);
+            picAvat.Image = Image.FromFile(@user.Avatar);
 
             stories.Clear();
             stories = StoriesServices.get24Stories();
@@ -52,7 +52,7 @@ namespace ReadingApp.UserControls
             lasted = StoriesServices.getLastedStories();
             if (lasted.Count > 0)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     //ToDo fix lại bawgf 4
                     int index = i;
@@ -71,7 +71,7 @@ namespace ReadingApp.UserControls
             outs = StoriesServices.getOutsStories();
             if(outs.Count > 0)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     //ToDo: fix lại bằng 4
                     int index = i;
@@ -92,7 +92,7 @@ namespace ReadingApp.UserControls
 
             if(star.Count > 0)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     //ToDo: fix lại băng 4
                     int index = i;
