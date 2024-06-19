@@ -38,6 +38,7 @@
             btnSpeaker = new Button();
             cmbVoice = new ComboBox();
             lbWait = new Label();
+            btnStop = new Button();
             SuspendLayout();
             // 
             // lbStoryName
@@ -160,11 +161,22 @@
             lbWait.Visible = false;
             lbWait.Click += lbWait_Click;
             // 
+            // btnStop
+            // 
+            btnStop.Location = new Point(467, 106);
+            btnStop.Name = "btnStop";
+            btnStop.Size = new Size(49, 35);
+            btnStop.TabIndex = 21;
+            btnStop.Text = "button1";
+            btnStop.UseVisualStyleBackColor = true;
+            btnStop.Click += btnStop_Click;
+            // 
             // UCChapterImage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(btnStop);
             Controls.Add(lbWait);
             Controls.Add(cmbVoice);
             Controls.Add(btnSpeaker);
@@ -195,5 +207,6 @@
         private Button btnSpeaker;
         private ComboBox cmbVoice;
         private Label lbWait;
+        private Button btnStop;
     }
 }

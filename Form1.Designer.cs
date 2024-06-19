@@ -396,6 +396,7 @@
             pnLogIn.Name = "pnLogIn";
             pnLogIn.Size = new Size(2566, 1500);
             pnLogIn.TabIndex = 2;
+            pnLogIn.Paint += pnLogIn_Paint;
             // 
             // Form1
             // 
@@ -408,7 +409,8 @@
             Controls.Add(pnMenu);
             Font = new Font("Segoe UI", 8.142858F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.Black;
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            //rmBorderStyle = FormBorderStyle.FixedDialog;
+
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Form1";

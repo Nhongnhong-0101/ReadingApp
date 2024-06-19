@@ -30,9 +30,15 @@ namespace ReadingApp.UserControls
         private int index = 0;
         private int indexStart = 0;
         private int userID;
-        
+
+        private SoundPlayer _player;
+        private bool _isPlaying = false;
+
+        private static readonly HttpClient client = new HttpClient();
+
+
         private List<String> voices = new List<string> { "Giọng nữ miền Nam", "Giọng nữ miền Bắc", "Giọng nam miền Nam", "Giọng nam miền Bắc" };
-          public UCChapterImage(Chapter chapter, int userID)
+        public UCChapterImage(Chapter chapter, int userID)
         {
             InitializeComponent();
             this.chapter = chapter;
@@ -69,7 +75,7 @@ namespace ReadingApp.UserControls
 
 
         private void UCChapterImage_Load(object sender, EventArgs e)
-        {            
+        {
             if (chapter.Story.Category == "truyện chữ")
             {
                 chapters = ChapterService.getChapters(chapter.Story.StoryID);
@@ -109,7 +115,7 @@ namespace ReadingApp.UserControls
                 {
                     indexStart = PayServices.getIndex(userID, chapter.Story.StoryID);
                     int chapterID = PayServices.getChapterID(userID, chapter.Story.StoryID);
-                    foreach(Chapter _chapter in chapters)
+                    foreach (Chapter _chapter in chapters)
                     {
                         if (_chapter.ChapterID == chapterID) { chapter = _chapter; break; }
                     }
@@ -141,7 +147,7 @@ namespace ReadingApp.UserControls
                     }
                     lbStoryName.Text = chapter.Story.Title;
                 }
-            }            
+            }
 
             cbSelectChapter.Items.Clear();
             for (int i = 0; i < chapters.Count; i++)
@@ -179,9 +185,9 @@ namespace ReadingApp.UserControls
             string content = chapter.Content;
             if (content.Length > 2000)
             {
-                content = content.Substring(0, 1999);
+                content = content.Substring(0, 100);
             }
-
+            MessageBox.Show(content);
             await ReadContent(content, idSpeaker);
         }
 
@@ -193,58 +199,75 @@ namespace ReadingApp.UserControls
 
             string apiUrl = $"https://api.zalo.ai/v1/tts/synthesize";
 
-            using (HttpClient client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("apikey", apiKey);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("apikey", apiKey);
 
-                var content = new FormUrlEncodedContent(new[]
-                {
+            var content = new FormUrlEncodedContent(new[]
+            {
                 new KeyValuePair<string, string>("input", inputText),
                 new KeyValuePair<string, string>("speaker_id", speakerId.ToString())
                  });
 
-                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+            HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
-                if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
+            {
+                string responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonConvert.DeserializeObject<JObject>(responseContent);
+
+                if (responseData["error_code"].ToString() == "0")
                 {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    var responseData = JsonConvert.DeserializeObject<JObject>(responseContent);
+                    string audioUrl = responseData["data"]["url"].ToString();
 
-                    if (responseData["error_code"].ToString() == "0")
+                    //tải vè
+                    byte[] audioData;
+                    using (var audioResponse = await client.GetAsync(audioUrl))
                     {
-                        string audioUrl = responseData["data"]["url"].ToString();
-
-                        //tải vè
-                        byte[] audioData;
-                        using (var audioResponse = await client.GetAsync(audioUrl))
-                        {
-                            audioData = await audioResponse.Content.ReadAsByteArrayAsync();
-                        }
-
-                        // phát
-                        using (MemoryStream memoryStream = new MemoryStream(audioData))
-                        {
-                            using (SoundPlayer player = new SoundPlayer(memoryStream))
-                            {
-                                player.PlaySync();
-
-                            }
-                        }
-
+                        audioData = await audioResponse.Content.ReadAsByteArrayAsync();
                     }
+
+                    // phát
+                    using (MemoryStream memoryStream = new MemoryStream(audioData))
+                    {
+                        _player = new SoundPlayer(memoryStream);
+                        _isPlaying = true;
+                        btnStop.Enabled = true;
+
+                        // Sử dụng Play() thay vì PlaySync() để có thể dừng
+                        _player.Play();
+
+                        // Đợi cho đến khi phát xong
+                        while (_isPlaying)
+                        {
+                            await Task.Delay(100);
+                        }
+                    }
+
                 }
-                else
-                {
-                    MessageBox.Show("Chưa thể phát tiếng ngay lúc này.\nBạn vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK);
-                }
-                lbWait.Visible = false;
-                btnSpeaker.Enabled = true;
             }
+            else
+            {
+                MessageBox.Show("Chưa thể phát tiếng ngay lúc này.\nBạn vui lòng thử lại sau", "Thông báo", MessageBoxButtons.OK);
+            }
+            lbWait.Visible = false;
+            btnSpeaker.Enabled = true;
         }
 
         private void lbWait_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (_isPlaying && _player != null)
+            {
+                _player.Stop();
+                _isPlaying = false;
+                btnStop.Enabled = false;
+                lbWait.Visible = false;
+                btnSpeaker.Enabled = true;
+            }
         }
     }
 }

@@ -111,7 +111,8 @@ namespace ReadingApp
                 pnMain.Controls.Clear();
                 pnMain.Controls.Add(ucStoryDetails);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
@@ -126,7 +127,7 @@ namespace ReadingApp
             lbAccountTab.ForeColor = Color.White;
             picAccountTab.Image = Properties.Resources.user_white;
 
-            loadUCAccount(sender,e);
+            loadUCAccount(sender, e);
         }
 
         private void pnLibraryTab_Click(object sender, EventArgs e)
@@ -160,7 +161,7 @@ namespace ReadingApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            UCLogIn uCLogIn = new UCLogIn();            
+            UCLogIn uCLogIn = new UCLogIn();
             uCLogIn.loadUCHome += loadUCHome;
             uCLogIn.loadUCForgotPassword += loadUCForgotPassword;
             uCLogIn.loadUCSignUp += loadUCSignUp;
@@ -204,7 +205,7 @@ namespace ReadingApp
             try
             {
 
-                if (chapter.Content !=null)
+                if (chapter.Content != null)
                 {
                     UCWriteWordStory ucWriteWordStory = new UCWriteWordStory(chapter, story, cruUser, false);
 
@@ -243,13 +244,14 @@ namespace ReadingApp
 
                 uCAddNewStory.StorySaved += UCAddNewStory_StorySaved;
             }
-             catch { 
+            catch
+            {
             }
         }
 
         private void UcStoryDetails_WriteNewChapterClick1(object sender, Story s)
         {
-             try
+            try
             {
 
                 if (s.Category == "truyện tranh")
@@ -306,7 +308,7 @@ namespace ReadingApp
 
         private void loadChapter(object? sender, Chapter e)
         {
-            ucChapterImage = new UCChapterImage(e,cruUser.UserID);
+            ucChapterImage = new UCChapterImage(e, cruUser.UserID);
             ucChapterImage.loadStoryDetails += loadUCStoryDetails;
             ucChapterImage.loadChapter += loadChapter;
             pnMain.Controls.Clear();
@@ -331,6 +333,11 @@ namespace ReadingApp
         private void pnLogout_Click(object sender, EventArgs e)
         {
             Form1_Load(sender, e);
+        }
+
+        private void pnLogIn_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

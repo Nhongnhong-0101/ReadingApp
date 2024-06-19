@@ -72,7 +72,7 @@ namespace ReadingApp.Services
                             // Cập nhật LastUpdated cho bảng Stories
                             string updateStoryQuery = @"
                                                     UPDATE Stories
-                                                    SET LastUpdateAt = GETDATE()
+                                                    SET ChapterNumber = ChapterNumber +1, LastUpdateAt = GETDATE()
                                                     WHERE StoryID = @StoryID";
 
                             using (SqlCommand updateStoryCommand = new SqlCommand(updateStoryQuery, connection, transaction))
@@ -137,7 +137,7 @@ namespace ReadingApp.Services
                             // Cập nhật LastUpdated cho bảng Stories
                             string updateStoryQuery = @"
                                             UPDATE Stories
-                                            SET LastUpdateAt = GETDATE()
+                                            SET ChapterNumber = ChapterNumber +1, LastUpdateAt = GETDATE()
                                             WHERE StoryID = @StoryID";
 
                             using (SqlCommand updateStoryCommand = new SqlCommand(updateStoryQuery, connection, transaction))
@@ -515,7 +515,7 @@ namespace ReadingApp.Services
                             // Cập nhật LastUpdated cho bảng Stories
                             string updateStoryQuery = @"
                                 UPDATE Stories
-                                SET LastUpdateAt = GETDATE()
+                                SET ChapterNumber = ChapterNumber - 1, LastUpdateAt = GETDATE()
                                 WHERE StoryID = @StoryID";
 
                             using (SqlCommand updateStoryCommand = new SqlCommand(updateStoryQuery, connection, transaction))
@@ -581,7 +581,7 @@ namespace ReadingApp.Services
                             // Cập nhật LastUpdated cho bảng Stories
                             string updateStoryQuery = @"
                             UPDATE Stories
-                            SET LastUpdateAt = GETDATE()
+                            SET ChapterNumber = ChapterNumber - 1, LastUpdateAt = GETDATE()
                             WHERE StoryID = @StoryID";
 
                             using (SqlCommand updateStoryCommand = new SqlCommand(updateStoryQuery, connection, transaction))

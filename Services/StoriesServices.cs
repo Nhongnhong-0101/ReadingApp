@@ -690,5 +690,34 @@ namespace ReadingApp.Services
 
             return idStory;
         }
+
+        static public int SetStoryDone(Story story)
+        {
+            int count = -1;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString.conectionString))
+            {
+                connection.Open();
+
+                string query = @"
+                        UPDATE Stories
+                        SET 
+                            Status = @Status,                          
+                            LastUpdateAt = @LastUpdateAt
+                        WHERE StoryID = @Id;
+                        ";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", story.StoryID);
+                    command.Parameters.AddWithValue("@Status", story.Status ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@LastUpdateAt", story.LastUpdatedAt);
+
+                    count = Convert.ToInt32(command.ExecuteNonQuery());
+                }
+            }
+
+            return count ;
+        }
     }
 }

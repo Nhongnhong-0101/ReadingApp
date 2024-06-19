@@ -59,6 +59,7 @@ namespace ReadingApp.UIAdmin
                     tbStt.Enabled = false;
                     tbTitle.Enabled = false;
                     rtbContent.Enabled = false;
+                    btnDel.Visible = true;
                 }
 
             }
@@ -100,6 +101,7 @@ namespace ReadingApp.UIAdmin
                     tbTitle.Enabled = false;
                     rtbContent.Enabled = false;
                     tbStt.Enabled = false;
+                    btnDel.Visible = true;
                 }
 
             }
@@ -185,6 +187,8 @@ namespace ReadingApp.UIAdmin
                                     rtbContent.Enabled = false;
                                     btnSave.Text = "Chỉnh sửa";
 
+                                    story.NumberChapters++;
+
                                     NotificationService.CreateNotification(story.Title + " vừa cập nhập chương mới!", story.StoryID);
 
 
@@ -248,6 +252,8 @@ namespace ReadingApp.UIAdmin
                     if (ChapterService.DeleteWordChapter(chapter.ChapterID, story.StoryID))
                     {
                         MessageBox.Show("Xóa chương thành công");
+
+                        story.NumberChapters--;
 
                         BackToDetailStrClick?.Invoke(this, story);
 
