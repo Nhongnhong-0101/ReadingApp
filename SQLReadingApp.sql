@@ -1,5 +1,7 @@
 ﻿create database READINGBOOK
 
+use READINGBOOK
+
 CREATE TABLE Users (
     UserID int PRIMARY KEY IDENTITY(1,1), 
     FullName nvarchar(200), 
@@ -8,6 +10,7 @@ CREATE TABLE Users (
     Email nvarchar(200) NOT NULL , 
 	IsMale bit, 
 	Dob Date,
+    Avatar varchar(100),
 );
 
 create table Stories (
@@ -15,16 +18,17 @@ create table Stories (
     Image varchar(MAX),
     Title nvarchar(200),
     Description nvarchar(MAX),
-    Type nvarchar(100), -- Thể loại truyện : ttrinh thám, ảo tưởng, ...
+    Type nvarchar(100), -- Thể loại truyện : trinh thám, ảo tưởng, ...
 	Category nvarchar(50), 
-	IsPaid bit DEFAULT 0, 
+    ChapterNumber int,
+    Views int DEFAULT 0,
 	FreeChapters int DEFAULT 0,
 	Price int DEFAULT 0,
-	Status varchar (100),
-	AuthorID int,
-    FOREIGN KEY (AuthorID) REFERENCES Users(UserID),
-    CHECK (Category IN ('truyện tranh', 'truyện chữ')),
-	CHECK (Status IN ('đang sáng tác', 'đã hoàn thành', 'tạm ngưng'))
+	Status nvarchar (100),
+    Stars float,
+    CreatedAt Datetime ,
+    LastUpdateAt Datetime,
+	Author nvarchar(50)
 )
 
 CREATE TABLE Chapters (
@@ -33,9 +37,16 @@ CREATE TABLE Chapters (
     ChapterNumber int,                       
     Title nvarchar(200),                     
     Content nvarchar(MAX),                   -- Nội dung của chương của truyện chữ
-	Image varchar(MAX),						 -- Tranh cho truyện tranh
     CreatedAt datetime ,    -- Ngày tạo chương
     FOREIGN KEY (StoryID) REFERENCES Stories(StoryID) 
+);
+
+CREATE TABLE ChapterImages (
+    ImageID int PRIMARY KEY IDENTITY(1,1),
+    ChapterID int,
+    ImageURL varchar(MAX),
+	ImageOrder int, --stt cho hình
+    FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
 );
 
 CREATE TABLE ReadingProgress (
@@ -78,16 +89,20 @@ CREATE TABLE ReadingListItems (
 );
 
 CREATE TABLE Notifications (
-    NotificationID int PRIMARY KEY IDENTITY(1,1), 
-    UserID int,                                  
-    StoryID int,                                 
-    ChapterID int,                               
-    Message nvarchar(MAX),                       
-    IsRead bit DEFAULT 0,                        -- Trạng thái thông báo (1: đã đọc, 0: chưa đọc)
-    CreatedAt datetime DEFAULT GETDATE(),        -- Thời gian tạo thông báo
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    NotificationID int PRIMARY KEY IDENTITY(1,1),
+    Message nvarchar(MAX),
+    CreatedAt datetime DEFAULT GETDATE(),
+    StoryID int,
     FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
-    FOREIGN KEY (ChapterID) REFERENCES Chapters(ChapterID)
 );
 
-select * from Stories
+CREATE TABLE Paid (
+    PaidID int PRIMARY KEY IDENTITY(1,1),
+    StoryID int,                             
+    UserID int,                       
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (StoryID) REFERENCES Stories(StoryID),
+);
+
+Drop database READINGBOOK
+

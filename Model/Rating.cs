@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReadingApp.Model
+{
+    public class Rating
+    {
+        public int RatingID { get; set; }
+        public int UserID { get; set; }
+        public int StoryID { get; set; }
+
+        [Range(1,5)]
+        public int Star {  get; set; }
+
+        public String Comment { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+
+    }
+}
